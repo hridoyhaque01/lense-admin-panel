@@ -43,6 +43,18 @@ import CustomerEdit from "../Pages/EditPages/CustomerEdit";
 import WarehouseEdit from "../Pages/EditPages/WarehouseEdit";
 import PaymentGatewayAdd from "../Pages/PaymentGateway/PaymentGatewayAdd";
 import StaffEdit from "../Pages/EditPages/StaffEdit";
+import UserAddNew from "../Pages/User/UserAddNew";
+import SnapchatFilter from "../Pages/Filters/SnapchatFilter";
+import FiltersAddNew from "../Pages/Filters/FiltersAddNew";
+import FiltersSnapchatAddNew from "../Pages/Filters/FiltersAddNew";
+import TiktokFilter from "../Pages/Filters/TiktokFilter";
+import ECardFilter from "../Pages/Filters/ECardFilter";
+import ArtistsApproved from "../Pages/Artists/ArtistsApproved";
+import ArtistsPending from "../Pages/Artists/ArtistsPending";
+import ArtistsAddNew from "../Pages/Artists/ArtistsAddNew";
+import Collections from "../Pages/Categories/Collections";
+import Featured from "../Pages/Categories/Featured";
+import CategoriesAddNew from "../Pages/Categories/CategoriesAddNew";
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +69,78 @@ export const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       },
+
+      // edit users 
+      {
+        path: "/userEdit",
+        element: <UserAddNew></UserAddNew>,
+      },
+
+      // staff
+    
+      {
+        path: "/staffAddNew",
+        element: <StaffAddNew></StaffAddNew>,
+      },
+
+      //filters 
+
+      {
+        path: "/snapchatFilter",
+        element: <SnapchatFilter ></SnapchatFilter>
+      },
+
+      {
+        path: "/tiktokFilter",
+        element: <TiktokFilter ></TiktokFilter>
+      },
+
+      {
+        path: "/ecardFilter",
+        element: <ECardFilter ></ECardFilter>
+      },
+
+      {
+        path: "/filtersAddNew",
+        element: <FiltersAddNew></FiltersAddNew>
+      },
+
+      // artists 
+
+      {
+        path: '/artistsPending',
+        element : <ArtistsPending ></ArtistsPending>
+      },
+
+      {
+        path: '/artistsApproved',
+        element : <ArtistsApproved ></ArtistsApproved>
+      },
+
+      {
+        path: '/artistsAddNew',
+        element : <ArtistsAddNew ></ArtistsAddNew>
+      },
+
+      // categories
+
+      {
+        path : '/collections',
+        element : <Collections ></Collections>
+      },
+
+      {
+        path : '/featured',
+        element: <Featured></Featured>
+      },
+
+      
+      {
+        path : '/categoriesAddNew',
+        element : <CategoriesAddNew ></CategoriesAddNew>
+      },
+
+
       // orders route
       {
         path: "/orderspending",
@@ -173,23 +257,7 @@ export const router = createBrowserRouter([
         element: <WarehouseEdit></WarehouseEdit>,
       },
 
-      // staff
-      {
-        path: "/staffAll",
-        element: <StaffAll></StaffAll>,
-      },
-      {
-        path: "/staffAddNew",
-        element: <StaffAddNew></StaffAddNew>,
-      },
-      {
-        path: "/staffRole",
-        element: <StaffRole></StaffRole>,
-      },
-      {
-        path: "/staffedit/:id",
-        element: <StaffEdit></StaffEdit>,
-      },
+      
 
       //withdraw request
       {
