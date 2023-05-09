@@ -1,6 +1,6 @@
 import React from "react";
-import red from "../../Assets/round/red.png";
 import blue from "../../Assets/round/blue.png";
+import red from "../../Assets/round/red.png";
 import ChartArea from "../Charts/ChartArea";
 
 const TotalSalesChart = () => {
@@ -23,20 +23,6 @@ const TotalSalesChart = () => {
     <div className="flex flex-col justify-between h-96">
       <section className="flex items-center justify-between">
         <p className="text-2xl text-blackMid pt-0.5 font-bold">Total Sales</p>
-        <div className="flex gap-2">
-          <button className="btn btn-sm btn-ghost bordered border-1 border-blackMid text-blackMid rounded-full">
-            Today
-          </button>
-          <button className="btn btn-sm btn-ghost bordered border-1 border-blackMid text-blackMid rounded-full">
-            Weekly
-          </button>
-          <button className="btn btn-sm btn-ghost bordered border-1 bg-primaryMain text-whiteHigh rounded-full">
-            Monthly
-          </button>
-          <button className="btn btn-sm btn-ghost bordered border-1 border-blackMid text-blackMid rounded-full">
-            Yearly
-          </button>
-        </div>
       </section>
       <section className="flex items-center justify-start gap-6">
         <div className="flex items-center justify-center gap-2">

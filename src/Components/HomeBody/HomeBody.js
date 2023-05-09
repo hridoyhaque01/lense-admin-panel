@@ -11,22 +11,22 @@ const HomeBody = () => {
   const { customers } = useContext(CustomerContext);
   const data = [
     {
-      title: "Total Placed Order",
+      title: "Total Lense Added",
       number: orders?.length,
-      color: "bg-primaryMainLight",
+      color: "bg-primaryMain",
     },
     {
-      title: "Delivered Parcel",
+      title: "Total User",
       number: deliveredOrderCount,
       color: "bg-secondaryMain",
     },
     {
-      title: "Total Customers",
+      title: "Total Artist",
       number: customers?.length,
       color: "bg-infoColor",
     },
     {
-      title: "Total Delivery Man",
+      title: "Total Revenue",
       number: riders?.length,
       color: "bg-successColor",
     },

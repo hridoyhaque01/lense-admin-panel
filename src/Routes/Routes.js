@@ -1,60 +1,57 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layouts/Main";
-import DeliveryAddNew from "../Pages/DeliveryMan/DeliveryAddNew";
-import DeliveryBlocked from "../Pages/DeliveryMan/DeliveryBlocked";
-import DeliveryAllDeliveryMan from "../Pages/DeliveryMan/DeliveryAllDeliveryMan";
-import DeliveryPendingRequests from "../Pages/DeliveryMan/DeliveryPendingRequests";
-import Home from "../Pages/Home/Home";
-import OrdersCancelled from "../Pages/Orders/OrdersCancelled";
-import OrdersDelivered from "../Pages/Orders/OrdersDelivered";
-import OrdersPickedup from "../Pages/Orders/OrdersPickedup";
-import OrdersPending from "../Pages/Orders/OrdersPending";
-import OrdersProcessing from "../Pages/Orders/OrdersProcessing";
-import OrderEdit from "../Pages/EditPages/OrderEdit";
-import WarehouseAll from "../Pages/Warehouse/WarehouseAll";
-import WarehouseAddNew from "../Pages/Warehouse/WarehouseAddNew";
-import StaffAll from "../Pages/Staff/StaffAll";
-import StaffAddNew from "../Pages/Staff/StaffAddNew";
-import TransactionUnsettledBalance from "../Pages/Transaction/TransactionUnsettledBalance";
-import TransactionRevenue from "../Pages/Transaction/TransactionRevenue";
-import CustomerAll from "../Pages/Customer/CustomerAll";
-import CustomerBlocked from "../Pages/Customer/CustomerBlocked";
-import UserProfile from "../Pages/User/UserProfile";
-import DeliveryCancelled from "../Pages/DeliveryMan/DeliveryCancelled";
-import LocationsCountry from "../Pages/Locations/LocationsCountry";
-import LocationsCity from "../Pages/Locations/LocationsCity";
-import LocationsState from "../Pages/Locations/LocationsState";
-import LocationsCountryAdd from "../Pages/Locations/LocationsCountryAdd";
-import LocationsCityAdd from "../Pages/Locations/LocationsCityAdd";
-import LocationsStateAdd from "../Pages/Locations/LocationsStateAdd";
-import StaffRole from "../Pages/Staff/StaffRole";
+import ArtistsAddNew from "../Pages/Artists/ArtistsAddNew";
+import ArtistsApproved from "../Pages/Artists/ArtistsApproved";
+import ArtistsPending from "../Pages/Artists/ArtistsPending";
 import Login from "../Pages/Authentication/Login/Login";
-import PrivateRoutes from "../Routes/PrivateRoutes";
-import DeliveryManEdit from "../Pages/EditPages/DeliveryManEdit";
 import BusinessDeliveryCost from "../Pages/BusinessSetup/BusinessDeliveryCost";
 import BusinessDeliveryManCharge from "../Pages/BusinessSetup/BusinessDeliveryManCharge";
 import BusinessNotificationSettings from "../Pages/BusinessSetup/BusinessNotificationSettings";
-import PaymentGateway from "../Pages/PaymentGateway/PaymentGateway";
-import PaymentGatewayEdit from "../Pages/EditPages/PaymentGatewayEdit";
-import WithdrawConfirmed from "../Pages/WithdrawRequest/WithdrawConfirmed";
-import WithdrawCancelled from "../Pages/WithdrawRequest/WithdrawCancelled";
-import WithdrawPending from "../Pages/WithdrawRequest/WithdrawPending";
-import CustomerEdit from "../Pages/EditPages/CustomerEdit";
-import WarehouseEdit from "../Pages/EditPages/WarehouseEdit";
-import PaymentGatewayAdd from "../Pages/PaymentGateway/PaymentGatewayAdd";
-import StaffEdit from "../Pages/EditPages/StaffEdit";
-import UserAddNew from "../Pages/User/UserAddNew";
-import SnapchatFilter from "../Pages/Filters/SnapchatFilter";
-import FiltersAddNew from "../Pages/Filters/FiltersAddNew";
-import FiltersSnapchatAddNew from "../Pages/Filters/FiltersAddNew";
-import TiktokFilter from "../Pages/Filters/TiktokFilter";
-import ECardFilter from "../Pages/Filters/ECardFilter";
-import ArtistsApproved from "../Pages/Artists/ArtistsApproved";
-import ArtistsPending from "../Pages/Artists/ArtistsPending";
-import ArtistsAddNew from "../Pages/Artists/ArtistsAddNew";
+import CategoriesAddNew from "../Pages/Categories/CategoriesAddNew";
 import Collections from "../Pages/Categories/Collections";
 import Featured from "../Pages/Categories/Featured";
-import CategoriesAddNew from "../Pages/Categories/CategoriesAddNew";
+import CustomerAll from "../Pages/Customer/CustomerAll";
+import CustomerBlocked from "../Pages/Customer/CustomerBlocked";
+import DeliveryAddNew from "../Pages/DeliveryMan/DeliveryAddNew";
+import DeliveryAllDeliveryMan from "../Pages/DeliveryMan/DeliveryAllDeliveryMan";
+import DeliveryBlocked from "../Pages/DeliveryMan/DeliveryBlocked";
+import DeliveryCancelled from "../Pages/DeliveryMan/DeliveryCancelled";
+import DeliveryPendingRequests from "../Pages/DeliveryMan/DeliveryPendingRequests";
+import CustomerEdit from "../Pages/EditPages/CustomerEdit";
+import DeliveryManEdit from "../Pages/EditPages/DeliveryManEdit";
+import OrderEdit from "../Pages/EditPages/OrderEdit";
+import PaymentGatewayEdit from "../Pages/EditPages/PaymentGatewayEdit";
+import WarehouseEdit from "../Pages/EditPages/WarehouseEdit";
+import ECardFilter from "../Pages/Filters/ECardFilter";
+import FiltersAddNew from "../Pages/Filters/FiltersAddNew";
+import SnapchatFilter from "../Pages/Filters/SnapchatFilter";
+import TiktokFilter from "../Pages/Filters/TiktokFilter";
+import Home from "../Pages/Home/Home";
+import LocationsCity from "../Pages/Locations/LocationsCity";
+import LocationsCityAdd from "../Pages/Locations/LocationsCityAdd";
+import LocationsCountry from "../Pages/Locations/LocationsCountry";
+import LocationsCountryAdd from "../Pages/Locations/LocationsCountryAdd";
+import LocationsState from "../Pages/Locations/LocationsState";
+import LocationsStateAdd from "../Pages/Locations/LocationsStateAdd";
+import OrdersCancelled from "../Pages/Orders/OrdersCancelled";
+import OrdersDelivered from "../Pages/Orders/OrdersDelivered";
+import OrdersPending from "../Pages/Orders/OrdersPending";
+import OrdersPickedup from "../Pages/Orders/OrdersPickedup";
+import OrdersProcessing from "../Pages/Orders/OrdersProcessing";
+import PaymentGateway from "../Pages/PaymentGateway/PaymentGateway";
+import PaymentGatewayAdd from "../Pages/PaymentGateway/PaymentGatewayAdd";
+import StaffAddNew from "../Pages/Staff/StaffAddNew";
+import TransactionRevenue from "../Pages/Transaction/TransactionRevenue";
+import TransactionUnsettledBalance from "../Pages/Transaction/TransactionUnsettledBalance";
+import UserAddNew from "../Pages/User/UserAddNew";
+import UserProfile from "../Pages/User/UserProfile";
+import WarehouseAddNew from "../Pages/Warehouse/WarehouseAddNew";
+import WarehouseAll from "../Pages/Warehouse/WarehouseAll";
+// import WithdrawConfirmed from "../Pages/WithdrawRequest/WithdrawConfirmed";
+// import WithdrawPending from "../Pages/WithdrawRequest/WithdrawPending";
+import WithdrawConfirmed from "../Pages/Withdraw/WithdrawConfirmed";
+import WithdrawPending from "../Pages/Withdraw/WithdrawPending";
+import PrivateRoutes from "../Routes/PrivateRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -70,76 +67,74 @@ export const router = createBrowserRouter([
         element: <Home></Home>,
       },
 
-      // edit users 
+      // edit users
       {
         path: "/userEdit",
         element: <UserAddNew></UserAddNew>,
       },
 
       // staff
-    
+
       {
         path: "/staffAddNew",
         element: <StaffAddNew></StaffAddNew>,
       },
 
-      //filters 
+      //filters
 
       {
         path: "/snapchatFilter",
-        element: <SnapchatFilter ></SnapchatFilter>
+        element: <SnapchatFilter></SnapchatFilter>,
       },
 
       {
         path: "/tiktokFilter",
-        element: <TiktokFilter ></TiktokFilter>
+        element: <TiktokFilter></TiktokFilter>,
       },
 
       {
         path: "/ecardFilter",
-        element: <ECardFilter ></ECardFilter>
+        element: <ECardFilter></ECardFilter>,
       },
 
       {
         path: "/filtersAddNew",
-        element: <FiltersAddNew></FiltersAddNew>
+        element: <FiltersAddNew></FiltersAddNew>,
       },
 
-      // artists 
+      // artists
 
       {
-        path: '/artistsPending',
-        element : <ArtistsPending ></ArtistsPending>
-      },
-
-      {
-        path: '/artistsApproved',
-        element : <ArtistsApproved ></ArtistsApproved>
+        path: "/artistsPending",
+        element: <ArtistsPending></ArtistsPending>,
       },
 
       {
-        path: '/artistsAddNew',
-        element : <ArtistsAddNew ></ArtistsAddNew>
+        path: "/artistsApproved",
+        element: <ArtistsApproved></ArtistsApproved>,
+      },
+
+      {
+        path: "/artistsAddNew",
+        element: <ArtistsAddNew></ArtistsAddNew>,
       },
 
       // categories
 
       {
-        path : '/collections',
-        element : <Collections ></Collections>
+        path: "/collections",
+        element: <Collections></Collections>,
       },
 
       {
-        path : '/featured',
-        element: <Featured></Featured>
+        path: "/featured",
+        element: <Featured></Featured>,
       },
 
-      
       {
-        path : '/categoriesAddNew',
-        element : <CategoriesAddNew ></CategoriesAddNew>
+        path: "/categoriesAddNew",
+        element: <CategoriesAddNew></CategoriesAddNew>,
       },
-
 
       // orders route
       {
@@ -257,8 +252,6 @@ export const router = createBrowserRouter([
         element: <WarehouseEdit></WarehouseEdit>,
       },
 
-      
-
       //withdraw request
       {
         path: "/withdrawPending",
@@ -268,10 +261,10 @@ export const router = createBrowserRouter([
         path: "/withdrawConfirmed",
         element: <WithdrawConfirmed></WithdrawConfirmed>,
       },
-      {
-        path: "/withdrawCancelled",
-        element: <WithdrawCancelled></WithdrawCancelled>,
-      },
+      // {
+      //   path: "/withdrawCancelled",
+      //   element: <WithdrawCancelled></WithdrawCancelled>,
+      // },
 
       //business setup
       {
