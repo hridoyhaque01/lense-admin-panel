@@ -1,9 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import "./SideNav.css";
+import avater from "../../../Assets/img/profile/avater.png";
 import { AuthContext } from "../../../Contexts/AuthContext/AuthProvider";
-import avater from "../../../Assets/img/profile/avater.png"
-
+import "./SideNav.css";
 
 const SideNav = () => {
   const [isClosed, setIsClosed] = useState(false);
@@ -18,9 +17,6 @@ const SideNav = () => {
   const toggleSideNav = () => {
     setIsClosed(!isClosed);
     setCanShow(!canShow);
-    // setTimeout(() => {
-    //   setCanShow(!canShow);
-    // }, 100);
   };
 
   // const openSideNav = (e) => {
@@ -41,11 +37,9 @@ const SideNav = () => {
     // setCanShow(true);
   };
 
-
   const activateMenu = (index) => {
     setIsActive(index);
   };
-
 
   // const handleNavigation = (navRoute) => {
   //   const navigationRoute = `/${navRoute}`;
@@ -66,11 +60,7 @@ const SideNav = () => {
         className={`flex items-center justify-between p-3 gap-2 rounded-tr-lg`}
       >
         <div className="min-w-12">
-          <img
-            className="w-12 h-12 rounded-full"
-            src={avater}
-            alt=""
-          />
+          <img className="w-12 h-12 rounded-full" src={avater} alt="" />
         </div>
         <div
           className={`${
@@ -88,9 +78,7 @@ const SideNav = () => {
           } flex items-start justify-between gap-4 overflow-auto`}
         >
           <button onClick={toggleSideNav} className="btn-btn-ghost">
-            <span className="material-symbols-outlined">
-              menu_open
-            </span>
+            <span className="material-symbols-outlined">menu_open</span>
           </button>
         </div>
       </section>
@@ -100,36 +88,35 @@ const SideNav = () => {
         {(userType === "Admin" || userType === "Manager") && (
           <div className="w-full">
             <Link
-            onClick={() => activateMenu("dashboard")}
-              className={`flex items-center w-full py-4 ${ isActive === "dashboard"
+              onClick={() => activateMenu("dashboard")}
+              className={`flex items-center w-full py-4 ${
+                isActive === "dashboard"
                   ? "bg-whiteMid text-primaryMain border-r-2 border-primaryMain"
-                  : 'text-blackMid'
+                  : "text-blackMid"
               }`}
               to="/"
             >
-              <span className="material-symbols-outlined pl-6">
-                dashboard
-              </span>
+              <span className="material-symbols-outlined pl-6">dashboard</span>
               &nbsp;
               <p className={`${canShow ? "hidden" : "block"}`}>Dashboard</p>
             </Link>
           </div>
         )}
-        
+
         {/* users */}
 
-         {(userType === "Admin" || userType === "Manager") && (
+        {(userType === "Admin" || userType === "Manager") && (
           <div className="w-full">
             <Link
-            onClick={()=> activateMenu("users")}
-              className={`flex items-center w-full py-4 ${ isActive === "users"
-              ? "bg-whiteMid text-primaryMain border-r-2 border-primaryMain"
-              : 'text-blackMid'
+              onClick={() => activateMenu("users")}
+              className={`flex items-center w-full py-4 ${
+                isActive === "users"
+                  ? "bg-whiteMid text-primaryMain border-r-2 border-primaryMain"
+                  : "text-blackMid"
               }`}
-              to="/userEdit" >
-          <span className="material-symbols-outlined pl-6">
-                person
-              </span>
+              to="/userEdit"
+            >
+              <span className="material-symbols-outlined pl-6">person</span>
               &nbsp;
               <p className={`${canShow ? "hidden" : "block"}`}>Users</p>
             </Link>
@@ -138,21 +125,18 @@ const SideNav = () => {
 
         {/* staffs */}
 
-         {(userType === "Admin" || userType === "Manager") && (
-          <div
-            className="w-full"
-          >
+        {(userType === "Admin" || userType === "Manager") && (
+          <div className="w-full">
             <Link
-            onClick={() => activateMenu("staffs")}
-              className={`flex items-center w-full py-4 ${ isActive === "staffs"
-              ? "bg-whiteMid text-primaryMain border-r-2 border-primaryMain"
-              : 'text-blackMid'
-          }`}
-          to="/staffAddNew"
-        >
-          <span className="material-symbols-outlined pl-6">
-                group
-              </span>
+              onClick={() => activateMenu("staffs")}
+              className={`flex items-center w-full py-4 ${
+                isActive === "staffs"
+                  ? "bg-whiteMid text-primaryMain border-r-2 border-primaryMain"
+                  : "text-blackMid"
+              }`}
+              to="/staffAddNew"
+            >
+              <span className="material-symbols-outlined pl-6">group</span>
               &nbsp;
               <p className={`${canShow ? "hidden" : "block"}`}>Staffs</p>
             </Link>
@@ -162,20 +146,18 @@ const SideNav = () => {
         {/* filters */}
         {(userType === "Admin" || userType === "Manager") && (
           <div
-            onClick={() => activateMenu('filters')}
+            onClick={() => activateMenu("filters")}
             className={`collapse ${!isClosed ? "collapse-arrow" : null} ${
-              isClosed ? "collapse-close" : ""
+              isClosed || isActive !== "filters" ? "collapse-close" : ""
             } w-full mx-auto ${
-              isActive === 'filters' ? "text-primaryMain" : "text-blackMid"
+              isActive === "filters" ? "text-primaryMain" : "text-blackMid"
             }`}
           >
             <input type="checkbox" />
             <div className="collapse-title">
-              <div
-                className="flex items-center"
-              >
+              <div className="flex items-center">
                 <span className="material-symbols-outlined pl-2">
-                    photo_library
+                  photo_library
                 </span>
                 &nbsp;
                 <p
@@ -189,35 +171,57 @@ const SideNav = () => {
             </div>
             <div className="collapse-content p-0 bg-whiteHigh">
               <div className="flex flex-col justify-start items-start gap-2 text-blackMid">
-                <Link className={`w-full py-2 pl-12 ${isActive === 'filters' && isSubmenuActive === 'snapchat' && 'bg-blueLight text-primaryMain border-r-2 border-primaryMain'}`} to="/snapchatFilter" onClick={()=> setIsSubmenuActive('snapchat')}>
+                <Link
+                  className={`w-full py-2 pl-12 ${
+                    isActive === "filters" &&
+                    isSubmenuActive === "snapchat" &&
+                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
+                  }`}
+                  to="/snapchatFilter"
+                  onClick={() => setIsSubmenuActive("snapchat")}
+                >
                   <p>Snapchat Filter</p>
                 </Link>
-                <Link className={`w-full py-2 pl-12 ${isActive === 'filters' && isSubmenuActive === 'tiktok' && 'bg-blueLight text-primaryMain border-r-2 border-primaryMain'}`} to="/tiktokFilter" onClick={()=> setIsSubmenuActive('tiktok')}>
+                <Link
+                  className={`w-full py-2 pl-12 ${
+                    isActive === "filters" &&
+                    isSubmenuActive === "tiktok" &&
+                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
+                  }`}
+                  to="/tiktokFilter"
+                  onClick={() => setIsSubmenuActive("tiktok")}
+                >
                   <p>Tiktok Filter</p>
                 </Link>
-                <Link className={`w-full py-2 pl-12 ${isActive === 'filters' && isSubmenuActive === 'e-card' && 'bg-blueLight text-primaryMain border-r-2 border-primaryMain'}`} to="/ecardFilter" onClick={()=> setIsSubmenuActive('e-card')}>
+                <Link
+                  className={`w-full py-2 pl-12 ${
+                    isActive === "filters" &&
+                    isSubmenuActive === "e-card" &&
+                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
+                  }`}
+                  to="/ecardFilter"
+                  onClick={() => setIsSubmenuActive("e-card")}
+                >
                   <p>E-Cards</p>
                 </Link>
               </div>
             </div>
           </div>
         )}
-       
+
         {/* artists */}
         {(userType === "Admin" || userType === "Manager") && (
           <div
-            onClick={() => activateMenu('artists')}
+            onClick={() => activateMenu("artists")}
             className={`collapse ${!isClosed ? "collapse-arrow" : null} ${
-              isClosed ? "collapse-close" : ""
+              isClosed || isActive !== "artists" ? "collapse-close" : ""
             } w-full mx-auto ${
-              isActive === 'artists' ? "text-primaryMain" : "text-blackMid"
+              isActive === "artists" ? "text-primaryMain" : "text-blackMid"
             }`}
           >
             <input type="checkbox" />
             <div className="collapse-title">
-              <div
-                className="flex items-center"
-              >
+              <div className="flex items-center">
                 <span className="material-symbols-outlined pl-2">
                   imagesearch_roller
                 </span>
@@ -233,33 +237,46 @@ const SideNav = () => {
             </div>
             <div className="collapse-content p-0 bg-whiteHigh">
               <div className="flex flex-col justify-start items-start gap-2 text-blackMid">
-                <Link className={`w-full py-2 pl-12 ${isActive === 'artists' && isSubmenuActive === 'pending' && 'bg-blueLight text-primaryMain border-r-2 border-primaryMain'}`} to="/artistsPending" onClick={()=> setIsSubmenuActive('pending')}>
+                <Link
+                  className={`w-full py-2 pl-12 ${
+                    isActive === "artists" &&
+                    isSubmenuActive === "pending" &&
+                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
+                  }`}
+                  to="/artistsPending"
+                  onClick={() => setIsSubmenuActive("pending")}
+                >
                   <p>Pending</p>
                 </Link>
-                <Link className={`w-full py-2 pl-12 ${isActive === 'artists' && isSubmenuActive === 'approved' && 'bg-blueLight text-primaryMain border-r-2 border-primaryMain'}`} to="/artistsApproved" onClick={()=> setIsSubmenuActive('approved')}>
+                <Link
+                  className={`w-full py-2 pl-12 ${
+                    isActive === "artists" &&
+                    isSubmenuActive === "approved" &&
+                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
+                  }`}
+                  to="/artistsApproved"
+                  onClick={() => setIsSubmenuActive("approved")}
+                >
                   <p>Approved</p>
                 </Link>
-                
               </div>
             </div>
           </div>
         )}
-       
+
         {/* category */}
         {(userType === "Admin" || userType === "Manager") && (
           <div
-            onClick={() => activateMenu('category')}
+            onClick={() => activateMenu("category")}
             className={`collapse ${!isClosed ? "collapse-arrow" : null} ${
-              isClosed ? "collapse-close" : ""
+              isClosed || isActive !== "category" ? "collapse-close" : ""
             } w-full mx-auto ${
-              isActive === 'category' ? "text-primaryMain" : "text-blackMid"
+              isActive === "category" ? "text-primaryMain" : "text-blackMid"
             }`}
           >
             <input type="checkbox" />
             <div className="collapse-title">
-              <div
-                className="flex items-center"
-              >
+              <div className="flex items-center">
                 <span className="material-symbols-outlined pl-2">
                   receipt_long
                 </span>
@@ -275,37 +292,48 @@ const SideNav = () => {
             </div>
             <div className="collapse-content p-0 bg-whiteHigh">
               <div className="flex flex-col justify-start items-start gap-2 text-blackMid">
-                <Link className={`w-full py-2 pl-12 ${isActive === 'category' && isSubmenuActive === 'Collections' && 'bg-blueLight text-primaryMain border-r-2 border-primaryMain'}`} to="/collections" onClick={()=> setIsSubmenuActive('Collections')}>
+                <Link
+                  className={`w-full py-2 pl-12 ${
+                    isActive === "category" &&
+                    isSubmenuActive === "Collections" &&
+                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
+                  }`}
+                  to="/collections"
+                  onClick={() => setIsSubmenuActive("Collections")}
+                >
                   <p>Collections</p>
                 </Link>
-                <Link className={`w-full py-2 pl-12 ${isActive === 'category' && isSubmenuActive === 'Featured' && 'bg-blueLight text-primaryMain border-r-2 border-primaryMain'}`} to="/featured" onClick={()=> setIsSubmenuActive('Featured')}>
+                <Link
+                  className={`w-full py-2 pl-12 ${
+                    isActive === "category" &&
+                    isSubmenuActive === "Featured" &&
+                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
+                  }`}
+                  to="/featured"
+                  onClick={() => setIsSubmenuActive("Featured")}
+                >
                   <p>Featured</p>
                 </Link>
-                
               </div>
             </div>
           </div>
         )}
 
         {/* withdraws */}
-        
+
         {(userType === "Admin" || userType === "Manager") && (
           <div
-            onClick={() => activateMenu('withdraws')}
+            onClick={() => activateMenu("withdraws")}
             className={`collapse ${!isClosed ? "collapse-arrow" : null} ${
-              isClosed ? "collapse-close" : ""
+              isClosed || isActive !== "withdraws" ? "collapse-close" : ""
             } w-full mx-auto ${
-              isActive === 'withdraws' ? "text-primaryMain" : "text-blackMid"
+              isActive === "withdraws" ? "text-primaryMain" : "text-blackMid"
             }`}
           >
             <input type="checkbox" />
             <div className="collapse-title">
-              <div
-                className="flex items-center"
-              >
-                <span className="material-symbols-outlined pl-2">
-                    paid
-                </span>
+              <div className="flex items-center">
+                <span className="material-symbols-outlined pl-2">paid</span>
                 &nbsp;
                 <p
                   className={`${
@@ -318,37 +346,59 @@ const SideNav = () => {
             </div>
             <div className="collapse-content p-0 bg-whiteHigh">
               <div className="flex flex-col justify-start items-start gap-2 text-blackMid">
-                <Link className={`w-full py-2 pl-12 ${isActive === 'withdraws' && isSubmenuActive === 'Pending' && 'bg-blueLight text-primaryMain border-r-2 border-primaryMain'}`} to="/orderspending" onClick={()=> setIsSubmenuActive('Pending')}>
+                <Link
+                  className={`w-full py-2 pl-12 ${
+                    isActive === "withdraws" &&
+                    isSubmenuActive === "Pending" &&
+                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
+                  }`}
+                  to="/withdrawPending"
+                  onClick={() => setIsSubmenuActive("Pending")}
+                >
                   <p>Pending</p>
                 </Link>
-                <Link className={`w-full py-2 pl-12 ${isActive === 'withdraws' && isSubmenuActive === 'Completed' && 'bg-blueLight text-primaryMain border-r-2 border-primaryMain'}`} to="/ordersprocessing" onClick={()=> setIsSubmenuActive('Completed')}>
+                <Link
+                  className={`w-full py-2 pl-12 ${
+                    isActive === "withdraws" &&
+                    isSubmenuActive === "Completed" &&
+                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
+                  }`}
+                  to="/withdrawConfirmed"
+                  onClick={() => setIsSubmenuActive("Completed")}
+                >
                   <p>Completed</p>
                 </Link>
-                <Link className={`w-full py-2 pl-12 ${isActive === 'withdraws' && isSubmenuActive === 'Cancelled' && 'bg-blueLight text-primaryMain border-r-2 border-primaryMain'}`} to="/orderspickedup" onClick={()=> setIsSubmenuActive('Cancelled')}>
+                <Link
+                  className={`w-full py-2 pl-12 ${
+                    isActive === "withdraws" &&
+                    isSubmenuActive === "Cancelled" &&
+                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
+                  }`}
+                  to="/orderspickedup"
+                  onClick={() => setIsSubmenuActive("Cancelled")}
+                >
                   <p>Cancelled</p>
                 </Link>
               </div>
             </div>
           </div>
         )}
-        
+
         {/* app setings */}
         {(userType === "Admin" || userType === "Manager") && (
           <div
-            onClick={() => activateMenu('appSetting')}
+            onClick={() => activateMenu("appSetting")}
             className={`collapse ${!isClosed ? "collapse-arrow" : null} ${
-              isClosed ? "collapse-close" : ""
+              isClosed || isActive !== "appSetting" ? "collapse-close" : ""
             } w-full mx-auto ${
-              isActive === 'appSetting' ? "text-primaryMain" : "text-blackMid"
+              isActive === "appSetting" ? "text-primaryMain" : "text-blackMid"
             }`}
           >
             <input type="checkbox" />
             <div className="collapse-title">
-              <div
-                className="flex items-center"
-              >
+              <div className="flex items-center">
                 <span className="material-symbols-outlined pl-2">
-                    app_settings_alt
+                  app_settings_alt
                 </span>
                 &nbsp;
                 <p
@@ -362,19 +412,32 @@ const SideNav = () => {
             </div>
             <div className="collapse-content p-0 bg-whiteHigh">
               <div className="flex flex-col justify-start items-start gap-2 text-blackMid">
-                <Link className={`w-full py-2 pl-12 ${isActive === 'appSetting' && isSubmenuActive === 'Notifications' && 'bg-blueLight text-primaryMain border-r-2 border-primaryMain'}`} to="/orderspending" onClick={()=> setIsSubmenuActive('Notifications')}>
+                <Link
+                  className={`w-full py-2 pl-12 ${
+                    isActive === "appSetting" &&
+                    isSubmenuActive === "Notifications" &&
+                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
+                  }`}
+                  to="/orderspending"
+                  onClick={() => setIsSubmenuActive("Notifications")}
+                >
                   <p>Snapchat Filter</p>
                 </Link>
-                <Link className={`w-full py-2 pl-12 ${isActive === 'appSetting' && isSubmenuActive === 'Others' && 'bg-blueLight text-primaryMain border-r-2 border-primaryMain'}`} to="/ordersprocessing" onClick={()=> setIsSubmenuActive('Others')}>
+                <Link
+                  className={`w-full py-2 pl-12 ${
+                    isActive === "appSetting" &&
+                    isSubmenuActive === "Others" &&
+                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
+                  }`}
+                  to="/ordersprocessing"
+                  onClick={() => setIsSubmenuActive("Others")}
+                >
                   <p>Tiktok Filter</p>
                 </Link>
-                
               </div>
             </div>
           </div>
         )}
-
-        
       </section>
     </div>
   );

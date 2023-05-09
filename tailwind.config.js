@@ -13,7 +13,7 @@ module.exports = {
       blackMid: "#6C6C6C",
       blackLow: "#919191",
 
-      blueLight : '#F0F1FF',
+      blueLight: "#F0F1FF",
 
       whiteHigh: "#FFFFFF",
       whiteMid: "#F5F5F5",
@@ -41,6 +41,12 @@ module.exports = {
       secondaryMainLight: "#5FC5C5",
       secondaryMainLighter: "#AFE2E2",
       secondaryMainLightest: "#D7F0F0",
+    },
+    backgroundImage: {
+      "gradient-primary":
+        "linear-gradient(143.77deg, rgba(255, 255, 255, 0.36) 30.9%, rgba(255, 255, 255, 0.03) 83.54%);",
+      "gradient-secondary":
+        "linear-gradient(175.57deg, #FC8165 -36.85%, rgba(255, 255, 255, 0.25) 107.36%);",
     },
     extend: {
       transitionProperty: {
