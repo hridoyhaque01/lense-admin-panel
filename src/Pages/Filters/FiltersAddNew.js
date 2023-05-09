@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { StaffContext } from "../../Contexts/StaffContext/StaffProvider";
 
-const StaffAddNew = () => {
+const FiltersAddNew = () => {
   const { addOneStaff } = useContext(StaffContext);
   const location = useLocation();
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ const StaffAddNew = () => {
   return (
     <section className="w-full mt-10 mr-8 rounded-lg bg-whiteHigh">
       <div className="flex items-center bg-primaryMain text-whiteHigh rounded-t-lg  w-full">
-        <p className="font-bold text-2xl pl-4 py-5">Add Staffs</p>
+        <p className="font-bold text-2xl pl-4 py-5">Add Filter</p>
       </div>
       <div>
         <section className="pt-4">
@@ -136,4 +136,4 @@ Select Role   */}
   );
 };
 
-export default StaffAddNew;
+export default FiltersAddNew;

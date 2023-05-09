@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { StaffContext } from "../../Contexts/StaffContext/StaffProvider";
 
-const StaffAddNew = () => {
+const UserAddNew = () => {
   const { addOneStaff } = useContext(StaffContext);
   const location = useLocation();
   const navigate = useNavigate();
@@ -41,14 +41,11 @@ const StaffAddNew = () => {
   return (
     <section className="w-full mt-10 mr-8 rounded-lg bg-whiteHigh">
       <div className="flex items-center bg-primaryMain text-whiteHigh rounded-t-lg  w-full">
-        <p className="font-bold text-2xl pl-4 py-5">Add Staffs</p>
+        <p className="font-bold text-2xl pl-4 py-5">Users</p>
       </div>
       <div>
         <section className="pt-4">
-        {/* 
-Set Password
-+01445 4564 2465
-Select Role   */}
+          
           <div className="grid items-center justify-center gap-4">
             <form className="flex flex-col gap-4" onSubmit={handleEditBtn}>
               <div className="flex flex-col w-full items-center justify-center gap-2">
@@ -62,9 +59,8 @@ Select Role   */}
                     className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
                   />
                 </div>
-
                 <div className="flex items-center justify-center gap-1">
-                  <p className=" w-96 text-end">Email Adress:</p>
+                  <p className=" w-96 text-end">Email:</p>
                   <input
                     type="email"
                     name="email"
@@ -74,47 +70,22 @@ Select Role   */}
                 </div>
                 
                 <div className="flex items-center justify-center gap-1">
-                  <p className=" w-96 text-end">Set Password:</p>
+                  <p className=" w-96 text-end">Country:</p>
                   <input
                     type="text"
-                    name="password"
-                    placeholder="Set Password"
+                    name="country"
+                    placeholder="work location"
                     className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
                   />
                 </div>
-                
                 <div className="flex items-center justify-center gap-1">
-                  <p className=" w-96 text-end">Confirm New Password:</p>
+                  <p className=" w-96 text-end">Present&nbsp;Address:</p>
                   <input
                     type="text"
-                    name="confirmPassword"
-                    placeholder="Set Password"
+                    name="presentAddress"
+                    placeholder="full address"
                     className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
                   />
-                </div>
-                
-                
-                <div className="flex items-center justify-center gap-1">
-                  <p className=" w-96 text-end">Phone Number:</p>
-                  <input
-                    type="text"
-                    name="phoneNumber"
-                    placeholder="Phone Number"
-                    className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
-                  />
-                </div>
-                
-                
-                <div className="flex items-center justify-center gap-1">
-                  <p className=" w-96 text-end">Role:</p>
-                  <select
-                    name="userType"
-                    className="select bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh font-medium"
-                  >
-                    <option value="" disabled>Select Role</option>
-                    <option value={"Admin"}>Admin</option>
-                    <option value={"Manager"}>Manager</option>
-                  </select>
                 </div>
                 
               </div>
@@ -136,4 +107,4 @@ Select Role   */}
   );
 };
 
-export default StaffAddNew;
+export default UserAddNew;
