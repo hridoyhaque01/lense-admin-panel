@@ -129,7 +129,7 @@ const ArtistsApprovedTable = ({
             {currentRows?.map((order, i) => {
               return (
                 <tr key={i} className="text-center">
-                  <th className="px-0 pl-4">
+                  <th className="px-0">
                     <input
                       type="checkbox"
                       className="checkbox rounded-none"

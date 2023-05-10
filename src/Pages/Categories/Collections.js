@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import OrdersLoading from "../../Components/Shared/LoadingScreens/OrdersLoading";
-import CustomerAllTable from "../../Components/Tables/Customer/CustomerAllTable";
 import { CustomerContext } from "../../Contexts/CustomerContext/CustomerProvider";
-import FiltersAllTable from "../../Components/Tables/FiltersTable/FiltersAllTable";
 import { Link } from "react-router-dom";
 import CategoriesAllTable from "../../Components/Tables/Categories/CategoriesAllTable";
 

@@ -41,9 +41,9 @@ const StaffAllTable = ({ rows, handleSelectCheckbox }) => {
     setActiveButton(pageNumber);
   };
 
-  //   const handleCheckbox = (order, e) => {
-  //     handleSelectCheckbox(order, e);
-  //   };
+    const handleCheckbox = (order, e) => {
+      handleSelectCheckbox(order, e);
+    };
 
   // const handleAllCheckbox = (orders, e) => {
   //   handleSelectAllCheckbox(orders, e);
@@ -99,22 +99,22 @@ const StaffAllTable = ({ rows, handleSelectCheckbox }) => {
                 }}
               />
               </th> */}
-              <th className="bg-secondaryMainLightest text-bold text-lg normal-case">
+              <th className="bg-blueLight text-bold text-lg normal-case">
                 Serial
               </th>
-              <th className="bg-secondaryMainLightest text-bold text-lg normal-case">
+              <th className="bg-blueLight text-bold text-lg normal-case">
                 Name
               </th>
-              <th className="bg-secondaryMainLightest text-bold text-lg normal-case">
+              <th className="bg-blueLight text-bold text-lg normal-case">
                 Role
               </th>
-              <th className="bg-secondaryMainLightest text-bold text-lg normal-case">
+              <th className="bg-blueLight text-bold text-lg normal-case">
                 Email
               </th>
-              <th className="bg-secondaryMainLightest text-bold text-lg normal-case">
+              <th className="bg-blueLight text-bold text-lg normal-case">
                 Phone Number
               </th>
-              <th className="bg-secondaryMainLightest text-bold text-lg normal-case">
+              <th className="bg-blueLight text-bold text-lg normal-case">
                 Actions
               </th>
             </tr>
@@ -123,32 +123,28 @@ const StaffAllTable = ({ rows, handleSelectCheckbox }) => {
             {currentRows?.map((staff, i) => {
               return (
                 <tr key={i} className="text-center">
-                  {/* <th className="px-0 pl-4">
-                    <input
-                      type="checkbox"
-                      className="checkbox rounded-none"
-                      name="checkbox"
-                      onChange={(e) => {
-                        handleCheckbox(staff, e);
-                      }}
-                    />
-                  </th> */}
-                  <td className="px-0">{i + 1}</td>
+                  <th className="px-0 ">
+                    <div className="flex align-center justify-center gap-x-3">
+                      <input
+                        type="checkbox"
+                        className="checkbox rounded-none"
+                        name="checkbox"
+                        onChange={(e) => {
+                          handleCheckbox(staff, e);
+                        }}
+                      />
+                      <p>{i + 1}</p>
+                    </div>
+                    {/* <p>{i + 1}</p> */}
+                  </th>
+                  {/* <td className="px-0">{i + 1}</td> */}
                   <td className="px-0 mx-0">{staff?.user_name}</td>
                   <td className="px-0 mx-0">{staff?.user_type}</td>
                   <td className="px-0">{staff?.user_email}</td>
                   <td className="px-0 mx-0">{staff?.user_contact}</td>
                   <td className="px-0 mx-0">
                     <div className="flex items-center justify-center gap-0">
-                      <label
-                        htmlFor="customerBlockPopup"
-                        onClick={() => setCurrentStaff(staff)}
-                        className="btn rounded-full p-0 bg-whiteHigh text-blackMid border-none hover:bg-whiteHigh"
-                      >
-                        <span className="material-symbols-outlined p-0">
-                          block
-                        </span>
-                      </label>
+                      
                       <Link
                         to={{
                           pathname: `/staffedit/${staff?.user_id}`,
@@ -164,6 +160,17 @@ const StaffAllTable = ({ rows, handleSelectCheckbox }) => {
                           </span>
                         </label>
                       </Link>
+                      <button type="button" onClick={()=> console.log("delete")}
+                      >
+                        <label
+                          htmlFor="pausePopup"
+                          className="btn rounded-full p-3 bg-whiteHigh text-errorColor border-none hover:bg-whiteHigh"
+                        >
+                          <span className="material-symbols-outlined">
+                            delete
+                          </span>
+                        </label>
+                      </button>
                     </div>
                   </td>
                 </tr>

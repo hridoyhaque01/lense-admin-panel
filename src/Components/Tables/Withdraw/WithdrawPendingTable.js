@@ -108,16 +108,10 @@ const WithdrawPendingTable = ({
                 Name
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-                Email
+                Total Ammount
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-                Payment Method
-              </th>
-              <th className="bg-blueLight text-bold text-lg normal-case">
-                Portfolio link
-              </th>
-              <th className="bg-blueLight text-bold text-lg normal-case">
-                Actions
+                Withdraw Method
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
                 Actions
@@ -139,14 +133,12 @@ const WithdrawPendingTable = ({
                     />
                   </th>
                   <td className="px-0">{i + 1}</td>
-                  <td className="px-0 mx-0">#{order.order_id}</td>
                   <td className="px-0 mx-0">
-                    {order?.timestamp?.toDate().toLocaleDateString()}
+                      {order?.timestamp}
                   </td>
-                  <td className="px-0 mx-0">{order.sender_name}</td>
-                  <td className="px-0 mx-0">${order.total_price}.00</td>
-                  <td className="px-0">{order.sender_address}</td>
-                  <td className="px-0 mx-0">{order.receiver_address}</td>
+                  <td className="px-0 mx-0">{order?.Name}</td>
+                  <td className="px-0 mx-0">${order?.totalAmount}</td>
+                  <td className="px-0">{order?.widthdrawMethod}</td>
                   <td className="px-0 py-0">
                     <div className="dropdown dropdown-bottom dropdown-end">
                       <label

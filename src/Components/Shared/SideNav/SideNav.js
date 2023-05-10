@@ -134,7 +134,7 @@ const SideNav = () => {
                   ? "bg-whiteMid text-primaryMain border-r-2 border-primaryMain"
                   : "text-blackMid"
               }`}
-              to="/staffAddNew"
+              to="/staffAll"
             >
               <span className="material-symbols-outlined pl-6">group</span>
               &nbsp;
@@ -374,7 +374,7 @@ const SideNav = () => {
                     isSubmenuActive === "Cancelled" &&
                     "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
                   }`}
-                  to="/orderspickedup"
+                  to="/withdrawCancelled"
                   onClick={() => setIsSubmenuActive("Cancelled")}
                 >
                   <p>Cancelled</p>
