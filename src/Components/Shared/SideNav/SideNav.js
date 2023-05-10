@@ -59,26 +59,31 @@ const SideNav = () => {
       <section
         className={`flex items-center justify-between p-3 gap-2 rounded-tr-lg`}
       >
-        <div className="min-w-12">
-          <img className="w-12 h-12 rounded-full" src={avater} alt="" />
-        </div>
-        <div
-          className={`${
-            canShow ? "hidden" : "block"
-          } flex items-start justify-between gap-4 overflow-auto`}
-        >
+        <div className="flex items-center gap-2 shrink-0">
           <div>
-            <p className="font-black">{dbUser?.user_name}</p>
-            <p className="text-sm">{dbUser?.user_type}</p>
+            <img
+              className="w-12 h-12 rounded-full"
+              src={avater}
+              alt=""
+            />
+          </div>
+          <div className={`${
+            canShow ? "hidden" : "block"
+          }`}>
+            <p className="font-black">Lense App</p>
+            <p className="text-sm">Super Admin</p>
           </div>
         </div>
+
         <div
           className={`${
             canShow ? "hidden" : "block"
           } flex items-start justify-between gap-4 overflow-auto`}
         >
           <button onClick={toggleSideNav} className="btn-btn-ghost">
-            <span className="material-symbols-outlined">menu_open</span>
+            <span className="material-symbols-outlined">
+              menu_open
+            </span>
           </button>
         </div>
       </section>
@@ -98,7 +103,7 @@ const SideNav = () => {
             >
               <span className="material-symbols-outlined pl-6">dashboard</span>
               &nbsp;
-              <p className={`${canShow ? "hidden" : "block"}`}>Dashboard</p>
+              <p className={`${canShow ? "hidden" : "block"} shrink-0`}>Dashboard</p>
             </Link>
           </div>
         )}
@@ -118,7 +123,7 @@ const SideNav = () => {
             >
               <span className="material-symbols-outlined pl-6">person</span>
               &nbsp;
-              <p className={`${canShow ? "hidden" : "block"}`}>Users</p>
+              <p className={`${canShow ? "hidden" : "block"} shrink-0`}>Users</p>
             </Link>
           </div>
         )}
@@ -136,9 +141,9 @@ const SideNav = () => {
               }`}
               to="/staffAll"
             >
-              <span className="material-symbols-outlined pl-6">group</span>
+              <span className="material-symbols-outlined pl-6 ">group</span>
               &nbsp;
-              <p className={`${canShow ? "hidden" : "block"}`}>Staffs</p>
+              <p className={`${canShow ? "hidden" : "block"} shrink-0`}>Staffs</p>
             </Link>
           </div>
         )}
@@ -163,7 +168,7 @@ const SideNav = () => {
                 <p
                   className={`${
                     canShow ? "hidden" : "block"
-                  } flex items-center justify-between w-full`}
+                  } flex items-center justify-between w-full shrink-0`}
                 >
                   <span>Filters</span>
                 </p>
@@ -229,7 +234,7 @@ const SideNav = () => {
                 <p
                   className={`${
                     canShow ? "hidden" : "block"
-                  } flex items-center justify-between w-full`}
+                  } flex items-center justify-between w-full shrink-0`}
                 >
                   <span>Artists</span>
                 </p>
@@ -284,7 +289,7 @@ const SideNav = () => {
                 <p
                   className={`${
                     canShow ? "hidden" : "block"
-                  } flex items-center justify-between w-full`}
+                  } flex items-center justify-between w-full shrink-0`}
                 >
                   <span>Category</span>
                 </p>
@@ -338,7 +343,7 @@ const SideNav = () => {
                 <p
                   className={`${
                     canShow ? "hidden" : "block"
-                  } flex items-center justify-between w-full`}
+                  } flex items-center justify-between w-full shrink-0`}
                 >
                   <span>Withdraws</span>
                 </p>
@@ -404,7 +409,7 @@ const SideNav = () => {
                 <p
                   className={`${
                     canShow ? "hidden" : "block"
-                  } flex items-center justify-between w-full`}
+                  } flex items-center justify-between w-full shrink-0`}
                 >
                   <span>App Settings</span>
                 </p>

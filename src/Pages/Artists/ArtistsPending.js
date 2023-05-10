@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import OrdersConfirmationBlockPopup from "../../Components/Modals/Orders/OrdersConfirmationBlockPopup";
 import OrdersLoading from "../../Components/Shared/LoadingScreens/OrdersLoading";
-import OrdersPendingTable from "../../Components/Tables/Orders/OrdersPendingTable";
 import { OrderContext } from "../../Contexts/OrdersContext/OrdersProvider";
 import ArtistsConfirmationBlockPopup from "../../Components/Modals/Artists/ArtistsConfirmationBlockPopup";
 import ArtistsPendingTable from "../../Components/Tables/Artists/ArtistsPendingTable";

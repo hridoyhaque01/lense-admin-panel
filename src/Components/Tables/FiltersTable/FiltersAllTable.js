@@ -17,13 +17,10 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox }) => {
   const [activeButton, setActiveButton] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
-  console.log(rows)
 
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const currentRows = rows?.slice(indexOfFirstRow, indexOfLastRow);
-
-  console.log(rows)
 
   useEffect(() => {
     if (searchBarValue !== null) {
