@@ -130,8 +130,6 @@ const ArtistsApprovedTable = ({
         </thead>
         <tbody className="text-center">
           {currentRows?.map((artist, i) => {
-            console.log(currentRows)
-            console.log(i)
             return (
               <tr key={i} className="text-center">
                 <th className="px-0">

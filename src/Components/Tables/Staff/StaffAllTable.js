@@ -49,39 +49,39 @@ const StaffAllTable = ({ rows, handleSelectCheckbox }) => {
   //   handleSelectAllCheckbox(orders, e);
   // };
 
-  const renderPagination = () => {
-    const pageNumbers = [];
+  // const renderPagination = () => {
+  //   const pageNumbers = [];
 
-    for (let i = 1; i <= Math.ceil(rows.length / rowsPerPage); i++) {
-      pageNumbers?.push(i);
-    }
+  //   for (let i = 1; i <= Math.ceil(rows.length / rowsPerPage); i++) {
+  //     pageNumbers?.push(i);
+  //   }
 
-    return (
-      <nav>
-        <ul className="pagination flex gap-2">
-          {pageNumbers?.map((pageNumber) => (
-            <li
-              key={pageNumber}
-              className={`page-item ${
-                pageNumber === currentPage ? "active" : ""
-              }`}
-            >
-              <button
-                className={`page-link btn btn-sm ${
-                  activeButton === pageNumber
-                    ? "text-primaryMainLightest bg-primaryMain border-primaryMain hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
-                    : "text-blackMid bg-whiteMid border-primaryMainLighter hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
-                }`}
-                onClick={() => handleClick(pageNumber)}
-              >
-                {pageNumber}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    );
-  };
+  //   return (
+  //     <nav>
+  //       <ul className="pagination flex gap-2">
+  //         {pageNumbers?.map((pageNumber) => (
+  //           <li
+  //             key={pageNumber}
+  //             className={`page-item ${
+  //               pageNumber === currentPage ? "active" : ""
+  //             }`}
+  //           >
+  //             <button
+  //               className={`page-link btn btn-sm ${
+  //                 activeButton === pageNumber
+  //                   ? "text-primaryMainLightest bg-primaryMain border-primaryMain hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
+  //                   : "text-blackMid bg-whiteMid border-primaryMainLighter hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
+  //               }`}
+  //               onClick={() => handleClick(pageNumber)}
+  //             >
+  //               {pageNumber}
+  //             </button>
+  //           </li>
+  //         ))}
+  //       </ul>
+  //     </nav>
+  //   );
+  // };
 
   return (
     <div className=" relative pb-16">
