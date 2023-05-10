@@ -69,7 +69,7 @@ const WithdrawConfirmedTable = ({
                 className={`page-link btn btn-sm ${
                   activeButton === pageNumber
                     ? "text-primaryMainLightest bg-primaryMain border-primaryMain hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
-                    : "text-blackMid bg-whiteMid border-primaryMainLighter hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
+                    : "text-blackMid bg-whiteMid border-whiteLow hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
                 }`}
                 onClick={() => handleClick(pageNumber)}
               >
@@ -153,10 +153,14 @@ const WithdrawConfirmedTable = ({
         <EmptyScreen></EmptyScreen>
       )}
       <section className="flex items-center justify-end gap-4 py-4 absolute bottom-0 right-0">
+      <div>{renderPagination()}</div>
         <div>
-          <p>Item per page:</p>
+          <p>
+            Showing  {indexOfFirstRow + 1} - {indexOfLastRow > rows?.length ? rows?.length : indexOfLastRow} of{" "}
+            {rows?.length}
+          </p>
         </div>
-        <div className="dropdown dropdown-top dropdown-end ">
+      <div className="dropdown dropdown-top dropdown-end ">
           <label
             tabIndex={3}
             className="rounded-lg px-2 py-2 border border-blackLow text-blackMid cursor-pointer"
@@ -197,22 +201,8 @@ const WithdrawConfirmedTable = ({
             </li>
           </ul>
         </div>
-        {/* <div>{renderPagination()}</div> */}
-        <div>
-          <p>
-            {indexOfFirstRow + 1}-
-            {indexOfLastRow > rows?.length ? rows?.length : indexOfLastRow} of{" "}
-            {rows?.length}
-          </p>
-        </div>
-        <div className="flex gap-2">
-          <button className="p-0">
-            <span class="material-symbols-outlined">chevron_left</span>
-          </button>
-          <button className="p-0">
-            <span class="material-symbols-outlined">chevron_right</span>
-          </button>
-        </div>
+        
+        
       </section>
     </div>
   );

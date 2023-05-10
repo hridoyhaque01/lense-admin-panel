@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
-import OrdersConfirmationBlockPopup from "../../Components/Modals/Orders/OrdersConfirmationBlockPopup";
 import OrdersLoading from "../../Components/Shared/LoadingScreens/OrdersLoading";
-import OrdersPendingTable from "../../Components/Tables/Orders/OrdersPendingTable";
 import { OrderContext } from "../../Contexts/OrdersContext/OrdersProvider";
 import ArtistsApprovedTable from "../../Components/Tables/Artists/ArtistsApprovedTable";
 import ArtistsConfirmationBlockPopup from "../../Components/Modals/Artists/ArtistsConfirmationBlockPopup";
 import { Link } from "react-router-dom";
 
+import db from "../../Assets/json/db.json"
+
 const ArtistsApproved = () => {
   const [selectedOrders, setSelectedOrders] = useState([]);
   const [pendingOrders, setPendingOrders] = useState([]);
+  const {artists} = db || {}
+
   const {
     isLoading,
     fetchOrders,
@@ -122,17 +124,14 @@ const ArtistsApproved = () => {
         <OrdersLoading></OrdersLoading>
       ) : (
         <ArtistsApprovedTable
-          rows={pendingOrders}
+          rows={artists}
           setCurrentOrder={setCurrentOrder}
           handleSelectAllCheckbox={handleSelectAllCheckbox}
           handleSelectCheckbox={handleSelectCheckbox}
         ></ArtistsApprovedTable>
       )}
       {/* block modal popup */}
-      <ArtistsConfirmationBlockPopup
-        currentOrder={currentOrder}
-        clickHandlerForModals={clickHandlerForModals}
-      ></ArtistsConfirmationBlockPopup>
+     
     </div>
   );
 };

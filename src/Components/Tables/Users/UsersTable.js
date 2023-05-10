@@ -1,23 +1,26 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { StaffContext } from "../../../Contexts/StaffContext/StaffProvider";
+import { CustomerContext } from "../../../Contexts/CustomerContext/CustomerProvider";
 import EmptyScreen from "../../Shared/EmptyScreens/EmptyScreen";
-import ConfirmationModal from "../../Modals/ConfirmationModal";
+import UsersConfirmationBlockPopup from "../../Modals/Users/UsersConfirmationBlockPopup";
 
-const StaffAllTable = ({ rows, handleSelectCheckbox }) => {
+
+const UsersTable = ({ rows, handleSelectCheckbox }) => {
   const {
     searchBarValue,
-    currentStaff,
-    setCurrentStaff,
+    currentCustomer,
+    setCurrentCustomer,
     clickHandlerForModals,
-  } = useContext(StaffContext);
+  } = useContext(CustomerContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [activeButton, setActiveButton] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
+
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const currentRows = rows?.slice(indexOfFirstRow, indexOfLastRow);
+
 
   useEffect(() => {
     if (searchBarValue !== null) {
@@ -41,13 +44,16 @@ const StaffAllTable = ({ rows, handleSelectCheckbox }) => {
     setActiveButton(pageNumber);
   };
 
-    const handleCheckbox = (order, e) => {
-      handleSelectCheckbox(order, e);
-    };
+  const handleCheckbox = (order, e) => {
+    handleSelectCheckbox(order, e);
+  };
 
-  // const handleAllCheckbox = (orders, e) => {
-  //   handleSelectAllCheckbox(orders, e);
-  // };
+//   const = 
+
+  const handleAllCheckbox = (orders, e) => {
+    // handleSelectAllCheckbox(orders, e);
+    console.log('filters');
+  };
 
   const renderPagination = () => {
     const pageNumbers = [];
@@ -70,7 +76,7 @@ const StaffAllTable = ({ rows, handleSelectCheckbox }) => {
                 className={`page-link btn btn-sm ${
                   activeButton === pageNumber
                     ? "text-primaryMainLightest bg-primaryMain border-primaryMain hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
-                    : "text-blackMid bg-whiteMid border-primaryMainLighter hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
+                    : "text-blackMid bg-whiteMid border-whiteLow hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
                 }`}
                 onClick={() => handleClick(pageNumber)}
               >
@@ -89,7 +95,7 @@ const StaffAllTable = ({ rows, handleSelectCheckbox }) => {
         <table className="table w-full">
           <thead>
             <tr className="font-bold text-center text-3xl">
-              {/* <th className="bg-secondaryMainLightest text-bold text-lg normal-case">
+              <th className="bg-blueLight text-bold text-lg normal-case">
                 <input
                 type="checkbox"
                 className="checkbox rounded-none"
@@ -98,57 +104,65 @@ const StaffAllTable = ({ rows, handleSelectCheckbox }) => {
                   handleAllCheckbox(currentRows, e);
                 }}
               />
-              </th> */}
-              <th className="bg-blueLight text-bold text-lg normal-case">
-                Serial
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-                Name
+              Serial
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-                Role
+              Created
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-                Email
+              Name
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-                Phone Number
+              Email
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-                Actions
+              Subscription
+              </th>
+              <th className="bg-blueLight text-bold text-lg normal-case">
+              Actions
               </th>
             </tr>
           </thead>
           <tbody className="text-center">
-            {currentRows?.map((staff, i) => {
+            {currentRows?.map((user, i) => {
               return (
                 <tr key={i} className="text-center">
-                  <th className="px-0 ">
-                    <div className="flex align-center justify-center gap-x-3">
-                      <input
-                        type="checkbox"
-                        className="checkbox rounded-none"
-                        name="checkbox"
-                        onChange={(e) => {
-                          handleCheckbox(staff, e);
-                        }}
-                      />
-                      <p>{i + 1}</p>
-                    </div>
-                    {/* <p>{i + 1}</p> */}
+                  <th className="px-0">
+                    <input
+                      type="checkbox"
+                      className="checkbox rounded-none"
+                      name="checkbox"
+                      onChange={(e) => {
+                        handleCheckbox(user, e);
+                      }}
+                    />
                   </th>
-                  {/* <td className="px-0">{i + 1}</td> */}
-                  <td className="px-0 mx-0">{staff?.user_name}</td>
-                  <td className="px-0 mx-0">{staff?.user_type}</td>
-                  <td className="px-0">{staff?.user_email}</td>
-                  <td className="px-0 mx-0">{staff?.user_contact}</td>
+                  <td className="px-0 mx-0">
+                        <p>{i+1}</p>
+                  </td>
+                  <td className="px-0 mx-0">
+                  {user?.createdAt}
+                  </td>
+                  <td className="px-0 mx-0">{user?.user_name}</td>
+                  <td className="px-0">{user?.user_email}</td>
+                  <td className="px-0">yes</td>
                   <td className="px-0 mx-0">
                     <div className="flex items-center justify-center gap-0">
-                      
+                      <label
+                        htmlFor="userBlockPopup"
+                        onClick={() => setCurrentCustomer(user)}
+                        className="btn rounded-full p-0 bg-whiteHigh text-blackMid border-none hover:bg-whiteHigh"
+                      >
+                        <span className="material-symbols-outlined p-0">
+                          block
+                        </span>
+                      </label>
                       <Link
                         to={{
-                          pathname: `/staffedit/${staff?.user_id}`,
-                          staff: staff,
+                          pathname: `/userEdit/${user?.user_id}`,
+                          user: user,
                         }}
                       >
                         <label
@@ -160,17 +174,6 @@ const StaffAllTable = ({ rows, handleSelectCheckbox }) => {
                           </span>
                         </label>
                       </Link>
-                      <button type="button" onClick={()=> console.log("delete")}
-                      >
-                        <label
-                          htmlFor="deletePopup"
-                          className="btn rounded-full p-3 bg-whiteHigh text-errorColor border-none hover:bg-whiteHigh"
-                        >
-                          <span className="material-symbols-outlined">
-                            delete
-                          </span>
-                        </label>
-                      </button>
                     </div>
                   </td>
                 </tr>
@@ -181,20 +184,18 @@ const StaffAllTable = ({ rows, handleSelectCheckbox }) => {
       ) : (
         <EmptyScreen></EmptyScreen>
       )}
-{/* 
       <section className="flex items-center justify-end gap-4 py-4 absolute bottom-0 right-0">
-        <div>{renderPagination()}</div>
+      <div>{renderPagination()}</div>
         <div>
           <p>
-            Showing {indexOfFirstRow + 1}-
-            {indexOfLastRow > rows?.length ? rows?.length : indexOfLastRow} of{" "}
+            Showing  {indexOfFirstRow + 1} - {indexOfLastRow > rows?.length ? rows?.length : indexOfLastRow} of{" "}
             {rows?.length}
           </p>
         </div>
-        <div className="dropdown dropdown-top dropdown-end">
+      <div className="dropdown dropdown-top dropdown-end ">
           <label
             tabIndex={3}
-            className="rounded-lg px-2 py-2 border-2 text-primaryMain bg-primaryMainLightest"
+            className="rounded-lg px-2 py-2 border border-blackLow text-blackMid cursor-pointer"
           >
             {rowsPerPage} &nbsp;
             <i className="fa-solid fa-angle-down text-sm"></i>
@@ -232,13 +233,17 @@ const StaffAllTable = ({ rows, handleSelectCheckbox }) => {
             </li>
           </ul>
         </div>
+        
+        
       </section>
-       */}
-      <ConfirmationModal
-        actionName="delete"
-      ></ConfirmationModal>
+
+      
+      <UsersConfirmationBlockPopup
+        currentCustomer={currentCustomer}
+        clickHandlerForModals={clickHandlerForModals}
+      ></UsersConfirmationBlockPopup>
     </div>
   );
 };
 
-export default StaffAllTable;
+export default UsersTable;

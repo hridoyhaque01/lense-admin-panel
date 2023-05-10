@@ -71,7 +71,7 @@ const CategoriesBlockedTable = ({ rows, handleSelectCheckbox }) => {
                 className={`page-link btn btn-sm ${
                   activeButton === pageNumber
                     ? "text-primaryMainLightest bg-primaryMain border-primaryMain hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
-                    : "text-blackMid bg-whiteMid border-primaryMainLighter hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
+                    : "text-blackMid bg-whiteMid border-whiteLow hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
                 }`}
                 onClick={() => handleClick(pageNumber)}
               >

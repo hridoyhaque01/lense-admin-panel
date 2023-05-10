@@ -3,10 +3,13 @@ import OrdersLoading from "../../Components/Shared/LoadingScreens/OrdersLoading"
 import { CustomerContext } from "../../Contexts/CustomerContext/CustomerProvider";
 import FiltersAllTable from "../../Components/Tables/FiltersTable/FiltersAllTable";
 import { Link } from "react-router-dom";
+import db from "../../Assets/json/db.json"
 
 const ECardFilter = () => {
   const [selectedCustomers, setSelectedCustomers] = useState([]);
   const [approvedCustomers, setApprovedCustomers] = useState([]);
+  const {filters} = db || {}
+
   const {
     isLoading,
     fetchCustomers,
@@ -108,7 +111,7 @@ const ECardFilter = () => {
         <OrdersLoading></OrdersLoading>
       ) : (
         <FiltersAllTable
-          rows={approvedCustomers}
+          rows={filters}
           setCurrentCustomer={setCurrentCustomer}
           handleSelectCheckbox={handleSelectCheckbox}
         ></FiltersAllTable>

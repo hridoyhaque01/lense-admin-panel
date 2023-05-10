@@ -1,12 +1,12 @@
 import React from "react";
 
 const ArtistsConfirmationBlockPopup = ({
-  currentOrder,
+  currentArtist,
   clickHandlerForModals,
 }) => {
   return (
     <section>
-      <input type="checkbox" id="ordersBlockPopup" className="modal-toggle" />
+      <input type="checkbox" id="artistBlockPopup" className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box flex flex-col items-center justify-center gap-4">
           <div>
@@ -38,21 +38,21 @@ const ArtistsConfirmationBlockPopup = ({
           </div>
           <div>
             <p className="font-bold text-lg">
-              Do you want to {`cancel #${currentOrder?.order_id}`}?
+              Do you want to block {currentArtist?.user_name}?
             </p>
           </div>
           <div className="modal-action flex items-center justify-center">
             <label
+              htmlFor="artistBlockPopup"
               onClick={() => {
-                clickHandlerForModals(currentOrder?.order_id);
+                clickHandlerForModals(currentArtist?.user_id, "Blocked");
               }}
-              htmlFor="ordersBlockPopup"
               className="btn rounded-full bg-primaryMain border-primaryMain hover:text-primaryMain hover:bg-whiteHigh hover:border-primaryMain w-full"
             >
               Confirm
             </label>
             <label
-              htmlFor="ordersBlockPopup"
+              htmlFor="artistBlockPopup"
               className="btn rounded-full bg-whiteHigh text-primaryMain w-full border-primaryMain hover:border-primaryMain hover:bg-whiteHigh"
             >
               Cancel

@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import HomeBody from "../../Components/HomeBody/HomeBody";
-import { AuthContext } from "../../Contexts/AuthContext/AuthProvider";
+import { useState } from "react";
 
 const Home = () => {
-  const { userType } = useContext(AuthContext);
+  const [userType , setUserType] = useState("Admin")
   return (
     <div className="w-full">
       {(userType === "Admin" || userType === "Manager") && (

@@ -1,17 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import OrdersLoading from "../../Components/Shared/LoadingScreens/OrdersLoading";
 import { CustomerContext } from "../../Contexts/CustomerContext/CustomerProvider";
-import FiltersAllTable from "../../Components/Tables/FiltersTable/FiltersAllTable";
 import { Link } from "react-router-dom";
+import UsersTable from "../../Components/Tables/Users/UsersTable";
 import db from "../../Assets/json/db.json"
 
-const SnapchatFilter = () => {
+const UserAll = () => {
   const [selectedCustomers, setSelectedCustomers] = useState([]);
   const [approvedCustomers, setApprovedCustomers] = useState([]);
-  const {filters} = db || {}
+  const {users} = db || {}
   const {
     isLoading,
-    fetchCustomers,
     searchBarValue,
     filteredCustomersBySearch,
     filterCustomersBySearch,
@@ -61,7 +60,7 @@ const SnapchatFilter = () => {
       <div className="flex items-center justify-between p-3 bg-primaryMain text-whiteHigh rounded-t-lg">
         <section className="flex items-center gap-4">
           <div>
-            <p className="font-bold text-2xl">Snapchat Filter</p>
+            <p className="font-bold text-2xl">Users</p>
           </div>
         </section>
         <section className="flex items-center gap-4 w-2/5">
@@ -75,7 +74,7 @@ const SnapchatFilter = () => {
           />
           <p>
           <Link
-              to="/filtersAddNew"
+              to="/userAddNew"
               className="btn bg-whiteHigh hover:bg-whiteLow border-none rounded-full h-12 w-12"
             >
               <span className="material-symbols-outlined text-primaryMain">
@@ -109,14 +108,14 @@ const SnapchatFilter = () => {
       {isLoading ? (
         <OrdersLoading></OrdersLoading>
       ) : (
-        <FiltersAllTable
-          rows={filters}
+        <UsersTable
+          rows={users}
           setCurrentCustomer={setCurrentCustomer}
           handleSelectCheckbox={handleSelectCheckbox}
-        ></FiltersAllTable>
+        ></UsersTable>
       )}
     </div>
   );
 };
 
-export default SnapchatFilter;
+export default UserAll;

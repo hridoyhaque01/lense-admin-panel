@@ -20,6 +20,7 @@ import WithdrawPending from "../Pages/Withdraw/WithdrawPending";
 import WithdrawCancelled from "../Pages/Withdraw/WithdrawCancelled"
 import PrivateRoutes from "../Routes/PrivateRoutes";
 import StaffAll from "../Pages/Staff/StaffAll";
+import UserAll from "../Pages/User/UserAll";
 
 export const router = createBrowserRouter([
   {
@@ -35,9 +36,15 @@ export const router = createBrowserRouter([
         element: <Home></Home>,
       },
 
-      // edit users
+      // users
+
       {
-        path: "/userEdit",
+        path: "/userAll",
+        element: <UserAll></UserAll>,
+      },
+
+      {
+        path: "/userAddNew",
         element: <UserAddNew></UserAddNew>,
       },
 

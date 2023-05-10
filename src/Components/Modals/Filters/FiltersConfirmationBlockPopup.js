@@ -6,7 +6,7 @@ const FiltersConfirmationBlockPopup = ({
 }) => {
   return (
     <section>
-      <input type="checkbox" id="customerBlockPopup" className="modal-toggle" />
+      <input type="checkbox" id="filterBlockPopup" className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box flex flex-col items-center justify-center gap-4">
           <div>
@@ -43,7 +43,7 @@ const FiltersConfirmationBlockPopup = ({
           </div>
           <div className="modal-action flex items-center justify-center">
             <label
-              htmlFor="customerBlockPopup"
+              htmlFor="filterBlockPopup"
               onClick={() => {
                 clickHandlerForModals(currentCustomer?.user_id, "Blocked");
               }}
@@ -52,7 +52,7 @@ const FiltersConfirmationBlockPopup = ({
               Confirm
             </label>
             <label
-              htmlFor="customerBlockPopup"
+              htmlFor="filterBlockPopup"
               className="btn rounded-full bg-whiteHigh text-primaryMain w-full border-primaryMain hover:border-primaryMain hover:bg-whiteHigh"
             >
               Cancel

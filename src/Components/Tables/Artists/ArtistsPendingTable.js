@@ -70,7 +70,7 @@ const ArtistsPendingTable = ({
                 className={`page-link btn btn-sm ${
                   activeButton === pageNumber
                     ? "text-primaryMainLightest bg-primaryMain border-primaryMain hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
-                    : "text-blackMid bg-whiteMid border-primaryMainLighter hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
+                    : "text-blackMid bg-whiteMid border-whiteLow hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
                 }`}
                 onClick={() => handleClick(pageNumber)}
               >
@@ -120,13 +120,10 @@ const ArtistsPendingTable = ({
               <th className="bg-blueLight text-bold text-lg normal-case">
                 Actions
               </th>
-              <th className="bg-blueLight text-bold text-lg normal-case">
-                Actions
-              </th>
             </tr>
           </thead>
           <tbody className="text-center">
-            {currentRows?.map((order, i) => {
+            {currentRows?.map((artist, i) => {
               return (
                 <tr key={i} className="text-center">
                   <th className="px-0">
@@ -135,19 +132,18 @@ const ArtistsPendingTable = ({
                       className="checkbox rounded-none"
                       name="checkbox"
                       onChange={(e) => {
-                        handleCheckbox(order, e);
+                        handleCheckbox(artist, e);
                       }}
                     />
                   </th>
                   <td className="px-0">{i + 1}</td>
-                  <td className="px-0 mx-0">#{order.order_id}</td>
+                  <td className="px-0 mx-0">{artist?.createdAt}</td>
                   <td className="px-0 mx-0">
-                    {order?.timestamp?.toDate().toLocaleDateString()}
+                    {artist?.user_name}
                   </td>
-                  <td className="px-0 mx-0">{order.sender_name}</td>
-                  <td className="px-0 mx-0">${order.total_price}.00</td>
-                  <td className="px-0">{order.sender_address}</td>
-                  <td className="px-0 mx-0">{order.receiver_address}</td>
+                  <td className="px-0 mx-0">{artist?.user_email}</td>
+                  <td className="px-0 mx-0">{artist?.payment_method}</td>
+                  <td className="px-0">{artist?.user_portfolio_link}</td>
                   <td className="px-0 py-0">
                     <div className="dropdown dropdown-bottom dropdown-end">
                       <label
@@ -163,7 +159,7 @@ const ArtistsPendingTable = ({
                       >
                         <label
                           onClick={() =>
-                            updateOrderStatus(order?.order_id, "Processing")
+                            updateOrderStatus(artist?.order_id, "Processing")
                           }
                           // htmlFor="ordersBlockPopup"
                         >
@@ -176,7 +172,7 @@ const ArtistsPendingTable = ({
                         <hr className="text-disabledColor opacity-10" />
                         
                         <label
-                          onClick={() => setCurrentOrder(order)}
+                          onClick={() => setCurrentOrder(artist)}
                           htmlFor="ordersBlockPopup"
                         >
                           <li>
@@ -197,8 +193,12 @@ const ArtistsPendingTable = ({
         <EmptyScreen></EmptyScreen>
       )}
       <section className="flex items-center justify-end gap-4 py-4 absolute bottom-0 right-0">
+      <div>{renderPagination()}</div>
         <div>
-            <p>Item per page:</p>
+          <p>
+            Showing  {indexOfFirstRow + 1} - {indexOfLastRow > rows?.length ? rows?.length : indexOfLastRow} of{" "}
+            {rows?.length}
+          </p>
         </div>
       <div className="dropdown dropdown-top dropdown-end ">
           <label
@@ -241,26 +241,7 @@ const ArtistsPendingTable = ({
             </li>
           </ul>
         </div>
-        {/* <div>{renderPagination()}</div> */}
-        <div>
-          <p>
-            {indexOfFirstRow + 1}-
-            {indexOfLastRow > rows?.length ? rows?.length : indexOfLastRow} of{" "}
-            {rows?.length}
-          </p>
-        </div>
-        <div className="flex gap-2">
-            <button className="p-0">
-                <span class="material-symbols-outlined">
-                    chevron_left
-                </span>
-            </button>
-            <button className="p-0">
-                <span class="material-symbols-outlined">
-                    chevron_right
-                </span>
-            </button>
-        </div>
+        
         
       </section>
     </div>

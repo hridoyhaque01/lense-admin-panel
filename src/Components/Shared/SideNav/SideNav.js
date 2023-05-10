@@ -114,7 +114,7 @@ const SideNav = () => {
                   ? "bg-whiteMid text-primaryMain border-r-2 border-primaryMain"
                   : "text-blackMid"
               }`}
-              to="/userEdit"
+              to="/userAll"
             >
               <span className="material-symbols-outlined pl-6">person</span>
               &nbsp;

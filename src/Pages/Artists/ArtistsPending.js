@@ -6,10 +6,13 @@ import { OrderContext } from "../../Contexts/OrdersContext/OrdersProvider";
 import ArtistsConfirmationBlockPopup from "../../Components/Modals/Artists/ArtistsConfirmationBlockPopup";
 import ArtistsPendingTable from "../../Components/Tables/Artists/ArtistsPendingTable";
 import { Link } from "react-router-dom";
+import db from "../../Assets/json/db.json"
 
 const ArtistsPending = () => {
   const [selectedOrders, setSelectedOrders] = useState([]);
   const [pendingOrders, setPendingOrders] = useState([]);
+  const {artists} = db || {}
+
   const {
     isLoading,
     fetchOrders,
@@ -122,7 +125,7 @@ const ArtistsPending = () => {
         <OrdersLoading></OrdersLoading>
       ) : (
         <ArtistsPendingTable
-          rows={pendingOrders}
+          rows={artists}
           setCurrentOrder={setCurrentOrder}
           handleSelectAllCheckbox={handleSelectAllCheckbox}
           handleSelectCheckbox={handleSelectCheckbox}
