@@ -1,12 +1,12 @@
 import React from "react";
 
-const CategoriesConfirmationBlockPopup = ({
+const UsersConfirmationBlockPopup = ({
   currentCustomer,
   clickHandlerForModals,
 }) => {
   return (
     <section>
-      <input type="checkbox" id="categoriesBlockPopup" className="modal-toggle" />
+      <input type="checkbox" id="userBlockPopup" className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box flex flex-col items-center justify-center gap-4">
           <div>
@@ -43,7 +43,7 @@ const CategoriesConfirmationBlockPopup = ({
           </div>
           <div className="modal-action flex items-center justify-center">
             <label
-              htmlFor="categoriesBlockPopup"
+              htmlFor="userBlockPopup"
               onClick={() => {
                 clickHandlerForModals(currentCustomer?.user_id, "Blocked");
               }}
@@ -52,7 +52,7 @@ const CategoriesConfirmationBlockPopup = ({
               Confirm
             </label>
             <label
-              htmlFor="categoriesBlockPopup"
+              htmlFor="userBlockPopup"
               className="btn rounded-full bg-whiteHigh text-primaryMain w-full border-primaryMain hover:border-primaryMain hover:bg-whiteHigh"
             >
               Cancel
@@ -64,4 +64,4 @@ const CategoriesConfirmationBlockPopup = ({
   );
 };
 
-export default CategoriesConfirmationBlockPopup;
+export default UsersConfirmationBlockPopup;

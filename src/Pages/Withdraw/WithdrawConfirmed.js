@@ -3,11 +3,13 @@ import ConfirmationModal from "../../Components/Modals/ConfirmationModal";
 import OrdersLoading from "../../Components/Shared/LoadingScreens/OrdersLoading";
 import WithdrawConfirmedTable from "../../Components/Tables/Withdraw/WithdrawConfirmedTable";
 import { OrderContext } from "../../Contexts/OrdersContext/OrdersProvider";
-import withdraw from "../../Database/withdraw.json"
+import db from "../../Assets/json/db.json"
+
 
 const WithdrawConfirmed = () => {
   const [selectedOrders, setSelectedOrders] = useState([]);
   const [pendingOrders, setPendingOrders] = useState([]);
+  const {withdraw} = db || {}
   const {
     isLoading,
     fetchOrders,

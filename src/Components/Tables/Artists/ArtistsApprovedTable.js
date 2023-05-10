@@ -1,15 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { OrderContext } from "../../../Contexts/OrdersContext/OrdersProvider";
+import { CustomerContext } from "../../../Contexts/CustomerContext/CustomerProvider";
 import EmptyScreen from "../../Shared/EmptyScreens/EmptyScreen";
+import ArtistsConfirmationBlockPopup from "../../Modals/Artists/ArtistsConfirmationBlockPopup";
 
 const ArtistsApprovedTable = ({
   rows,
   handleSelectCheckbox,
   handleSelectAllCheckbox,
 }) => {
-  const { searchBarValue, setCurrentOrder, updateOrderStatus } =
-    useContext(OrderContext);
+  const {
+
+    searchBarValue,
+    currentCustomer,
+    setCurrentCustomer,
+    clickHandlerForModals,
+  } = useContext(CustomerContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [activeButton, setActiveButton] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -70,7 +76,7 @@ const ArtistsApprovedTable = ({
                 className={`page-link btn btn-sm ${
                   activeButton === pageNumber
                     ? "text-primaryMainLightest bg-primaryMain border-primaryMain hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
-                    : "text-blackMid bg-whiteMid border-primaryMainLighter hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
+                    : "text-blackMid bg-whiteMid border-whiteLow hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
                 }`}
                 onClick={() => handleClick(pageNumber)}
               >
@@ -87,118 +93,108 @@ const ArtistsApprovedTable = ({
     <div className=" relative pb-16">
       {rows.length > 0 ? (
         <table className="table w-full">
-          <thead>
-            <tr className="font-bold text-center text-3xl">
-              <th className="bg-blueLight text-bold text-lg normal-case">
-                <input
-                type="checkbox"
-                className="checkbox rounded-none"
-                name="allCheckbox"
-                onChange={(e) => {
-                  handleAllCheckbox(currentRows, e);
-                }}
-              />
-              </th>
-              <th className="bg-blueLight text-bold text-lg normal-case">
-                Serial
-              </th>
-              <th className="bg-blueLight text-bold text-lg normal-case">
-                Created
-              </th>
-              <th className="bg-blueLight text-bold text-lg normal-case">
-                Name
-              </th>
-              <th className="bg-blueLight text-bold text-lg normal-case">
-                Email
-              </th>
-              <th className="bg-blueLight text-bold text-lg normal-case">
-               Payment Method
-              </th>
-              <th className="bg-blueLight text-bold text-lg normal-case">
-                Portfolio link
-              </th>
-              <th className="bg-blueLight text-bold text-lg normal-case">
-                Actions
-              </th>
-              <th className="bg-blueLight text-bold text-lg normal-case">
-                Actions
-              </th>
-            </tr>
-          </thead>
-          <tbody className="text-center">
-            {currentRows?.map((order, i) => {
-              return (
-                <tr key={i} className="text-center">
-                  <th className="px-0">
-                    <input
-                      type="checkbox"
-                      className="checkbox rounded-none"
-                      name="checkbox"
-                      onChange={(e) => {
-                        handleCheckbox(order, e);
-                      }}
-                    />
-                  </th>
-                  <td className="px-0">{i + 1}</td>
-                  <td className="px-0 mx-0">#{order.order_id}</td>
-                  <td className="px-0 mx-0">
-                    {order?.timestamp?.toDate().toLocaleDateString()}
-                  </td>
-                  <td className="px-0 mx-0">{order.sender_name}</td>
-                  <td className="px-0 mx-0">${order.total_price}.00</td>
-                  <td className="px-0">{order.sender_address}</td>
-                  <td className="px-0 mx-0">{order.receiver_address}</td>
-                  <td className="px-0 py-0">
-                    <div className="dropdown dropdown-bottom dropdown-end">
+        <thead>
+          <tr className="font-bold text-center text-3xl">
+            <th className="bg-blueLight text-bold text-lg normal-case">
+              <input
+              type="checkbox"
+              className="checkbox rounded-none"
+              name="allCheckbox"
+              onChange={(e) => {
+                handleAllCheckbox(currentRows, e);
+              }}
+            />
+            </th>
+            <th className="bg-blueLight text-bold text-lg normal-case">
+              Serial
+            </th>
+            <th className="bg-blueLight text-bold text-lg normal-case">
+              Created
+            </th>
+            <th className="bg-blueLight text-bold text-lg normal-case">
+              Name
+            </th>
+            <th className="bg-blueLight text-bold text-lg normal-case">
+              Email
+            </th>
+            <th className="bg-blueLight text-bold text-lg normal-case">
+             Payment Method
+            </th>
+            <th className="bg-blueLight text-bold text-lg normal-case">
+              Portfolio link
+            </th>
+            <th className="bg-blueLight text-bold text-lg normal-case">
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody className="text-center">
+          {currentRows?.map((artist, i) => {
+            console.log(currentRows)
+            console.log(i)
+            return (
+              <tr key={i} className="text-center">
+                <th className="px-0">
+                  <input
+                    type="checkbox"
+                    className="checkbox rounded-none"
+                    name="checkbox"
+                    onChange={(e) => {
+                      handleCheckbox(artist, e);
+                    }}
+                  />
+                </th>
+                <td className="px-0">{i + 1}</td>
+                <td className="px-0 mx-0">{artist?.createdAt}</td>
+                <td className="px-0 mx-0">
+                  {artist?.user_name}
+                </td>
+                <td className="px-0 mx-0">{artist?.user_email}</td>
+                <td className="px-0 mx-0">{artist?.payment_method}</td>
+                <td className="px-0">{artist?.user_portfolio_link}</td>
+                <td className="px-0 mx-0">
+                    <div className="flex items-center justify-center gap-0">
                       <label
-                        tabIndex={1}
-                        className="rounded-lg px-3 py-2 w-24 focus:outline-none active:border-none text-primaryMain bg-blueLight cursor-pointer"
+                        htmlFor="artistBlockPopup"
+                        onClick={() => setCurrentCustomer(artist)}
+                        className="btn rounded-full p-0 bg-whiteHigh text-blackMid border-none hover:bg-whiteHigh"
                       >
-                        Pending &nbsp;
-                        <i className="fa-solid fa-angle-down text-sm"></i>
+                        <span className="material-symbols-outlined p-0">
+                          block
+                        </span>
                       </label>
-                      <ul
-                        tabIndex={1}
-                        className="dropdown-content menu mt-2 m-0.5 shadow bg-base-100 rounded-md w-36"
+                      <Link
+                        to={{
+                          pathname: `/userEdit/${artist?.user_id}`,
+                          user: artist,
+                        }}
                       >
                         <label
-                          onClick={() =>
-                            updateOrderStatus(order?.order_id, "Processing")
-                          }
-                          // htmlFor="ordersBlockPopup"
+                          htmlFor="pausePopup"
+                          className="btn rounded-full p-3 bg-whiteHigh text-alertColor border-none hover:bg-whiteHigh"
                         >
-                          <li>
-                            <p className="text-successColor py-2 active:bg-blackLow w-full rounded-t-md">
-                              Confirm
-                            </p>
-                          </li>
+                          <span className="material-symbols-outlined">
+                            border_color
+                          </span>
                         </label>
-                        <hr className="text-disabledColor opacity-10" />
-                        
-                        <label
-                          onClick={() => setCurrentOrder(order)}
-                          htmlFor="ordersBlockPopup"
-                        >
-                          <li>
-                            <p className="text-errorColor py-2 active:bg-blackLow rounded-b-md">
-                              Cancel
-                            </p>
-                          </li>
-                        </label>
-                      </ul>
+                      </Link>
                     </div>
                   </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
       ) : (
         <EmptyScreen></EmptyScreen>
       )}
       <section className="flex items-center justify-end gap-4 py-4 absolute bottom-0 right-0">
+      <div>{renderPagination()}</div>
         <div>
-            <p>Item per page:</p>
+          <p>
+            Showing  {indexOfFirstRow + 1} - {indexOfLastRow > rows?.length ? rows?.length : indexOfLastRow} of{" "}
+            {rows?.length}
+          </p>
         </div>
       <div className="dropdown dropdown-top dropdown-end ">
           <label
@@ -241,28 +237,14 @@ const ArtistsApprovedTable = ({
             </li>
           </ul>
         </div>
-        {/* <div>{renderPagination()}</div> */}
-        <div>
-          <p>
-            {indexOfFirstRow + 1}-
-            {indexOfLastRow > rows?.length ? rows?.length : indexOfLastRow} of{" "}
-            {rows?.length}
-          </p>
-        </div>
-        <div className="flex gap-2">
-            <button className="p-0">
-                <span class="material-symbols-outlined">
-                    chevron_left
-                </span>
-            </button>
-            <button className="p-0">
-                <span class="material-symbols-outlined">
-                    chevron_right
-                </span>
-            </button>
-        </div>
+        
         
       </section>
+
+      <ArtistsConfirmationBlockPopup
+        currentArtist={currentCustomer}
+        clickHandlerForModals={clickHandlerForModals}
+      ></ArtistsConfirmationBlockPopup>
     </div>
   );
 };

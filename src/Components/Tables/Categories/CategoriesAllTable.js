@@ -76,7 +76,7 @@ const CategoriesAllTable = ({ rows, handleSelectCheckbox }) => {
                 className={`page-link btn btn-sm ${
                   activeButton === pageNumber
                     ? "text-primaryMainLightest bg-primaryMain border-primaryMain hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
-                    : "text-blackMid bg-whiteMid border-primaryMainLighter hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
+                    : "text-blackMid bg-whiteMid border-whiteLow hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
                 }`}
                 onClick={() => handleClick(pageNumber)}
               >
@@ -140,7 +140,7 @@ const CategoriesAllTable = ({ rows, handleSelectCheckbox }) => {
                   <td className="px-0 mx-0">
                     <div className="flex items-center justify-center gap-0">
                       <label
-                        htmlFor="customerBlockPopup"
+                        htmlFor="categoriesBlockPopup"
                         onClick={() => setCurrentCustomer(customer)}
                         className="btn rounded-full p-0 bg-whiteHigh text-blackMid border-none hover:bg-whiteHigh"
                       >
@@ -174,8 +174,12 @@ const CategoriesAllTable = ({ rows, handleSelectCheckbox }) => {
         <EmptyScreen></EmptyScreen>
       )}
       <section className="flex items-center justify-end gap-4 py-4 absolute bottom-0 right-0">
+      <div>{renderPagination()}</div>
         <div>
-            <p>Item per page:</p>
+          <p>
+            Showing  {indexOfFirstRow + 1} - {indexOfLastRow > rows?.length ? rows?.length : indexOfLastRow} of{" "}
+            {rows?.length}
+          </p>
         </div>
       <div className="dropdown dropdown-top dropdown-end ">
           <label
@@ -218,26 +222,7 @@ const CategoriesAllTable = ({ rows, handleSelectCheckbox }) => {
             </li>
           </ul>
         </div>
-        {/* <div>{renderPagination()}</div> */}
-        <div>
-          <p>
-            {indexOfFirstRow + 1}-
-            {indexOfLastRow > rows?.length ? rows?.length : indexOfLastRow} of{" "}
-            {rows?.length}
-          </p>
-        </div>
-        <div className="flex gap-2">
-            <button className="p-0">
-                <span class="material-symbols-outlined">
-                    chevron_left
-                </span>
-            </button>
-            <button className="p-0">
-                <span class="material-symbols-outlined">
-                    chevron_right
-                </span>
-            </button>
-        </div>
+        
         
       </section>
       <CategoriesConfirmationBlockPopup

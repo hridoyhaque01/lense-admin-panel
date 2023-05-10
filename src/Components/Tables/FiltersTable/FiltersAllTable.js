@@ -79,7 +79,7 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox }) => {
                 className={`page-link btn btn-sm ${
                   activeButton === pageNumber
                     ? "text-primaryMainLightest bg-primaryMain border-primaryMain hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
-                    : "text-blackMid bg-whiteMid border-primaryMainLighter hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
+                    : "text-blackMid bg-whiteMid border-whiteLow hover:bg-primaryMain hover:text-whiteHigh hover:border-primaryMain"
                 }`}
                 onClick={() => handleClick(pageNumber)}
               >
@@ -128,7 +128,7 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox }) => {
             </tr>
           </thead>
           <tbody className="text-center">
-            {currentRows?.map((customer, i) => {
+            {currentRows?.map((filters, i) => {
               return (
                 <tr key={i} className="text-center">
                   <th className="px-0">
@@ -137,7 +137,7 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox }) => {
                       className="checkbox rounded-none"
                       name="checkbox"
                       onChange={(e) => {
-                        handleCheckbox(customer, e);
+                        handleCheckbox(filters, e);
                       }}
                     />
                   </th>
@@ -147,15 +147,15 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox }) => {
                         </div>
                   </td>
                   <td className="px-0 mx-0">
-                    {customer?.timestamp?.toDate().toLocaleDateString()}
+                    {filters?.createdAt}
                   </td>
-                  <td className="px-0 mx-0">{customer?.user_name}</td>
-                  <td className="px-0">{customer?.user_email}</td>
+                  <td className="px-0 mx-0">{filters?.user_name}</td>
+                  <td className="px-0">{filters?.user_coin}</td>
                   <td className="px-0 mx-0">
                     <div className="flex items-center justify-center gap-0">
                       <label
-                        htmlFor="customerBlockPopup"
-                        onClick={() => setCurrentCustomer(customer)}
+                        htmlFor="filterBlockPopup"
+                        onClick={() => setCurrentCustomer(filters)}
                         className="btn rounded-full p-0 bg-whiteHigh text-blackMid border-none hover:bg-whiteHigh"
                       >
                         <span className="material-symbols-outlined p-0">
@@ -164,8 +164,8 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox }) => {
                       </label>
                       <Link
                         to={{
-                          pathname: `/customeredit/${customer?.user_id}`,
-                          customer: customer,
+                          pathname: `/customeredit/${filters?.user_id}`,
+                          customer: filters,
                         }}
                       >
                         <label
@@ -187,9 +187,14 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox }) => {
       ) : (
         <EmptyScreen></EmptyScreen>
       )}
+
       <section className="flex items-center justify-end gap-4 py-4 absolute bottom-0 right-0">
+      <div>{renderPagination()}</div>
         <div>
-            <p>Item per page:</p>
+          <p>
+            Showing  {indexOfFirstRow + 1} - {indexOfLastRow > rows?.length ? rows?.length : indexOfLastRow} of{" "}
+            {rows?.length}
+          </p>
         </div>
       <div className="dropdown dropdown-top dropdown-end ">
           <label
@@ -232,28 +237,10 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox }) => {
             </li>
           </ul>
         </div>
-        {/* <div>{renderPagination()}</div> */}
-        <div>
-          <p>
-            {indexOfFirstRow + 1}-
-            {indexOfLastRow > rows?.length ? rows?.length : indexOfLastRow} of{" "}
-            {rows?.length}
-          </p>
-        </div>
-        <div className="flex gap-2">
-            <button className="p-0">
-                <span class="material-symbols-outlined">
-                    chevron_left
-                </span>
-            </button>
-            <button className="p-0">
-                <span class="material-symbols-outlined">
-                    chevron_right
-                </span>
-            </button>
-        </div>
+        
         
       </section>
+
       <FiltersConfirmationBlockPopup
         currentCustomer={currentCustomer}
         clickHandlerForModals={clickHandlerForModals}

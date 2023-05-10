@@ -3,10 +3,12 @@ import OrdersLoading from "../../Components/Shared/LoadingScreens/OrdersLoading"
 import StaffAllTable from "../../Components/Tables/Staff/StaffAllTable";
 import { StaffContext } from "../../Contexts/StaffContext/StaffProvider";
 import { Link } from "react-router-dom";
+import db from "../../Assets/json/db.json"
 
 const StaffAll = () => {
   const [selectedStaffs, setSelectedStaffs] = useState([]);
   const [approvedStaffs, setApprovedStaffs] = useState([]);
+  const {staffs} = db || {}
   const {
     isLoading,
     searchBarValue,
@@ -128,7 +130,7 @@ const StaffAll = () => {
         <OrdersLoading></OrdersLoading>
       ) : (
         <StaffAllTable
-          rows={filteredStaffsBySearch}
+          rows={staffs}
           approvedStaffs={approvedStaffs}
           setCurrentCustomer={setCurrentStaff}
           handleSelectCheckbox={handleSelectCheckbox}
