@@ -3,6 +3,7 @@ import ConfirmationModal from "../../Components/Modals/ConfirmationModal";
 import OrdersLoading from "../../Components/Shared/LoadingScreens/OrdersLoading";
 import WithdrawConfirmedTable from "../../Components/Tables/Withdraw/WithdrawConfirmedTable";
 import { OrderContext } from "../../Contexts/OrdersContext/OrdersProvider";
+import withdraw from "../../Database/withdraw.json"
 
 const WithdrawConfirmed = () => {
   const [selectedOrders, setSelectedOrders] = useState([]);
@@ -166,7 +167,7 @@ const WithdrawConfirmed = () => {
         <OrdersLoading></OrdersLoading>
       ) : (
         <WithdrawConfirmedTable
-          rows={pendingOrders}
+          rows={withdraw}
           setCurrentOrder={setCurrentOrder}
           handleSelectAllCheckbox={handleSelectAllCheckbox}
           handleSelectCheckbox={handleSelectCheckbox}

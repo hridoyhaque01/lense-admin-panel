@@ -108,16 +108,10 @@ const WithdrawConfirmedTable = ({
                 Name
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-                Email
+                Total Ammount
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-                Payment Method
-              </th>
-              <th className="bg-blueLight text-bold text-lg normal-case">
-                Portfolio link
-              </th>
-              <th className="bg-blueLight text-bold text-lg normal-case">
-                Actions
+                Withdraw Method
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
                 Actions
@@ -128,7 +122,7 @@ const WithdrawConfirmedTable = ({
             {currentRows?.map((order, i) => {
               return (
                 <tr key={i} className="text-center">
-                  <th className="px-0 pl-4">
+                  <th className="px-0">
                     <input
                       type="checkbox"
                       className="checkbox rounded-none"
@@ -139,53 +133,16 @@ const WithdrawConfirmedTable = ({
                     />
                   </th>
                   <td className="px-0">{i + 1}</td>
-                  <td className="px-0 mx-0">#{order.order_id}</td>
                   <td className="px-0 mx-0">
-                    {order?.timestamp?.toDate().toLocaleDateString()}
+                      {order?.timestamp}
                   </td>
-                  <td className="px-0 mx-0">{order.sender_name}</td>
-                  <td className="px-0 mx-0">${order.total_price}.00</td>
-                  <td className="px-0">{order.sender_address}</td>
-                  <td className="px-0 mx-0">{order.receiver_address}</td>
+                  <td className="px-0 mx-0">{order?.Name}</td>
+                  <td className="px-0 mx-0">${order?.totalAmount}</td>
+                  <td className="px-0">{order?.widthdrawMethod}</td>
                   <td className="px-0 py-0">
-                    <div className="dropdown dropdown-bottom dropdown-end">
-                      <label
-                        tabIndex={1}
-                        className="rounded-lg px-3 py-2 w-24 focus:outline-none active:border-none text-primaryMain bg-blueLight cursor-pointer"
-                      >
-                        Pending &nbsp;
-                        <i className="fa-solid fa-angle-down text-sm"></i>
-                      </label>
-                      <ul
-                        tabIndex={1}
-                        className="dropdown-content menu mt-2 m-0.5 shadow bg-base-100 rounded-md w-36"
-                      >
-                        <label
-                          onClick={() =>
-                            updateOrderStatus(order?.order_id, "Processing")
-                          }
-                          // htmlFor="ordersBlockPopup"
-                        >
-                          <li>
-                            <p className="text-successColor py-2 active:bg-blackLow w-full rounded-t-md">
-                              Confirm
-                            </p>
-                          </li>
-                        </label>
-                        <hr className="text-disabledColor opacity-10" />
-
-                        <label
-                          onClick={() => setCurrentOrder(order)}
-                          htmlFor="ordersBlockPopup"
-                        >
-                          <li>
-                            <p className="text-errorColor py-2 active:bg-blackLow rounded-b-md">
-                              Cancel
-                            </p>
-                          </li>
-                        </label>
-                      </ul>
-                    </div>
+                      <p className="rounded-lg px-3 py-2 w-24 focus:outline-none active:border-none text-secondaryMain bg-blueLight">
+                          Confirmed
+                      </p>
                   </td>
                 </tr>
               );

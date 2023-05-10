@@ -23,6 +23,8 @@ module.exports = {
       errorColor: "#FF4646",
       successColor: "#00AE5B",
       warningColor: "#FF6D00",
+      warningLightColor: "#FFEBEB",
+      errorColor: "#FD5D5D",
       infoColor: "#2D8EFF",
       alertColor: "#F4A100",
 

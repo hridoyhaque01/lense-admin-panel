@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import OrdersLoading from "../../Components/Shared/LoadingScreens/OrdersLoading";
 import StaffAllTable from "../../Components/Tables/Staff/StaffAllTable";
 import { StaffContext } from "../../Contexts/StaffContext/StaffProvider";
+import { Link } from "react-router-dom";
 
 const StaffAll = () => {
   const [selectedStaffs, setSelectedStaffs] = useState([]);
@@ -56,7 +57,7 @@ const StaffAll = () => {
 
   return (
     <div className="overflow-x-auto w-full py-10 pr-10">
-      <div className="flex items-center justify-between p-3 bg-secondaryMain text-whiteHigh rounded-t-lg">
+      <div className="flex items-center justify-between p-3 bg-primaryMain text-whiteHigh rounded-t-lg">
         <section className="flex items-center gap-4">
           <div>
             <p className="font-bold text-2xl">Staffs</p>
@@ -89,6 +90,16 @@ const StaffAll = () => {
                 />
               </svg>
             </button>
+          </p>
+          <p>
+          <Link
+              to="/staffAddNew"
+              className="btn bg-whiteHigh hover:bg-whiteLow border-none rounded-full h-12 w-12"
+            >
+              <span className="material-symbols-outlined text-primaryMain">
+                add
+              </span>
+            </Link>
           </p>
         </section>
       </div>
