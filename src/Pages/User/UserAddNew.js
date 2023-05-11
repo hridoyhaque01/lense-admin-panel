@@ -44,7 +44,7 @@ const UserAddNew = () => {
         <p className="font-bold text-2xl pl-4 py-5">Users</p>
       </div>
       <div>
-        <section className="pt-4">
+        <section className="py-4">
           
           <div className="grid items-center justify-center gap-4">
             <form className="flex flex-col gap-4" onSubmit={handleEditBtn}>

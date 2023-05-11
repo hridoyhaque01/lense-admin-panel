@@ -72,7 +72,7 @@ const UserAll = () => {
             name="searchInput"
             placeholder="search"
           />
-          <p>
+          {/* <p>
           <Link
               to="/userAddNew"
               className="btn bg-whiteHigh hover:bg-whiteLow border-none rounded-full h-12 w-12"
@@ -81,7 +81,7 @@ const UserAll = () => {
                 add
               </span>
             </Link>
-          </p>
+          </p> */}
         </section>
       </div>
 

@@ -1,143 +1,112 @@
-import { doc, getDoc } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
-import { useContext } from "react";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import { StaffContext } from "../../Contexts/StaffContext/StaffProvider";
-import { firebaseFirestore } from "../../Firebase/firebase.config";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-const StaffEdit = () => {
-  const { id } = useParams();
-  const { updateSingleStaff } = useContext(StaffContext);
-  const [currentStaff, setCurrentStaff] = useState(null);
-  const location = useLocation();
-  const navigate = useNavigate();
-  const from = location.state?.from?.pathname || "/staffAll";
+export default function FeaturedEdit() {
 
-  useEffect(() => {
-    const fetchSingleStaff = async () => {
-      try {
-        const ref = doc(firebaseFirestore, "userDetails", id);
-        const docSnap = await getDoc(ref);
-        if (docSnap.exists()) {
-          const staff = docSnap.data();
-          return setCurrentStaff(staff);
-        } else {
-          console.log("No such doCUMent!");
-        }
-      } catch (error) {
-        console.error("Error fetching doCUMent!", error);
-      }
-    };
-    fetchSingleStaff();
-  }, [id]);
-
-  const handleEditBtn = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const contact = form.contact.value;
-    const dob = form.dob.value;
-    const gender = form.gender.value;
-    const country = form.country.value;
-    const presentAddress = form.presentAddress.value;
-    const userType = form.userType.value;
-
-    const newStaff = {
-      user_name: name,
-      user_email: email,
-      user_contact: contact,
-      user_dob: dob,
-      user_gender: gender,
-      user_country: country,
-      user_address: presentAddress,
-      user_type: userType,
-    };
-    console.log(newStaff);
-    updateSingleStaff(newStaff, id);
-    setTimeout(() => {
-      navigate(from, { replace: true });
-    }, 1000);
-  };
+    const handleEditBtn = () => {
+        console.log("hello")
+    }
 
   return (
     <section className="w-full mt-10 mr-8 rounded-lg bg-whiteHigh">
       <div className="flex items-center bg-primaryMain text-whiteHigh rounded-t-lg  w-full">
-        <p className="font-bold text-2xl pl-4 py-5">Edit Staffs</p>
+        <p className="font-bold text-2xl pl-4 py-5">Featured Edit</p>
       </div>
       <div>
         <section className="pt-4">
+        {/* 
+Set Password
++01445 4564 2465
+Select Role   */}
           <div className="grid items-center justify-center gap-4">
             <form className="flex flex-col gap-4" onSubmit={handleEditBtn}>
               <div className="flex flex-col w-full items-center justify-center gap-2">
+
+                {/* name  */}
                 
                 <div className="flex items-center justify-center gap-1">
                   <p className=" w-96 text-end">Name:</p>
                   <input
                     type="text"
                     name="name"
-                    placeholder="enter full name"
+                    placeholder="Enter name"
+                    className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
+                  />
+                </div>
+                {/* email  */}
+                <div className="flex items-center justify-center gap-1">
+                  <p className=" w-96 text-end">Email:</p>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
                     className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
                   />
                 </div>
 
+                {/* Full Legal Name  */}
+
                 <div className="flex items-center justify-center gap-1">
-                  <p className=" w-96 text-end">Email Adress:</p>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="email"
-                    className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
-                  />
-                </div>
-                
-                <div className="flex items-center justify-center gap-1">
-                  <p className=" w-96 text-end">Set Password:</p>
+                  <p className=" w-96 text-end">Full Legal Name:</p>
                   <input
                     type="text"
-                    name="password"
-                    placeholder="Set Password"
+                    name="legalName"
+                    placeholder="Enter full name"
                     className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
                   />
                 </div>
+
+                {/* Bank Account Number / IBAN */}
                 
                 <div className="flex items-center justify-center gap-1">
-                  <p className=" w-96 text-end">Confirm New Password:</p>
+                  <p className=" w-96 text-end">Bank Account Number / IBAN:</p>
                   <input
                     type="text"
-                    name="confirmPassword"
-                    placeholder="Set Password"
+                    name="accountNumber"
+                    placeholder="Enter bank account number"
                     className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
                   />
                 </div>
-                
-                
+
+                {/* Bank Official Name */}
+
                 <div className="flex items-center justify-center gap-1">
-                  <p className=" w-96 text-end">Phone Number:</p>
+                  <p className=" w-96 text-end">Bank Official Name:</p>
                   <input
                     type="text"
-                    name="phoneNumber"
-                    placeholder="Phone Number"
+                    name="bankName"
+                    placeholder="Enter bank official name"
                     className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
                   />
                 </div>
                 
-                
                 <div className="flex items-center justify-center gap-1">
-                  <p className=" w-96 text-end">Role:</p>
+                  <p className=" w-96 text-end">country:</p>
                   <select
                     name="userType"
                     className="select bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh font-medium"
                   >
-                    <option value="" disabled>Select Role</option>
-                    <option value={"Admin"}>Admin</option>
-                    <option value={"Manager"}>Manager</option>
+                    <option value="" selected disabled>Select country</option>
+                    <option value={"Admin"}>Bangladesh</option>
+                    <option value={"Manager"}>United States</option>
                   </select>
+                </div>
+
+                {/* Address  */}
+
+                <div className="flex items-center justify-center gap-1">
+                  <p className=" w-96 text-end">Address:</p>
+                  <input
+                    type="text"
+                    name="address"
+                    placeholder="Enter address"
+                    className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
+                  />
                 </div>
                 
               </div>
               <div className="flex items-center justify-end gap-4">
-                <Link to={"/staffAll"}>
+                <Link to={"/snapchatFilter"}>
                   <label className="btn rounded-full w-36 normal-case bg-whiteHigh text-primaryMain border-primaryMain hover:border-primaryMain hover:bg-whiteHigh">
                     Cancel
                   </label>
@@ -151,7 +120,5 @@ const StaffEdit = () => {
         </section>
       </div>
     </section>
-  );
-};
-
-export default StaffEdit;
+  )
+}

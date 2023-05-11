@@ -620,6 +620,7 @@
             "payment_method" : "bank"
         }
     ],
+    
     "withdraw" : [
         {
             "id" : "WNBGpbmuHGcNALDml53dz7ChpqT1",
@@ -816,6 +817,374 @@
             "Name" : "Brooklyn Simmons",
             "totalAmount" : "60.00",
             "widthdrawMethod" : "Verifone"
+        }
+    ],
+    "featured" : [
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT1",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Courtney Henry",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT2",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Cameron Williamson",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT3",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Guy Hawkins",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT4",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Ronald Richards",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT5",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Jenny Wilson",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT6",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Arlene McCoy",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT7",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Jane Cooper",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT2",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Albert Flores",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT8",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Bessie Cooper",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT9",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Brooklyn Simmons",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT11",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Cameron Williamson",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT12",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Guy Hawkins",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT13",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Ronald Richards",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT14",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Jenny Wilson",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT15",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Arlene McCoy",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT16",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Jane Cooper",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT17",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Albert Flores",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT18",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Bessie Cooper",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT19",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Brooklyn Simmons",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT20",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Cameron Williamson",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT2",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Guy Hawkins",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT21",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Ronald Richards",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT22",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Jenny Wilson",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT23",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Arlene McCoy",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT24",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Jane Cooper",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT25",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Albert Flores",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT26",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Bessie Cooper",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT27",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "user_name" : "Brooklyn Simmons",
+            "user_coin" : "60.00",
+            "validity" : "12/02/2022"
+        }
+    ],
+    "categories" : [
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT1",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Courtney Henry",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT2",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Cameron Williamson",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT3",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Guy Hawkins",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT4",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Ronald Richards",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT5",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Jenny Wilson",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT6",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Arlene McCoy",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT7",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Jane Cooper",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT2",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Albert Flores",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT8",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Bessie Cooper",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT9",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Brooklyn Simmons",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT11",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Cameron Williamson",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT12",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Guy Hawkins",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT13",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Ronald Richards",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT14",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Jenny Wilson",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT15",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Arlene McCoy",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT16",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Jane Cooper",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT17",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Albert Flores",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT18",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Bessie Cooper",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT19",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Brooklyn Simmons",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT20",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Cameron Williamson",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT2",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Guy Hawkins",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT21",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Ronald Richards",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT22",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Jenny Wilson",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT23",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Arlene McCoy",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT24",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Jane Cooper",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT25",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Albert Flores",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT26",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Bessie Cooper",
+            "collection_icon" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT27",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "collection_name" : "Brooklyn Simmons",
+            "collection_icon" : "face"
         }
     ]
     

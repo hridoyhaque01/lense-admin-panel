@@ -21,6 +21,15 @@ import WithdrawCancelled from "../Pages/Withdraw/WithdrawCancelled"
 import PrivateRoutes from "../Routes/PrivateRoutes";
 import StaffAll from "../Pages/Staff/StaffAll";
 import UserAll from "../Pages/User/UserAll";
+import UserEdit from "../Pages/EditPages/UserEdit";
+import StaffEdit from "../Pages/EditPages/StaffEdit";
+import ArtistsEdit from "../Pages/EditPages/ArtistsEdit";
+import CollectionAddNew from "../Pages/Categories/CollectionAddNew";
+import FiltersEdit from "../Pages/EditPages/FiltersEdit";
+import CollectionEdit from "../Pages/EditPages/CollectionEdit";
+import FeaturedEdit from "../Pages/EditPages/FeaturedEdit";
+import Categories from "../Pages/Categories/Categories";
+
 
 export const router = createBrowserRouter([
   {
@@ -44,9 +53,14 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: "/userAddNew",
-        element: <UserAddNew></UserAddNew>,
+        path: "/userEdit/:id",
+        element: <UserEdit></UserEdit>,
       },
+
+      // {
+      //   path: "/userAddNew",
+      //   element: <UserAddNew></UserAddNew>,
+      // },
 
       // staff
 
@@ -58,6 +72,11 @@ export const router = createBrowserRouter([
       {
         path: "/staffAddNew",
         element: <StaffAddNew></StaffAddNew>,
+      },
+
+      {
+        path: "/staffEdit/:id",
+        element: <StaffEdit></StaffEdit>,
       },
 
       //filters
@@ -82,6 +101,11 @@ export const router = createBrowserRouter([
         element: <FiltersAddNew></FiltersAddNew>,
       },
 
+      {
+        path: "/filtersEdit/:id",
+        element: <FiltersEdit></FiltersEdit>,
+      },
+
       // artists
 
       {
@@ -99,6 +123,11 @@ export const router = createBrowserRouter([
         element: <ArtistsAddNew></ArtistsAddNew>,
       },
 
+      {
+        path: "/artistEdit/:id",
+        element: <ArtistsEdit></ArtistsEdit>,
+      },
+
       // categories
 
       {
@@ -112,9 +141,31 @@ export const router = createBrowserRouter([
       },
 
       {
+        path: "/categories",
+        element: <Categories></Categories>,
+      },
+
+      {
         path: "/categoriesAddNew",
         element: <CategoriesAddNew></CategoriesAddNew>,
       },
+
+      {
+        path: "/collectionAddNew",
+        element: <CollectionAddNew></CollectionAddNew>,
+      },
+
+      {
+        path: "/collectionEdit/:id",
+        element: <CollectionEdit></CollectionEdit>,
+      },
+
+      {
+        path: "/featuredEdit/:id",
+        element: <FeaturedEdit></FeaturedEdit>,
+      },
+
+      // withdraw 
 
       {
         path: "/withdrawPending",

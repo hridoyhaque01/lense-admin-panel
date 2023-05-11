@@ -73,7 +73,7 @@ const SnapchatFilter = () => {
             name="searchInput"
             placeholder="search"
           />
-          <p>
+          {/* <p>
           <Link
               to="/filtersAddNew"
               className="btn bg-whiteHigh hover:bg-whiteLow border-none rounded-full h-12 w-12"
@@ -82,7 +82,7 @@ const SnapchatFilter = () => {
                 add
               </span>
             </Link>
-          </p>
+          </p> */}
         </section>
       </div>
 

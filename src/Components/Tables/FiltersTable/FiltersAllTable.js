@@ -4,6 +4,7 @@ import { CustomerContext } from "../../../Contexts/CustomerContext/CustomerProvi
 import FiltersConfirmationBlockPopup from "../../Modals/Filters/FiltersConfirmationBlockPopup";
 import EmptyScreen from "../../Shared/EmptyScreens/EmptyScreen";
 import { lense } from "../../../Assets/getImages";
+import ConfirmationModal from "../../Modals/ConfirmationModal";
 
 
 const FiltersAllTable = ({ rows, handleSelectCheckbox }) => {
@@ -150,7 +151,7 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox }) => {
                   <td className="px-0">{filters?.user_coin}</td>
                   <td className="px-0 mx-0">
                     <div className="flex items-center justify-center gap-0">
-                      <label
+                      {/* <label
                         htmlFor="filterBlockPopup"
                         onClick={() => setCurrentCustomer(filters)}
                         className="btn rounded-full p-0 bg-whiteHigh text-blackMid border-none hover:bg-whiteHigh"
@@ -158,10 +159,10 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox }) => {
                         <span className="material-symbols-outlined p-0">
                           block
                         </span>
-                      </label>
+                      </label> */}
                       <Link
                         to={{
-                          pathname: `/customeredit/${filters?.user_id}`,
+                          pathname: `/filtersEdit/${filters?.user_id}`,
                           customer: filters,
                         }}
                       >
@@ -174,6 +175,17 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox }) => {
                           </span>
                         </label>
                       </Link>
+                      <button type="button" onClick={()=> console.log("delete")}
+                      >
+                        <label
+                          htmlFor="deletePopup"
+                          className="btn rounded-full p-3 bg-whiteHigh text-errorColor border-none hover:bg-whiteHigh"
+                        >
+                          <span className="material-symbols-outlined">
+                            delete
+                          </span>
+                        </label>
+                      </button>
                     </div>
                   </td>
                 </tr>
@@ -238,10 +250,14 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox }) => {
         
       </section>
 
-      <FiltersConfirmationBlockPopup
+      <ConfirmationModal
+        actionName="delete"
+      ></ConfirmationModal>
+
+{/* <FiltersConfirmationBlockPopup
         currentCustomer={currentCustomer}
         clickHandlerForModals={clickHandlerForModals}
-      ></FiltersConfirmationBlockPopup>
+      ></FiltersConfirmationBlockPopup> */}
     </div>
   );
 };

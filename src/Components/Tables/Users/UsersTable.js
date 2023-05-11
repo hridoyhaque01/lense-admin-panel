@@ -140,7 +140,7 @@ const UsersTable = ({ rows, handleSelectCheckbox }) => {
                     />
                   </th>
                   <td className="px-0 mx-0">
-                        <p>{i+1}</p>
+                        <p>{rowsPerPage * (currentPage - 1) + i+1 }</p>
                   </td>
                   <td className="px-0 mx-0">
                   {user?.createdAt}

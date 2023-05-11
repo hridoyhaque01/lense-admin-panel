@@ -132,7 +132,7 @@ const WithdrawCancelledTable = ({
                       }}
                     />
                   </th>
-                  <td className="px-0">{i + 1}</td>
+                  <td className="px-0">{rowsPerPage * (currentPage - 1) + i+1 }</td>
                   <td className="px-0 mx-0">
                       {order?.timestamp}
                   </td>

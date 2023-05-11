@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { StaffContext } from "../../Contexts/StaffContext/StaffProvider";
 
-const StaffAddNew = () => {
+const CollectionAddNew = () => {
   const { addOneStaff } = useContext(StaffContext);
   const location = useLocation();
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ const StaffAddNew = () => {
   return (
     <section className="w-full mt-10 mr-8 rounded-lg bg-whiteHigh">
       <div className="flex items-center bg-primaryMain text-whiteHigh rounded-t-lg  w-full">
-        <p className="font-bold text-2xl pl-4 py-5">Add Staffs</p>
+        <p className="font-bold text-2xl pl-4 py-5">Add Collection</p>
       </div>
       <div>
         <section className="pt-4">
@@ -58,68 +58,13 @@ Select Role   */}
                   <input
                     type="text"
                     name="name"
-                    placeholder="staff name"
+                    placeholder="enter full name"
                     className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
                   />
                 </div>
-
-                <div className="flex items-center justify-center gap-1">
-                  <p className=" w-96 text-end">Email Adress:</p>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="staff email"
-                    className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
-                  />
-                </div>
-                
-                <div className="flex items-center justify-center gap-1">
-                  <p className=" w-96 text-end">Set Password:</p>
-                  <input
-                    type="text"
-                    name="password"
-                    placeholder="Set Password"
-                    className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
-                  />
-                </div>
-                
-                <div className="flex items-center justify-center gap-1">
-                  <p className=" w-96 text-end">Confirm New Password:</p>
-                  <input
-                    type="text"
-                    name="confirmPassword"
-                    placeholder="confirm Password"
-                    className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
-                  />
-                </div>
-                
-                
-                <div className="flex items-center justify-center gap-1">
-                  <p className=" w-96 text-end">Phone Number:</p>
-                  <input
-                    type="text"
-                    name="phoneNumber"
-                    placeholder="staff phone Number"
-                    className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
-                  />
-                </div>
-                
-                
-                <div className="flex items-center justify-center gap-1">
-                  <p className=" w-96 text-end">Role:</p>
-                  <select
-                    name="userType"
-                    className="select bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh font-medium"
-                  >
-                    <option value="" disabled>Select Role</option>
-                    <option value={"Admin"}>Admin</option>
-                    <option value={"Manager"}>Manager</option>
-                  </select>
-                </div>
-                
               </div>
               <div className="flex items-center justify-end gap-4">
-                <Link to={"/staffAll"}>
+                <Link to={"/collections"}>
                   <label className="btn rounded-full w-36 normal-case bg-whiteHigh text-primaryMain border-primaryMain hover:border-primaryMain hover:bg-whiteHigh">
                     Cancel
                   </label>
@@ -136,4 +81,4 @@ Select Role   */}
   );
 };
 
-export default StaffAddNew;
+export default CollectionAddNew;

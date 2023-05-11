@@ -41,7 +41,7 @@ const CategoriesAddNew = () => {
   return (
     <section className="w-full mt-10 mr-8 rounded-lg bg-whiteHigh">
       <div className="flex items-center bg-primaryMain text-whiteHigh rounded-t-lg  w-full">
-        <p className="font-bold text-2xl pl-4 py-5">Categories</p>
+        <p className="font-bold text-2xl pl-4 py-5">Add Stuff</p>
       </div>
       <div>
         <section className="pt-4">
@@ -119,11 +119,14 @@ Select Role   */}
                 
               </div>
               <div className="flex items-center justify-end gap-4">
-                <Link to={"/staffAll"}>
+                {/* <Link to={"/staffAll"}>
                   <label className="btn rounded-full w-36 normal-case bg-whiteHigh text-primaryMain border-primaryMain hover:border-primaryMain hover:bg-whiteHigh">
                     Cancel
                   </label>
-                </Link>
+                </Link> */}
+                <button className="btn rounded-full w-36 normal-case bg-whiteHigh text-primaryMain border-primaryMain hover:border-primaryMain hover:bg-whiteHigh">
+                  Cancel
+                </button>
                 <button className="btn submit rounded-full w-36 normal-case bg-primaryMain border-primaryMain hover:text-primaryMain hover:bg-whiteHigh hover:border-primaryMain">
                   Save
                 </button>

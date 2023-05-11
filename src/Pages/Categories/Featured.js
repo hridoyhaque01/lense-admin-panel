@@ -2,11 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import OrdersLoading from "../../Components/Shared/LoadingScreens/OrdersLoading";
 import { CustomerContext } from "../../Contexts/CustomerContext/CustomerProvider";
 import { Link } from "react-router-dom";
-import CategoriesAllTable from "../../Components/Tables/Categories/CategoriesAllTable";
+import FeaturedTable from "../../Components/Tables/Categories/FeaturedTable";
+import db from "../../Assets/json/db.json"
 
 const Featured = () => {
   const [selectedCustomers, setSelectedCustomers] = useState([]);
   const [approvedCustomers, setApprovedCustomers] = useState([]);
+  const {featured}  = db || {}
+
   const {
     isLoading,
     fetchCustomers,
@@ -72,14 +75,14 @@ const Featured = () => {
             placeholder="search"
           />
           <p>
-          <Link
+          {/* <Link
               to="/categoriesAddNew"
               className="btn bg-whiteHigh hover:bg-whiteLow border-none rounded-full h-12 w-12"
             >
               <span className="material-symbols-outlined text-primaryMain">
                 add
               </span>
-            </Link>
+            </Link> */}
           </p>
         </section>
       </div>
@@ -107,11 +110,11 @@ const Featured = () => {
       {isLoading ? (
         <OrdersLoading></OrdersLoading>
       ) : (
-        <CategoriesAllTable
-          rows={approvedCustomers}
+        <FeaturedTable
+          rows={featured}
           setCurrentCustomer={setCurrentCustomer}
           handleSelectCheckbox={handleSelectCheckbox}
-        ></CategoriesAllTable>
+        ></FeaturedTable>
       )}
     </div>
   );
