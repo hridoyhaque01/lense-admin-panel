@@ -147,7 +147,7 @@ const StaffAllTable = ({ rows, handleSelectCheckbox }) => {
                       
                       <Link
                         to={{
-                          pathname: `/staffedit/${staff?.user_id}`,
+                          pathname: `/staffEdit/${staff?.user_id}`,
                           staff: staff,
                         }}
                       >

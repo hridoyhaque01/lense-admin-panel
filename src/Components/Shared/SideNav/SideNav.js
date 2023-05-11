@@ -47,10 +47,13 @@ const SideNav = () => {
   //   activateMenu(navRoute);
   // };
 
+  console.log(isActive)
+  console.log(isSubmenuActive)
+
   return (
     <div
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      // onMouseEnter={handleMouseEnter}
+      // onMouseLeave={handleMouseLeave}
       className={`${
         isClosed ? "w-20" : "w-72"
       } bg-whiteHigh flex flex-col gap-1 h-full mt-10 rounded-r-lg sideNav overflow-x-hidden `}
@@ -75,17 +78,7 @@ const SideNav = () => {
           </div>
         </div>
 
-        <div
-          className={`${
-            canShow ? "hidden" : "block"
-          } flex items-start justify-between gap-4 overflow-auto`}
-        >
-          <button onClick={toggleSideNav} className="btn-btn-ghost">
-            <span className="material-symbols-outlined">
-              menu_open
-            </span>
-          </button>
-        </div>
+        
       </section>
       {/* routes */}
       <section className="flex flex-col justify-start items-start gap-1">
@@ -150,6 +143,8 @@ const SideNav = () => {
 
         {/* filters */}
         {(userType === "Admin" || userType === "Manager") && (
+
+
           <div
             onClick={() => activateMenu("filters")}
             className={`collapse ${!isClosed ? "collapse-arrow" : null} ${
@@ -158,7 +153,7 @@ const SideNav = () => {
               isActive === "filters" ? "text-primaryMain" : "text-blackMid"
             }`}
           >
-            <input type="checkbox" />
+            <input type="checkbox" className="cursor-pointer" />
             <div className="collapse-title">
               <div className="flex items-center">
                 <span className="material-symbols-outlined pl-2">
@@ -185,7 +180,7 @@ const SideNav = () => {
                   to="/snapchatFilter"
                   onClick={() => setIsSubmenuActive("snapchat")}
                 >
-                  <p>Snapchat Filter</p>
+                  <p>Snapchat</p>
                 </Link>
                 <Link
                   className={`w-full py-2 pl-12 ${
@@ -196,7 +191,7 @@ const SideNav = () => {
                   to="/tiktokFilter"
                   onClick={() => setIsSubmenuActive("tiktok")}
                 >
-                  <p>Tiktok Filter</p>
+                  <p>Tiktok</p>
                 </Link>
                 <Link
                   className={`w-full py-2 pl-12 ${
@@ -297,6 +292,17 @@ const SideNav = () => {
             </div>
             <div className="collapse-content p-0 bg-whiteHigh">
               <div className="flex flex-col justify-start items-start gap-2 text-blackMid">
+                <Link
+                  className={`w-full py-2 pl-12 ${
+                    isActive === "category" &&
+                    isSubmenuActive === "categories" &&
+                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
+                  }`}
+                  to="/categories"
+                  onClick={() => setIsSubmenuActive("categories")}
+                >
+                  <p>Categories</p>
+                </Link>
                 <Link
                   className={`w-full py-2 pl-12 ${
                     isActive === "category" &&
@@ -444,6 +450,15 @@ const SideNav = () => {
           </div>
         )}
       </section>
+      <div
+          className="flex items-start justify-between gap-4 overflow-auto pl-6"
+        >
+          <button onClick={toggleSideNav} className="btn-btn-ghost">
+            <span className="material-symbols-outlined">
+              menu_open
+            </span>
+          </button>
+        </div>
     </div>
   );
 };

@@ -44,8 +44,7 @@ const WithdrawPendingTable = ({
   };
 
   const handleAllCheckbox = (orders, e) => {
-    // handleSelectAllCheckbox(orders, e);
-    console.log("hello world");
+    handleSelectAllCheckbox(orders, e);
   };
 
   const renderPagination = () => {
@@ -132,7 +131,7 @@ const WithdrawPendingTable = ({
                       }}
                     />
                   </th>
-                  <td className="px-0">{i + 1}</td>
+                  <td className="px-0">{rowsPerPage * (currentPage - 1) + i + 1 }</td>
                   <td className="px-0 mx-0">
                       {order?.timestamp}
                   </td>

@@ -2,18 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import OrdersLoading from "../../Components/Shared/LoadingScreens/OrdersLoading";
 import { CustomerContext } from "../../Contexts/CustomerContext/CustomerProvider";
 import { Link } from "react-router-dom";
-import CategoriesAllTable from "../../Components/Tables/Categories/CollectionTable";
-import CollectionTable from "../../Components/Tables/Categories/CollectionTable";
+import CategoriesTable from "../../Components/Tables/Categories/CategoriesTable";
 
 import db from "../../Assets/json/db.json"
 
-
-const Collections = () => {
+const Categories = () => {
   const [selectedCustomers, setSelectedCustomers] = useState([]);
   const [approvedCustomers, setApprovedCustomers] = useState([]);
 
   const {categories} = db || {}
-
 
   const {
     isLoading,
@@ -67,7 +64,7 @@ const Collections = () => {
       <div className="flex items-center justify-between p-3 bg-primaryMain text-whiteHigh rounded-t-lg">
         <section className="flex items-center gap-4">
           <div>
-            <p className="font-bold text-2xl">Collections</p>
+            <p className="font-bold text-2xl">Categories</p>
           </div>
         </section>
         <section className="flex items-center gap-4 w-2/5">
@@ -81,7 +78,7 @@ const Collections = () => {
           />
           <p>
           <Link
-              to="/collectionAddNew"
+              to="/categoriesAddNew"
               className="btn bg-whiteHigh hover:bg-whiteLow border-none rounded-full h-12 w-12"
             >
               <span className="material-symbols-outlined text-primaryMain">
@@ -115,14 +112,14 @@ const Collections = () => {
       {isLoading ? (
         <OrdersLoading></OrdersLoading>
       ) : (
-        <CollectionTable
+        <CategoriesTable
           rows={categories}
           setCurrentCustomer={setCurrentCustomer}
           handleSelectCheckbox={handleSelectCheckbox}
-        ></CollectionTable>
+        ></CategoriesTable>
       )}
     </div>
   );
 };
 
-export default Collections;
+export default Categories;

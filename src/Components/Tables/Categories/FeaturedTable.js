@@ -1,18 +1,22 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { OrderContext } from "../../../Contexts/OrdersContext/OrdersProvider";
+import { CustomerContext } from "../../../Contexts/CustomerContext/CustomerProvider";
 import EmptyScreen from "../../Shared/EmptyScreens/EmptyScreen";
+import { lense } from "../../../Assets/getImages";
+import ConfirmationModal from "../../Modals/ConfirmationModal";
 
-const ArtistsPendingTable = ({
-  rows,
-  handleSelectCheckbox,
-  handleSelectAllCheckbox,
-}) => {
-  const { searchBarValue, setCurrentOrder, updateOrderStatus } =
-    useContext(OrderContext);
+
+const FeaturedTable = ({ rows, handleSelectCheckbox }) => {
+  const {
+    searchBarValue,
+    currentCustomer,
+    setCurrentCustomer,
+    clickHandlerForModals,
+  } = useContext(CustomerContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [activeButton, setActiveButton] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+
 
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
@@ -44,9 +48,11 @@ const ArtistsPendingTable = ({
     handleSelectCheckbox(order, e);
   };
 
+//   const = 
+
   const handleAllCheckbox = (orders, e) => {
     // handleSelectAllCheckbox(orders, e);
-    console.log("hello world")
+    console.log('filters');
   };
 
   const renderPagination = () => {
@@ -85,7 +91,7 @@ const ArtistsPendingTable = ({
 
   return (
     <div className=" relative pb-16">
-      {rows.length > 0 ? (
+      {rows?.length > 0 ? (
         <table className="table w-full">
           <thead>
             <tr className="font-bold text-center text-3xl">
@@ -98,32 +104,31 @@ const ArtistsPendingTable = ({
                   handleAllCheckbox(currentRows, e);
                 }}
               />
+              
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-                Serial
+              Lense
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
                 Created
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-                Name
+              Artist
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-                Email
+              Price(Coins)
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-               Payment Method
+              Valid Till
               </th>
-              <th className="bg-blueLight text-bold text-lg normal-case">
-                Portfolio link
-              </th>
+              
               <th className="bg-blueLight text-bold text-lg normal-case">
                 Actions
               </th>
             </tr>
           </thead>
           <tbody className="text-center">
-            {currentRows?.map((artist, i) => {
+            {currentRows?.map((feature, i) => {
               return (
                 <tr key={i} className="text-center">
                   <th className="px-0">
@@ -132,56 +137,59 @@ const ArtistsPendingTable = ({
                       className="checkbox rounded-none"
                       name="checkbox"
                       onChange={(e) => {
-                        handleCheckbox(artist, e);
+                        handleCheckbox(feature, e);
                       }}
                     />
                   </th>
-                  <td className="px-0">{rowsPerPage * (currentPage - 1) + i+1 }</td>
-                  <td className="px-0 mx-0">{artist?.createdAt}</td>
                   <td className="px-0 mx-0">
-                    {artist?.user_name}
+                        <div className="w-8 h-8 mx-auto">
+                            <img src={lense} alt="" />
+                        </div>
                   </td>
-                  <td className="px-0 mx-0">{artist?.user_email}</td>
-                  <td className="px-0 mx-0">{artist?.payment_method}</td>
-                  <td className="px-0">{artist?.user_portfolio_link}</td>
-                  <td className="px-0 py-0">
-                    <div className="dropdown dropdown-bottom dropdown-end">
-                      <label
-                        tabIndex={1}
-                        className="rounded-lg px-3 py-2 w-24 focus:outline-none active:border-none text-primaryMain bg-blueLight cursor-pointer"
+                  <td className="px-0 mx-0">
+                    {feature?.createdAt}
+                  </td>
+                  <td className="px-0 mx-0">{feature?.user_name}</td>
+                  <td className="px-0">{feature?.user_coin}</td>
+                  <td className="px-0">{feature?.validity}</td>
+                  <td className="px-0 mx-0">
+                    <div className="flex items-center justify-center gap-0">
+                      {/* <label
+                        htmlFor="filterBlockPopup"
+                        onClick={() => setCurrentCustomer(feature)}
+                        className="btn rounded-full p-0 bg-whiteHigh text-blackMid border-none hover:bg-whiteHigh"
                       >
-                        Pending &nbsp;
-                        <i className="fa-solid fa-angle-down text-sm"></i>
-                      </label>
-                      <ul
-                        tabIndex={1}
-                        className="dropdown-content menu mt-2 m-0.5 shadow bg-base-100 rounded-md w-36"
+                        <span className="material-symbols-outlined p-0">
+                          block
+                        </span>
+                      </label> */}
+                      <Link
+                        to={{
+                          pathname: `/featuredEdit/${feature?.user_id}`,
+                          customer: feature,
+                        }}
                       >
                         <label
-                          onClick={() =>
-                            updateOrderStatus(artist?.order_id, "Processing")
-                          }
-                          // htmlFor="ordersBlockPopup"
+                          htmlFor="pausePopup"
+                          className="btn rounded-full p-3 bg-whiteHigh text-alertColor border-none hover:bg-whiteHigh"
                         >
-                          <li>
-                            <p className="text-successColor py-2 active:bg-blackLow w-full rounded-t-md">
-                              Confirm
-                            </p>
-                          </li>
+                          <span className="material-symbols-outlined">
+                            border_color
+                          </span>
                         </label>
-                        <hr className="text-disabledColor opacity-10" />
-                        
+                      </Link>
+
+                      <button type="button" onClick={()=> console.log("delete")}
+                      >
                         <label
-                          onClick={() => setCurrentOrder(artist)}
-                          htmlFor="ordersBlockPopup"
+                          htmlFor="deletePopup"
+                          className="btn rounded-full p-3 bg-whiteHigh text-errorColor border-none hover:bg-whiteHigh"
                         >
-                          <li>
-                            <p className="text-errorColor py-2 active:bg-blackLow rounded-b-md">
-                              Cancel
-                            </p>
-                          </li>
+                          <span className="material-symbols-outlined">
+                            delete
+                          </span>
                         </label>
-                      </ul>
+                      </button>
                     </div>
                   </td>
                 </tr>
@@ -192,6 +200,7 @@ const ArtistsPendingTable = ({
       ) : (
         <EmptyScreen></EmptyScreen>
       )}
+
       <section className="flex items-center justify-end gap-4 py-4 absolute bottom-0 right-0">
       <div>{renderPagination()}</div>
         <div>
@@ -244,8 +253,12 @@ const ArtistsPendingTable = ({
         
         
       </section>
+
+      <ConfirmationModal
+        actionName="delete"
+      ></ConfirmationModal>
     </div>
   );
 };
 
-export default ArtistsPendingTable;
+export default FeaturedTable;

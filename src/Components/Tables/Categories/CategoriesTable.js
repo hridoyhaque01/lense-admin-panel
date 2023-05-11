@@ -5,9 +5,10 @@ import FiltersConfirmationBlockPopup from "../../Modals/Filters/FiltersConfirmat
 import EmptyScreen from "../../Shared/EmptyScreens/EmptyScreen";
 import { lense } from "../../../Assets/getImages";
 import CategoriesConfirmationBlockPopup from "../../Modals/Categories/CategoriesConfirmationBlockPopup";
+import ConfirmationModal from "../../Modals/ConfirmationModal";
 
 
-const CategoriesAllTable = ({ rows, handleSelectCheckbox }) => {
+const CategoriesTable = ({ rows, handleSelectCheckbox }) => {
   const {
     searchBarValue,
     currentCustomer,
@@ -107,6 +108,9 @@ const CategoriesAllTable = ({ rows, handleSelectCheckbox }) => {
               
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
+              Categories icon
+              </th>
+              <th className="bg-blueLight text-bold text-lg normal-case">
               Collections name
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
@@ -119,7 +123,7 @@ const CategoriesAllTable = ({ rows, handleSelectCheckbox }) => {
             </tr>
           </thead>
           <tbody className="text-center">
-            {currentRows?.map((customer, i) => {
+            {currentRows?.map((category, i) => {
               return (
                 <tr key={i} className="text-center">
                   <th className="px-0 ">
@@ -128,30 +132,35 @@ const CategoriesAllTable = ({ rows, handleSelectCheckbox }) => {
                       className="checkbox rounded-none"
                       name="checkbox"
                       onChange={(e) => {
-                        handleCheckbox(customer, e);
+                        handleCheckbox(category, e);
                       }}
                     />
                   </th>
-                  <td className="px-0 mx-0">{customer?.user_name}</td>
                   <td className="px-0 mx-0">
-                    {customer?.timestamp?.toDate().toLocaleDateString()}
+                        <span class="material-symbols-outlined text-blackMid text-4xl">
+                            {category?.collection_icon}
+                        </span>
+                  </td>
+                  <td className="px-0 mx-0">{category?.collection_name}</td>
+                  <td className="px-0 mx-0">
+                    {category?.createdAt}
                   </td>
                   
                   <td className="px-0 mx-0">
                     <div className="flex items-center justify-center gap-0">
-                      <label
-                        htmlFor="categoriesBlockPopup"
-                        onClick={() => setCurrentCustomer(customer)}
+                      {/* <label
+                        htmlFor="categorysBlockPopup"
+                        onClick={() => setCurrentcategory(category)}
                         className="btn rounded-full p-0 bg-whiteHigh text-blackMid border-none hover:bg-whiteHigh"
                       >
                         <span className="material-symbols-outlined p-0">
                           block
                         </span>
-                      </label>
+                      </label> */}
                       <Link
                         to={{
-                          pathname: `/customeredit/${customer?.user_id}`,
-                          customer: customer,
+                          pathname: `/collectionEdit/${category?.user_id}`,
+                          category: category,
                         }}
                       >
                         <label
@@ -163,6 +172,17 @@ const CategoriesAllTable = ({ rows, handleSelectCheckbox }) => {
                           </span>
                         </label>
                       </Link>
+                      <button type="button" onClick={()=> console.log("delete")}
+                      >
+                        <label
+                          htmlFor="deletePopup"
+                          className="btn rounded-full p-3 bg-whiteHigh text-errorColor border-none hover:bg-whiteHigh"
+                        >
+                          <span className="material-symbols-outlined">
+                            delete
+                          </span>
+                        </label>
+                      </button>
                     </div>
                   </td>
                 </tr>
@@ -225,12 +245,13 @@ const CategoriesAllTable = ({ rows, handleSelectCheckbox }) => {
         
         
       </section>
-      <CategoriesConfirmationBlockPopup
+      <ConfirmationModal actionName="delete"></ConfirmationModal>
+      {/* <CategoriesConfirmationBlockPopup
         currentCustomer={currentCustomer}
         clickHandlerForModals={clickHandlerForModals}
-      ></CategoriesConfirmationBlockPopup>
+      ></CategoriesConfirmationBlockPopup> */}
     </div>
   );
 };
 
-export default CategoriesAllTable;
+export default CategoriesTable;
