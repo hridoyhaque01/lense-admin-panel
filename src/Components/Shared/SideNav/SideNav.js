@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import avater from "../../../Assets/img/profile/avater.png";
 import { AuthContext } from "../../../Contexts/AuthContext/AuthProvider";
@@ -9,6 +9,8 @@ const SideNav = () => {
   const [canShow, setCanShow] = useState(false);
   const [isActive, setIsActive] = useState("dashboard");
   const [isSubmenuActive, setIsSubmenuActive] = useState();
+  const [isSubmenuOpen, setIsSubmenuOpen] = useState({});
+  const submenuRef = useRef({});
 
   const { dbUser, userType } = useContext(AuthContext);
 
@@ -19,26 +21,19 @@ const SideNav = () => {
     setCanShow(!canShow);
   };
 
-  // const openSideNav = (e) => {
-  //   setIsClosed(false);
-  // };
+  const handleMenus = (menu, submenu, submenuOpen) => {
+    setIsActive(menu);
+    setIsSubmenuActive(submenu);
 
-  const handleMouseEnter = () => {
-    setIsClosed(false);
-    setTimeout(() => {
-      setCanShow(false);
-    }, 150);
-  };
-  const handleMouseLeave = () => {
-    setIsClosed(true);
-    setTimeout(() => {
-      setCanShow(true);
-    }, 150);
-    // setCanShow(true);
-  };
+    if (isSubmenuActive !== "") {
+      console.log(true);
+    }
 
-  const activateMenu = (index) => {
-    setIsActive(index);
+    if (!submenuOpen) {
+      setIsSubmenuOpen((prev) => ({
+        [menu]: !prev[menu],
+      }));
+    }
   };
 
   // const handleNavigation = (navRoute) => {
@@ -47,13 +42,8 @@ const SideNav = () => {
   //   activateMenu(navRoute);
   // };
 
-  console.log(isActive)
-  console.log(isSubmenuActive)
-
   return (
     <div
-      // onMouseEnter={handleMouseEnter}
-      // onMouseLeave={handleMouseLeave}
       className={`${
         isClosed ? "w-20" : "w-72"
       } bg-whiteHigh flex flex-col gap-1 h-full mt-10 rounded-r-lg sideNav overflow-x-hidden `}
@@ -64,401 +54,415 @@ const SideNav = () => {
       >
         <div className="flex items-center gap-2 shrink-0">
           <div>
-            <img
-              className="w-12 h-12 rounded-full"
-              src={avater}
-              alt=""
-            />
+            <img className="w-12 h-12 rounded-full" src={avater} alt="" />
           </div>
-          <div className={`${
-            canShow ? "hidden" : "block"
-          }`}>
+          <div className={`${canShow ? "hidden" : "block"}`}>
             <p className="font-black">Lense App</p>
             <p className="text-sm">Super Admin</p>
           </div>
         </div>
-
-        
       </section>
       {/* routes */}
       <section className="flex flex-col justify-start items-start gap-1">
-        {/* dashboard */}
-        {(userType === "Admin" || userType === "Manager") && (
-          <div className="w-full">
-            <Link
-              onClick={() => activateMenu("dashboard")}
-              className={`flex items-center w-full py-4 ${
-                isActive === "dashboard"
-                  ? "bg-whiteMid text-primaryMain border-r-2 border-primaryMain"
-                  : "text-blackMid"
-              }`}
-              to="/"
-            >
-              <span className="material-symbols-outlined pl-6">dashboard</span>
-              &nbsp;
-              <p className={`${canShow ? "hidden" : "block"} shrink-0`}>Dashboard</p>
-            </Link>
-          </div>
-        )}
-
-        {/* users */}
-
-        {(userType === "Admin" || userType === "Manager") && (
-          <div className="w-full">
-            <Link
-              onClick={() => activateMenu("users")}
-              className={`flex items-center w-full py-4 ${
-                isActive === "users"
-                  ? "bg-whiteMid text-primaryMain border-r-2 border-primaryMain"
-                  : "text-blackMid"
-              }`}
-              to="/userAll"
-            >
-              <span className="material-symbols-outlined pl-6">person</span>
-              &nbsp;
-              <p className={`${canShow ? "hidden" : "block"} shrink-0`}>Users</p>
-            </Link>
-          </div>
-        )}
-
-        {/* staffs */}
-
-        {(userType === "Admin" || userType === "Manager") && (
-          <div className="w-full">
-            <Link
-              onClick={() => activateMenu("staffs")}
-              className={`flex items-center w-full py-4 ${
-                isActive === "staffs"
-                  ? "bg-whiteMid text-primaryMain border-r-2 border-primaryMain"
-                  : "text-blackMid"
-              }`}
-              to="/staffAll"
-            >
-              <span className="material-symbols-outlined pl-6 ">group</span>
-              &nbsp;
-              <p className={`${canShow ? "hidden" : "block"} shrink-0`}>Staffs</p>
-            </Link>
-          </div>
-        )}
-
-        {/* filters */}
-        {(userType === "Admin" || userType === "Manager") && (
-
-
-          <div
-            onClick={() => activateMenu("filters")}
-            className={`collapse ${!isClosed ? "collapse-arrow" : null} ${
-              isClosed || isActive !== "filters" ? "collapse-close" : ""
-            } w-full mx-auto ${
-              isActive === "filters" ? "text-primaryMain" : "text-blackMid"
+        {/* dashboard  */}
+        <div className="w-full overflow-hidden capitalize">
+          <Link
+            to="/"
+            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
+              isActive === "dashboard"
+                ? "text-primaryMain bg-whiteMid border-r-2 border-primaryMain"
+                : "text-blackMid"
             }`}
+            onClick={() => handleMenus("dashboard", "", false)}
           >
-            <input type="checkbox" className="cursor-pointer" />
-            <div className="collapse-title">
-              <div className="flex items-center">
-                <span className="material-symbols-outlined pl-2">
-                  photo_library
-                </span>
-                &nbsp;
-                <p
-                  className={`${
-                    canShow ? "hidden" : "block"
-                  } flex items-center justify-between w-full shrink-0`}
-                >
-                  <span>Filters</span>
-                </p>
-              </div>
-            </div>
-            <div className="collapse-content p-0 bg-whiteHigh">
-              <div className="flex flex-col justify-start items-start gap-2 text-blackMid">
-                <Link
-                  className={`w-full py-2 pl-12 ${
-                    isActive === "filters" &&
-                    isSubmenuActive === "snapchat" &&
-                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
-                  }`}
-                  to="/snapchatFilter"
-                  onClick={() => setIsSubmenuActive("snapchat")}
-                >
-                  <p>Snapchat</p>
-                </Link>
-                <Link
-                  className={`w-full py-2 pl-12 ${
-                    isActive === "filters" &&
-                    isSubmenuActive === "tiktok" &&
-                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
-                  }`}
-                  to="/tiktokFilter"
-                  onClick={() => setIsSubmenuActive("tiktok")}
-                >
-                  <p>Tiktok</p>
-                </Link>
-                <Link
-                  className={`w-full py-2 pl-12 ${
-                    isActive === "filters" &&
-                    isSubmenuActive === "e-card" &&
-                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
-                  }`}
-                  to="/ecardFilter"
-                  onClick={() => setIsSubmenuActive("e-card")}
-                >
-                  <p>E-Cards</p>
-                </Link>
-              </div>
-            </div>
-          </div>
-        )}
+            <span className="material-symbols-outlined">dashboard</span>
+            &nbsp;
+            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
+              <span>dashboard</span>
+            </p>
+          </Link>
+        </div>
 
-        {/* artists */}
-        {(userType === "Admin" || userType === "Manager") && (
+        {/* users  */}
+
+        <div className="w-full overflow-hidden capitalize">
+          <Link
+            to="/userAll"
+            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
+              isActive === "users"
+                ? "text-primaryMain bg-whiteMid border-r-2 border-primaryMain"
+                : "text-blackMid"
+            }`}
+            onClick={() => handleMenus("users", "", false)}
+          >
+            <span className="material-symbols-outlined">person</span>
+            &nbsp;
+            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
+              <span>users</span>
+            </p>
+          </Link>
+        </div>
+
+        {/* staffs  */}
+
+        <div className="w-full overflow-hidden capitalize">
+          <Link
+            to="/staffAll"
+            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
+              isActive === "staffs"
+                ? "text-primaryMain bg-whiteMid border-r-2 border-primaryMain"
+                : "text-blackMid"
+            }`}
+            onClick={() => handleMenus("staffs", "", false)}
+          >
+            <span className="material-symbols-outlined">group</span>
+            &nbsp;
+            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
+              <span>staffs</span>
+            </p>
+          </Link>
+        </div>
+
+        {/* filters  */}
+
+        <div className="w-full overflow-hidden capitalize">
           <div
-            onClick={() => activateMenu("artists")}
-            className={`collapse ${!isClosed ? "collapse-arrow" : null} ${
-              isClosed || isActive !== "artists" ? "collapse-close" : ""
-            } w-full mx-auto ${
+            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
+              isActive === "filter" ? "text-primaryMain" : "text-blackMid"
+            }`}
+            onClick={() => handleMenus("filter", "")}
+          >
+            <span className="material-symbols-outlined">photo_library</span>
+            &nbsp;
+            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
+              <span>filters</span>
+            </p>
+            <span
+              class={`material-symbols-outlined duration-100 ${
+                isSubmenuOpen["filter"] ? "rotate-180" : "rotate-0"
+              } ${isClosed && "hidden"}`}
+            >
+              expand_more
+            </span>
+          </div>
+          {/* submenu  */}
+
+          <div
+            ref={(ref) => (submenuRef.current["filter"] = ref)}
+            className={`flex flex-col gap-1 duration-200`}
+            style={{
+              maxHeight:
+                isSubmenuOpen["filter"] && isActive === "filter"
+                  ? `${submenuRef.current["filter"]?.scrollHeight}px`
+                  : "0",
+            }}
+          >
+            {/* Submenu items */}
+            <Link
+              to="/snapchatFilter"
+              className={`py-3 pl-12 ${
+                isSubmenuActive === "snapchat"
+                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
+                  : "text-blackMid"
+              }`}
+              onClick={() => handleMenus("filter", "snapchat", true)}
+            >
+              <p>Snapchat</p>
+            </Link>
+            <Link
+              to="/tiktokFilter"
+              className={`py-3 pl-12 ${
+                isSubmenuActive === "tiktok"
+                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
+                  : "text-blackMid"
+              }`}
+              onClick={() => handleMenus("filter", "tiktok", true)}
+            >
+              <p>tiktok</p>
+            </Link>
+            <Link
+              to="/ecardFilter"
+              className={`py-3 pl-12 ${
+                isSubmenuActive === "card"
+                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
+                  : "text-blackMid"
+              }`}
+              onClick={() => handleMenus("filter", "card", true)}
+            >
+              <p>e-card</p>
+            </Link>
+          </div>
+        </div>
+
+        {/* artists  */}
+
+        <div className="w-full overflow-hidden capitalize">
+          <div
+            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
               isActive === "artists" ? "text-primaryMain" : "text-blackMid"
             }`}
+            onClick={() => handleMenus("artists", "")}
           >
-            <input type="checkbox" />
-            <div className="collapse-title">
-              <div className="flex items-center">
-                <span className="material-symbols-outlined pl-2">
-                  imagesearch_roller
-                </span>
-                &nbsp;
-                <p
-                  className={`${
-                    canShow ? "hidden" : "block"
-                  } flex items-center justify-between w-full shrink-0`}
-                >
-                  <span>Artists</span>
-                </p>
-              </div>
-            </div>
-            <div className="collapse-content p-0 bg-whiteHigh">
-              <div className="flex flex-col justify-start items-start gap-2 text-blackMid">
-                <Link
-                  className={`w-full py-2 pl-12 ${
-                    isActive === "artists" &&
-                    isSubmenuActive === "pending" &&
-                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
-                  }`}
-                  to="/artistsPending"
-                  onClick={() => setIsSubmenuActive("pending")}
-                >
-                  <p>Pending</p>
-                </Link>
-                <Link
-                  className={`w-full py-2 pl-12 ${
-                    isActive === "artists" &&
-                    isSubmenuActive === "approved" &&
-                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
-                  }`}
-                  to="/artistsApproved"
-                  onClick={() => setIsSubmenuActive("approved")}
-                >
-                  <p>Approved</p>
-                </Link>
-              </div>
-            </div>
+            <span className="material-symbols-outlined">
+              imagesearch_roller
+            </span>
+            &nbsp;
+            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
+              <span>artists</span>
+            </p>
+            <span
+              class={`material-symbols-outlined duration-100 ${
+                isSubmenuOpen["artists"] ? "rotate-180" : "rotate-0"
+              } ${isClosed && "hidden"}`}
+            >
+              expand_more
+            </span>
           </div>
-        )}
+          {/* submenu  */}
 
-        {/* category */}
-        {(userType === "Admin" || userType === "Manager") && (
           <div
-            onClick={() => activateMenu("category")}
-            className={`collapse ${!isClosed ? "collapse-arrow" : null} ${
-              isClosed || isActive !== "category" ? "collapse-close" : ""
-            } w-full mx-auto ${
+            ref={(ref) => (submenuRef.current["artists"] = ref)}
+            className={`flex flex-col gap-1 duration-200`}
+            style={{
+              maxHeight:
+                isSubmenuOpen["artists"] && isActive === "artists"
+                  ? `${submenuRef.current["artists"]?.scrollHeight}px`
+                  : "0",
+            }}
+          >
+            {/* Submenu items */}
+            <Link
+              to="/artistsPending"
+              className={`py-3 pl-12 ${
+                isSubmenuActive === "pending"
+                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
+                  : "text-blackMid"
+              }`}
+              onClick={() => handleMenus("artists", "pending", true)}
+            >
+              <p>pending</p>
+            </Link>
+            <Link
+              to="/artistsApproved"
+              className={`py-3 pl-12 ${
+                isSubmenuActive === "approved"
+                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
+                  : "text-blackMid"
+              }`}
+              onClick={() => handleMenus("artists", "approved", true)}
+            >
+              <p>approved</p>
+            </Link>
+          </div>
+        </div>
+
+        {/* category  */}
+
+        <div className="w-full overflow-hidden capitalize">
+          <div
+            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
               isActive === "category" ? "text-primaryMain" : "text-blackMid"
             }`}
+            onClick={() => handleMenus("category", "")}
           >
-            <input type="checkbox" />
-            <div className="collapse-title">
-              <div className="flex items-center">
-                <span className="material-symbols-outlined pl-2">
-                  receipt_long
-                </span>
-                &nbsp;
-                <p
-                  className={`${
-                    canShow ? "hidden" : "block"
-                  } flex items-center justify-between w-full shrink-0`}
-                >
-                  <span>Category</span>
-                </p>
-              </div>
-            </div>
-            <div className="collapse-content p-0 bg-whiteHigh">
-              <div className="flex flex-col justify-start items-start gap-2 text-blackMid">
-                <Link
-                  className={`w-full py-2 pl-12 ${
-                    isActive === "category" &&
-                    isSubmenuActive === "categories" &&
-                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
-                  }`}
-                  to="/categories"
-                  onClick={() => setIsSubmenuActive("categories")}
-                >
-                  <p>Categories</p>
-                </Link>
-                <Link
-                  className={`w-full py-2 pl-12 ${
-                    isActive === "category" &&
-                    isSubmenuActive === "Collections" &&
-                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
-                  }`}
-                  to="/collections"
-                  onClick={() => setIsSubmenuActive("Collections")}
-                >
-                  <p>Collections</p>
-                </Link>
-                <Link
-                  className={`w-full py-2 pl-12 ${
-                    isActive === "category" &&
-                    isSubmenuActive === "Featured" &&
-                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
-                  }`}
-                  to="/featured"
-                  onClick={() => setIsSubmenuActive("Featured")}
-                >
-                  <p>Featured</p>
-                </Link>
-              </div>
-            </div>
+            <span className="material-symbols-outlined">receipt_long</span>
+            &nbsp;
+            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
+              <span>categories</span>
+            </p>
+            <span
+              class={`material-symbols-outlined duration-100 ${
+                isSubmenuOpen["category"] ? "rotate-180" : "rotate-0"
+              } ${isClosed && "hidden"}`}
+            >
+              expand_more
+            </span>
           </div>
-        )}
+          {/* submenu  */}
 
-        {/* withdraws */}
-
-        {(userType === "Admin" || userType === "Manager") && (
           <div
-            onClick={() => activateMenu("withdraws")}
-            className={`collapse ${!isClosed ? "collapse-arrow" : null} ${
-              isClosed || isActive !== "withdraws" ? "collapse-close" : ""
-            } w-full mx-auto ${
-              isActive === "withdraws" ? "text-primaryMain" : "text-blackMid"
+            ref={(ref) => (submenuRef.current["category"] = ref)}
+            className={`flex flex-col gap-1 duration-200`}
+            style={{
+              maxHeight:
+                isSubmenuOpen["category"] && isActive === "category"
+                  ? `${submenuRef.current["category"]?.scrollHeight}px`
+                  : "0",
+            }}
+          >
+            {/* Submenu items */}
+            <Link
+              to="/categories"
+              className={`py-3 pl-12 ${
+                isSubmenuActive === "categories"
+                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
+                  : "text-blackMid"
+              }`}
+              onClick={() => handleMenus("category", "categories", true)}
+            >
+              <p>categories</p>
+            </Link>
+            <Link
+              to="/collections"
+              className={`py-3 pl-12 ${
+                isSubmenuActive === "collections"
+                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
+                  : "text-blackMid"
+              }`}
+              onClick={() => handleMenus("category", "collections", true)}
+            >
+              <p>collections</p>
+            </Link>
+            <Link
+              to="/featured"
+              className={`py-3 pl-12 ${
+                isSubmenuActive === "featured"
+                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
+                  : "text-blackMid"
+              }`}
+              onClick={() => handleMenus("category", "featured", true)}
+            >
+              <p>featured</p>
+            </Link>
+          </div>
+        </div>
+
+        {/* withdraw  */}
+
+        <div className="w-full overflow-hidden capitalize">
+          <div
+            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
+              isActive === "withdraw" ? "text-primaryMain" : "text-blackMid"
             }`}
+            onClick={() => handleMenus("withdraw", "")}
           >
-            <input type="checkbox" />
-            <div className="collapse-title">
-              <div className="flex items-center">
-                <span className="material-symbols-outlined pl-2">paid</span>
-                &nbsp;
-                <p
-                  className={`${
-                    canShow ? "hidden" : "block"
-                  } flex items-center justify-between w-full shrink-0`}
-                >
-                  <span>Withdraws</span>
-                </p>
-              </div>
-            </div>
-            <div className="collapse-content p-0 bg-whiteHigh">
-              <div className="flex flex-col justify-start items-start gap-2 text-blackMid">
-                <Link
-                  className={`w-full py-2 pl-12 ${
-                    isActive === "withdraws" &&
-                    isSubmenuActive === "Pending" &&
-                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
-                  }`}
-                  to="/withdrawPending"
-                  onClick={() => setIsSubmenuActive("Pending")}
-                >
-                  <p>Pending</p>
-                </Link>
-                <Link
-                  className={`w-full py-2 pl-12 ${
-                    isActive === "withdraws" &&
-                    isSubmenuActive === "Completed" &&
-                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
-                  }`}
-                  to="/withdrawConfirmed"
-                  onClick={() => setIsSubmenuActive("Completed")}
-                >
-                  <p>Completed</p>
-                </Link>
-                <Link
-                  className={`w-full py-2 pl-12 ${
-                    isActive === "withdraws" &&
-                    isSubmenuActive === "Cancelled" &&
-                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
-                  }`}
-                  to="/withdrawCancelled"
-                  onClick={() => setIsSubmenuActive("Cancelled")}
-                >
-                  <p>Cancelled</p>
-                </Link>
-              </div>
-            </div>
+            <span className="material-symbols-outlined">paid</span>
+            &nbsp;
+            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
+              <span>withdraw</span>
+            </p>
+            <span
+              class={`material-symbols-outlined duration-100 ${
+                isSubmenuOpen["withdraw"] ? "rotate-180" : "rotate-0"
+              } ${isClosed && "hidden"}`}
+            >
+              expand_more
+            </span>
           </div>
-        )}
+          {/* submenu  */}
 
-        {/* app setings */}
-        {(userType === "Admin" || userType === "Manager") && (
           <div
-            onClick={() => activateMenu("appSetting")}
-            className={`collapse ${!isClosed ? "collapse-arrow" : null} ${
-              isClosed || isActive !== "appSetting" ? "collapse-close" : ""
-            } w-full mx-auto ${
+            ref={(ref) => (submenuRef.current["withdraw"] = ref)}
+            className={`flex flex-col gap-1 duration-200`}
+            style={{
+              maxHeight:
+                isSubmenuOpen["withdraw"] && isActive === "withdraw"
+                  ? `${submenuRef.current["withdraw"]?.scrollHeight}px`
+                  : "0",
+            }}
+          >
+            {/* Submenu items */}
+            <Link
+              to="/withdrawPending"
+              className={`py-3 pl-12 ${
+                isSubmenuActive === "pending"
+                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
+                  : "text-blackMid"
+              }`}
+              onClick={() => handleMenus("withdraw", "pending", true)}
+            >
+              <p>pending</p>
+            </Link>
+            <Link
+              to="/withdrawConfirmed"
+              className={`py-3 pl-12 ${
+                isSubmenuActive === "completed"
+                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
+                  : "text-blackMid"
+              }`}
+              onClick={() => handleMenus("withdraw", "completed", true)}
+            >
+              <p>completed</p>
+            </Link>
+            <Link
+              to="/withdrawCancelled"
+              className={`py-3 pl-12 ${
+                isSubmenuActive === "cancelled"
+                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
+                  : "text-blackMid"
+              }`}
+              onClick={() => handleMenus("withdraw", "cancelled", true)}
+            >
+              <p>cancelled</p>
+            </Link>
+          </div>
+        </div>
+
+        {/* app settings  */}
+
+        <div className="w-full overflow-hidden capitalize">
+          <div
+            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
               isActive === "appSetting" ? "text-primaryMain" : "text-blackMid"
             }`}
+            onClick={() => handleMenus("appSetting", "")}
           >
-            <input type="checkbox" />
-            <div className="collapse-title">
-              <div className="flex items-center">
-                <span className="material-symbols-outlined pl-2">
-                  app_settings_alt
-                </span>
-                &nbsp;
-                <p
-                  className={`${
-                    canShow ? "hidden" : "block"
-                  } flex items-center justify-between w-full shrink-0`}
-                >
-                  <span>App Settings</span>
-                </p>
-              </div>
-            </div>
-            <div className="collapse-content p-0 bg-whiteHigh">
-              <div className="flex flex-col justify-start items-start gap-2 text-blackMid">
-                <Link
-                  className={`w-full py-2 pl-12 ${
-                    isActive === "appSetting" &&
-                    isSubmenuActive === "Notifications" &&
-                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
-                  }`}
-                  to="/orderspending"
-                  onClick={() => setIsSubmenuActive("Notifications")}
-                >
-                  <p>Snapchat Filter</p>
-                </Link>
-                <Link
-                  className={`w-full py-2 pl-12 ${
-                    isActive === "appSetting" &&
-                    isSubmenuActive === "Others" &&
-                    "bg-blueLight text-primaryMain border-r-2 border-primaryMain"
-                  }`}
-                  to="/ordersprocessing"
-                  onClick={() => setIsSubmenuActive("Others")}
-                >
-                  <p>Tiktok Filter</p>
-                </Link>
-              </div>
-            </div>
-          </div>
-        )}
-      </section>
-      <div
-          className="flex items-start justify-between gap-4 overflow-auto pl-6"
-        >
-          <button onClick={toggleSideNav} className="btn-btn-ghost">
-            <span className="material-symbols-outlined">
-              menu_open
+            <span className="material-symbols-outlined">app_settings_alt</span>
+            &nbsp;
+            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
+              <span>app settings</span>
+            </p>
+            <span
+              class={`material-symbols-outlined duration-100 ${
+                isSubmenuOpen["appSetting"] ? "rotate-180" : "rotate-0"
+              } ${isClosed && "hidden"}`}
+            >
+              expand_more
             </span>
-          </button>
+          </div>
+          {/* submenu  */}
+
+          <div
+            ref={(ref) => (submenuRef.current["appSetting"] = ref)}
+            className={`flex flex-col gap-1 duration-200`}
+            style={{
+              maxHeight:
+                isSubmenuOpen["appSetting"] && isActive === "appSetting"
+                  ? `${submenuRef.current["appSetting"]?.scrollHeight}px`
+                  : "0",
+            }}
+          >
+            {/* Submenu items */}
+            <Link
+              to="/"
+              className={`py-3 pl-12 ${
+                isSubmenuActive === "notifications"
+                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
+                  : "text-blackMid"
+              }`}
+              onClick={() => handleMenus("appSetting", "notifications", true)}
+            >
+              <p>notifications</p>
+            </Link>
+            <Link
+              to="/otherSetting"
+              className={`py-3 pl-12 ${
+                isSubmenuActive === "others"
+                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
+                  : "text-blackMid"
+              }`}
+              onClick={() => handleMenus("appSetting", "others", true)}
+            >
+              <p>others</p>
+            </Link>
+          </div>
         </div>
+      </section>
+      <div className="flex items-start justify-between gap-4 overflow-auto pl-6">
+        <button onClick={toggleSideNav} className="btn-btn-ghost">
+          <span className="material-symbols-outlined">menu_open</span>
+        </button>
+      </div>
     </div>
   );
 };

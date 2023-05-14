@@ -1,7 +1,5 @@
-import avater from "./img/profile/avater.png"
-import lense from "./img/filters/lense.png"
+import lense from "./img/filters/lense.png";
+import avater from "./img/profile/avater.png";
+import upload from "./img/upload.png";
 
-export {
-    avater,
-    lense
-}
+export { avater, lense, upload };
