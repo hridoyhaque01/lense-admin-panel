@@ -1,12 +1,24 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { StaffContext } from "../../Contexts/StaffContext/StaffProvider";
+import {upload} from "../../Assets/getImages"
 
 const CollectionAddNew = () => {
   const { addOneStaff } = useContext(StaffContext);
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/staffAll";
+
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+  
+  const handleDeleteFile = () => {
+    setSelectedFile(null);
+  };
+
 
   const handleEditBtn = (event) => {
     event.preventDefault();
@@ -46,58 +58,66 @@ const CollectionAddNew = () => {
       <section className="py-4 bg-whiteHigh">
         <form className="w-8/12 flex flex-col mx-auto gap-2">
 
-          {/* name  */}
+          {/* platform  */}
           <div className="flex items-center justify-center gap-2">
-            <p className=" w-1/3 text-end">Name:</p>
+            <p className=" w-1/3 text-end">Platform:</p>
             <input
               type="text"
-              name="name"
-              placeholder="artist name"
+              name="platform"
+              placeholder="platform name"
               className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
               required
             />
+          </div>
+
+          {/* category  */}
+          
+          <div className="flex items-center justify-center gap-2">
+            <p className=" w-1/3 text-end">Category:</p>
+            <select
+              name="category"
+              className="select w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium"
+              required
+            >
+              <option value="" selected disabled>
+                Select Any
+              </option>
+              <option value={""}>Bangladesh</option>
+              <option value={""}>USA</option>
+            </select>
+          </div>
+
+          {/* type  */}
+          
+          <div className="flex items-center justify-center gap-2">
+            <p className=" w-1/3 text-end">Type:</p>
+            <select
+              name="type"
+              className="select w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium"
+              required
+            >
+              <option value="" selected disabled>
+                Select Any
+              </option>
+              <option value={""}>Bangladesh</option>
+              <option value={""}>USA</option>
+            </select>
           </div>
 
           
-          {/* username name  */}
+          {/* Collection name  */}
 
           <div className="flex items-center justify-center gap-2">
-            <p className=" w-1/3 text-end">Username:</p>
+            <p className=" w-1/3 text-end">Collection name:</p>
             <input
               type="text"
-              name="username"
-              placeholder="username"
-              className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
-              required
-            />
-          </div>
-          
-          {/* mobile nubmer  */}
-
-          <div className="flex items-center justify-center gap-2">
-            <p className=" w-1/3 text-end">Mobile number:</p>
-            <input
-              type="number"
-              name="mobile-number"
-              placeholder="contact number"
+              name="collection-name"
+              placeholder="collection name"
               className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
               required
             />
           </div>
 
-          {/* email  */}
-          <div className="flex items-center justify-center gap-2">
-            <p className=" w-1/3 text-end">Email:</p>
-            <input
-              type="email"
-              name="email"
-              placeholder="artis email"
-              className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
-              required
-            />
-          </div>
-
-                     
           {/* description  */}
           
           <div className="flex items-center justify-center gap-2">
@@ -106,108 +126,73 @@ const CollectionAddNew = () => {
             <textarea name="description" className="h-16 pt-2 resize-none input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh" placeholder="description"></textarea>
           </div>
 
-          {/* subscription  */}
+          
+          {/* availibility  */}
           
           <div className="flex items-center justify-center gap-2">
-            <p className=" w-1/3 text-end">Subscription:</p>
-            <input
-              type="text"
-              name="subscription"
-              placeholder="user name"
-              className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
-            />
-          </div>
-
-          {/* file uploads  */}
-          
-          <div className="flex items-center justify-center gap-2">
-            <p className=" w-1/3 text-end">Uploaded files:</p>
-            <input
-              type="number"
-              name="upload-files"
-              placeholder="uploaded files"
-              className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
-            />
-          </div>
-
-          {/* Earned:  */}
-          
-          <div className="flex items-center justify-center gap-2">
-            <p className=" w-1/3 text-end">Earned:</p>
-            <input
-              type="number"
-              name="earned"
-              placeholder="earned"
-              className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
-            />
-          </div>
-
-          {/* Payout  */}
-          
-          <div className="flex items-center justify-center gap-2">
-            <p className=" w-1/3 text-end">Payout:</p>
-            <input
-              type="number"
-              name="payout"
-              placeholder="payout"
-              className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
-            />
-          </div>
-
-          {/* bank number  */}
-
-          <div className="flex items-center justify-center gap-2">
-            <p className=" w-1/3 text-end">Bank Account Number / IBAN::</p>
-            <input
-              type="number"
-              name="bank-number"
-              placeholder="bank account number"
-              className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
-              required
-            />
-          </div>
-
-          {/* bank name  */}
-
-          <div className="flex items-center justify-center gap-2">
-            <p className=" w-1/3 text-end">Bank Official Name:</p>
-            <input
-              type="text"
-              name="bank-name"
-              placeholder="bank official name"
-              className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
-              required
-            />
-          </div>
-          {/* Country  */}
-
-          <div className="flex items-center justify-center gap-2">
-            <p className=" w-1/3 text-end">Country:</p>
+            <p className=" w-1/3 text-end">Availability::</p>
             <select
-              name="userType"
+              name="availability"
               className="select w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium"
               required
             >
               <option value="" selected disabled>
-                Select Country
+                Select Any
               </option>
-              <option value={"Admin"}>Bangladesh</option>
-              <option value={"Manager"}>USA</option>
+              <option value={""}>Bangladesh</option>
+              <option value={""}>USA</option>
             </select>
           </div>
 
-          {/* address  */}
-
+          
+          {/* Artist  */}
+          
           <div className="flex items-center justify-center gap-2">
-            <p className=" w-1/3 text-end">Address:</p>
+            <p className=" w-1/3 text-end">Artist name:</p>
             <input
               type="text"
-              name="address"
-              placeholder="address"
+              name="artist-name"
+              placeholder="artist name"
               className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
               required
             />
           </div>
+
+          
+          {/* upload  */}
+
+          <div className="w-2/3 flex flex-col gap-4 ml-auto">
+              <div className="border border-dotted border-primaryMain rounded-lg py-6 px-4 flex flex-col justify-center items-center gap-2">
+                <img src={upload} alt="" className="w-10" />
+                <label
+                  className="cursor-pointer capitalize text-primaryMain font-medium"
+                  htmlFor="fileUpload"
+                >
+                  file upload
+                </label>
+                <input
+                  type="file"
+                  onChange={handleFileChange}
+                  id="fileUpload"
+                  className="hidden"
+                />
+              </div>
+
+              {selectedFile && (
+                <div className="flex items-center gap-4">
+                  <p>{selectedFile?.name}</p>{" "}
+                  <button
+                    className="w-6 h-6 flex items-center justify-center rounded-full bg-errorMidColor"
+                    onClick={handleDeleteFile}
+                  >
+                    <span className="material-symbols-outlined text-sm text-whiteHigh">
+                      close
+                    </span>
+                  </button>
+                </div>
+              )}
+            </div>
+
           {/* buttons  */}
 
           <div className="flex items-center justify-end gap-4 mt-4">

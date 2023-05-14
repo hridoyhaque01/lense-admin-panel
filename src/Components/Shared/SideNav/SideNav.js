@@ -98,7 +98,7 @@ const SideNav = () => {
               <span>filters</span>
             </p>
             <span
-              class={`material-symbols-outlined duration-100 ${
+              className={`material-symbols-outlined duration-100 ${
                 isSubmenuOpen["filter"] ? "rotate-180" : "rotate-0"
               } ${isClosed && "hidden"}`}
             >
@@ -207,7 +207,7 @@ const SideNav = () => {
               <span>artists</span>
             </p>
             <span
-              class={`material-symbols-outlined duration-100 ${
+              className={`material-symbols-outlined duration-100 ${
                 isSubmenuOpen["artists"] ? "rotate-180" : "rotate-0"
               } ${isClosed && "hidden"}`}
             >
@@ -340,7 +340,7 @@ const SideNav = () => {
               <span>categories</span>
             </p>
             <span
-              class={`material-symbols-outlined duration-100 ${
+              className={`material-symbols-outlined duration-100 ${
                 isSubmenuOpen["category"] ? "rotate-180" : "rotate-0"
               } ${isClosed && "hidden"}`}
             >
@@ -407,7 +407,7 @@ const SideNav = () => {
               <span>withdraw</span>
             </p>
             <span
-              class={`material-symbols-outlined duration-100 ${
+              className={`material-symbols-outlined duration-100 ${
                 isSubmenuOpen["withdraw"] ? "rotate-180" : "rotate-0"
               } ${isClosed && "hidden"}`}
             >
@@ -476,7 +476,7 @@ const SideNav = () => {
               <span>app settings</span>
             </p>
             <span
-              class={`material-symbols-outlined duration-100 ${
+              className={`material-symbols-outlined duration-100 ${
                 isSubmenuOpen["appSetting"] ? "rotate-180" : "rotate-0"
               } ${isClosed && "hidden"}`}
             >
