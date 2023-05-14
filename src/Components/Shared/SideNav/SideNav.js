@@ -22,12 +22,13 @@ const SideNav = () => {
   };
 
   const handleMenus = (menu, submenu, submenuOpen) => {
-    setIsActive(menu);
-    setIsSubmenuActive(submenu);
 
-    if (isSubmenuActive !== "") {
-      console.log(true);
+    if (menu === "dashboard" || menu === "users" || menu === "staffs" || submenu !== "") {
+      setIsActive(menu);
+      setIsSubmenuActive(submenu);
     }
+
+    
 
     if (!submenuOpen) {
       setIsSubmenuOpen((prev) => ({
@@ -130,7 +131,7 @@ const SideNav = () => {
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
               isActive === "filter" ? "text-primaryMain" : "text-blackMid"
             }`}
-            onClick={() => handleMenus("filter", "")}
+            onClick={() => handleMenus("filter", "", false)}
           >
             <span className="material-symbols-outlined">photo_library</span>
             &nbsp;
@@ -152,7 +153,7 @@ const SideNav = () => {
             className={`flex flex-col gap-1 duration-200`}
             style={{
               maxHeight:
-                isSubmenuOpen["filter"] && isActive === "filter"
+                isSubmenuOpen["filter"] 
                   ? `${submenuRef.current["filter"]?.scrollHeight}px`
                   : "0",
             }}
@@ -201,7 +202,7 @@ const SideNav = () => {
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
               isActive === "artists" ? "text-primaryMain" : "text-blackMid"
             }`}
-            onClick={() => handleMenus("artists", "")}
+            onClick={() => handleMenus("artists", "",false)}
           >
             <span className="material-symbols-outlined">
               imagesearch_roller
@@ -225,7 +226,7 @@ const SideNav = () => {
             className={`flex flex-col gap-1 duration-200`}
             style={{
               maxHeight:
-                isSubmenuOpen["artists"] && isActive === "artists"
+                isSubmenuOpen["artists"]
                   ? `${submenuRef.current["artists"]?.scrollHeight}px`
                   : "0",
             }}
@@ -263,7 +264,7 @@ const SideNav = () => {
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
               isActive === "category" ? "text-primaryMain" : "text-blackMid"
             }`}
-            onClick={() => handleMenus("category", "")}
+            onClick={() => handleMenus("category", "",false)}
           >
             <span className="material-symbols-outlined">receipt_long</span>
             &nbsp;
@@ -285,7 +286,7 @@ const SideNav = () => {
             className={`flex flex-col gap-1 duration-200`}
             style={{
               maxHeight:
-                isSubmenuOpen["category"] && isActive === "category"
+                isSubmenuOpen["category"]
                   ? `${submenuRef.current["category"]?.scrollHeight}px`
                   : "0",
             }}
@@ -334,7 +335,7 @@ const SideNav = () => {
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
               isActive === "withdraw" ? "text-primaryMain" : "text-blackMid"
             }`}
-            onClick={() => handleMenus("withdraw", "")}
+            onClick={() => handleMenus("withdraw", "",false)}
           >
             <span className="material-symbols-outlined">paid</span>
             &nbsp;
@@ -356,7 +357,7 @@ const SideNav = () => {
             className={`flex flex-col gap-1 duration-200`}
             style={{
               maxHeight:
-                isSubmenuOpen["withdraw"] && isActive === "withdraw"
+                isSubmenuOpen["withdraw"]
                   ? `${submenuRef.current["withdraw"]?.scrollHeight}px`
                   : "0",
             }}
@@ -405,7 +406,7 @@ const SideNav = () => {
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
               isActive === "appSetting" ? "text-primaryMain" : "text-blackMid"
             }`}
-            onClick={() => handleMenus("appSetting", "")}
+            onClick={() => handleMenus("appSetting", "",false)}
           >
             <span className="material-symbols-outlined">app_settings_alt</span>
             &nbsp;
@@ -427,7 +428,7 @@ const SideNav = () => {
             className={`flex flex-col gap-1 duration-200`}
             style={{
               maxHeight:
-                isSubmenuOpen["appSetting"] && isActive === "appSetting"
+                isSubmenuOpen["appSetting"]
                   ? `${submenuRef.current["appSetting"]?.scrollHeight}px`
                   : "0",
             }}
