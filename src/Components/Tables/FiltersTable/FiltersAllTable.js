@@ -113,9 +113,15 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox, redirect }) => {
                 Artist
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
+                Collection
+              </th>
+              <th className="bg-blueLight text-bold text-lg normal-case">
                 Price(Coins)
               </th>
 
+              <th className="bg-blueLight text-bold text-lg normal-case">
+                Link
+              </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
                 Actions
               </th>
@@ -142,7 +148,9 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox, redirect }) => {
                   </td>
                   <td className="px-0 mx-0">{filters?.createdAt}</td>
                   <td className="px-0 mx-0">{filters?.user_name}</td>
+                  <td className="px-0 mx-0">{filters?.user_collection}</td>
                   <td className="px-0">{filters?.user_coin}</td>
+                  <td className="px-0">{filters?.user_link}</td>
                   <td className="px-0 mx-0">
                     <div className="flex items-center justify-center gap-0">
                       {/* <label

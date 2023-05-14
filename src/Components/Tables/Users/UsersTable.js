@@ -115,6 +115,9 @@ const UsersTable = ({ rows, handleSelectCheckbox }) => {
               Name
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
+              mobile
+              </th>
+              <th className="bg-blueLight text-bold text-lg normal-case">
               Email
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
@@ -146,6 +149,7 @@ const UsersTable = ({ rows, handleSelectCheckbox }) => {
                   {user?.createdAt}
                   </td>
                   <td className="px-0 mx-0">{user?.user_name}</td>
+                  <td className="px-0 mx-0">{user?.user_number}</td>
                   <td className="px-0">{user?.user_email}</td>
                   <td className="px-0">yes</td>
                   <td className="px-0 mx-0">

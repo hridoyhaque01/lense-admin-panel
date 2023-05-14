@@ -58,7 +58,7 @@ const DeliveryManEdit = () => {
   };
 
   return (
-    <section className="w-full mt-10 mr-8">
+    <section className="w-full overflow-auto pt-10 pb-32 pr-10">
       <div className="flex items-center bg-secondaryMain text-whiteHigh rounded-t-lg w-full">
         <p className="font-bold text-2xl pl-4 py-6">Edit</p>
       </div>

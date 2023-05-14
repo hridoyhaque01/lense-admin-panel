@@ -10,7 +10,7 @@ export default function FiltersEdit() {
   const { redirect } = state || {};
 
   return (
-    <section className="w-full mt-10 mr-8 rounded-lg">
+    <section className="w-full overflow-auto pt-10 pb-32 pr-10 rounded-lg">
       <div className="flex items-center bg-primaryMain text-whiteHigh rounded-t-lg  w-full">
         <p className="font-bold text-2xl pl-4 py-5">Edit Filter</p>
       </div>

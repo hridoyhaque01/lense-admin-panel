@@ -39,7 +39,7 @@ const UserAddNew = () => {
   };
 
   return (
-    <section className="w-full mt-10 mr-8 rounded-lg bg-whiteHigh">
+    <section className="overflow-auto w-full pt-10 pb-32 pr-10 rounded-lg bg-whiteHigh">
       <div className="flex items-center bg-primaryMain text-whiteHigh rounded-t-lg  w-full">
         <p className="font-bold text-2xl pl-4 py-5">Users</p>
       </div>
