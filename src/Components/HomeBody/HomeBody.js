@@ -32,7 +32,7 @@ const HomeBody = () => {
     },
   ];
   return (
-    <div className="flex flex-col justify-around pt-10 gap-4 w-full">
+    <div className="flex flex-col justify-around pty-10 gap-4 w-full">
       {/* 4 top cards */}
       <section className="flex justify-between gap-8 px-4">
         {data.map((data, index) => (

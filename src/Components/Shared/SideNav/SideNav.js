@@ -28,7 +28,6 @@ const SideNav = () => {
       setIsSubmenuActive(submenu);
     }
 
-    
 
     if (!submenuOpen) {
       setIsSubmenuOpen((prev) => ({
@@ -47,7 +46,7 @@ const SideNav = () => {
     <div
       className={`${
         isClosed ? "w-20" : "w-72"
-      } bg-whiteHigh flex flex-col gap-1 h-full mt-10 rounded-r-lg sideNav overflow-x-hidden `}
+      } bg-navyDark flex flex-col gap-1 h-full sideNav overflow-x-hidden text-whiteHigh`}
     >
       {/* user area */}
       <section
@@ -57,7 +56,7 @@ const SideNav = () => {
           <div>
             <img className="w-12 h-12 rounded-full" src={avater} alt="" />
           </div>
-          <div className={`${canShow ? "hidden" : "block"}`}>
+          <div className={`${canShow ? "hidden" : "block"} `}>
             <p className="font-black">Lense App</p>
             <p className="text-sm">Super Admin</p>
           </div>
@@ -71,8 +70,7 @@ const SideNav = () => {
             to="/"
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
               isActive === "dashboard"
-                ? "text-primaryMain bg-whiteMid border-r-2 border-primaryMain"
-                : "text-blackMid"
+                && "bg-primaryMain"
             }`}
             onClick={() => handleMenus("dashboard", "", false)}
           >
@@ -90,9 +88,7 @@ const SideNav = () => {
           <Link
             to="/userAll"
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "users"
-                ? "text-primaryMain bg-whiteMid border-r-2 border-primaryMain"
-                : "text-blackMid"
+              isActive === "users" && "bg-primaryMain"
             }`}
             onClick={() => handleMenus("users", "", false)}
           >
@@ -110,9 +106,7 @@ const SideNav = () => {
           <Link
             to="/staffAll"
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "staffs"
-                ? "text-primaryMain bg-whiteMid border-r-2 border-primaryMain"
-                : "text-blackMid"
+              isActive === "staffs" && "bg-primaryMain"
             }`}
             onClick={() => handleMenus("staffs", "", false)}
           >
@@ -129,7 +123,7 @@ const SideNav = () => {
         <div className="w-full overflow-hidden capitalize">
           <div
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "filter" ? "text-primaryMain" : "text-blackMid"
+              isActive === "filter" ? "text-primaryMain" : "text-whiteHigh"
             }`}
             onClick={() => handleMenus("filter", "", false)}
           >
@@ -163,8 +157,8 @@ const SideNav = () => {
               to="/snapchatFilter"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "snapchat"
-                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
-                  : "text-blackMid"
+                  ? "bg-blueLight text-primaryMain"
+                  : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("filter", "snapchat", true)}
             >
@@ -174,8 +168,8 @@ const SideNav = () => {
               to="/tiktokFilter"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "tiktok"
-                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
-                  : "text-blackMid"
+                  ? "bg-blueLight text-primaryMain"
+                  : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("filter", "tiktok", true)}
             >
@@ -185,8 +179,8 @@ const SideNav = () => {
               to="/ecardFilter"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "card"
-                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
-                  : "text-blackMid"
+                  ? "bg-blueLight text-primaryMain"
+                  : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("filter", "card", true)}
             >
@@ -200,7 +194,7 @@ const SideNav = () => {
         <div className="w-full overflow-hidden capitalize">
           <div
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "artists" ? "text-primaryMain" : "text-blackMid"
+              isActive === "artists" ? "text-primaryMain" : "text-whiteHigh"
             }`}
             onClick={() => handleMenus("artists", "",false)}
           >
@@ -236,8 +230,8 @@ const SideNav = () => {
               to="/artistsPending"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "pending"
-                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
-                  : "text-blackMid"
+                  ? "bg-blueLight text-primaryMain"
+                  : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("artists", "pending", true)}
             >
@@ -247,8 +241,8 @@ const SideNav = () => {
               to="/artistsApproved"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "approved"
-                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
-                  : "text-blackMid"
+                  ? "bg-blueLight text-primaryMain"
+                  : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("artists", "approved", true)}
             >
@@ -262,7 +256,7 @@ const SideNav = () => {
         <div className="w-full overflow-hidden capitalize">
           <div
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "category" ? "text-primaryMain" : "text-blackMid"
+              isActive === "category" ? "text-primaryMain" : "text-whiteHigh"
             }`}
             onClick={() => handleMenus("category", "",false)}
           >
@@ -296,8 +290,8 @@ const SideNav = () => {
               to="/categories"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "categories"
-                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
-                  : "text-blackMid"
+                  ? "bg-blueLight text-primaryMain"
+                  : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("category", "categories", true)}
             >
@@ -307,8 +301,8 @@ const SideNav = () => {
               to="/collections"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "collections"
-                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
-                  : "text-blackMid"
+                  ? "bg-blueLight text-primaryMain"
+                  : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("category", "collections", true)}
             >
@@ -318,8 +312,8 @@ const SideNav = () => {
               to="/featured"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "featured"
-                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
-                  : "text-blackMid"
+                  ? "bg-blueLight text-primaryMain"
+                  : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("category", "featured", true)}
             >
@@ -333,7 +327,7 @@ const SideNav = () => {
         <div className="w-full overflow-hidden capitalize">
           <div
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "withdraw" ? "text-primaryMain" : "text-blackMid"
+              isActive === "withdraw" ? "text-primaryMain" : "text-whiteHigh"
             }`}
             onClick={() => handleMenus("withdraw", "",false)}
           >
@@ -367,8 +361,8 @@ const SideNav = () => {
               to="/withdrawPending"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "pending"
-                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
-                  : "text-blackMid"
+                  ? "bg-blueLight text-primaryMain"
+                  : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("withdraw", "pending", true)}
             >
@@ -378,8 +372,8 @@ const SideNav = () => {
               to="/withdrawConfirmed"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "completed"
-                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
-                  : "text-blackMid"
+                  ? "bg-blueLight text-primaryMain"
+                  : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("withdraw", "completed", true)}
             >
@@ -389,8 +383,8 @@ const SideNav = () => {
               to="/withdrawCancelled"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "cancelled"
-                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
-                  : "text-blackMid"
+                  ? "bg-blueLight text-primaryMain"
+                  : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("withdraw", "cancelled", true)}
             >
@@ -404,7 +398,7 @@ const SideNav = () => {
         <div className="w-full overflow-hidden capitalize">
           <div
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "appSetting" ? "text-primaryMain" : "text-blackMid"
+              isActive === "appSetting" ? "text-primaryMain" : "text-whiteHigh"
             }`}
             onClick={() => handleMenus("appSetting", "",false)}
           >
@@ -438,8 +432,8 @@ const SideNav = () => {
               to="/"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "notifications"
-                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
-                  : "text-blackMid"
+                  ? "bg-blueLight text-primaryMain"
+                  : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("appSetting", "notifications", true)}
             >
@@ -449,8 +443,8 @@ const SideNav = () => {
               to="/otherSetting"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "others"
-                  ? "bg-blueLight border-r-2 border-primaryMain text-primaryMain"
-                  : "text-blackMid"
+                  ? "bg-blueLight text-primaryMain"
+                  : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("appSetting", "others", true)}
             >

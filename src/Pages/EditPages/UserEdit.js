@@ -60,13 +60,83 @@ const UserEdit = () => {
   };
 
   return (
-    <section className="w-full mt-10 mr-8 rounded-2xl">
+    <section className="w-full overflow-auto pt-10 pb-32 pr-10 rounded-2xl">
       <div className="flex items-center bg-primaryMain text-whiteHigh rounded-t-lg w-full">
         <p className="font-bold text-2xl pl-4 py-6">Users</p>
       </div>
       <div>
         <section className="py-4 bg-whiteHigh ">
           <form className="w-8/12 flex flex-col mx-auto gap-2">
+
+            {/* name  */}
+            <div className="flex items-center justify-center gap-2">
+              <p className=" w-1/3 text-end">Name:</p>
+              <input
+                type="text"
+                name="name"
+                defaultValue={currentOrder?.sender_name}
+                placeholder="set name"
+                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
+              />
+            </div>
+
+
+            {/* user name  */}
+            
+            <div className="flex items-center justify-center gap-2">
+              <p className=" w-1/3 text-end">Username:</p>
+              <input
+                type="text"
+                name="username"
+                defaultValue={currentOrder?.sender_name}
+                placeholder="set username"
+                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
+              />
+            </div>
+
+            {/* mobile number  */}
+
+            <div className="flex items-center justify-center gap-2">
+              <p className=" w-1/3 text-end">Mobile number::</p>
+              <input
+                type="number"
+                name="mobile-number"
+                defaultValue={currentOrder?.sender_name}
+                placeholder="set mobile number"
+                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
+              />
+            </div>
+
+            {/* email  */}
+
+            <div className="flex items-center justify-center gap-2">
+              <p className="w-1/3 text-end">Email:</p>
+              <input
+                type="email"
+                name="email"
+                defaultValue={currentOrder?.sender_contact}
+                placeholder="set email"
+                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
+              />
+            </div>
+
+            {/* description  */}
+            
+            <div className="flex items-center justify-center gap-2">
+              <p className=" w-1/3 text-end">Description:</p>
+
+              <textarea name="description" className="h-16 pt-2 resize-none input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh" placeholder="description"></textarea>
+              {/* <input
+                type="text"
+                name="name"
+                defaultValue={currentOrder?.sender_name}
+                placeholder="user name"
+                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
+              /> */}
+            </div>
+
+            {/* subscription  */}
+            
             <div className="flex items-center justify-center gap-2">
               <p className=" w-1/3 text-end">Name:</p>
               <input
@@ -78,38 +148,7 @@ const UserEdit = () => {
               />
             </div>
 
-            <div className="flex items-center justify-center gap-2">
-              <p className="w-1/3 text-end">Email:</p>
-              <input
-                type="email"
-                name="email"
-                defaultValue={currentOrder?.sender_contact}
-                placeholder="user email"
-                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
-              />
-            </div>
-
-            <div className="flex items-center justify-center gap-2">
-              <p className="w-1/3 text-end">Country:</p>
-              <input
-                type="text"
-                name="country"
-                defaultValue={currentOrder?.sender_address}
-                placeholder="user country"
-                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
-              />
-            </div>
-
-            <div className="flex items-center justify-center gap-2">
-              <p className="text-end w-1/3">Address:</p>
-              <input
-                type="text"
-                name="Address"
-                defaultValue={currentOrder?.receiver_name}
-                placeholder="user address"
-                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
-              />
-            </div>
+            
 
             <div className="flex items-center justify-end gap-4 mt-4">
               <Link to={"/userAll"}>

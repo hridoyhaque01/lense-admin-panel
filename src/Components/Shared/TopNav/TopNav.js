@@ -6,7 +6,7 @@ import avater from "../../../Assets/img/profile/avater.png"
 const TopNav = () => {
   const { dbUser, logout } = useContext(AuthContext);
   return (
-    <div className="navbar bg-base-100 px-6 py-3">
+    <div className="navbar bg-navyDark px-6 py-3">
       {/* top nav left */}
       <div className="flex-1">
         {/* logo */}

@@ -71,7 +71,7 @@ const ArtistsApproved = () => {
   }, [filteredOrdersBySearch]);
 
   return (
-    <div className="overflow-x-auto w-full py-10 pr-10">
+    <div className="overflow-auto w-full pt-10 pb-32 pr-10">
       <div className="flex items-center justify-between p-3 bg-primaryMain text-whiteHigh rounded-t-lg">
         <section className="flex items-center gap-4">
           <div>

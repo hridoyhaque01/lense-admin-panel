@@ -5,10 +5,11 @@ import TopNav from "../Components/Shared/TopNav/TopNav";
 
 const Main = () => {
   return (
-    <div className="bg-whiteSemi min-h-screen">
+    <div className="bg-whiteSemi h-screen overflow-hidden">
       <TopNav></TopNav>
-      <div className="flex gap-8">
-        <SideNav></SideNav> <Outlet></Outlet>
+      <div className="flex gap-8 h-full">
+        <SideNav></SideNav> 
+        <Outlet></Outlet>
       </div>
     </div>
   );
