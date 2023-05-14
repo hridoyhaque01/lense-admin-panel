@@ -78,7 +78,7 @@ const Login = () => {
                 />
                 <p className="text-blackSemi">Remeber me</p>
               </div>
-              <button className="btn normal-case mt-4 mb-6" type="submit">
+              <button className="btn normal-case mt-4 mb-6 rounded-full bg-primaryMain text-whiteHigh border-0 hover:bg-primaryMain" type="submit">
                 {/* <img className="w-12" src={loginBtn} alt="login button" /> */}
                 Login
               </button>

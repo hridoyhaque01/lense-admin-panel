@@ -191,7 +191,7 @@ const UploadTable = ({ rows, handleSelectCheckbox }) => {
                           htmlFor="deletePopup"
                           className="btn rounded-full p-3 bg-whiteHigh text-secondaryMain border-none hover:bg-whiteHigh"
                         >
-                          <span class="material-symbols-outlined">
+                          <span className="material-symbols-outlined">
                              download_done
                            </span>
                         </label>

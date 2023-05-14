@@ -9,3 +9,22 @@
   'GRAD' 200,
   'opsz' 24
 }
+
+.sideNav::-webkit-scrollbar {
+  width: 0px;
+}
+/* 
+.sideNav::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sideNav::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: #F5F5F5; 
+
+}
+ 
+.sideNav::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #c9c9c9;
+} */
