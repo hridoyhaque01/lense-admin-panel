@@ -6,7 +6,7 @@ import ArtistsPending from "../Pages/Artists/ArtistsPending";
 import Login from "../Pages/Authentication/Login/Login";
 import CategoriesAddNew from "../Pages/Categories/CategoriesAddNew";
 import Collections from "../Pages/Categories/Collections";
-import Featured from "../Pages/Categories/Featured";
+import Platform from "../Pages/Categories/Platform";
 import ECardFilter from "../Pages/Filters/ECardFilter";
 import FiltersAddNew from "../Pages/Filters/FiltersAddNew";
 import SnapchatFilter from "../Pages/Filters/SnapchatFilter";
@@ -27,8 +27,10 @@ import ArtistsEdit from "../Pages/EditPages/ArtistsEdit";
 import CollectionAddNew from "../Pages/Categories/CollectionAddNew";
 import FiltersEdit from "../Pages/EditPages/FiltersEdit";
 import CollectionEdit from "../Pages/EditPages/CollectionEdit";
-import FeaturedEdit from "../Pages/EditPages/FeaturedEdit";
+import PlatformEdit from "../Pages/EditPages/PlatformEdit";
 import Categories from "../Pages/Categories/Categories";
+import UploadRequest from "../Pages/Upload/UploadRequest";
+// import Platform from "sharp/lib/platform";
 
 
 export const router = createBrowserRouter([
@@ -79,6 +81,13 @@ export const router = createBrowserRouter([
         element: <StaffEdit></StaffEdit>,
       },
 
+      // upload request 
+
+      {
+        path: "/upload_request",
+        element: <UploadRequest></UploadRequest>,
+      },
+      
       //filters
 
       {
@@ -136,8 +145,8 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: "/featured",
-        element: <Featured></Featured>,
+        path: "/platform",
+        element: <Platform></Platform>,
       },
 
       {
@@ -161,8 +170,8 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: "/featuredEdit/:id",
-        element: <FeaturedEdit></FeaturedEdit>,
+        path: "/platformEdit/:id",
+        element: <PlatformEdit></PlatformEdit>,
       },
 
       // withdraw 

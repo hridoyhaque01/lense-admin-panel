@@ -65,7 +65,7 @@ const UserEdit = () => {
         <p className="font-bold text-2xl pl-4 py-6">Users</p>
       </div>
       <div>
-        <section className="py-4 bg-whiteHigh ">
+        <section className="py-6 bg-whiteHigh ">
           <form className="w-8/12 flex flex-col mx-auto gap-2">
 
             {/* name  */}
@@ -138,10 +138,10 @@ const UserEdit = () => {
             {/* subscription  */}
             
             <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 text-end">Name:</p>
+              <p className=" w-1/3 text-end">Subscription:</p>
               <input
                 type="text"
-                name="name"
+                name="subscription"
                 defaultValue={currentOrder?.sender_name}
                 placeholder="user name"
                 className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"

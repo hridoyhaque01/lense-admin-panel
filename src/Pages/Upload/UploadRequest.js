@@ -2,18 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import OrdersLoading from "../../Components/Shared/LoadingScreens/OrdersLoading";
 import { CustomerContext } from "../../Contexts/CustomerContext/CustomerProvider";
 import { Link } from "react-router-dom";
-import CategoriesAllTable from "../../Components/Tables/Categories/CollectionTable";
-import CollectionTable from "../../Components/Tables/Categories/CollectionTable";
-
+import UploadTable from "../../Components/Tables/Upload/UploadTable";
 import db from "../../Assets/json/db.json"
 
-
-const Collections = () => {
+const UploadRequest = () => {
   const [selectedCustomers, setSelectedCustomers] = useState([]);
   const [approvedCustomers, setApprovedCustomers] = useState([]);
-
-  const {collections} = db || {}
-
+  const {upload_request}  = db || {}
 
   const {
     isLoading,
@@ -38,17 +33,17 @@ const Collections = () => {
     setSelectedCustomers(selectedCustomersList);
   };
 
-  // const handleSelectAllCheckbox = (customers, e) => {
-  //   const selectAllCustomer = [];
-  //   if (e?.target?.checked) {
-  //     customers?.map((customer) => {
-  //       return selectAllCustomer?.push(customer?.used_id);
-  //     });
-  //   } else {
-  //     setSelectedCustomers([]);
-  //   }
-  //   setSelectedCustomers(selectAllCustomer);
-  // };
+  const handleSelectAllCheckbox = (customers, e) => {
+    const selectAllCustomer = [];
+    if (e?.target?.checked) {
+      customers?.map((customer) => {
+        return selectAllCustomer?.push(customer?.used_id);
+      });
+    } else {
+      setSelectedCustomers([]);
+    }
+    setSelectedCustomers(selectAllCustomer);
+  };
 
   const handleApproveAll = (customer, status) => {
     updateManyCustomerStatus(customer, status);
@@ -67,7 +62,7 @@ const Collections = () => {
       <div className="flex items-center justify-between p-3 bg-primaryMain text-whiteHigh rounded-t-lg">
         <section className="flex items-center gap-4">
           <div>
-            <p className="font-bold text-2xl">Collections</p>
+            <p className="font-bold text-2xl">Upload Requests</p>
           </div>
         </section>
         <section className="flex items-center gap-4 w-2/5">
@@ -80,14 +75,14 @@ const Collections = () => {
             placeholder="search"
           />
           <p>
-          <Link
-              to="/collectionAddNew"
+          {/* <Link
+              to="/categoriesAddNew"
               className="btn bg-whiteHigh hover:bg-whiteLow border-none rounded-full h-12 w-12"
             >
               <span className="material-symbols-outlined text-primaryMain">
                 add
               </span>
-            </Link>
+            </Link> */}
           </p>
         </section>
       </div>
@@ -115,14 +110,15 @@ const Collections = () => {
       {isLoading ? (
         <OrdersLoading></OrdersLoading>
       ) : (
-        <CollectionTable
-          rows={collections}
+        <UploadTable
+          rows={upload_request}
           setCurrentCustomer={setCurrentCustomer}
           handleSelectCheckbox={handleSelectCheckbox}
-        ></CollectionTable>
+          handleSelectAllCheckbox= {handleSelectAllCheckbox}
+        ></UploadTable>
       )}
     </div>
   );
 };
 
-export default Collections;
+export default UploadRequest;

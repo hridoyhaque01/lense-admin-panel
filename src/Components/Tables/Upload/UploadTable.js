@@ -1,17 +1,22 @@
 import React, { useContext, useEffect, useState } from "react";
-import { OrderContext } from "../../../Contexts/OrdersContext/OrdersProvider";
+import { Link } from "react-router-dom";
+import { CustomerContext } from "../../../Contexts/CustomerContext/CustomerProvider";
 import EmptyScreen from "../../Shared/EmptyScreens/EmptyScreen";
+import { lense } from "../../../Assets/getImages";
+import ConfirmationModal from "../../Modals/ConfirmationModal";
 
-const WithdrawCancelledTable = ({
-  rows,
-  handleSelectCheckbox,
-  handleSelectAllCheckbox,
-}) => {
-  const { searchBarValue, setCurrentOrder, updateOrderStatus } =
-    useContext(OrderContext);
+
+const UploadTable = ({ rows, handleSelectCheckbox }) => {
+  const {
+    searchBarValue,
+    currentCustomer,
+    setCurrentCustomer,
+    clickHandlerForModals,
+  } = useContext(CustomerContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [activeButton, setActiveButton] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+
 
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
@@ -43,9 +48,11 @@ const WithdrawCancelledTable = ({
     handleSelectCheckbox(order, e);
   };
 
+//   const = 
+
   const handleAllCheckbox = (orders, e) => {
     // handleSelectAllCheckbox(orders, e);
-    console.log("hello world");
+    console.log('filters');
   };
 
   const renderPagination = () => {
@@ -84,42 +91,50 @@ const WithdrawCancelledTable = ({
 
   return (
     <div className=" relative pb-16">
-      {rows.length > 0 ? (
+      {rows?.length > 0 ? (
         <table className="table w-full">
           <thead>
             <tr className="font-bold text-center text-3xl">
               <th className="bg-blueLight text-bold text-lg normal-case">
                 <input
-                  type="checkbox"
-                  className="checkbox rounded-none"
-                  name="allCheckbox"
-                  onChange={(e) => {
-                    handleAllCheckbox(currentRows, e);
-                  }}
-                />
+                type="checkbox"
+                className="checkbox rounded-none"
+                name="allCheckbox"
+                onChange={(e) => {
+                  handleAllCheckbox(currentRows, e);
+                }}
+              />
+              
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-                Serial
+              Serial
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
                 Created
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-                Name
+              Artist Name
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-                Total Ammount
+              Package Name
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-                Withdraw Method
+              Platform
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-                Status
+              Category
+              </th>
+              <th className="bg-blueLight text-bold text-lg normal-case">
+              Type
+              </th>
+              
+              <th className="bg-blueLight text-bold text-lg normal-case">
+                Actions
               </th>
             </tr>
           </thead>
           <tbody className="text-center">
-            {currentRows?.map((order, i) => {
+            {currentRows?.map((upload, i) => {
               return (
                 <tr key={i} className="text-center">
                   <th className="px-0">
@@ -128,21 +143,60 @@ const WithdrawCancelledTable = ({
                       className="checkbox rounded-none"
                       name="checkbox"
                       onChange={(e) => {
-                        handleCheckbox(order, e);
+                        handleCheckbox(upload, e);
                       }}
                     />
                   </th>
-                  <td className="px-0">{rowsPerPage * (currentPage - 1) + i+1 }</td>
                   <td className="px-0 mx-0">
-                      {order?.timestamp}
+                        <p>{rowsPerPage * (currentPage - 1) + i+1 }</p>
                   </td>
-                  <td className="px-0 mx-0">{order?.Name}</td>
-                  <td className="px-0 mx-0">${order?.totalAmount}</td>
-                  <td className="px-0">{order?.widthdrawMethod}</td>
-                  <td className="px-0 py-0">
-                      <p className="rounded-lg px-3 py-2 w-24 focus:outline-none active:border-none text-errorColor bg-warningLightColor">
-                          Cancelled
-                      </p>
+                  <td className="px-0 mx-0">
+                    {upload?.createdAt}
+                  </td>
+                  <td className="px-0 mx-0">{upload?.user_name}</td>
+                  <td className="px-0 mx-0">{upload?.package_name}</td>
+                  <td className="px-0">{upload?.platform}</td>
+                  <td className="px-0">{upload?.category}</td>
+                  <td className="px-0">{upload?.type}</td>
+                  <td className="px-0 mx-0">
+                    <div className="flex items-center justify-center gap-0">
+                      {/* <label
+                        htmlFor="filterBlockPopup"
+
+
+
+                        onClick={() => setCurrentCustomer(upload)}
+                        className="btn rounded-full p-0 bg-whiteHigh text-blackMid border-none hover:bg-whiteHigh"
+                      >
+                        <span className="material-symbols-outlined p-0">
+                          block
+                        </span>
+                      </label> */}
+                      
+
+                      <button type="button" onClick={()=> console.log("delete")}
+                      >
+                        <label
+                          htmlFor="deletePopup"
+                          className="btn rounded-full p-3 bg-whiteHigh text-pureBlackColor border-none hover:bg-whiteHigh"
+                        >
+                          <span className="material-symbols-outlined">
+                          file_download
+                          </span>
+                        </label>
+                      </button>
+                      <button type="button" onClick={()=> console.log("delete")}
+                      >
+                        <label
+                          htmlFor="deletePopup"
+                          className="btn rounded-full p-3 bg-whiteHigh text-secondaryMain border-none hover:bg-whiteHigh"
+                        >
+                          <span class="material-symbols-outlined">
+                             download_done
+                           </span>
+                        </label>
+                      </button>
+                    </div>
                   </td>
                 </tr>
               );
@@ -152,6 +206,7 @@ const WithdrawCancelledTable = ({
       ) : (
         <EmptyScreen></EmptyScreen>
       )}
+
       <section className="flex items-center justify-end gap-4 py-4 absolute bottom-0 right-0">
       <div>{renderPagination()}</div>
         <div>
@@ -204,8 +259,12 @@ const WithdrawCancelledTable = ({
         
         
       </section>
+
+      <ConfirmationModal
+        actionName="delete"
+      ></ConfirmationModal>
     </div>
   );
 };
 
-export default WithdrawCancelledTable;
+export default UploadTable;

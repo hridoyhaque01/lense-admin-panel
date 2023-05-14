@@ -114,7 +114,7 @@ const WithdrawConfirmedTable = ({
                 Withdraw Method
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-                Actions
+                Status
               </th>
             </tr>
           </thead>

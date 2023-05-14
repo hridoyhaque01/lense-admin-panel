@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { CustomerContext } from "../../../Contexts/CustomerContext/CustomerProvider";
 import EmptyScreen from "../../Shared/EmptyScreens/EmptyScreen";
 import UsersConfirmationBlockPopup from "../../Modals/Users/UsersConfirmationBlockPopup";
+import ConfirmationModal from "../../Modals/ConfirmationModal";
 
 
 const UsersTable = ({ rows, handleSelectCheckbox }) => {
@@ -154,7 +155,7 @@ const UsersTable = ({ rows, handleSelectCheckbox }) => {
                   <td className="px-0">yes</td>
                   <td className="px-0 mx-0">
                     <div className="flex items-center justify-center gap-0">
-                      <label
+                      {/* <label
                         htmlFor="userBlockPopup"
                         onClick={() => setCurrentCustomer(user)}
                         className="btn rounded-full p-0 bg-whiteHigh text-blackMid border-none hover:bg-whiteHigh"
@@ -162,7 +163,7 @@ const UsersTable = ({ rows, handleSelectCheckbox }) => {
                         <span className="material-symbols-outlined p-0">
                           block
                         </span>
-                      </label>
+                      </label> */}
                       <Link
                         to={{
                           pathname: `/userEdit/${user?.user_id}`,
@@ -178,6 +179,17 @@ const UsersTable = ({ rows, handleSelectCheckbox }) => {
                           </span>
                         </label>
                       </Link>
+                      <button type="button" onClick={()=> console.log("delete")}
+                      >
+                        <label
+                          htmlFor="deletePopup"
+                          className="btn rounded-full p-3 bg-whiteHigh text-errorColor border-none hover:bg-whiteHigh"
+                        >
+                          <span className="material-symbols-outlined">
+                            delete
+                          </span>
+                        </label>
+                      </button>
                     </div>
                   </td>
                 </tr>
@@ -241,11 +253,15 @@ const UsersTable = ({ rows, handleSelectCheckbox }) => {
         
       </section>
 
-      
+{/*       
       <UsersConfirmationBlockPopup
         currentCustomer={currentCustomer}
         clickHandlerForModals={clickHandlerForModals}
-      ></UsersConfirmationBlockPopup>
+      ></UsersConfirmationBlockPopup> */}
+
+      <ConfirmationModal
+        actionName="delete"
+      ></ConfirmationModal>
     </div>
   );
 };

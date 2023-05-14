@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import OrdersLoading from "../../Components/Shared/LoadingScreens/OrdersLoading";
 import { CustomerContext } from "../../Contexts/CustomerContext/CustomerProvider";
 import { Link } from "react-router-dom";
-import FeaturedTable from "../../Components/Tables/Categories/FeaturedTable";
+import PlatformTable from "../../Components/Tables/Categories/PlatformTable";
 import db from "../../Assets/json/db.json"
 
-const Featured = () => {
+const Plateform = () => {
   const [selectedCustomers, setSelectedCustomers] = useState([]);
   const [approvedCustomers, setApprovedCustomers] = useState([]);
   const {featured}  = db || {}
@@ -110,14 +110,14 @@ const Featured = () => {
       {isLoading ? (
         <OrdersLoading></OrdersLoading>
       ) : (
-        <FeaturedTable
+        <PlatformTable
           rows={featured}
           setCurrentCustomer={setCurrentCustomer}
           handleSelectCheckbox={handleSelectCheckbox}
-        ></FeaturedTable>
+        ></PlatformTable>
       )}
     </div>
   );
 };
 
-export default Featured;
+export default Plateform;

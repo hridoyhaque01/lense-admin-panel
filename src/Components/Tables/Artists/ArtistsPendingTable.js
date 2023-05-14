@@ -111,9 +111,9 @@ const ArtistsPendingTable = ({
               <th className="bg-blueLight text-bold text-lg normal-case">
                 Email
               </th>
-              <th className="bg-blueLight text-bold text-lg normal-case">
+              {/* <th className="bg-blueLight text-bold text-lg normal-case">
                Payment Method
-              </th>
+              </th> */}
               <th className="bg-blueLight text-bold text-lg normal-case">
                 Portfolio link
               </th>
@@ -142,7 +142,7 @@ const ArtistsPendingTable = ({
                     {artist?.user_name}
                   </td>
                   <td className="px-0 mx-0">{artist?.user_email}</td>
-                  <td className="px-0 mx-0">{artist?.payment_method}</td>
+                  {/* <td className="px-0 mx-0">{artist?.payment_method}</td> */}
                   <td className="px-0">{artist?.user_portfolio_link}</td>
                   <td className="px-0 py-0">
                     <div className="dropdown dropdown-bottom dropdown-end">
