@@ -1,0 +1,81 @@
+<div className="grid items-center justify-center gap-4">
+            <form className="flex flex-col gap-4" onSubmit={handleEditBtn}>
+              <div className="flex flex-col w-full items-center justify-center gap-2">
+                
+                <div className="flex items-center justify-center gap-1">
+                  <p className=" w-96 text-end">Name:</p>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="staff name"
+                    className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
+                  />
+                </div>
+
+                <div className="flex items-center justify-center gap-1">
+                  <p className=" w-96 text-end">Email Adress:</p>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="staff email"
+                    className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
+                  />
+                </div>
+                
+                <div className="flex items-center justify-center gap-1">
+                  <p className=" w-96 text-end">Set Password:</p>
+                  <input
+                    type="text"
+                    name="password"
+                    placeholder="Set Password"
+                    className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
+                  />
+                </div>
+                
+                <div className="flex items-center justify-center gap-1">
+                  <p className=" w-96 text-end">Confirm New Password:</p>
+                  <input
+                    type="text"
+                    name="confirmPassword"
+                    placeholder="confirm Password"
+                    className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
+                  />
+                </div>
+                
+                
+                <div className="flex items-center justify-center gap-1">
+                  <p className=" w-96 text-end">Phone Number:</p>
+                  <input
+                    type="text"
+                    name="phoneNumber"
+                    placeholder="staff phone Number"
+                    className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
+                  />
+                </div>
+                
+                
+                <div className="flex items-center justify-center gap-1">
+                  <p className=" w-96 text-end">Role:</p>
+                  <select
+                    name="userType"
+                    className="select bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh font-medium"
+                  >
+                    <option value="" disabled>Select Role</option>
+                    <option value={"Admin"}>Admin</option>
+                    <option value={"Manager"}>Manager</option>
+                  </select>
+                </div>
+                
+              </div>
+              <div className="flex items-center justify-end gap-4">
+                <Link to={"/staffAll"}>
+                  <label className="btn rounded-full w-36 normal-case bg-whiteHigh text-primaryMain border-primaryMain hover:border-primaryMain hover:bg-whiteHigh">
+                    Cancel
+                  </label>
+                </Link>
+                <button className="btn submit rounded-full w-36 normal-case bg-primaryMain border-primaryMain hover:text-primaryMain hover:bg-whiteHigh hover:border-primaryMain">
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>

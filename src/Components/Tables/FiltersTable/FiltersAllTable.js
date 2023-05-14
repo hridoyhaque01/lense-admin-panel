@@ -1,13 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { CustomerContext } from "../../../Contexts/CustomerContext/CustomerProvider";
-import FiltersConfirmationBlockPopup from "../../Modals/Filters/FiltersConfirmationBlockPopup";
-import EmptyScreen from "../../Shared/EmptyScreens/EmptyScreen";
 import { lense } from "../../../Assets/getImages";
+import { CustomerContext } from "../../../Contexts/CustomerContext/CustomerProvider";
 import ConfirmationModal from "../../Modals/ConfirmationModal";
+import EmptyScreen from "../../Shared/EmptyScreens/EmptyScreen";
 
-
-const FiltersAllTable = ({ rows, handleSelectCheckbox }) => {
+const FiltersAllTable = ({ rows, handleSelectCheckbox, redirect }) => {
   const {
     searchBarValue,
     currentCustomer,
@@ -17,7 +15,6 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [activeButton, setActiveButton] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-
 
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
@@ -49,11 +46,11 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox }) => {
     handleSelectCheckbox(order, e);
   };
 
-//   const = 
+  //   const =
 
   const handleAllCheckbox = (orders, e) => {
     // handleSelectAllCheckbox(orders, e);
-    console.log('filters');
+    console.log("filters");
   };
 
   const renderPagination = () => {
@@ -98,28 +95,27 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox }) => {
             <tr className="font-bold text-center text-3xl">
               <th className="bg-blueLight text-bold text-lg normal-case">
                 <input
-                type="checkbox"
-                className="checkbox rounded-none"
-                name="allCheckbox"
-                onChange={(e) => {
-                  handleAllCheckbox(currentRows, e);
-                }}
-              />
-              
+                  type="checkbox"
+                  className="checkbox rounded-none"
+                  name="allCheckbox"
+                  onChange={(e) => {
+                    handleAllCheckbox(currentRows, e);
+                  }}
+                />
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-              Lense
+                Lense
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
                 Created
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-              Artist
+                Artist
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-              Price(Coins)
+                Price(Coins)
               </th>
-              
+
               <th className="bg-blueLight text-bold text-lg normal-case">
                 Actions
               </th>
@@ -140,13 +136,11 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox }) => {
                     />
                   </th>
                   <td className="px-0 mx-0">
-                        <div className="w-8 h-8 mx-auto">
-                            <img src={lense} alt="" />
-                        </div>
+                    <div className="w-8 h-8 mx-auto">
+                      <img src={lense} alt="" />
+                    </div>
                   </td>
-                  <td className="px-0 mx-0">
-                    {filters?.createdAt}
-                  </td>
+                  <td className="px-0 mx-0">{filters?.createdAt}</td>
                   <td className="px-0 mx-0">{filters?.user_name}</td>
                   <td className="px-0">{filters?.user_coin}</td>
                   <td className="px-0 mx-0">
@@ -165,6 +159,7 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox }) => {
                           pathname: `/filtersEdit/${filters?.user_id}`,
                           customer: filters,
                         }}
+                        state={{ redirect }}
                       >
                         <label
                           htmlFor="pausePopup"
@@ -175,7 +170,9 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox }) => {
                           </span>
                         </label>
                       </Link>
-                      <button type="button" onClick={()=> console.log("delete")}
+                      <button
+                        type="button"
+                        onClick={() => console.log("delete")}
                       >
                         <label
                           htmlFor="deletePopup"
@@ -198,14 +195,15 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox }) => {
       )}
 
       <section className="flex items-center justify-end gap-4 py-4 absolute bottom-0 right-0">
-      <div>{renderPagination()}</div>
+        <div>{renderPagination()}</div>
         <div>
           <p>
-            Showing  {indexOfFirstRow + 1} - {indexOfLastRow > rows?.length ? rows?.length : indexOfLastRow} of{" "}
+            Showing {indexOfFirstRow + 1} -{" "}
+            {indexOfLastRow > rows?.length ? rows?.length : indexOfLastRow} of{" "}
             {rows?.length}
           </p>
         </div>
-      <div className="dropdown dropdown-top dropdown-end ">
+        <div className="dropdown dropdown-top dropdown-end ">
           <label
             tabIndex={3}
             className="rounded-lg px-2 py-2 border border-blackLow text-blackMid cursor-pointer"
@@ -246,15 +244,11 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox }) => {
             </li>
           </ul>
         </div>
-        
-        
       </section>
 
-      <ConfirmationModal
-        actionName="delete"
-      ></ConfirmationModal>
+      <ConfirmationModal actionName="delete"></ConfirmationModal>
 
-{/* <FiltersConfirmationBlockPopup
+      {/* <FiltersConfirmationBlockPopup
         currentCustomer={currentCustomer}
         clickHandlerForModals={clickHandlerForModals}
       ></FiltersConfirmationBlockPopup> */}

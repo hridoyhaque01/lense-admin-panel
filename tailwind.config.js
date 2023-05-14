@@ -20,11 +20,12 @@ module.exports = {
       whiteSemi: "#F6F6F6",
       whiteLow: "#E8E8E8",
 
-      errorColor: "#FF4646",
       successColor: "#00AE5B",
       warningColor: "#FF6D00",
       warningLightColor: "#FFEBEB",
-      errorColor: "#FD5D5D",
+      errorColor: "#FF4646",
+      errorMidColor: "#FF6B6B",
+      errorLightColor: "#FD5D5D",
       infoColor: "#2D8EFF",
       alertColor: "#F4A100",
 

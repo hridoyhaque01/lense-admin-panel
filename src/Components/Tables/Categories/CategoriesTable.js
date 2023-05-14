@@ -1,12 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { CustomerContext } from "../../../Contexts/CustomerContext/CustomerProvider";
-import FiltersConfirmationBlockPopup from "../../Modals/Filters/FiltersConfirmationBlockPopup";
-import EmptyScreen from "../../Shared/EmptyScreens/EmptyScreen";
-import { lense } from "../../../Assets/getImages";
-import CategoriesConfirmationBlockPopup from "../../Modals/Categories/CategoriesConfirmationBlockPopup";
 import ConfirmationModal from "../../Modals/ConfirmationModal";
-
+import EmptyScreen from "../../Shared/EmptyScreens/EmptyScreen";
 
 const CategoriesTable = ({ rows, handleSelectCheckbox }) => {
   const {
@@ -49,11 +45,11 @@ const CategoriesTable = ({ rows, handleSelectCheckbox }) => {
     handleSelectCheckbox(order, e);
   };
 
-//   const = 
+  //   const =
 
   const handleAllCheckbox = (orders, e) => {
     // handleSelectAllCheckbox(orders, e);
-    console.log('filters');
+    console.log("filters");
   };
 
   const renderPagination = () => {
@@ -98,25 +94,24 @@ const CategoriesTable = ({ rows, handleSelectCheckbox }) => {
             <tr className="font-bold text-center text-3xl">
               <th className="bg-blueLight text-bold text-lg normal-case">
                 <input
-                type="checkbox"
-                className="checkbox rounded-none"
-                name="allCheckbox"
-                onChange={(e) => {
-                  handleAllCheckbox(currentRows, e);
-                }}
-              />
-              
+                  type="checkbox"
+                  className="checkbox rounded-none"
+                  name="allCheckbox"
+                  onChange={(e) => {
+                    handleAllCheckbox(currentRows, e);
+                  }}
+                />
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-              Categories icon
+                Categories image
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-              Collections name
+                Collections name
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
                 Created
               </th>
-              
+
               <th className="bg-blueLight text-bold text-lg normal-case">
                 Actions
               </th>
@@ -137,15 +132,13 @@ const CategoriesTable = ({ rows, handleSelectCheckbox }) => {
                     />
                   </th>
                   <td className="px-0 mx-0">
-                        <span class="material-symbols-outlined text-blackMid text-4xl">
-                            {category?.collection_icon}
-                        </span>
+                    <span className="material-symbols-outlined text-blackMid text-4xl">
+                      {category?.collection_icon}
+                    </span>
                   </td>
                   <td className="px-0 mx-0">{category?.collection_name}</td>
-                  <td className="px-0 mx-0">
-                    {category?.createdAt}
-                  </td>
-                  
+                  <td className="px-0 mx-0">{category?.createdAt}</td>
+
                   <td className="px-0 mx-0">
                     <div className="flex items-center justify-center gap-0">
                       {/* <label
@@ -172,7 +165,9 @@ const CategoriesTable = ({ rows, handleSelectCheckbox }) => {
                           </span>
                         </label>
                       </Link>
-                      <button type="button" onClick={()=> console.log("delete")}
+                      <button
+                        type="button"
+                        onClick={() => console.log("delete")}
                       >
                         <label
                           htmlFor="deletePopup"
@@ -194,14 +189,15 @@ const CategoriesTable = ({ rows, handleSelectCheckbox }) => {
         <EmptyScreen></EmptyScreen>
       )}
       <section className="flex items-center justify-end gap-4 py-4 absolute bottom-0 right-0">
-      <div>{renderPagination()}</div>
+        <div>{renderPagination()}</div>
         <div>
           <p>
-            Showing  {indexOfFirstRow + 1} - {indexOfLastRow > rows?.length ? rows?.length : indexOfLastRow} of{" "}
+            Showing {indexOfFirstRow + 1} -{" "}
+            {indexOfLastRow > rows?.length ? rows?.length : indexOfLastRow} of{" "}
             {rows?.length}
           </p>
         </div>
-      <div className="dropdown dropdown-top dropdown-end ">
+        <div className="dropdown dropdown-top dropdown-end ">
           <label
             tabIndex={3}
             className="rounded-lg px-2 py-2 border border-blackLow text-blackMid cursor-pointer"
@@ -242,8 +238,6 @@ const CategoriesTable = ({ rows, handleSelectCheckbox }) => {
             </li>
           </ul>
         </div>
-        
-        
       </section>
       <ConfirmationModal actionName="delete"></ConfirmationModal>
       {/* <CategoriesConfirmationBlockPopup
