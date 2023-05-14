@@ -255,7 +255,7 @@ const SideNav = () => {
 
         {/* Platform  */}
 
-        <div className="w-full overflow-hidden capitalize">
+        {/* <div className="w-full overflow-hidden capitalize">
           <Link
             to="/platform"
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
@@ -269,11 +269,11 @@ const SideNav = () => {
               <span>platform</span>
             </p>
           </Link>
-        </div>
+        </div> */}
 
-        {/* Category  */}
+        {/* category  */}
 
-        <div className="w-full overflow-hidden capitalize">
+        {/* <div className="w-full overflow-hidden capitalize">
           <Link
             to="/categories"
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
@@ -287,7 +287,7 @@ const SideNav = () => {
               <span>Category</span>
             </p>
           </Link>
-        </div>
+        </div> */}
 
         {/* Collections  */}
 
@@ -329,70 +329,87 @@ const SideNav = () => {
 
         {/* category  */}
 
-        {/* <div className="w-full overflow-hidden capitalize">
+
+        <div className="w-full overflow-hidden capitalize">
           <div
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none`}
-            onClick={() => handleMenus("category", "",)}
+            onClick={() => handleDropdown("categories", false)}
           >
-            <span className="material-symbols-outlined">receipt_long</span>
+            <span className="material-symbols-outlined">paid</span>
             &nbsp;
             <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
-              <span>categories</span>
+              <span>Categories</span>
             </p>
             <span
               className={`material-symbols-outlined duration-100 ${
-                isSubmenuOpen["category"] ? "rotate-180" : "rotate-0"
+                isSubmenuOpen["categories"] ? "rotate-180" : "rotate-0"
               } ${isClosed && "hidden"}`}
             >
               expand_more
             </span>
           </div>
+          {/* submenu  */}
 
           <div
-            ref={(ref) => (submenuRef.current["category"] = ref)}
+            ref={(ref) => (submenuRef.current["categories"] = ref)}
             className={`flex flex-col gap-1 duration-200`}
             style={{
               maxHeight:
-                isSubmenuOpen["category"]
-                  ? `${submenuRef.current["category"]?.scrollHeight}px`
+                isSubmenuOpen["categories"]
+                  ? `${submenuRef.current["categories"]?.scrollHeight}px`
                   : "0",
             }}
           >
+            {/* Submenu items */}
             <Link
               to="/categories"
               className={`py-3 pl-12 ${
-                isSubmenuActive === "categories"
+                isSubmenuActive === "category"
                   ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
-              onClick={() => handleMenus("category", "categories")}
+              onClick={() => handleMenus("categories", "category")}
             >
-              <p>categories</p>
+              <p>category</p>
             </Link>
             <Link
-              to="/collections"
+              to="/platform"
               className={`py-3 pl-12 ${
-                isSubmenuActive === "collections"
+                isSubmenuActive === "platform"
                   ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
-              onClick={() => handleMenus("category", "collections")}
+              onClick={() => handleMenus("categories", "platform")}
             >
-              <p>collections</p>
+              <p>platform</p>
+            </Link>
+            
+            <Link
+              to="/types"
+              className={`py-3 pl-12 ${
+                isSubmenuActive === "types"
+                  ? "bg-primaryMain text-whiteHigh"
+                  : "text-whiteHigh"
+              }`}
+              onClick={() => handleMenus("categories", "types")}
+            >
+              <p>types</p>
             </Link>
             <Link
-              to="/featured"
+              to="/colors"
               className={`py-3 pl-12 ${
-                isSubmenuActive === "featured"
+                isSubmenuActive === "colors"
                   ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
-              onClick={() => handleMenus("category", "featured")}
+              onClick={() => handleMenus("categories", "colors")}
             >
-              <p>featured</p>
+              <p>colors</p>
             </Link>
+            
           </div>
-        </div> */}
+        </div>
+
 
         {/* withdraw  */}
 
