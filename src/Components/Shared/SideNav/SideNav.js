@@ -1,12 +1,12 @@
-import React, { useContext, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import avater from "../../../Assets/img/profile/avater.png";
 import { AuthContext } from "../../../Contexts/AuthContext/AuthProvider";
 import "./SideNav.css";
 
 const SideNav = () => {
-  const [isClosed, setIsClosed] = useState(false);
-  const [canShow, setCanShow] = useState(false);
+  const [isClosed, setIsClosed] = useState();
+  const [canShow, setCanShow] = useState();
   const [isActive, setIsActive] = useState("dashboard");
   const [isSubmenuActive, setIsSubmenuActive] = useState();
   const [isSubmenuOpen, setIsSubmenuOpen] = useState({});
@@ -21,29 +21,22 @@ const SideNav = () => {
     setCanShow(!canShow);
   };
 
-  const handleMenus = (menu, submenu, submenuOpen) => {
-
-    // console.log()
-
+  const handleMenus = (menu, submenu) => {
     setIsActive(menu);
-      setIsSubmenuActive(submenu);
+    setIsSubmenuActive(submenu);
+  };
 
-    // if (menu !== isSubmenuOpen[menu]  || submenu !== "") {
-    //   console.log
-      
-    // }
-
-
+  const handleDropdown = (menu, submenuOpen) => {
     if (!submenuOpen) {
       setIsSubmenuOpen((prev) => ({
         [menu]: !prev[menu],
       }));
     }
-  };
+  }
 
   // const handleNavigation = (navRoute) => {
   //   const navigationRoute = `/${navRoute}`;
-  //   navigate(navigationRoute, { replace: true });
+  //   navigate(navigationRoute, { replace });
   //   activateMenu(navRoute);
   // };
 
@@ -81,7 +74,7 @@ const SideNav = () => {
               isActive === "dashboard"
                 && "bg-primaryMain"
             }`}
-            onClick={() => handleMenus("dashboard", "", false)}
+            onClick={() => handleMenus("dashboard", "")}
           >
             <span className="material-symbols-outlined">dashboard</span>
             &nbsp;
@@ -97,7 +90,7 @@ const SideNav = () => {
         <div className="w-full overflow-hidden capitalize">
           <div
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none`}
-            onClick={() => handleMenus("filter", "", false)}
+            onClick={() => handleDropdown("filter", )}
           >
             <span className="material-symbols-outlined">photo_library</span>
             &nbsp;
@@ -132,7 +125,7 @@ const SideNav = () => {
                   ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
-              onClick={() => handleMenus("filter", "snapchat", true)}
+              onClick={() => handleMenus("filter", "snapchat")}
             >
               <p>Snapchat</p>
             </Link>
@@ -143,7 +136,7 @@ const SideNav = () => {
                   ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
-              onClick={() => handleMenus("filter", "tiktok", true)}
+              onClick={() => handleMenus("filter", "tiktok")}
             >
               <p>tiktok</p>
             </Link>
@@ -154,7 +147,7 @@ const SideNav = () => {
                   ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
-              onClick={() => handleMenus("filter", "card", true)}
+              onClick={() => handleMenus("filter", "card")}
             >
               <p>e-card</p>
             </Link>
@@ -170,7 +163,7 @@ const SideNav = () => {
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
               isActive === "upload" && "bg-primaryMain"
             }`}
-            onClick={() => handleMenus("upload", "", false)}
+            onClick={() => handleMenus("upload", )}
           >
             <span className="material-symbols-outlined">photo_library</span>
             &nbsp;
@@ -188,7 +181,7 @@ const SideNav = () => {
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
               isActive === "users" && "bg-primaryMain"
             }`}
-            onClick={() => handleMenus("users", "", false)}
+            onClick={() => handleMenus("users", "")}
           >
             <span className="material-symbols-outlined">person</span>
             &nbsp;
@@ -204,7 +197,7 @@ const SideNav = () => {
         <div className="w-full overflow-hidden capitalize">
           <div
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none`}
-            onClick={() => handleMenus("artists", "",false)}
+            onClick={() => handleDropdown("artists", )}
           >
             <span className="material-symbols-outlined">
               imagesearch_roller
@@ -241,7 +234,7 @@ const SideNav = () => {
                   ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
-              onClick={() => handleMenus("artists", "pending", true)}
+              onClick={() => handleMenus("artists", "pending")}
             >
               <p>pending</p>
             </Link>
@@ -252,7 +245,7 @@ const SideNav = () => {
                   ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
-              onClick={() => handleMenus("artists", "approved", true)}
+              onClick={() => handleMenus("artists", "approved")}
             >
               <p>approved</p>
             </Link>
@@ -268,7 +261,7 @@ const SideNav = () => {
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
               isActive === "platform" && "bg-primaryMain"
             }`}
-            onClick={() => handleMenus("platform", "", false)}
+            onClick={() => handleMenus("platform", "",)}
           >
             <span className="material-symbols-outlined">receipt_long</span>
             &nbsp;
@@ -286,7 +279,7 @@ const SideNav = () => {
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
               isActive === "categories" && "bg-primaryMain"
             }`}
-            onClick={() => handleMenus("categories", "", false)}
+            onClick={() => handleMenus("categories", "", )}
           >
             <span className="material-symbols-outlined">receipt_long</span>
             &nbsp;
@@ -304,7 +297,7 @@ const SideNav = () => {
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
               isActive === "collections" && "bg-primaryMain"
             }`}
-            onClick={() => handleMenus("collections", "", false)}
+            onClick={() => handleMenus("collections", "", )}
           >
             <span className="material-symbols-outlined">receipt_long</span>
             &nbsp;
@@ -322,7 +315,7 @@ const SideNav = () => {
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
               isActive === "staffs" && "bg-primaryMain"
             }`}
-            onClick={() => handleMenus("staffs", "", false)}
+            onClick={() => handleMenus("staffs", "", )}
           >
             <span className="material-symbols-outlined">group</span>
             &nbsp;
@@ -339,7 +332,7 @@ const SideNav = () => {
         {/* <div className="w-full overflow-hidden capitalize">
           <div
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none`}
-            onClick={() => handleMenus("category", "",false)}
+            onClick={() => handleMenus("category", "",)}
           >
             <span className="material-symbols-outlined">receipt_long</span>
             &nbsp;
@@ -372,7 +365,7 @@ const SideNav = () => {
                   ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
-              onClick={() => handleMenus("category", "categories", true)}
+              onClick={() => handleMenus("category", "categories")}
             >
               <p>categories</p>
             </Link>
@@ -383,7 +376,7 @@ const SideNav = () => {
                   ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
-              onClick={() => handleMenus("category", "collections", true)}
+              onClick={() => handleMenus("category", "collections")}
             >
               <p>collections</p>
             </Link>
@@ -394,7 +387,7 @@ const SideNav = () => {
                   ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
-              onClick={() => handleMenus("category", "featured", true)}
+              onClick={() => handleMenus("category", "featured")}
             >
               <p>featured</p>
             </Link>
@@ -406,7 +399,7 @@ const SideNav = () => {
         <div className="w-full overflow-hidden capitalize">
           <div
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none`}
-            onClick={() => handleMenus("withdraw", "",false)}
+            onClick={() => handleDropdown("withdraw", false)}
           >
             <span className="material-symbols-outlined">paid</span>
             &nbsp;
@@ -441,7 +434,7 @@ const SideNav = () => {
                   ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
-              onClick={() => handleMenus("withdraw", "pending", true)}
+              onClick={() => handleMenus("withdraw", "pending")}
             >
               <p>pending</p>
             </Link>
@@ -452,7 +445,7 @@ const SideNav = () => {
                   ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
-              onClick={() => handleMenus("withdraw", "completed", true)}
+              onClick={() => handleMenus("withdraw", "completed")}
             >
               <p>approved</p>
             </Link>
@@ -463,7 +456,7 @@ const SideNav = () => {
                   ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
-              onClick={() => handleMenus("withdraw", "cancelled", true)}
+              onClick={() => handleMenus("withdraw", "cancelled")}
             >
               <p>cancelled</p>
             </Link>
@@ -475,7 +468,7 @@ const SideNav = () => {
         <div className="w-full overflow-hidden capitalize">
           <div
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none`}
-            onClick={() => handleMenus("appSetting", "",false)}
+            onClick={() => handleDropdown("appSetting", false)}
           >
             <span className="material-symbols-outlined">app_settings_alt</span>
             &nbsp;
@@ -510,7 +503,7 @@ const SideNav = () => {
                   ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
-              onClick={() => handleMenus("appSetting", "notifications", true)}
+              onClick={() => handleMenus("appSetting", "notifications")}
             >
               <p>notifications</p>
             </Link>
@@ -521,18 +514,18 @@ const SideNav = () => {
                   ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
-              onClick={() => handleMenus("appSetting", "others", true)}
+              onClick={() => handleMenus("appSetting", "others")}
             >
               <p>others</p>
             </Link>
           </div>
         </div>
       </section>
-      <div className="pl-6">
+      {/* <div className="pl-6">
         <button onClick={toggleSideNav} className="btn-btn-ghost">
           <span className="material-symbols-outlined">menu_open</span>
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import CustomerChart from "../HomeBody/CustomerChart";
-import DeliveryChart from "../HomeBody/DeliveryChart";
+import ArtistsChart from "../HomeBody/ArtistsChart";
 import OrdersChart from "../HomeBody/OrdersChart";
 import TotalSalesChart from "../HomeBody/TotalSalesChart";
 
@@ -17,7 +17,7 @@ const Chart = () => {
         <CustomerChart></CustomerChart>
       </div>
       <div className="bg-whiteHigh rounded-xl p-8">
-        <DeliveryChart></DeliveryChart>
+        <ArtistsChart></ArtistsChart>
       </div>
     </section>
   );
