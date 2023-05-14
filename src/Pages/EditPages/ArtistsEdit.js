@@ -14,6 +14,8 @@ export default function ArtistsEdit() {
       <div>
         <section className="py-4 bg-whiteHigh">
           <form className="w-8/12 flex flex-col mx-auto gap-2">
+
+            {/* name  */}
             <div className="flex items-center justify-center gap-2">
               <p className=" w-1/3 text-end">Name:</p>
               <input
@@ -24,6 +26,35 @@ export default function ArtistsEdit() {
                 required
               />
             </div>
+
+            
+            {/* username name  */}
+
+            <div className="flex items-center justify-center gap-2">
+              <p className=" w-1/3 text-end">Username:</p>
+              <input
+                type="text"
+                name="username"
+                placeholder="username"
+                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
+                required
+              />
+            </div>
+            
+            {/* mobile nubmer  */}
+
+            <div className="flex items-center justify-center gap-2">
+              <p className=" w-1/3 text-end">Mobile number:</p>
+              <input
+                type="number"
+                name="mobile-number"
+                placeholder="contact number"
+                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
+                required
+              />
+            </div>
+
+            {/* email  */}
             <div className="flex items-center justify-center gap-2">
               <p className=" w-1/3 text-end">Email:</p>
               <input
@@ -34,16 +65,19 @@ export default function ArtistsEdit() {
                 required
               />
             </div>
+
+                       
+            {/* description  */}
+            
             <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 text-end">Full Legal Name:</p>
-              <input
-                type="text"
-                name="legal-name"
-                placeholder="legal name"
-                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
-                required
-              />
+              <p className=" w-1/3 text-end">Description:</p>
+
+              <textarea name="description" className="h-16 pt-2 resize-none input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh" placeholder="description"></textarea>
             </div>
+
+
+            {/* bank number  */}
+
             <div className="flex items-center justify-center gap-2">
               <p className=" w-1/3 text-end">Bank Account Number / IBAN::</p>
               <input
@@ -54,6 +88,9 @@ export default function ArtistsEdit() {
                 required
               />
             </div>
+
+            {/* bank name  */}
+
             <div className="flex items-center justify-center gap-2">
               <p className=" w-1/3 text-end">Bank Official Name:</p>
               <input
@@ -64,6 +101,8 @@ export default function ArtistsEdit() {
                 required
               />
             </div>
+            {/* country  */}
+
             <div className="flex items-center justify-center gap-2">
               <p className=" w-1/3 text-end">Country:</p>
               <select
@@ -79,6 +118,9 @@ export default function ArtistsEdit() {
               </select>
             </div>
 
+
+            {/* address  */}
+
             <div className="flex items-center justify-center gap-2">
               <p className=" w-1/3 text-end">Address:</p>
               <input
@@ -89,6 +131,7 @@ export default function ArtistsEdit() {
                 required
               />
             </div>
+            {/* buttons  */}
 
             <div className="flex items-center justify-end gap-4 mt-4">
               <Link to={"/staffAll"}>

@@ -12,6 +12,7 @@ module.exports = {
       blackHigh: "#474747",
       blackMid: "#6C6C6C",
       blackLow: "#919191",
+      blackSemi: "#616161",
 
       blueLight: "#F0F1FF",
       navyDark : "#202658",
@@ -38,7 +39,7 @@ module.exports = {
       primaryMainLighter: "#FD7C55",
       primaryMainLightest: "#FFEFEB",
 
-      secondaryMain: "#37B6B6",
+      secondaryMain: "#3BCE7F",
       secondaryMainDark: "#2C9292",
       secondaryMainDarker: "#216D6D",
       secondaryMainDarkest: "#0B2424",
@@ -51,6 +52,7 @@ module.exports = {
         "linear-gradient(143.77deg, rgba(255, 255, 255, 0.36) 30.9%, rgba(255, 255, 255, 0.03) 83.54%);",
       "gradient-secondary":
         "linear-gradient(175.57deg, #FC8165 -36.85%, rgba(255, 255, 255, 0.25) 107.36%);",
+        "login" : "url('./Assets/img/bg.png')"
     },
     extend: {
       transitionProperty: {

@@ -23,10 +23,15 @@ const SideNav = () => {
 
   const handleMenus = (menu, submenu, submenuOpen) => {
 
-    if (menu === "dashboard" || menu === "users" || menu === "staffs" || submenu !== "") {
-      setIsActive(menu);
+    // console.log()
+
+    setIsActive(menu);
       setIsSubmenuActive(submenu);
-    }
+
+    // if (menu !== isSubmenuOpen[menu]  || submenu !== "") {
+    //   console.log
+      
+    // }
 
 
     if (!submenuOpen) {
@@ -46,10 +51,12 @@ const SideNav = () => {
     <div
       className={`${
         isClosed ? "w-20" : "w-72"
-      } bg-navyDark flex flex-col gap-1 h-full sideNav overflow-x-hidden text-whiteHigh`}
+      } bg-navyDark flex flex-col gap-1 h-full sideNav pb-24 overflow-auto text-whiteHigh`}
     >
       {/* user area */}
-      <section
+
+
+      {/* <section
         className={`flex items-center justify-between p-3 gap-2 rounded-tr-lg`}
       >
         <div className="flex items-center gap-2 shrink-0">
@@ -61,9 +68,11 @@ const SideNav = () => {
             <p className="text-sm">Super Admin</p>
           </div>
         </div>
-      </section>
+      </section> */}
+
+
       {/* routes */}
-      <section className="flex flex-col justify-start items-start gap-1">
+      <section className="flex flex-col flex-1 justify-start items-start gap-1 py-4">
         {/* dashboard  */}
         <div className="w-full overflow-hidden capitalize">
           <Link
@@ -82,49 +91,12 @@ const SideNav = () => {
           </Link>
         </div>
 
-        {/* users  */}
-
-        <div className="w-full overflow-hidden capitalize">
-          <Link
-            to="/userAll"
-            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "users" && "bg-primaryMain"
-            }`}
-            onClick={() => handleMenus("users", "", false)}
-          >
-            <span className="material-symbols-outlined">person</span>
-            &nbsp;
-            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
-              <span>users</span>
-            </p>
-          </Link>
-        </div>
-
-        {/* staffs  */}
-
-        <div className="w-full overflow-hidden capitalize">
-          <Link
-            to="/staffAll"
-            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "staffs" && "bg-primaryMain"
-            }`}
-            onClick={() => handleMenus("staffs", "", false)}
-          >
-            <span className="material-symbols-outlined">group</span>
-            &nbsp;
-            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
-              <span>staffs</span>
-            </p>
-          </Link>
-        </div>
-
+        
         {/* filters  */}
 
         <div className="w-full overflow-hidden capitalize">
           <div
-            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "filter" ? "text-primaryMain" : "text-whiteHigh"
-            }`}
+            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none`}
             onClick={() => handleMenus("filter", "", false)}
           >
             <span className="material-symbols-outlined">photo_library</span>
@@ -157,7 +129,7 @@ const SideNav = () => {
               to="/snapchatFilter"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "snapchat"
-                  ? "bg-blueLight text-primaryMain"
+                  ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("filter", "snapchat", true)}
@@ -168,7 +140,7 @@ const SideNav = () => {
               to="/tiktokFilter"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "tiktok"
-                  ? "bg-blueLight text-primaryMain"
+                  ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("filter", "tiktok", true)}
@@ -179,7 +151,7 @@ const SideNav = () => {
               to="/ecardFilter"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "card"
-                  ? "bg-blueLight text-primaryMain"
+                  ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("filter", "card", true)}
@@ -189,13 +161,49 @@ const SideNav = () => {
           </div>
         </div>
 
+        
+        {/* Upload requests  */}
+
+        <div className="w-full overflow-hidden capitalize">
+          <Link
+            to="/upload_request"
+            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
+              isActive === "upload" && "bg-primaryMain"
+            }`}
+            onClick={() => handleMenus("upload", "", false)}
+          >
+            <span className="material-symbols-outlined">photo_library</span>
+            &nbsp;
+            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
+              <span>upload request</span>
+            </p>
+          </Link>
+        </div>
+
+        {/* users  */}
+
+        <div className="w-full overflow-hidden capitalize">
+          <Link
+            to="/userAll"
+            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
+              isActive === "users" && "bg-primaryMain"
+            }`}
+            onClick={() => handleMenus("users", "", false)}
+          >
+            <span className="material-symbols-outlined">person</span>
+            &nbsp;
+            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
+              <span>users</span>
+            </p>
+          </Link>
+        </div>
+
+        
         {/* artists  */}
 
         <div className="w-full overflow-hidden capitalize">
           <div
-            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "artists" ? "text-primaryMain" : "text-whiteHigh"
-            }`}
+            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none`}
             onClick={() => handleMenus("artists", "",false)}
           >
             <span className="material-symbols-outlined">
@@ -230,7 +238,7 @@ const SideNav = () => {
               to="/artistsPending"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "pending"
-                  ? "bg-blueLight text-primaryMain"
+                  ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("artists", "pending", true)}
@@ -241,7 +249,7 @@ const SideNav = () => {
               to="/artistsApproved"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "approved"
-                  ? "bg-blueLight text-primaryMain"
+                  ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("artists", "approved", true)}
@@ -251,13 +259,86 @@ const SideNav = () => {
           </div>
         </div>
 
-        {/* category  */}
+
+        {/* Platform  */}
 
         <div className="w-full overflow-hidden capitalize">
-          <div
+          <Link
+            to="/platform"
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "category" ? "text-primaryMain" : "text-whiteHigh"
+              isActive === "platform" && "bg-primaryMain"
             }`}
+            onClick={() => handleMenus("platform", "", false)}
+          >
+            <span className="material-symbols-outlined">receipt_long</span>
+            &nbsp;
+            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
+              <span>platform</span>
+            </p>
+          </Link>
+        </div>
+
+        {/* Category  */}
+
+        <div className="w-full overflow-hidden capitalize">
+          <Link
+            to="/categories"
+            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
+              isActive === "categories" && "bg-primaryMain"
+            }`}
+            onClick={() => handleMenus("categories", "", false)}
+          >
+            <span className="material-symbols-outlined">receipt_long</span>
+            &nbsp;
+            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
+              <span>Category</span>
+            </p>
+          </Link>
+        </div>
+
+        {/* Collections  */}
+
+        <div className="w-full overflow-hidden capitalize">
+          <Link
+            to="/collections"
+            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
+              isActive === "collections" && "bg-primaryMain"
+            }`}
+            onClick={() => handleMenus("collections", "", false)}
+          >
+            <span className="material-symbols-outlined">receipt_long</span>
+            &nbsp;
+            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
+              <span>collections</span>
+            </p>
+          </Link>
+        </div>
+
+        {/* staffs  */}
+
+        <div className="w-full overflow-hidden capitalize">
+          <Link
+            to="/staffAll"
+            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
+              isActive === "staffs" && "bg-primaryMain"
+            }`}
+            onClick={() => handleMenus("staffs", "", false)}
+          >
+            <span className="material-symbols-outlined">group</span>
+            &nbsp;
+            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
+              <span>staffs</span>
+            </p>
+          </Link>
+        </div>
+
+
+
+        {/* category  */}
+
+        {/* <div className="w-full overflow-hidden capitalize">
+          <div
+            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none`}
             onClick={() => handleMenus("category", "",false)}
           >
             <span className="material-symbols-outlined">receipt_long</span>
@@ -273,7 +354,6 @@ const SideNav = () => {
               expand_more
             </span>
           </div>
-          {/* submenu  */}
 
           <div
             ref={(ref) => (submenuRef.current["category"] = ref)}
@@ -285,12 +365,11 @@ const SideNav = () => {
                   : "0",
             }}
           >
-            {/* Submenu items */}
             <Link
               to="/categories"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "categories"
-                  ? "bg-blueLight text-primaryMain"
+                  ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("category", "categories", true)}
@@ -301,7 +380,7 @@ const SideNav = () => {
               to="/collections"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "collections"
-                  ? "bg-blueLight text-primaryMain"
+                  ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("category", "collections", true)}
@@ -312,7 +391,7 @@ const SideNav = () => {
               to="/featured"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "featured"
-                  ? "bg-blueLight text-primaryMain"
+                  ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("category", "featured", true)}
@@ -320,15 +399,13 @@ const SideNav = () => {
               <p>featured</p>
             </Link>
           </div>
-        </div>
+        </div> */}
 
         {/* withdraw  */}
 
         <div className="w-full overflow-hidden capitalize">
           <div
-            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "withdraw" ? "text-primaryMain" : "text-whiteHigh"
-            }`}
+            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none`}
             onClick={() => handleMenus("withdraw", "",false)}
           >
             <span className="material-symbols-outlined">paid</span>
@@ -361,7 +438,7 @@ const SideNav = () => {
               to="/withdrawPending"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "pending"
-                  ? "bg-blueLight text-primaryMain"
+                  ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("withdraw", "pending", true)}
@@ -372,18 +449,18 @@ const SideNav = () => {
               to="/withdrawConfirmed"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "completed"
-                  ? "bg-blueLight text-primaryMain"
+                  ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("withdraw", "completed", true)}
             >
-              <p>completed</p>
+              <p>approved</p>
             </Link>
             <Link
               to="/withdrawCancelled"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "cancelled"
-                  ? "bg-blueLight text-primaryMain"
+                  ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("withdraw", "cancelled", true)}
@@ -397,9 +474,7 @@ const SideNav = () => {
 
         <div className="w-full overflow-hidden capitalize">
           <div
-            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "appSetting" ? "text-primaryMain" : "text-whiteHigh"
-            }`}
+            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none`}
             onClick={() => handleMenus("appSetting", "",false)}
           >
             <span className="material-symbols-outlined">app_settings_alt</span>
@@ -432,7 +507,7 @@ const SideNav = () => {
               to="/"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "notifications"
-                  ? "bg-blueLight text-primaryMain"
+                  ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("appSetting", "notifications", true)}
@@ -443,7 +518,7 @@ const SideNav = () => {
               to="/otherSetting"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "others"
-                  ? "bg-blueLight text-primaryMain"
+                  ? "bg-primaryMain text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("appSetting", "others", true)}
@@ -453,7 +528,7 @@ const SideNav = () => {
           </div>
         </div>
       </section>
-      <div className="flex items-start justify-between gap-4 overflow-auto pl-6">
+      <div className="pl-6">
         <button onClick={toggleSideNav} className="btn-btn-ghost">
           <span className="material-symbols-outlined">menu_open</span>
         </button>

@@ -6,7 +6,7 @@ import { lense } from "../../../Assets/getImages";
 import ConfirmationModal from "../../Modals/ConfirmationModal";
 
 
-const FeaturedTable = ({ rows, handleSelectCheckbox }) => {
+const PlatformTable = ({ rows, handleSelectCheckbox }) => {
   const {
     searchBarValue,
     currentCustomer,
@@ -165,7 +165,7 @@ const FeaturedTable = ({ rows, handleSelectCheckbox }) => {
                       </label> */}
                       <Link
                         to={{
-                          pathname: `/featuredEdit/${feature?.user_id}`,
+                          pathname: `/platformEdit/${feature?.user_id}`,
                           customer: feature,
                         }}
                       >
@@ -261,4 +261,4 @@ const FeaturedTable = ({ rows, handleSelectCheckbox }) => {
   );
 };
 
-export default FeaturedTable;
+export default PlatformTable;

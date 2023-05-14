@@ -8,9 +8,10 @@ const TopNav = () => {
   return (
     <div className="navbar bg-navyDark px-6 py-3">
       {/* top nav left */}
-      <div className="flex-1">
+      <div className="flex-1 text-whiteHigh">
+        <h1 className="text-2xl">logo</h1>
         {/* logo */}
-        <svg
+        {/* <svg
           width="95"
           height="28"
           viewBox="0 0 95 28"
@@ -45,7 +46,7 @@ const TopNav = () => {
             d="M79.9588 2.25049L84.4888 10.4492L89.0187 2.25049H94.6894L87.6961 13.903L94.8712 25.7491H89.1509L84.4888 17.389L79.8266 25.7491H74.0732L81.2649 13.903L74.2551 2.25049H79.9588Z"
             fill="#FC5B2B"
           />
-        </svg>
+        </svg> */}
       </div>
 
       {/* top nav right */}
@@ -63,7 +64,7 @@ const TopNav = () => {
               >
                 <path
                   d="M12.0005 21.75C13.1005 21.75 14.0005 20.85 14.0005 19.75H10.0005C10.0005 20.85 10.8905 21.75 12.0005 21.75ZM18.0005 15.75V10.75C18.0005 7.68 16.3605 5.11 13.5005 4.43V3.75C13.5005 2.92 12.8305 2.25 12.0005 2.25C11.1705 2.25 10.5005 2.92 10.5005 3.75V4.43C7.63054 5.11 6.00054 7.67 6.00054 10.75V15.75L4.71054 17.04C4.08054 17.67 4.52054 18.75 5.41054 18.75H18.5805C19.4705 18.75 19.9205 17.67 19.2905 17.04L18.0005 15.75Z"
-                  fill="#919191"
+                  fill="#ffffff"
                 />
               </svg>
               <span className="badge badge-sm rounded-full bg-successColor border-none indicator-item">

@@ -478,6 +478,261 @@
         }
         
     ],
+    "upload_request" : [
+        {
+            "user_id": "00001",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Darlene Robertson",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        
+        {
+            "user_id": "00002",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Theresa Webb",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "00003",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Ralph Edwards",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "00004",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Guy Hawkins",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "00005",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Devon Lane",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "00006",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Courtney Henry",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "00007",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Kristin Watson",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "00008",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Jerome Bell",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "00009",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Arlene McCoy",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "000010",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Marvin McKinney",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "000012",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Theresa Webb",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "000013",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Ralph Edwards",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "000014",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Guy Hawkins",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "000015",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Devon Lane",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "000016",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Courtney Henry",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "000017",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Kristin Watson",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "000018",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Jerome Bell",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "000019",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Arlene McCoy",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "000020",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Marvin McKinney",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "000021",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Theresa Webb",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "000022",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Ralph Edwards",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "000023",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Guy Hawkins",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "000024",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Devon Lane",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "000025",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Courtney Henry",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "000026",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Kristin Watson",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "000025",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Jerome Bell",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "000026",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Arlene McCoy",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        },
+        {
+            "user_id": "000027",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Marvin McKinney",
+            "package_name":"my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar"
+        }
+    ],
     "artists" : [
         {
             "user_id": "00001",
@@ -1269,6 +1524,289 @@
             "createdAt" :  "11/12/2019 11:36 PM",
             "collection_name" : "Brooklyn Simmons",
             "collection_icon" : "face"
+        }
+    ],
+    "collections" : [
+        {
+            "user_id": "00001",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Darlene Robertson",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        
+        {
+            "user_id": "00002",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Theresa Webb",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "00003",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Ralph Edwards",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "00004",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Guy Hawkins",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "00005",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Devon Lane",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "00006",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Courtney Henry",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "00007",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Kristin Watson",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "00008",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Jerome Bell",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "00009",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Arlene McCoy",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "000010",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Marvin McKinney",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "000012",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Theresa Webb",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "000013",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Ralph Edwards",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "000014",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Guy Hawkins",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "000015",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Devon Lane",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "000016",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Courtney Henry",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "000017",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Kristin Watson",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "000018",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Jerome Bell",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "000019",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Arlene McCoy",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "000020",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Marvin McKinney",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "000021",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Theresa Webb",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "000022",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Ralph Edwards",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "000023",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Guy Hawkins",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "000024",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Devon Lane",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "000025",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Courtney Henry",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "000026",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Kristin Watson",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "000025",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Jerome Bell",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "000026",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Arlene McCoy",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
+        },
+        {
+            "user_id": "000027",
+            "createdAt" : "11/12/2019 11:36 PM",
+            "user_name" : "Marvin McKinney",
+            "collection_name" : "my nature collection",
+            "platform" :"Snapchat",
+            "category" :"cool",
+            "type" : "Ar",
+            "file_upload": "6"
         }
     ]
     

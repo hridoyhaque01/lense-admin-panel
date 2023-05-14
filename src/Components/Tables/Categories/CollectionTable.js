@@ -1,10 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { CustomerContext } from "../../../Contexts/CustomerContext/CustomerProvider";
-import FiltersConfirmationBlockPopup from "../../Modals/Filters/FiltersConfirmationBlockPopup";
 import EmptyScreen from "../../Shared/EmptyScreens/EmptyScreen";
-import { lense } from "../../../Assets/getImages";
-import CategoriesConfirmationBlockPopup from "../../Modals/Categories/CategoriesConfirmationBlockPopup";
 import ConfirmationModal from "../../Modals/ConfirmationModal";
 
 
@@ -108,10 +105,30 @@ const CollectionTable = ({ rows, handleSelectCheckbox }) => {
               
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-              Collections name
+                Serial
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
                 Created
+              </th>
+              <th className="bg-blueLight text-bold text-lg normal-case">
+              Collections name
+              </th>
+              <th className="bg-blueLight text-bold text-lg normal-case">
+              Artist name
+              </th>
+              <th className="bg-blueLight text-bold text-lg normal-case">
+                Platform
+              </th>
+              <th className="bg-blueLight text-bold text-lg normal-case">
+                Category
+              </th>
+              
+              <th className="bg-blueLight text-bold text-lg normal-case">
+                Type
+              </th>
+              
+              <th className="bg-blueLight text-bold text-lg normal-case">
+                File
               </th>
               
               <th className="bg-blueLight text-bold text-lg normal-case">
@@ -133,10 +150,30 @@ const CollectionTable = ({ rows, handleSelectCheckbox }) => {
                       }}
                     />
                   </th>
-                  <td className="px-0 mx-0">{collection?.collection_name}</td>
+                  <td className="px-0 mx-0">
+                        {rowsPerPage * (currentPage - 1) + i+1 }
+                  </td>
                   <td className="px-0 mx-0">
                     {collection?.createdAt}
                   </td>
+                  <td className="px-0 mx-0">{collection?.collection_name}</td>
+                  <td className="px-0 mx-0">
+                    {collection?.user_name}
+                  </td>
+                  
+                  <td className="px-0 mx-0">
+                    {collection?.platform}
+                  </td>
+                  <td className="px-0 mx-0">
+                    {collection?.category}
+                  </td>
+                  <td className="px-0 mx-0">
+                    {collection?.type}
+                  </td>
+                  <td className="px-0 mx-0">
+                    {collection?.file_upload}
+                  </td>
+                  
                   
                   <td className="px-0 mx-0">
                     <div className="flex items-center justify-center gap-0">

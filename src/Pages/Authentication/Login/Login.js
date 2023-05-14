@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../../Contexts/AuthContext/AuthProvider";
@@ -38,51 +38,68 @@ const Login = () => {
       });
   };
   return (
-    <section className="h-screen bg-whiteMid flex flex-col items-center justify-between w-full">
-      <div className="w-full">
-      </div>
-      <div className="flex items-center justify-center p-8 border-2 rounded-lg border-mainColor">
-        <div className="flex flex-col items-center justify-center gap-4 lg:w-96">
-          <h2 className="text-center text-2xl font-bold pt-4">LOGIN</h2>
-          {/* <figure>
-            <img src={login} alt="login img" className="rounded-xl w-44" />
-          </figure> */}
-          <form
-            className="flex flex-col w-full items-center justify-center"
-            onSubmit={handleLogin}
-          >
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              className="input bg-whiteLow border-none focus:outline-none w-full font-bold"
-            />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              className="input bg-whiteLow border-none focus:outline-none w-full my-4 font-bold"
-            />
-            <button className="btn normal-case">
-              {/* <img className="w-12" src={loginBtn} alt="login button" /> */}
-              Login
-            </button>
-          </form>
+    <section className="h-screen bg-login bg-no-repeat bg-cover bg-whiteSemi flex flex-col items-center justify-center w-full">
+      <div className="flex flex-col">
+        <div className="text-center mb-10">
+          <h4 className="text-3xl text-primaryMain">Welcome back!</h4>
+          <h1 className="text-5xl text-pureBlackColor font-bold">
+            Login to continue
+          </h1>
         </div>
-        <ToastContainer
-          position="top-right"
-          autoClose={2000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
-      </div>
-      <div className="w-full">
+        <div className="flex items-center justify-center py-12 px-10 bg-whiteHigh rounded-lg w-[476px]">
+        <form
+              className="flex flex-col w-full gap-4 "
+              onSubmit={handleLogin}
+            >
+              <div>
+                <p className="text-sm text-pureBlackColor font-bold mb-2">Your E-mail</p>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  className="input bg-transparent border border-whiteLow focus:outline-none w-full"
+                />
+              </div>
+              <div>
+                <p className="text-sm text-pureBlackColor font-bold mb-2">Password</p>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  className="input bg-transparent border border-whiteLow focus:outline-none w-full"
+                />
+              </div>
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  name="remember"
+                  placeholder="Password"
+                  className=" bg-whiteLow "
+                />
+                <p className="text-blackSemi">Remeber me</p>
+              </div>
+              <button className="btn normal-case mt-4 mb-6" type="submit">
+                {/* <img className="w-12" src={loginBtn} alt="login button" /> */}
+                Login
+              </button>
+
+              <div className="text-center">
+                <Link to="/" className="text-lg text-primaryMain font-bold">Forget Password?</Link>
+              </div>
+            </form>
+            <ToastContainer
+              position="top-right"
+              autoClose={2000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
+        </div>
       </div>
     </section>
   );

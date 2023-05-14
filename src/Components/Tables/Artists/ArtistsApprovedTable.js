@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { CustomerContext } from "../../../Contexts/CustomerContext/CustomerProvider";
 import EmptyScreen from "../../Shared/EmptyScreens/EmptyScreen";
 import ArtistsConfirmationBlockPopup from "../../Modals/Artists/ArtistsConfirmationBlockPopup";
+import ConfirmationModal from "../../Modals/ConfirmationModal";
 
 const ArtistsApprovedTable = ({
   rows,
@@ -115,13 +116,19 @@ const ArtistsApprovedTable = ({
               Name
             </th>
             <th className="bg-blueLight text-bold text-lg normal-case">
+              Mobile
+            </th>
+            <th className="bg-blueLight text-bold text-lg normal-case">
               Email
             </th>
             <th className="bg-blueLight text-bold text-lg normal-case">
-             Payment Method
+              Uplodaded
             </th>
             <th className="bg-blueLight text-bold text-lg normal-case">
-              Portfolio link
+             Earned
+            </th>
+            <th className="bg-blueLight text-bold text-lg normal-case">
+              Payout
             </th>
             <th className="bg-blueLight text-bold text-lg normal-case">
               Actions
@@ -147,12 +154,14 @@ const ArtistsApprovedTable = ({
                 <td className="px-0 mx-0">
                   {artist?.user_name}
                 </td>
+                <td className="px-0 mx-0">+2 22541223</td>
                 <td className="px-0 mx-0">{artist?.user_email}</td>
-                <td className="px-0 mx-0">{artist?.payment_method}</td>
-                <td className="px-0">{artist?.user_portfolio_link}</td>
+                <td className="px-0 mx-0">25</td>
+                <td className="px-0">$12</td>
+                <td className="px-0">$12</td>
                 <td className="px-0 mx-0">
                     <div className="flex items-center justify-center gap-0">
-                      <label
+                      {/* <label
                         htmlFor="artistBlockPopup"
                         onClick={() => setCurrentCustomer(artist)}
                         className="btn rounded-full p-0 bg-whiteHigh text-blackMid border-none hover:bg-whiteHigh"
@@ -160,7 +169,7 @@ const ArtistsApprovedTable = ({
                         <span className="material-symbols-outlined p-0">
                           block
                         </span>
-                      </label>
+                      </label> */}
                       <Link
                         to={{
                           pathname: `/artistEdit/${artist?.user_id}`,
@@ -176,6 +185,18 @@ const ArtistsApprovedTable = ({
                           </span>
                         </label>
                       </Link>
+
+                      <button type="button" onClick={()=> console.log("delete")}
+                      >
+                        <label
+                          htmlFor="deletePopup"
+                          className="btn rounded-full p-3 bg-whiteHigh text-errorColor border-none hover:bg-whiteHigh"
+                        >
+                          <span className="material-symbols-outlined">
+                            delete
+                          </span>
+                        </label>
+                      </button>
                     </div>
                   </td>
               </tr>
@@ -238,11 +259,14 @@ const ArtistsApprovedTable = ({
         
         
       </section>
-
+{/* 
       <ArtistsConfirmationBlockPopup
         currentArtist={currentCustomer}
         clickHandlerForModals={clickHandlerForModals}
-      ></ArtistsConfirmationBlockPopup>
+      ></ArtistsConfirmationBlockPopup> */}
+      <ConfirmationModal
+        actionName="delete"
+      ></ConfirmationModal>
     </div>
   );
 };

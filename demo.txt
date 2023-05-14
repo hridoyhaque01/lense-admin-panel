@@ -1,81 +1,56 @@
-<div className="grid items-center justify-center gap-4">
-            <form className="flex flex-col gap-4" onSubmit={handleEditBtn}>
-              <div className="flex flex-col w-full items-center justify-center gap-2">
-                
-                <div className="flex items-center justify-center gap-1">
-                  <p className=" w-96 text-end">Name:</p>
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="staff name"
-                    className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
-                  />
-                </div>
+<div className="flex items-center justify-center py-12 px-10 bg-whiteHigh rounded-lg ">
+        <div className="flex flex-col items-center justify-center gap-4 lg:w-96">
+          <form
+            className="flex flex-col w-full gap-4 "
+            onSubmit={handleLogin}
+          >
+            <div>
+              <p className="text-sm text-pureBlackColor font-bold mb-2">Your E-mail</p>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                className="input bg-whiteLow border-none focus:outline-none w-full font-bold"
+              />
+            </div>
+            <div>
+              <p className="text-sm text-pureBlackColor font-bold mb-2">Password</p>
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                className="input bg-whiteLow border-none focus:outline-none w-full font-bold"
+              />
+            </div>
+            <div className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                name="remember"
+                placeholder="Password"
+                className=" bg-whiteLow "
+              />
+              <p className="text-blackSemi">Remeber me</p>
+            </div>
+            <button className="btn normal-case mt-4 mb-6" type="submit">
+              {/* <img className="w-12" src={loginBtn} alt="login button" /> */}
+              Login
+            </button>
 
-                <div className="flex items-center justify-center gap-1">
-                  <p className=" w-96 text-end">Email Adress:</p>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="staff email"
-                    className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
-                  />
-                </div>
-                
-                <div className="flex items-center justify-center gap-1">
-                  <p className=" w-96 text-end">Set Password:</p>
-                  <input
-                    type="text"
-                    name="password"
-                    placeholder="Set Password"
-                    className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
-                  />
-                </div>
-                
-                <div className="flex items-center justify-center gap-1">
-                  <p className=" w-96 text-end">Confirm New Password:</p>
-                  <input
-                    type="text"
-                    name="confirmPassword"
-                    placeholder="confirm Password"
-                    className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
-                  />
-                </div>
-                
-                
-                <div className="flex items-center justify-center gap-1">
-                  <p className=" w-96 text-end">Phone Number:</p>
-                  <input
-                    type="text"
-                    name="phoneNumber"
-                    placeholder="staff phone Number"
-                    className="input bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh"
-                  />
-                </div>
-                
-                
-                <div className="flex items-center justify-center gap-1">
-                  <p className=" w-96 text-end">Role:</p>
-                  <select
-                    name="userType"
-                    className="select bg-whiteHigh border-1 border-whiteLow focus:outline-none w-96 text-blackHigh font-medium"
-                  >
-                    <option value="" disabled>Select Role</option>
-                    <option value={"Admin"}>Admin</option>
-                    <option value={"Manager"}>Manager</option>
-                  </select>
-                </div>
-                
-              </div>
-              <div className="flex items-center justify-end gap-4">
-                <Link to={"/staffAll"}>
-                  <label className="btn rounded-full w-36 normal-case bg-whiteHigh text-primaryMain border-primaryMain hover:border-primaryMain hover:bg-whiteHigh">
-                    Cancel
-                  </label>
-                </Link>
-                <button className="btn submit rounded-full w-36 normal-case bg-primaryMain border-primaryMain hover:text-primaryMain hover:bg-whiteHigh hover:border-primaryMain">
-                  Save
-                </button>
-              </div>
-            </form>
-          </div>
+            <div className="text-center">
+              <Link to="/" className="text-lg text-primaryMain font-bold">Forget Password?</Link>
+            </div>
+          </form>
+        </div>
+        <ToastContainer
+          position="top-right"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+      </div>
