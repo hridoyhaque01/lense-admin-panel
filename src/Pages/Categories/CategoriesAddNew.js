@@ -57,17 +57,19 @@ const CategoriesAddNew = () => {
         <section className="py-4 bg-whiteHigh">
           <form className="w-8/12 flex flex-col mx-auto gap-2">
             <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 text-end">Category name:</p>
+              <p className=" w-1/3 shrink-0 text-end">Category name:</p>
               <input
                 type="text"
                 name="name"
                 placeholder="category name"
-                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
+                className="input w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
                 required
               />
             </div>
 
-            <div className="w-2/3 flex flex-col gap-4 ml-auto">
+            <div className="flex gap-2">
+              <div className="w-1/3 shrink-0"></div>
+              <div className="w-2/3 flex-1 flex flex-col gap-4 ml-auto">
               <div className="border border-dotted border-primaryMain rounded-lg py-6 px-4 flex flex-col justify-center items-center gap-2">
                 <img src={upload} alt="" className="w-10" />
                 <label
@@ -98,6 +100,9 @@ const CategoriesAddNew = () => {
                 </div>
               )}
             </div>
+            </div>
+
+            
 
             {/* <div>
               <input type="file" onChange={handleFileChange} />

@@ -116,12 +116,12 @@ const CollectionAddNew = () => {
 
           {/* platform  */}
           <div className="flex items-center justify-center gap-2">
-            <p className=" w-1/3 text-end">Platform:</p>
+            <p className=" w-1/3 text-end shrink-0">Platform:</p>
             <input
               type="text"
               name="platform"
               placeholder="platform name"
-              className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
+              className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh  flex-1"
               required
             />
           </div>
@@ -129,11 +129,11 @@ const CollectionAddNew = () => {
           {/* category  */}
           
           <div className="flex items-center justify-center gap-2">
-            <p className=" w-1/3 text-end">Category:</p>
+            <p className=" w-1/3 text-end shrink-0">Category:</p>
             <select
             onChange={()=> console.log("hello")}
               name="category"
-              className="select w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium"
+              className="select w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium flex-1"
               required
               defaultValue="Select Any"
             >
@@ -148,11 +148,11 @@ const CollectionAddNew = () => {
           {/* type  */}
           
           <div className="flex items-center justify-center gap-2">
-            <p className=" w-1/3 text-end">Type:</p>
+            <p className=" w-1/3 text-end shrink-0">Type:</p>
             <select
             onChange={()=> console.log("hello")}
               name="type"
-              className="select w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium"
+              className="select w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium flex-1"
               required
               defaultValue="Select Any"
             >
@@ -168,12 +168,12 @@ const CollectionAddNew = () => {
           {/* Collection name  */}
 
           <div className="flex items-center justify-center gap-2">
-            <p className=" w-1/3 text-end">Collection name:</p>
+            <p className=" w-1/3 text-end shrink-0">Collection name:</p>
             <input
               type="text"
               name="collection-name"
               placeholder="collection name"
-              className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
+              className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh flex-1"
               required
             />
           </div>
@@ -181,20 +181,20 @@ const CollectionAddNew = () => {
           {/* description  */}
           
           <div className="flex items-center justify-center gap-2">
-            <p className=" w-1/3 text-end">Description:</p>
+            <p className=" w-1/3 text-end shrink-0">Description:</p>
 
-            <textarea name="description" className="h-16 pt-2 resize-none input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh" placeholder="description"></textarea>
+            <textarea name="description" className="h-16 pt-2 resize-none input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh flex-1" placeholder="description"></textarea>
           </div>
 
           
           {/* availibility  */}
           
           <div className="flex items-center justify-center gap-2">
-            <p className=" w-1/3 text-end">Availability:</p>
+            <p className=" w-1/3 text-end shrink-0">Availability:</p>
             <select
             onChange={()=> console.log("hello")}
               name="availability"
-              className="select w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium"
+              className="select w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium flex-1"
               required
               defaultValue="Select Any"
             >
@@ -210,12 +210,12 @@ const CollectionAddNew = () => {
           {/* Artist  */}
           
           <div className="flex items-center justify-center gap-2">
-            <p className=" w-1/3 text-end">Artist name:</p>
+            <p className=" w-1/3 text-end shrink-0">Artist name:</p>
             <input
               type="text"
               name="artist-name"
               placeholder="artist name"
-              className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
+              className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh flex-1"
               required
             />
           </div>

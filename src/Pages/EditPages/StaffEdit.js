@@ -68,60 +68,60 @@ const StaffEdit = () => {
         <section className="py-4 bg-whiteHigh">
           <form className="w-8/12 flex flex-col mx-auto gap-2">
             <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 text-end">Name:</p>
+              <p className=" w-1/3 shrink-0 text-end">Name:</p>
               <input
                 type="text"
                 name="name"
                 placeholder="staff name"
-                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
+                className="input w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
                 required
               />
             </div>
             <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 text-end">Email Address:</p>
+              <p className=" w-1/3 shrink-0 text-end">Email Address:</p>
               <input
                 type="email"
                 name="email"
                 placeholder="staff email"
-                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
+                className="input w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
                 required
               />
             </div>
             <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 text-end">Set Password:</p>
+              <p className=" w-1/3 shrink-0 text-end">Set Password:</p>
               <input
                 type="password"
                 name="password"
                 placeholder="set password"
-                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
+                className="input w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
                 required
               />
             </div>
             <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 text-end">Confirm Password:</p>
+              <p className=" w-1/3 shrink-0 text-end">Confirm Password:</p>
               <input
                 type="password"
                 name="confirmPassword"
                 placeholder="confirm password"
-                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
+                className="input w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
                 required
               />
             </div>
             <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 text-end">Phone Number:</p>
+              <p className=" w-1/3 shrink-0 text-end">Phone Number:</p>
               <input
                 type="number"
                 name="number"
                 placeholder="staff phone number"
-                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
+                className="input w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
                 required
               />
             </div>
             <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 text-end">Role:</p>
+              <p className=" w-1/3 shrink-0 text-end">Role:</p>
               <select
                 name="userType"
-                className="select w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium"
+                className="select w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium"
                 required
               >
                 <option value="" disabled>

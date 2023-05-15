@@ -70,13 +70,13 @@ const UserEdit = () => {
 
             {/* name  */}
             <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 text-end">Name:</p>
+              <p className=" w-1/3 shrink-0 text-end">Name:</p>
               <input
                 type="text"
                 name="name"
                 defaultValue={currentOrder?.sender_name}
                 placeholder="set name"
-                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
+                className="input w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
               />
             </div>
 
@@ -84,67 +84,67 @@ const UserEdit = () => {
             {/* user name  */}
             
             <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 text-end">Username:</p>
+              <p className=" w-1/3 shrink-0 text-end">Username:</p>
               <input
                 type="text"
                 name="username"
                 defaultValue={currentOrder?.sender_name}
                 placeholder="set username"
-                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
+                className="input w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
               />
             </div>
 
             {/* mobile number  */}
 
             <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 text-end">Mobile number::</p>
+              <p className=" w-1/3 shrink-0 text-end">Mobile number::</p>
               <input
                 type="number"
                 name="mobile-number"
                 defaultValue={currentOrder?.sender_name}
                 placeholder="set mobile number"
-                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
+                className="input w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
               />
             </div>
 
             {/* email  */}
 
             <div className="flex items-center justify-center gap-2">
-              <p className="w-1/3 text-end">Email:</p>
+              <p className="w-1/3 shrink-0 text-end">Email:</p>
               <input
                 type="email"
                 name="email"
                 defaultValue={currentOrder?.sender_contact}
                 placeholder="set email"
-                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
+                className="input w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
               />
             </div>
 
             {/* description  */}
             
             <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 text-end">Description:</p>
+              <p className=" w-1/3 shrink-0 text-end">Description:</p>
 
-              <textarea name="description" className="h-16 pt-2 resize-none input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh" placeholder="description"></textarea>
+              <textarea name="description" className="h-16 pt-2 resize-none input w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh" placeholder="description"></textarea>
               {/* <input
                 type="text"
                 name="name"
                 defaultValue={currentOrder?.sender_name}
                 placeholder="user name"
-                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
+                className="input w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
               /> */}
             </div>
 
             {/* subscription  */}
             
             <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 text-end">Subscription:</p>
+              <p className=" w-1/3 shrink-0 text-end">Subscription:</p>
               <input
                 type="text"
                 name="subscription"
                 defaultValue={currentOrder?.sender_name}
                 placeholder="user name"
-                className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
+                className="input w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
               />
             </div>
 
