@@ -11,7 +11,7 @@ import {
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 
 export const BusinessContext = createContext();
-const BusinessProvider = ({ children }) => {
+  const BusinessProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [allParcelTypes, setAllParcelTypes] = useState(false);
   const [currentParcelType, setCurrentParcelType] = useState(false);
