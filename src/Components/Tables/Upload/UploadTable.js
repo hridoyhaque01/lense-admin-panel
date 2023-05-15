@@ -6,7 +6,7 @@ import { lense } from "../../../Assets/getImages";
 import ConfirmationModal from "../../Modals/ConfirmationModal";
 
 
-const UploadTable = ({ rows, handleSelectCheckbox }) => {
+const UploadTable = ({ rows, handleSelectCheckbox,handleSelectAllCheckbox,selectedUploads }) => {
   const {
     searchBarValue,
     currentCustomer,
@@ -50,9 +50,9 @@ const UploadTable = ({ rows, handleSelectCheckbox }) => {
 
 //   const = 
 
-  const handleAllCheckbox = (orders, e) => {
-    // handleSelectAllCheckbox(orders, e);
-    console.log('filters');
+  const handleAllCheckbox = (uploads, e) => {
+    handleSelectAllCheckbox(uploads, e);
+    // console.log('filters');
   };
 
   const renderPagination = () => {
@@ -142,6 +142,7 @@ const UploadTable = ({ rows, handleSelectCheckbox }) => {
                       type="checkbox"
                       className="checkbox rounded-none"
                       name="checkbox"
+                      checked={selectedUploads.includes(upload?.user_id)}
                       onChange={(e) => {
                         handleCheckbox(upload, e);
                       }}

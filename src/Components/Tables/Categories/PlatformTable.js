@@ -6,7 +6,7 @@ import { lense } from "../../../Assets/getImages";
 import ConfirmationModal from "../../Modals/ConfirmationModal";
 
 
-const PlatformTable = ({ rows, handleSelectCheckbox }) => {
+const PlatformTable = ({ rows, handleSelectCheckbox ,selectedPlatforms ,handleSelectAllCheckbox}) => {
   const {
     searchBarValue,
     currentCustomer,
@@ -44,15 +44,14 @@ const PlatformTable = ({ rows, handleSelectCheckbox }) => {
     setActiveButton(pageNumber);
   };
 
-  const handleCheckbox = (order, e) => {
-    handleSelectCheckbox(order, e);
+  const handleCheckbox = (platform, e) => {
+    handleSelectCheckbox(platform, e);
   };
 
 //   const = 
 
-  const handleAllCheckbox = (orders, e) => {
-    // handleSelectAllCheckbox(orders, e);
-    console.log('filters');
+  const handleAllCheckbox = (platforms, e) => {
+    handleSelectAllCheckbox(platforms, e);
   };
 
   const renderPagination = () => {
@@ -128,7 +127,7 @@ const PlatformTable = ({ rows, handleSelectCheckbox }) => {
             </tr>
           </thead>
           <tbody className="text-center">
-            {currentRows?.map((feature, i) => {
+            {currentRows?.map((platform, i) => {
               return (
                 <tr key={i} className="text-center">
                   <th className="px-0">
@@ -136,8 +135,9 @@ const PlatformTable = ({ rows, handleSelectCheckbox }) => {
                       type="checkbox"
                       className="checkbox rounded-none"
                       name="checkbox"
+                      checked={selectedPlatforms?.includes(platform?.id)}
                       onChange={(e) => {
-                        handleCheckbox(feature, e);
+                        handleCheckbox(platform, e);
                       }}
                     />
                   </th>
@@ -147,16 +147,16 @@ const PlatformTable = ({ rows, handleSelectCheckbox }) => {
                         </div>
                   </td>
                   <td className="px-0 mx-0">
-                    {feature?.createdAt}
+                    {platform?.createdAt}
                   </td>
-                  <td className="px-0 mx-0">{feature?.user_name}</td>
-                  <td className="px-0">{feature?.user_coin}</td>
-                  <td className="px-0">{feature?.validity}</td>
+                  <td className="px-0 mx-0">{platform?.user_name}</td>
+                  <td className="px-0">{platform?.user_coin}</td>
+                  <td className="px-0">{platform?.validity}</td>
                   <td className="px-0 mx-0">
                     <div className="flex items-center justify-center gap-0">
                       {/* <label
                         htmlFor="filterBlockPopup"
-                        onClick={() => setCurrentCustomer(feature)}
+                        onClick={() => setCurrentCustomer(platform)}
                         className="btn rounded-full p-0 bg-whiteHigh text-blackMid border-none hover:bg-whiteHigh"
                       >
                         <span className="material-symbols-outlined p-0">
@@ -165,8 +165,8 @@ const PlatformTable = ({ rows, handleSelectCheckbox }) => {
                       </label> */}
                       <Link
                         to={{
-                          pathname: `/platformEdit/${feature?.user_id}`,
-                          customer: feature,
+                          pathname: `/platformEdit/${platform?.user_id}`,
+                          customer: platform,
                         }}
                       >
                         <label

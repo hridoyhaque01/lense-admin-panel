@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import db from "../../Assets/json/db.json"
 
 const ArtistsApproved = () => {
-  const [selectedOrders, setSelectedOrders] = useState([]);
+  const [selectedArtists, setSelectedArtists] = useState([]);
   const [pendingOrders, setPendingOrders] = useState([]);
   const {artists} = db || {}
 
@@ -26,34 +26,34 @@ const ArtistsApproved = () => {
     clickHandlerForModals,
   } = useContext(OrderContext);
 
-  const handleSelectCheckbox = (order, e) => {
-    const selectedOrdersList = [...selectedOrders];
+  const handleSelectCheckbox = (artist, e) => {
+    const selectedArtistsList = [...selectedArtists];
     if (e.target.checked) {
-      selectedOrdersList.push(order.order_id);
+      selectedArtistsList.push(artist?.user_id);
     } else {
-      const index = selectedOrdersList.indexOf(order.order_id);
+      const index = selectedArtistsList.indexOf(artist?.user_id);
       if (index !== -1) {
-        selectedOrdersList.splice(index, 1);
+        selectedArtistsList.splice(index, 1);
       }
     }
-    setSelectedOrders(selectedOrdersList);
+    setSelectedArtists(selectedArtistsList);
   };
 
-  const handleSelectAllCheckbox = (orders, e) => {
+  const handleSelectAllCheckbox = (artists, e) => {
     const selectAllOrder = [];
     if (e?.target?.checked) {
-      orders?.map((order) => {
-        return selectAllOrder?.push(order?.order_id);
+      artists?.map((artists) => {
+        return selectAllOrder?.push(artists?.user_id);
       });
     } else {
-      setSelectedOrders([]);
+      setSelectedArtists([]);
     }
-    setSelectedOrders(selectAllOrder);
+    setSelectedArtists(selectAllOrder);
   };
 
   const handleApproveAll = (order, status) => {
     updateManyOrderStatus(order, status);
-    setSelectedOrders([]);
+    setSelectedArtists([]);
   };
 
   const handleUserTypeToggle = (userType) => {
@@ -102,20 +102,20 @@ const ArtistsApproved = () => {
 
       <div
         className={` ${
-          selectedOrders.length < 1
+          selectedArtists.length < 1
             ? "hidden"
             : "flex items-center justify-start gap-4"
         } p-4 bg-whiteHigh`}
       >
         <label
-          onClick={() => handleApproveAll(selectedOrders, "Returned")}
+          onClick={() => handleApproveAll(selectedArtists, "Returned")}
           className="btn btn-sm border-none bg-primaryMain"
         >
           Decline Selected
         </label>
         <button
           className="btn btn-sm border-none text-blackMid hover:text-whiteHigh bg-whiteLow"
-          onClick={() => handleApproveAll(selectedOrders, "Processing")}
+          onClick={() => handleApproveAll(selectedArtists, "Processing")}
         >
           Approve Selected
         </button>
@@ -128,6 +128,7 @@ const ArtistsApproved = () => {
           setCurrentOrder={setCurrentOrder}
           handleSelectAllCheckbox={handleSelectAllCheckbox}
           handleSelectCheckbox={handleSelectCheckbox}
+          selectedArtists={selectedArtists}
         ></ArtistsApprovedTable>
       )}
       {/* block modal popup */}

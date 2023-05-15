@@ -6,7 +6,7 @@ import PlatformTable from "../../Components/Tables/Categories/PlatformTable";
 import db from "../../Assets/json/db.json"
 
 const Plateform = () => {
-  const [selectedCustomers, setSelectedCustomers] = useState([]);
+  const [selectedPlatforms, setSelectedPlatforms] = useState([]);
   const [approvedCustomers, setApprovedCustomers] = useState([]);
   const {featured}  = db || {}
 
@@ -20,34 +20,34 @@ const Plateform = () => {
     updateManyCustomerStatus,
   } = useContext(CustomerContext);
 
-  const handleSelectCheckbox = (customer, e) => {
-    const selectedCustomersList = [...selectedCustomers];
+  const handleSelectCheckbox = (platfrom, e) => {
+    const selectedPlatformsList = [...selectedPlatforms];
     if (e.target.checked) {
-      selectedCustomersList.push(customer?.used_id);
+      selectedPlatformsList.push(platfrom?.id);
     } else {
-      const index = selectedCustomersList.indexOf(customer?.used_id);
+      const index = selectedPlatformsList.indexOf(platfrom?.id);
       if (index !== -1) {
-        selectedCustomersList.splice(index, 1);
+        selectedPlatformsList.splice(index, 1);
       }
     }
-    setSelectedCustomers(selectedCustomersList);
+    setSelectedPlatforms(selectedPlatformsList);
   };
 
-  // const handleSelectAllCheckbox = (customers, e) => {
-  //   const selectAllCustomer = [];
-  //   if (e?.target?.checked) {
-  //     customers?.map((customer) => {
-  //       return selectAllCustomer?.push(customer?.used_id);
-  //     });
-  //   } else {
-  //     setSelectedCustomers([]);
-  //   }
-  //   setSelectedCustomers(selectAllCustomer);
-  // };
+  const handleSelectAllCheckbox = (platfroms, e) => {
+    const selectAllPlatform = [];
+    if (e?.target?.checked) {
+      platfroms?.map((platfrom) => {
+        return selectAllPlatform?.push(platfrom?.id);
+      });
+    } else {
+      setSelectedPlatforms([]);
+    }
+    setSelectedPlatforms(selectAllPlatform);
+  };
 
-  const handleApproveAll = (customer, status) => {
-    updateManyCustomerStatus(customer, status);
-    setSelectedCustomers([]);
+  const handleApproveAll = (platfrom, status) => {
+    updateManyCustomerStatus(platfrom, status);
+    setSelectedPlatforms([]);
   };
 
   useEffect(() => {
@@ -89,20 +89,20 @@ const Plateform = () => {
 
       <div
         className={` ${
-          selectedCustomers?.length < 1
+          selectedPlatforms?.length < 1
             ? "hidden"
             : "flex items-center justify-start gap-4"
         } p-4 bg-whiteHigh`}
       >
         <label
-          onClick={() => handleApproveAll(selectedCustomers, "Cancelled")}
+          onClick={() => handleApproveAll(selectedPlatforms, "Cancelled")}
           className="btn btn-sm border-none bg-primaryMain"
         >
           Decline Selected
         </label>
         <button
           className="btn btn-sm border-none text-blackMid hover:text-whiteHigh bg-whiteLow"
-          onClick={() => handleApproveAll(selectedCustomers, "Approved")}
+          onClick={() => handleApproveAll(selectedPlatforms, "Approved")}
         >
           Approve Selected
         </button>
@@ -114,6 +114,8 @@ const Plateform = () => {
           rows={featured}
           setCurrentCustomer={setCurrentCustomer}
           handleSelectCheckbox={handleSelectCheckbox}
+          selectedPlatforms={selectedPlatforms}
+          handleSelectAllCheckbox={handleSelectAllCheckbox}
         ></PlatformTable>
       )}
     </div>

@@ -6,7 +6,7 @@ import UploadTable from "../../Components/Tables/Upload/UploadTable";
 import db from "../../Assets/json/db.json"
 
 const UploadRequest = () => {
-  const [selectedCustomers, setSelectedCustomers] = useState([]);
+  const [selectedUploads, setSelectedUploads] = useState([]);
   const [approvedCustomers, setApprovedCustomers] = useState([]);
   const {upload_request}  = db || {}
 
@@ -20,34 +20,36 @@ const UploadRequest = () => {
     updateManyCustomerStatus,
   } = useContext(CustomerContext);
 
-  const handleSelectCheckbox = (customer, e) => {
-    const selectedCustomersList = [...selectedCustomers];
+  const handleSelectCheckbox = (upload, e) => {
+    const selectedUploadsList = [...selectedUploads];
     if (e.target.checked) {
-      selectedCustomersList.push(customer?.used_id);
+      selectedUploadsList.push(upload?.user_id);
     } else {
-      const index = selectedCustomersList.indexOf(customer?.used_id);
+      const index = selectedUploadsList.indexOf(upload?.user_id);
       if (index !== -1) {
-        selectedCustomersList.splice(index, 1);
+        selectedUploadsList.splice(index, 1);
       }
     }
-    setSelectedCustomers(selectedCustomersList);
+    setSelectedUploads(selectedUploadsList);
   };
 
-  const handleSelectAllCheckbox = (customers, e) => {
-    const selectAllCustomer = [];
+  const handleSelectAllCheckbox = (uploads, e) => {
+
+    console.log(uploads)
+    const selectAllUploads = [];
     if (e?.target?.checked) {
-      customers?.map((customer) => {
-        return selectAllCustomer?.push(customer?.used_id);
+      uploads?.map((upload) => {
+        return selectAllUploads?.push(upload?.user_id);
       });
     } else {
-      setSelectedCustomers([]);
+      setSelectedUploads([]);
     }
-    setSelectedCustomers(selectAllCustomer);
+    setSelectedUploads(selectAllUploads);
   };
 
   const handleApproveAll = (customer, status) => {
     updateManyCustomerStatus(customer, status);
-    setSelectedCustomers([]);
+    setSelectedUploads([]);
   };
 
   useEffect(() => {
@@ -89,20 +91,20 @@ const UploadRequest = () => {
 
       <div
         className={` ${
-          selectedCustomers?.length < 1
+          selectedUploads?.length < 1
             ? "hidden"
             : "flex items-center justify-start gap-4"
         } p-4 bg-whiteHigh`}
       >
         <label
-          onClick={() => handleApproveAll(selectedCustomers, "Cancelled")}
+          onClick={() => handleApproveAll(selectedUploads, "Cancelled")}
           className="btn btn-sm border-none bg-primaryMain"
         >
           Decline Selected
         </label>
         <button
           className="btn btn-sm border-none text-blackMid hover:text-whiteHigh bg-whiteLow"
-          onClick={() => handleApproveAll(selectedCustomers, "Approved")}
+          onClick={() => handleApproveAll(selectedUploads, "Approved")}
         >
           Approve Selected
         </button>
@@ -115,6 +117,7 @@ const UploadRequest = () => {
           setCurrentCustomer={setCurrentCustomer}
           handleSelectCheckbox={handleSelectCheckbox}
           handleSelectAllCheckbox= {handleSelectAllCheckbox}
+          selectedUploads={selectedUploads}
         ></UploadTable>
       )}
     </div>

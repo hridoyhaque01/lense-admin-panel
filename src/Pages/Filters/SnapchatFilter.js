@@ -5,8 +5,8 @@ import FiltersAllTable from "../../Components/Tables/FiltersTable/FiltersAllTabl
 import { CustomerContext } from "../../Contexts/CustomerContext/CustomerProvider";
 
 const SnapchatFilter = () => {
-  const [selectedCustomers, setSelectedCustomers] = useState([]);
-  const [approvedCustomers, setApprovedCustomers] = useState([]);
+  const [selectedSnapchats, setSelectedSnapchats] = useState([]);
+  const [approvedCustomers, setApprovedSnapchats] = useState([]);
   const { filters } = db || {};
   const {
     isLoading,
@@ -18,41 +18,41 @@ const SnapchatFilter = () => {
     updateManyCustomerStatus,
   } = useContext(CustomerContext);
 
-  const handleSelectCheckbox = (customer, e) => {
-    const selectedCustomersList = [...selectedCustomers];
+  const handleSelectCheckbox = (snapchat, e) => {
+    const selectedSnapchatsList = [...selectedSnapchats];
     if (e.target.checked) {
-      selectedCustomersList.push(customer?.used_id);
+      selectedSnapchatsList.push(snapchat?.user_id);
     } else {
-      const index = selectedCustomersList.indexOf(customer?.used_id);
+      const index = selectedSnapchatsList.indexOf(snapchat?.user_id);
       if (index !== -1) {
-        selectedCustomersList.splice(index, 1);
+        selectedSnapchatsList.splice(index, 1);
       }
     }
-    setSelectedCustomers(selectedCustomersList);
+    setSelectedSnapchats(selectedSnapchatsList);
   };
 
-  // const handleSelectAllCheckbox = (customers, e) => {
-  //   const selectAllCustomer = [];
-  //   if (e?.target?.checked) {
-  //     customers?.map((customer) => {
-  //       return selectAllCustomer?.push(customer?.used_id);
-  //     });
-  //   } else {
-  //     setSelectedCustomers([]);
-  //   }
-  //   setSelectedCustomers(selectAllCustomer);
-  // };
+  const handleSelectAllCheckbox = (snapchats, e) => {
+    const selectAllCustomer = [];
+    if (e?.target?.checked) {
+      snapchats?.map((snapchat) => {
+        return selectAllCustomer?.push(snapchat?.user_id);
+      });
+    } else {
+      setSelectedSnapchats([]);
+    }
+    setSelectedSnapchats(selectAllCustomer);
+  };
 
   const handleApproveAll = (customer, status) => {
     updateManyCustomerStatus(customer, status);
-    setSelectedCustomers([]);
+    setSelectedSnapchats([]);
   };
 
   useEffect(() => {
     const filteredCustomersByStatus = filteredCustomersBySearch?.filter(
       (customer) => customer?.user_status?.toLowerCase() === "active"
     );
-    setApprovedCustomers(filteredCustomersByStatus);
+    setApprovedSnapchats(filteredCustomersByStatus);
   }, [filteredCustomersBySearch]);
 
   return (
@@ -87,20 +87,20 @@ const SnapchatFilter = () => {
 
       <div
         className={` ${
-          selectedCustomers?.length < 1
+          selectedSnapchats?.length < 1
             ? "hidden"
             : "flex items-center justify-start gap-4"
         } p-4 bg-whiteHigh`}
       >
         <label
-          onClick={() => handleApproveAll(selectedCustomers, "Cancelled")}
+          onClick={() => handleApproveAll(selectedSnapchats, "Cancelled")}
           className="btn btn-sm border-none bg-primaryMain"
         >
           Decline Selected
         </label>
         <button
           className="btn btn-sm border-none text-blackMid hover:text-whiteHigh bg-whiteLow"
-          onClick={() => handleApproveAll(selectedCustomers, "Approved")}
+          onClick={() => handleApproveAll(selectedSnapchats, "Approved")}
         >
           Approve Selected
         </button>
@@ -112,6 +112,8 @@ const SnapchatFilter = () => {
           rows={filters}
           setCurrentCustomer={setCurrentCustomer}
           handleSelectCheckbox={handleSelectCheckbox}
+          selectedFilters={selectedSnapchats}
+          handleSelectAllCheckbox={handleSelectAllCheckbox}
           redirect="snapchatFilter"
         ></FiltersAllTable>
       )}

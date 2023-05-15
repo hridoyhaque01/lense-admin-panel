@@ -5,7 +5,7 @@ import FiltersAllTable from "../../Components/Tables/FiltersTable/FiltersAllTabl
 import { CustomerContext } from "../../Contexts/CustomerContext/CustomerProvider";
 
 const TiktokFilter = () => {
-  const [selectedCustomers, setSelectedCustomers] = useState([]);
+  const [selectedTiktoks, setSelectedTiktoks] = useState([]);
   const [approvedCustomers, setApprovedCustomers] = useState([]);
   const { filters } = db || {};
 
@@ -19,34 +19,34 @@ const TiktokFilter = () => {
     updateManyCustomerStatus,
   } = useContext(CustomerContext);
 
-  const handleSelectCheckbox = (customer, e) => {
-    const selectedCustomersList = [...selectedCustomers];
+  const handleSelectCheckbox = (tiktok, e) => {
+    const selectedTiktoksList = [...selectedTiktoks];
     if (e.target.checked) {
-      selectedCustomersList.push(customer?.used_id);
+      selectedTiktoksList.push(tiktok?.user_id);
     } else {
-      const index = selectedCustomersList.indexOf(customer?.used_id);
+      const index = selectedTiktoksList.indexOf(tiktok?.user_id);
       if (index !== -1) {
-        selectedCustomersList.splice(index, 1);
+        selectedTiktoksList.splice(index, 1);
       }
     }
-    setSelectedCustomers(selectedCustomersList);
+    setSelectedTiktoks(selectedTiktoksList);
   };
 
-  // const handleSelectAllCheckbox = (customers, e) => {
-  //   const selectAllCustomer = [];
-  //   if (e?.target?.checked) {
-  //     customers?.map((customer) => {
-  //       return selectAllCustomer?.push(customer?.used_id);
-  //     });
-  //   } else {
-  //     setSelectedCustomers([]);
-  //   }
-  //   setSelectedCustomers(selectAllCustomer);
-  // };
+  const handleSelectAllCheckbox = (tiktoks, e) => {
+    const selectAllCustomer = [];
+    if (e?.target?.checked) {
+      tiktoks?.map((tiktok) => {
+        return selectAllCustomer?.push(tiktok?.user_id);
+      });
+    } else {
+      setSelectedTiktoks([]);
+    }
+    setSelectedTiktoks(selectAllCustomer);
+  };
 
   const handleApproveAll = (customer, status) => {
     updateManyCustomerStatus(customer, status);
-    setSelectedCustomers([]);
+    setSelectedTiktoks([]);
   };
 
   useEffect(() => {
@@ -88,20 +88,20 @@ const TiktokFilter = () => {
 
       <div
         className={` ${
-          selectedCustomers?.length < 1
+          selectedTiktoks?.length < 1
             ? "hidden"
             : "flex items-center justify-start gap-4"
         } p-4 bg-whiteHigh`}
       >
         <label
-          onClick={() => handleApproveAll(selectedCustomers, "Cancelled")}
+          onClick={() => handleApproveAll(selectedTiktoks, "Cancelled")}
           className="btn btn-sm border-none bg-primaryMain"
         >
           Decline Selected
         </label>
         <button
           className="btn btn-sm border-none text-blackMid hover:text-whiteHigh bg-whiteLow"
-          onClick={() => handleApproveAll(selectedCustomers, "Approved")}
+          onClick={() => handleApproveAll(selectedTiktoks, "Approved")}
         >
           Approve Selected
         </button>
@@ -113,6 +113,8 @@ const TiktokFilter = () => {
           rows={filters}
           setCurrentCustomer={setCurrentCustomer}
           handleSelectCheckbox={handleSelectCheckbox}
+          handleSelectAllCheckbox={handleSelectAllCheckbox}
+          selectedFilters={selectedTiktoks}
           redirect="tiktokFilter"
         ></FiltersAllTable>
       )}

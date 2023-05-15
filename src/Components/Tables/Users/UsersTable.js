@@ -6,7 +6,7 @@ import UsersConfirmationBlockPopup from "../../Modals/Users/UsersConfirmationBlo
 import ConfirmationModal from "../../Modals/ConfirmationModal";
 
 
-const UsersTable = ({ rows, handleSelectCheckbox }) => {
+const UsersTable = ({ rows, handleSelectCheckbox,handleSelectAllCheckbox, selectedUsers }) => {
   const {
     searchBarValue,
     currentCustomer,
@@ -52,8 +52,8 @@ const UsersTable = ({ rows, handleSelectCheckbox }) => {
 //   const = 
 
   const handleAllCheckbox = (orders, e) => {
-    // handleSelectAllCheckbox(orders, e);
-    console.log('filters');
+    handleSelectAllCheckbox(orders, e);
+    // console.log('filters');
   };
 
   const renderPagination = () => {
@@ -116,7 +116,7 @@ const UsersTable = ({ rows, handleSelectCheckbox }) => {
               Name
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-              mobile
+              Mobile
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
               Email
@@ -138,6 +138,7 @@ const UsersTable = ({ rows, handleSelectCheckbox }) => {
                       type="checkbox"
                       className="checkbox rounded-none"
                       name="checkbox"
+                      checked={selectedUsers.includes(user?.user_id)}
                       onChange={(e) => {
                         handleCheckbox(user, e);
                       }}
