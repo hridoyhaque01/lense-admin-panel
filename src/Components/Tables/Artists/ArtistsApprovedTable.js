@@ -9,6 +9,7 @@ const ArtistsApprovedTable = ({
   rows,
   handleSelectCheckbox,
   handleSelectAllCheckbox,
+  selectedArtists
 }) => {
   const {
 
@@ -51,9 +52,9 @@ const ArtistsApprovedTable = ({
     handleSelectCheckbox(order, e);
   };
 
-  const handleAllCheckbox = (orders, e) => {
-    // handleSelectAllCheckbox(orders, e);
-    console.log("hello world")
+  const handleAllCheckbox = (artists, e) => {
+    handleSelectAllCheckbox(artists, e);
+    // console.log("hello world")
   };
 
   const renderPagination = () => {
@@ -144,6 +145,7 @@ const ArtistsApprovedTable = ({
                     type="checkbox"
                     className="checkbox rounded-none"
                     name="checkbox"
+                    checked={selectedArtists?.includes(artist?.user_id)}
                     onChange={(e) => {
                       handleCheckbox(artist, e);
                     }}

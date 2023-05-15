@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { StaffContext } from "../../Contexts/StaffContext/StaffProvider";
 import {upload} from "../../Assets/getImages"
+import UploadFile from "../../Components/Collection/UploadFile";
 
 const CollectionAddNew = () => {
   const { addOneStaff } = useContext(StaffContext);
@@ -9,15 +10,70 @@ const CollectionAddNew = () => {
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/staffAll";
 
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [uploadData, setUploadData] = useState([
+    {
+      id: 1,
+      file_info : "",
+    },
+    {
+      id: 2,
+      file_info : "",
+    },
+    {
+      id: 3,
+      file_info : "",
+    },
+    {
+      id: 4,
+      file_info : "",
+    },
+    {
+      id: 5,
+      file_info : "",
+    },
+  ])
 
-  const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
+
+  const handleChange = (event, id) => {
+    const updatedData = uploadData?.map((item)=> {
+      if(item?.id === id) {
+        return {
+          ...item,
+          file_info : event.target.files[0]
+        }
+      }
+      return item
+    })
+
+    setUploadData(updatedData)
+
   };
+
+
+
   
-  const handleDeleteFile = () => {
-    setSelectedFile(null);
+  const handleDeleteFile = (id) => {
+    const updatedData = uploadData?.map((item)=> {
+      if(item?.id === id) {
+        return {
+          ...item,
+          file_info : ""
+        }
+      }
+      return item
+    })
+    setUploadData(updatedData)
   };
+
+
+  const handleAddImage = () => {
+    const maxId = Math.max(...uploadData.map(obj => obj.id)) + 1;
+    setUploadData([...uploadData,
+      {
+      id: maxId,
+      file_info : "",
+    }])
+  }
 
 
   const handleEditBtn = (event) => {
@@ -75,15 +131,17 @@ const CollectionAddNew = () => {
           <div className="flex items-center justify-center gap-2">
             <p className=" w-1/3 text-end">Category:</p>
             <select
+            onChange={()=> console.log("hello")}
               name="category"
               className="select w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium"
               required
+              defaultValue="Select Any"
             >
-              <option value="" selected disabled>
+              <option  disabled>
                 Select Any
               </option>
-              <option value={""}>Bangladesh</option>
-              <option value={""}>USA</option>
+              <option value="">Bangladesh</option>
+              <option value="">USA</option>
             </select>
           </div>
 
@@ -92,15 +150,17 @@ const CollectionAddNew = () => {
           <div className="flex items-center justify-center gap-2">
             <p className=" w-1/3 text-end">Type:</p>
             <select
+            onChange={()=> console.log("hello")}
               name="type"
               className="select w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium"
               required
+              defaultValue="Select Any"
             >
-              <option value="" selected disabled>
+              <option  disabled>
                 Select Any
               </option>
-              <option value={""}>Bangladesh</option>
-              <option value={""}>USA</option>
+              <option value="">Bangladesh</option>
+              <option value="">USA</option>
             </select>
           </div>
 
@@ -130,17 +190,19 @@ const CollectionAddNew = () => {
           {/* availibility  */}
           
           <div className="flex items-center justify-center gap-2">
-            <p className=" w-1/3 text-end">Availability::</p>
+            <p className=" w-1/3 text-end">Availability:</p>
             <select
+            onChange={()=> console.log("hello")}
               name="availability"
               className="select w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium"
               required
+              defaultValue="Select Any"
             >
-              <option value="" selected disabled>
+              <option disabled>
                 Select Any
               </option>
-              <option value={""}>Bangladesh</option>
-              <option value={""}>USA</option>
+              <option value="">Bangladesh</option>
+              <option value="">USA</option>
             </select>
           </div>
 
@@ -161,37 +223,30 @@ const CollectionAddNew = () => {
           
           {/* upload  */}
 
-          <div className="w-2/3 flex flex-col gap-4 ml-auto">
-              <div className="border border-dotted border-primaryMain rounded-lg py-6 px-4 flex flex-col justify-center items-center gap-2">
-                <img src={upload} alt="" className="w-10" />
-                <label
-                  className="cursor-pointer capitalize text-primaryMain font-medium"
-                  htmlFor="fileUpload"
-                >
-                  file upload
-                </label>
-                <input
-                  type="file"
-                  onChange={handleFileChange}
-                  id="fileUpload"
-                  className="hidden"
-                />
-              </div>
-
-              {selectedFile && (
-                <div className="flex items-center gap-4">
-                  <p>{selectedFile?.name}</p>{" "}
-                  <button
-                    className="w-6 h-6 flex items-center justify-center rounded-full bg-errorMidColor"
-                    onClick={handleDeleteFile}
-                  >
-                    <span className="material-symbols-outlined text-sm text-whiteHigh">
-                      close
-                    </span>
-                  </button>
-                </div>
-              )}
+          <div className="">
+            <div className="w-2/3 ml-auto mt-7 mb-6">
+              <h2 className="text-2xl text-center font-bold text-pureBlackColor">Add Filters</h2>
             </div>
+
+            <div className="flex flex-col gap-6">
+              {uploadData?.map((item)=> {
+                return (
+                    <UploadFile key={item?.id} item={item} handleChange={handleChange} handleDeleteFile={handleDeleteFile}></UploadFile>
+                )
+              })}
+            </div>
+              
+              <div className="flex justify-end mt-6">
+                <button className="flex items-center" type="button" onClick={handleAddImage}>
+                  <span className="material-symbols-outlined text-primaryMain">
+                    add_circle
+                  </span>
+                  <span className="text-base text-pureBlackColor">Add another image</span>
+                </button>
+              </div>
+          </div>
+
+          
 
           {/* buttons  */}
 

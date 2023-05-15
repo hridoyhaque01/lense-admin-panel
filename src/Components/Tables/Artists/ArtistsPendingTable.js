@@ -7,6 +7,7 @@ const ArtistsPendingTable = ({
   rows,
   handleSelectCheckbox,
   handleSelectAllCheckbox,
+  selectedArtists
 }) => {
   const { searchBarValue, setCurrentOrder, updateOrderStatus } =
     useContext(OrderContext);
@@ -40,13 +41,12 @@ const ArtistsPendingTable = ({
     setActiveButton(pageNumber);
   };
 
-  const handleCheckbox = (order, e) => {
-    handleSelectCheckbox(order, e);
+  const handleCheckbox = (artist, e) => {
+    handleSelectCheckbox(artist, e);
   };
 
-  const handleAllCheckbox = (orders, e) => {
-    // handleSelectAllCheckbox(orders, e);
-    console.log("hello world")
+  const handleAllCheckbox = (artists, e) => {
+    handleSelectAllCheckbox(artists, e);
   };
 
   const renderPagination = () => {
@@ -109,6 +109,9 @@ const ArtistsPendingTable = ({
                 Name
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
+                Mobile
+              </th>
+              <th className="bg-blueLight text-bold text-lg normal-case">
                 Email
               </th>
               {/* <th className="bg-blueLight text-bold text-lg normal-case">
@@ -131,6 +134,7 @@ const ArtistsPendingTable = ({
                       type="checkbox"
                       className="checkbox rounded-none"
                       name="checkbox"
+                      checked={selectedArtists?.includes(artist?.user_id)}
                       onChange={(e) => {
                         handleCheckbox(artist, e);
                       }}
@@ -140,6 +144,9 @@ const ArtistsPendingTable = ({
                   <td className="px-0 mx-0">{artist?.createdAt}</td>
                   <td className="px-0 mx-0">
                     {artist?.user_name}
+                  </td>
+                  <td className="px-0 mx-0">
+                    {artist?.user_number}
                   </td>
                   <td className="px-0 mx-0">{artist?.user_email}</td>
                   {/* <td className="px-0 mx-0">{artist?.payment_method}</td> */}

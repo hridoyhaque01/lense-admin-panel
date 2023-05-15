@@ -5,7 +5,7 @@ import { CustomerContext } from "../../../Contexts/CustomerContext/CustomerProvi
 import ConfirmationModal from "../../Modals/ConfirmationModal";
 import EmptyScreen from "../../Shared/EmptyScreens/EmptyScreen";
 
-const FiltersAllTable = ({ rows, handleSelectCheckbox, redirect }) => {
+const FiltersAllTable = ({ rows, handleSelectCheckbox, redirect ,handleSelectAllCheckbox,selectedFilters}) => {
   const {
     searchBarValue,
     currentCustomer,
@@ -42,6 +42,8 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox, redirect }) => {
     setActiveButton(pageNumber);
   };
 
+
+
   const handleCheckbox = (order, e) => {
     handleSelectCheckbox(order, e);
   };
@@ -49,7 +51,7 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox, redirect }) => {
   //   const =
 
   const handleAllCheckbox = (orders, e) => {
-    // handleSelectAllCheckbox(orders, e);
+    handleSelectAllCheckbox(orders, e);
     console.log("filters");
   };
 
@@ -98,6 +100,7 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox, redirect }) => {
                   type="checkbox"
                   className="checkbox rounded-none"
                   name="allCheckbox"
+                  value=""
                   onChange={(e) => {
                     handleAllCheckbox(currentRows, e);
                   }}
@@ -136,6 +139,7 @@ const FiltersAllTable = ({ rows, handleSelectCheckbox, redirect }) => {
                       type="checkbox"
                       className="checkbox rounded-none"
                       name="checkbox"
+                      checked={selectedFilters?.includes(filters?.user_id)}
                       onChange={(e) => {
                         handleCheckbox(filters, e);
                       }}

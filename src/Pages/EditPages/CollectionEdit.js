@@ -9,7 +9,7 @@ export default function CollectionEdit() {
   return (
     <section className="w-full overflow-auto pt-10 pb-32 pr-10 rounded-lg ">
       <div className="flex items-center bg-primaryMain text-whiteHigh rounded-t-lg  w-full">
-        <p className="font-bold text-2xl pl-4 py-5">Edit Artist</p>
+        <p className="font-bold text-2xl pl-4 py-5">Edit Collection</p>
       </div>
       <div>
         <section className="py-4 bg-whiteHigh">
@@ -109,8 +109,9 @@ export default function CollectionEdit() {
                 name="userType"
                 className="select w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium"
                 required
+                defaultValue="Select Country"
               >
-                <option value="" selected disabled>
+                <option disabled>
                   Select Country
                 </option>
                 <option value={"Admin"}>Bangladesh</option>

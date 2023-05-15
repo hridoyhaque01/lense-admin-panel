@@ -5,7 +5,7 @@ import EmptyScreen from "../../Shared/EmptyScreens/EmptyScreen";
 import ConfirmationModal from "../../Modals/ConfirmationModal";
 
 
-const CollectionTable = ({ rows, handleSelectCheckbox }) => {
+const CollectionTable = ({ rows, handleSelectCheckbox,selectedCollections,handleSelectAllCheckbox}) => {
   const {
     searchBarValue,
     currentCustomer,
@@ -42,15 +42,14 @@ const CollectionTable = ({ rows, handleSelectCheckbox }) => {
     setActiveButton(pageNumber);
   };
 
-  const handleCheckbox = (order, e) => {
-    handleSelectCheckbox(order, e);
+  const handleCheckbox = (collection, e) => {
+    handleSelectCheckbox(collection, e);
   };
 
 //   const = 
 
-  const handleAllCheckbox = (orders, e) => {
-    // handleSelectAllCheckbox(orders, e);
-    console.log('filters');
+  const handleAllCheckbox = (collections, e) => {
+    handleSelectAllCheckbox(collections, e);
   };
 
   const renderPagination = () => {
@@ -145,6 +144,7 @@ const CollectionTable = ({ rows, handleSelectCheckbox }) => {
                       type="checkbox"
                       className="checkbox rounded-none"
                       name="checkbox"
+                      checked={selectedCollections?.includes(collection?.user_id)}
                       onChange={(e) => {
                         handleCheckbox(collection, e);
                       }}

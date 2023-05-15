@@ -255,78 +255,7 @@ const SideNav = () => {
 
         {/* Platform  */}
 
-        {/* <div className="w-full overflow-hidden capitalize">
-          <Link
-            to="/platform"
-            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "platform" && "bg-primaryMain"
-            }`}
-            onClick={() => handleMenus("platform", "",)}
-          >
-            <span className="material-symbols-outlined">receipt_long</span>
-            &nbsp;
-            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
-              <span>platform</span>
-            </p>
-          </Link>
-        </div> */}
-
-        {/* category  */}
-
-        {/* <div className="w-full overflow-hidden capitalize">
-          <Link
-            to="/categories"
-            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "categories" && "bg-primaryMain"
-            }`}
-            onClick={() => handleMenus("categories", "", )}
-          >
-            <span className="material-symbols-outlined">receipt_long</span>
-            &nbsp;
-            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
-              <span>Category</span>
-            </p>
-          </Link>
-        </div> */}
-
-        {/* Collections  */}
-
-        <div className="w-full overflow-hidden capitalize">
-          <Link
-            to="/collections"
-            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "collections" && "bg-primaryMain"
-            }`}
-            onClick={() => handleMenus("collections", "", )}
-          >
-            <span className="material-symbols-outlined">receipt_long</span>
-            &nbsp;
-            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
-              <span>collections</span>
-            </p>
-          </Link>
-        </div>
-
-        {/* staffs  */}
-
-        <div className="w-full overflow-hidden capitalize">
-          <Link
-            to="/staffAll"
-            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "staffs" && "bg-primaryMain"
-            }`}
-            onClick={() => handleMenus("staffs", "", )}
-          >
-            <span className="material-symbols-outlined">group</span>
-            &nbsp;
-            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
-              <span>staffs</span>
-            </p>
-          </Link>
-        </div>
-
-
-
+        
         {/* category  */}
 
 
@@ -335,7 +264,7 @@ const SideNav = () => {
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none`}
             onClick={() => handleDropdown("categories", false)}
           >
-            <span className="material-symbols-outlined">paid</span>
+            <span className="material-symbols-outlined">receipt_long</span>
             &nbsp;
             <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
               <span>Categories</span>
@@ -409,6 +338,79 @@ const SideNav = () => {
             
           </div>
         </div>
+
+        {/* <div className="w-full overflow-hidden capitalize">
+          <Link
+            to="/platform"
+            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
+              isActive === "platform" && "bg-primaryMain"
+            }`}
+            onClick={() => handleMenus("platform", "",)}
+          >
+            <span className="material-symbols-outlined">receipt_long</span>
+            &nbsp;
+            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
+              <span>platform</span>
+            </p>
+          </Link>
+        </div> */}
+
+        {/* category  */}
+
+        {/* <div className="w-full overflow-hidden capitalize">
+          <Link
+            to="/categories"
+            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
+              isActive === "categories" && "bg-primaryMain"
+            }`}
+            onClick={() => handleMenus("categories", "", )}
+          >
+            <span className="material-symbols-outlined">receipt_long</span>
+            &nbsp;
+            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
+              <span>Category</span>
+            </p>
+          </Link>
+        </div> */}
+
+        {/* Collections  */}
+
+        <div className="w-full overflow-hidden capitalize">
+          <Link
+            to="/collections"
+            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
+              isActive === "collections" && "bg-primaryMain"
+            }`}
+            onClick={() => handleMenus("collections", "", )}
+          >
+            <span className="material-symbols-outlined">receipt_long</span>
+            &nbsp;
+            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
+              <span>collections</span>
+            </p>
+          </Link>
+        </div>
+
+        {/* staffs  */}
+
+        <div className="w-full overflow-hidden capitalize">
+          <Link
+            to="/staffAll"
+            className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
+              isActive === "staffs" && "bg-primaryMain"
+            }`}
+            onClick={() => handleMenus("staffs", "", )}
+          >
+            <span className="material-symbols-outlined">group</span>
+            &nbsp;
+            <p className={`flex-1 ${isClosed && "hidden"} shrink-0`}>
+              <span>staffs</span>
+            </p>
+          </Link>
+        </div>
+
+
+
 
 
         {/* withdraw  */}

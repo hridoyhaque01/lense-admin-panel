@@ -109,8 +109,9 @@ export default function ArtistsEdit() {
                 name="userType"
                 className="select w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium"
                 required
+                defaultValue="Select Country"
               >
-                <option value="" selected disabled>
+                <option disabled>
                   Select Country
                 </option>
                 <option value={"Admin"}>Bangladesh</option>

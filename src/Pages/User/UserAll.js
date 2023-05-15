@@ -6,7 +6,7 @@ import UsersTable from "../../Components/Tables/Users/UsersTable";
 import db from "../../Assets/json/db.json"
 
 const UserAll = () => {
-  const [selectedCustomers, setSelectedCustomers] = useState([]);
+  const [selectedUsers, setSelectedUsers] = useState([]);
   const [approvedCustomers, setApprovedCustomers] = useState([]);
   const {users} = db || {}
   const {
@@ -18,34 +18,34 @@ const UserAll = () => {
     updateManyCustomerStatus,
   } = useContext(CustomerContext);
 
-  const handleSelectCheckbox = (customer, e) => {
-    const selectedCustomersList = [...selectedCustomers];
+  const handleSelectCheckbox = (user, e) => {
+    const selectedUsersList = [...selectedUsers];
     if (e.target.checked) {
-      selectedCustomersList.push(customer?.used_id);
+      selectedUsersList.push(user?.user_id);
     } else {
-      const index = selectedCustomersList.indexOf(customer?.used_id);
+      const index = selectedUsersList.indexOf(user?.user_id);
       if (index !== -1) {
-        selectedCustomersList.splice(index, 1);
+        selectedUsersList.splice(index, 1);
       }
     }
-    setSelectedCustomers(selectedCustomersList);
+    setSelectedUsers(selectedUsersList);
   };
 
-  // const handleSelectAllCheckbox = (customers, e) => {
-  //   const selectAllCustomer = [];
-  //   if (e?.target?.checked) {
-  //     customers?.map((customer) => {
-  //       return selectAllCustomer?.push(customer?.used_id);
-  //     });
-  //   } else {
-  //     setSelectedCustomers([]);
-  //   }
-  //   setSelectedCustomers(selectAllCustomer);
-  // };
+  const handleSelectAllCheckbox = (users, e) => {
+    const selectAllUser = [];
+    if (e?.target?.checked) {
+      users?.map((user) => {
+        return selectAllUser?.push(user?.user_id);
+      });
+    } else {
+      setSelectedUsers([]);
+    }
+    setSelectedUsers(selectAllUser);
+  };
 
   const handleApproveAll = (customer, status) => {
     updateManyCustomerStatus(customer, status);
-    setSelectedCustomers([]);
+    setSelectedUsers([]);
   };
 
   useEffect(() => {
@@ -87,20 +87,20 @@ const UserAll = () => {
 
       <div
         className={` ${
-          selectedCustomers?.length < 1
+          selectedUsers?.length < 1
             ? "hidden"
             : "flex items-center justify-start gap-4"
         } p-4 bg-whiteHigh`}
       >
         <label
-          onClick={() => handleApproveAll(selectedCustomers, "Cancelled")}
+          onClick={() => handleApproveAll(selectedUsers, "Cancelled")}
           className="btn btn-sm border-none bg-primaryMain"
         >
           Decline Selected
         </label>
         <button
           className="btn btn-sm border-none text-blackMid hover:text-whiteHigh bg-whiteLow"
-          onClick={() => handleApproveAll(selectedCustomers, "Approved")}
+          onClick={() => handleApproveAll(selectedUsers, "Approved")}
         >
           Approve Selected
         </button>
@@ -112,6 +112,8 @@ const UserAll = () => {
           rows={users}
           setCurrentCustomer={setCurrentCustomer}
           handleSelectCheckbox={handleSelectCheckbox}
+          handleSelectAllCheckbox={handleSelectAllCheckbox}
+          selectedUsers={selectedUsers}
         ></UsersTable>
       )}
     </div>

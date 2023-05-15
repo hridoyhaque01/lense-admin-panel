@@ -5,8 +5,8 @@ import FiltersAllTable from "../../Components/Tables/FiltersTable/FiltersAllTabl
 import { CustomerContext } from "../../Contexts/CustomerContext/CustomerProvider";
 
 const ECardFilter = () => {
-  const [selectedCustomers, setSelectedCustomers] = useState([]);
-  const [approvedCustomers, setApprovedCustomers] = useState([]);
+  const [selectedECards, setSelectedECards] = useState([]);
+  const [approvedCustomers, setApprovedECards] = useState([]);
   const { filters } = db || {};
 
   const {
@@ -19,41 +19,46 @@ const ECardFilter = () => {
     updateManyCustomerStatus,
   } = useContext(CustomerContext);
 
-  const handleSelectCheckbox = (customer, e) => {
-    const selectedCustomersList = [...selectedCustomers];
+  const handleSelectCheckbox = (eCard, e) => {
+    const selectedECardsList = [...selectedECards];
     if (e.target.checked) {
-      selectedCustomersList.push(customer?.used_id);
+      selectedECardsList.push(eCard?.user_id);
     } else {
-      const index = selectedCustomersList.indexOf(customer?.used_id);
+      const index = selectedECardsList.indexOf(eCard?.user_id);
       if (index !== -1) {
-        selectedCustomersList.splice(index, 1);
+        selectedECardsList.splice(index, 1);
       }
     }
-    setSelectedCustomers(selectedCustomersList);
+    setSelectedECards(selectedECardsList);
   };
 
-  // const handleSelectAllCheckbox = (customers, e) => {
-  //   const selectAllCustomer = [];
-  //   if (e?.target?.checked) {
-  //     customers?.map((customer) => {
-  //       return selectAllCustomer?.push(customer?.used_id);
-  //     });
-  //   } else {
-  //     setSelectedCustomers([]);
-  //   }
-  //   setSelectedCustomers(selectAllCustomer);
-  // };
+  const handleSelectAllCheckbox = (eCards, e) => {
+    // console.log(eCard)
+    // console.log(e)
+    const selectAllECards = [];
+
+    if (e?.target?.checked) {
+      eCards?.map((ecard) => {
+        return selectAllECards?.push(ecard?.user_id);
+      });
+    } else {
+      setSelectedECards([]);
+    }
+    setSelectedECards(selectAllECards);
+  };
+
+  // console.log(setSelectedECards)
 
   const handleApproveAll = (customer, status) => {
     updateManyCustomerStatus(customer, status);
-    setSelectedCustomers([]);
+    setSelectedECards([]);
   };
 
   useEffect(() => {
-    const filteredCustomersByStatus = filteredCustomersBySearch?.filter(
+    const filteredECardsByStatus = filteredCustomersBySearch?.filter(
       (customer) => customer?.user_status?.toLowerCase() === "active"
     );
-    setApprovedCustomers(filteredCustomersByStatus);
+    setApprovedECards(filteredECardsByStatus);
   }, [filteredCustomersBySearch]);
 
   return (
@@ -88,20 +93,20 @@ const ECardFilter = () => {
 
       <div
         className={` ${
-          selectedCustomers?.length < 1
+          selectedECards?.length < 1
             ? "hidden"
             : "flex items-center justify-start gap-4"
         } p-4 bg-whiteHigh`}
       >
         <label
-          onClick={() => handleApproveAll(selectedCustomers, "Cancelled")}
+          onClick={() => handleApproveAll(selectedECards, "Cancelled")}
           className="btn btn-sm border-none bg-primaryMain"
         >
           Decline Selected
         </label>
         <button
           className="btn btn-sm border-none text-blackMid hover:text-whiteHigh bg-whiteLow"
-          onClick={() => handleApproveAll(selectedCustomers, "Approved")}
+          onClick={() => handleApproveAll(selectedECards, "Approved")}
         >
           Approve Selected
         </button>
@@ -111,8 +116,10 @@ const ECardFilter = () => {
       ) : (
         <FiltersAllTable
           rows={filters}
+          handleSelectAllCheckbox={handleSelectAllCheckbox}
           setCurrentCustomer={setCurrentCustomer}
           handleSelectCheckbox={handleSelectCheckbox}
+          selectedFilters={selectedECards}
           redirect="ecardFilter"
         ></FiltersAllTable>
       )}

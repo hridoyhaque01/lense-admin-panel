@@ -4,7 +4,7 @@ import { CustomerContext } from "../../../Contexts/CustomerContext/CustomerProvi
 import ConfirmationModal from "../../Modals/ConfirmationModal";
 import EmptyScreen from "../../Shared/EmptyScreens/EmptyScreen";
 
-const CategoriesTable = ({ rows, handleSelectCheckbox }) => {
+const CategoriesTable = ({ rows, handleSelectCheckbox,handleSelectAllCheckbox,selectedCategories }) => {
   const {
     searchBarValue,
     currentCustomer,
@@ -41,15 +41,14 @@ const CategoriesTable = ({ rows, handleSelectCheckbox }) => {
     setActiveButton(pageNumber);
   };
 
-  const handleCheckbox = (order, e) => {
-    handleSelectCheckbox(order, e);
+  const handleCheckbox = (category, e) => {
+    handleSelectCheckbox(category, e);
   };
 
   //   const =
 
-  const handleAllCheckbox = (orders, e) => {
-    // handleSelectAllCheckbox(orders, e);
-    console.log("filters");
+  const handleAllCheckbox = (categories, e) => {
+    handleSelectAllCheckbox(categories, e);
   };
 
   const renderPagination = () => {
@@ -126,6 +125,7 @@ const CategoriesTable = ({ rows, handleSelectCheckbox }) => {
                       type="checkbox"
                       className="checkbox rounded-none"
                       name="checkbox"
+                      checked={selectedCategories?.includes(category?.id)}
                       onChange={(e) => {
                         handleCheckbox(category, e);
                       }}

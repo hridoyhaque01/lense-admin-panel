@@ -2,14 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import OrdersLoading from "../../Components/Shared/LoadingScreens/OrdersLoading";
 import { CustomerContext } from "../../Contexts/CustomerContext/CustomerProvider";
 import { Link } from "react-router-dom";
-import CategoriesAllTable from "../../Components/Tables/Categories/CollectionTable";
-import CollectionTable from "../../Components/Tables/Categories/CollectionTable";
+import CollectionTable from "../../Components/Tables/Collection/CollectionTable";
 
 import db from "../../Assets/json/db.json"
 
 
 const Collections = () => {
-  const [selectedCustomers, setSelectedCustomers] = useState([]);
+  const [selectedCollections, setSelectedCollections] = useState([]);
   const [approvedCustomers, setApprovedCustomers] = useState([]);
 
   const {collections} = db || {}
@@ -25,39 +24,39 @@ const Collections = () => {
     updateManyCustomerStatus,
   } = useContext(CustomerContext);
 
-  const handleSelectCheckbox = (customer, e) => {
-    const selectedCustomersList = [...selectedCustomers];
+  const handleSelectCheckbox = (collection, e) => {
+    const selectedCollectionsList = [...selectedCollections];
     if (e.target.checked) {
-      selectedCustomersList.push(customer?.used_id);
+      selectedCollectionsList.push(collection?.user_id);
     } else {
-      const index = selectedCustomersList.indexOf(customer?.used_id);
+      const index = selectedCollectionsList.indexOf(collection?.user_id);
       if (index !== -1) {
-        selectedCustomersList.splice(index, 1);
+        selectedCollectionsList.splice(index, 1);
       }
     }
-    setSelectedCustomers(selectedCustomersList);
+    setSelectedCollections(selectedCollectionsList);
   };
 
-  // const handleSelectAllCheckbox = (customers, e) => {
-  //   const selectAllCustomer = [];
-  //   if (e?.target?.checked) {
-  //     customers?.map((customer) => {
-  //       return selectAllCustomer?.push(customer?.used_id);
-  //     });
-  //   } else {
-  //     setSelectedCustomers([]);
-  //   }
-  //   setSelectedCustomers(selectAllCustomer);
-  // };
+  const handleSelectAllCheckbox = (collections, e) => {
+    const selectAllCollection = [];
+    if (e?.target?.checked) {
+      collections?.map((collection) => {
+        return selectAllCollection?.push(collection?.user_id);
+      });
+    } else {
+      setSelectedCollections([]);
+    }
+    setSelectedCollections(selectAllCollection);
+  };
 
-  const handleApproveAll = (customer, status) => {
-    updateManyCustomerStatus(customer, status);
-    setSelectedCustomers([]);
+  const handleApproveAll = (collection, status) => {
+    updateManyCustomerStatus(collection, status);
+    setSelectedCollections([]);
   };
 
   useEffect(() => {
     const filteredCustomersByStatus = filteredCustomersBySearch?.filter(
-      (customer) => customer?.user_status?.toLowerCase() === "active"
+      (collection) => collection?.user_status?.toLowerCase() === "active"
     );
     setApprovedCustomers(filteredCustomersByStatus);
   }, [filteredCustomersBySearch]);
@@ -94,20 +93,20 @@ const Collections = () => {
 
       <div
         className={` ${
-          selectedCustomers?.length < 1
+          selectedCollections?.length < 1
             ? "hidden"
             : "flex items-center justify-start gap-4"
         } p-4 bg-whiteHigh`}
       >
         <label
-          onClick={() => handleApproveAll(selectedCustomers, "Cancelled")}
+          onClick={() => handleApproveAll(selectedCollections, "Cancelled")}
           className="btn btn-sm border-none bg-primaryMain"
         >
           Decline Selected
         </label>
         <button
           className="btn btn-sm border-none text-blackMid hover:text-whiteHigh bg-whiteLow"
-          onClick={() => handleApproveAll(selectedCustomers, "Approved")}
+          onClick={() => handleApproveAll(selectedCollections, "Approved")}
         >
           Approve Selected
         </button>
@@ -119,6 +118,8 @@ const Collections = () => {
           rows={collections}
           setCurrentCustomer={setCurrentCustomer}
           handleSelectCheckbox={handleSelectCheckbox}
+          selectedCollections={selectedCollections} 
+          handleSelectAllCheckbox={handleSelectAllCheckbox}
         ></CollectionTable>
       )}
     </div>

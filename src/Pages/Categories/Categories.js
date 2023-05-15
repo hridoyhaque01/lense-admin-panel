@@ -7,7 +7,7 @@ import CategoriesTable from "../../Components/Tables/Categories/CategoriesTable"
 import db from "../../Assets/json/db.json"
 
 const Categories = () => {
-  const [selectedCustomers, setSelectedCustomers] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const [approvedCustomers, setApprovedCustomers] = useState([]);
 
   const {categories} = db || {}
@@ -22,39 +22,39 @@ const Categories = () => {
     updateManyCustomerStatus,
   } = useContext(CustomerContext);
 
-  const handleSelectCheckbox = (customer, e) => {
-    const selectedCustomersList = [...selectedCustomers];
+  const handleSelectCheckbox = (category, e) => {
+    const selectedCategoriesList = [...selectedCategories];
     if (e.target.checked) {
-      selectedCustomersList.push(customer?.used_id);
+      selectedCategoriesList.push(category?.id);
     } else {
-      const index = selectedCustomersList.indexOf(customer?.used_id);
+      const index = selectedCategoriesList.indexOf(category?.id);
       if (index !== -1) {
-        selectedCustomersList.splice(index, 1);
+        selectedCategoriesList.splice(index, 1);
       }
     }
-    setSelectedCustomers(selectedCustomersList);
+    setSelectedCategories(selectedCategoriesList);
   };
 
-  // const handleSelectAllCheckbox = (customers, e) => {
-  //   const selectAllCustomer = [];
-  //   if (e?.target?.checked) {
-  //     customers?.map((customer) => {
-  //       return selectAllCustomer?.push(customer?.used_id);
-  //     });
-  //   } else {
-  //     setSelectedCustomers([]);
-  //   }
-  //   setSelectedCustomers(selectAllCustomer);
-  // };
+  const handleSelectAllCheckbox = (categories, e) => {
+    const selectAllCategory = [];
+    if (e?.target?.checked) {
+      categories?.map((category) => {
+        return selectAllCategory?.push(category?.id);
+      });
+    } else {
+      setSelectedCategories([]);
+    }
+    setSelectedCategories(selectAllCategory);
+  };
 
-  const handleApproveAll = (customer, status) => {
-    updateManyCustomerStatus(customer, status);
-    setSelectedCustomers([]);
+  const handleApproveAll = (category, status) => {
+    updateManyCustomerStatus(category, status);
+    setSelectedCategories([]);
   };
 
   useEffect(() => {
     const filteredCustomersByStatus = filteredCustomersBySearch?.filter(
-      (customer) => customer?.user_status?.toLowerCase() === "active"
+      (category) => category?.user_status?.toLowerCase() === "active"
     );
     setApprovedCustomers(filteredCustomersByStatus);
   }, [filteredCustomersBySearch]);
@@ -91,20 +91,20 @@ const Categories = () => {
 
       <div
         className={` ${
-          selectedCustomers?.length < 1
+          selectedCategories?.length < 1
             ? "hidden"
             : "flex items-center justify-start gap-4"
         } p-4 bg-whiteHigh`}
       >
         <label
-          onClick={() => handleApproveAll(selectedCustomers, "Cancelled")}
+          onClick={() => handleApproveAll(selectedCategories, "Cancelled")}
           className="btn btn-sm border-none bg-primaryMain"
         >
           Decline Selected
         </label>
         <button
           className="btn btn-sm border-none text-blackMid hover:text-whiteHigh bg-whiteLow"
-          onClick={() => handleApproveAll(selectedCustomers, "Approved")}
+          onClick={() => handleApproveAll(selectedCategories, "Approved")}
         >
           Approve Selected
         </button>
@@ -116,6 +116,8 @@ const Categories = () => {
           rows={categories}
           setCurrentCustomer={setCurrentCustomer}
           handleSelectCheckbox={handleSelectCheckbox}
+          handleSelectAllCheckbox={handleSelectAllCheckbox}
+          selectedCategories={selectedCategories}
         ></CategoriesTable>
       )}
     </div>
