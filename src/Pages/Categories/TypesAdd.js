@@ -1,21 +1,17 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-export default function PlatformEdit() {
-  const handleEditBtn = () => {
-    console.log("hello");
-  };
-
+function TypesAdd() {
   return (
     <section className="w-full overflow-auto pt-10 pb-32 pr-10 rounded-lg ">
       <div className="flex items-center bg-primaryMain text-whiteHigh rounded-t-lg  w-full">
-        <p className="font-bold text-2xl pl-4 py-5">Add Platform</p>
+        <p className="font-bold text-2xl pl-4 py-5">Add Types</p>
       </div>
       <div>
         <div className="py-4 bg-whiteHigh">
           <form className="w-8/12 flex flex-col mx-auto gap-2">
             <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 shrink-0 text-end">Platform Name:</p>
+              <p className=" w-1/3 shrink-0 text-end">Type Name:</p>
               <input
                 type="text"
                 name="platform_name"
@@ -25,7 +21,7 @@ export default function PlatformEdit() {
               />
             </div>
             <div className="flex items-center justify-end gap-4 mt-4">
-              <Link to={"/platform"}>
+              <Link to={"/types"}>
                 <label className="btn rounded-full w-36 normal-case bg-whiteHigh text-primaryMain border-primaryMain hover:border-primaryMain hover:bg-whiteHigh">
                   Cancel
                 </label>
@@ -41,5 +37,8 @@ export default function PlatformEdit() {
           </div>
         </div>
     </section>
-  );
+
+  )
 }
+
+export default TypesAdd

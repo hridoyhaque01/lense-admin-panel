@@ -110,7 +110,7 @@ const WithdrawPendingTable = ({
                 Total Ammount
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-                Withdraw Method
+                Payout Method
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
                 Actions

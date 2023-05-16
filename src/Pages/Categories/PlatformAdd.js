@@ -1,11 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-export default function PlatformEdit() {
-  const handleEditBtn = () => {
-    console.log("hello");
-  };
-
+function PlatformAdd() {
   return (
     <section className="w-full overflow-auto pt-10 pb-32 pr-10 rounded-lg ">
       <div className="flex items-center bg-primaryMain text-whiteHigh rounded-t-lg  w-full">
@@ -41,5 +37,8 @@ export default function PlatformEdit() {
           </div>
         </div>
     </section>
-  );
+
+  )
 }
+
+export default PlatformAdd

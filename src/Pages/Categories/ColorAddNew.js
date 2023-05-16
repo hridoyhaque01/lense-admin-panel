@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { upload } from "../../Assets/getImages";
 import { StaffContext } from "../../Contexts/StaffContext/StaffProvider";
 
-const CategoriesAddNew = () => {
+const ColorAddNew = () => {
   const { addOneStaff } = useContext(StaffContext);
   const location = useLocation();
   const navigate = useNavigate();
@@ -51,17 +51,17 @@ const CategoriesAddNew = () => {
   return (
     <section className="overflow-auto w-full pt-10 pb-32 pr-10 rounded-lg">
       <div className="flex items-center bg-primaryMain text-whiteHigh rounded-t-lg  w-full">
-        <p className="font-bold text-2xl pl-4 py-5">Add Category</p>
+        <p className="font-bold text-2xl pl-4 py-5">Add Color</p>
       </div>
       <div>
         <section className="py-4 bg-whiteHigh">
           <form className="w-8/12 flex flex-col mx-auto gap-2">
             <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 shrink-0 text-end">Category name:</p>
+              <p className=" w-1/3 shrink-0 text-end">Color name:</p>
               <input
                 type="text"
                 name="name"
-                placeholder="category name"
+                placeholder="type name here"
                 className="input w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
                 required
               />
@@ -105,7 +105,7 @@ const CategoriesAddNew = () => {
             
 
             <div className="flex items-center justify-end gap-4 mt-4">
-              <Link to="/categories">
+              <Link to="/colors">
                 <label className="btn rounded-full w-36 normal-case bg-whiteHigh text-primaryMain border-primaryMain hover:border-primaryMain hover:bg-whiteHigh">
                   Cancel
                 </label>
@@ -124,4 +124,4 @@ const CategoriesAddNew = () => {
   );
 };
 
-export default CategoriesAddNew;
+export default ColorAddNew;

@@ -2,13 +2,16 @@ import React, { useContext, useEffect, useState } from "react";
 import OrdersLoading from "../../Components/Shared/LoadingScreens/OrdersLoading";
 import { CustomerContext } from "../../Contexts/CustomerContext/CustomerProvider";
 import { Link } from "react-router-dom";
-import PlatformTable from "../../Components/Tables/Categories/PlatformTable";
-import db from "../../Assets/json/db.json"
+import CategoriesTable from "../../Components/Tables/Categories/CategoriesTable";
 
-const Plateform = () => {
-  const [selectedPlatforms, setSelectedPlatforms] = useState([]);
+import db from "../../Assets/json/db.json"
+import ColorTable from "../../Components/Tables/Categories/ColorTable";
+
+const Colors = () => {
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const [approvedCustomers, setApprovedCustomers] = useState([]);
-  const {platform}  = db || {}
+
+  const {colors} = db || {}
 
   const {
     isLoading,
@@ -20,39 +23,39 @@ const Plateform = () => {
     updateManyCustomerStatus,
   } = useContext(CustomerContext);
 
-  const handleSelectCheckbox = (platfrom, e) => {
-    const selectedPlatformsList = [...selectedPlatforms];
+  const handleSelectCheckbox = (category, e) => {
+    const selectedCategoriesList = [...selectedCategories];
     if (e.target.checked) {
-      selectedPlatformsList.push(platfrom?.id);
+      selectedCategoriesList.push(category?.id);
     } else {
-      const index = selectedPlatformsList.indexOf(platfrom?.id);
+      const index = selectedCategoriesList.indexOf(category?.id);
       if (index !== -1) {
-        selectedPlatformsList.splice(index, 1);
+        selectedCategoriesList.splice(index, 1);
       }
     }
-    setSelectedPlatforms(selectedPlatformsList);
+    setSelectedCategories(selectedCategoriesList);
   };
 
-  const handleSelectAllCheckbox = (platfroms, e) => {
-    const selectAllPlatform = [];
+  const handleSelectAllCheckbox = (categories, e) => {
+    const selectAllCategory = [];
     if (e?.target?.checked) {
-      platfroms?.map((platfrom) => {
-        return selectAllPlatform?.push(platfrom?.id);
+      categories?.map((category) => {
+        return selectAllCategory?.push(category?.id);
       });
     } else {
-      setSelectedPlatforms([]);
+      setSelectedCategories([]);
     }
-    setSelectedPlatforms(selectAllPlatform);
+    setSelectedCategories(selectAllCategory);
   };
 
-  const handleApproveAll = (platfrom, status) => {
-    updateManyCustomerStatus(platfrom, status);
-    setSelectedPlatforms([]);
+  const handleApproveAll = (category, status) => {
+    updateManyCustomerStatus(category, status);
+    setSelectedCategories([]);
   };
 
   useEffect(() => {
     const filteredCustomersByStatus = filteredCustomersBySearch?.filter(
-      (customer) => customer?.user_status?.toLowerCase() === "active"
+      (category) => category?.user_status?.toLowerCase() === "active"
     );
     setApprovedCustomers(filteredCustomersByStatus);
   }, [filteredCustomersBySearch]);
@@ -62,7 +65,7 @@ const Plateform = () => {
       <div className="flex items-center justify-between p-3 bg-primaryMain text-whiteHigh rounded-t-lg">
         <section className="flex items-center gap-4">
           <div>
-            <p className="font-bold text-2xl">Platform</p>
+            <p className="font-bold text-2xl">Colors</p>
           </div>
         </section>
         <section className="flex items-center gap-4 w-2/5">
@@ -76,7 +79,7 @@ const Plateform = () => {
           />
           <p>
           <Link
-              to="/platformAdd"
+              to="/colorAddNew"
               className="btn bg-whiteHigh hover:bg-whiteLow border-none rounded-full h-12 w-12"
             >
               <span className="material-symbols-outlined text-primaryMain">
@@ -89,20 +92,20 @@ const Plateform = () => {
 
       <div
         className={` ${
-          selectedPlatforms?.length < 1
+          selectedCategories?.length < 1
             ? "hidden"
             : "flex items-center justify-start gap-4"
         } p-4 bg-whiteHigh`}
       >
         <label
-          onClick={() => handleApproveAll(selectedPlatforms, "Cancelled")}
+          onClick={() => handleApproveAll(selectedCategories, "Cancelled")}
           className="btn btn-sm border-none bg-primaryMain"
         >
           Decline Selected
         </label>
         <button
           className="btn btn-sm border-none text-blackMid hover:text-whiteHigh bg-whiteLow"
-          onClick={() => handleApproveAll(selectedPlatforms, "Approved")}
+          onClick={() => handleApproveAll(selectedCategories, "Approved")}
         >
           Approve Selected
         </button>
@@ -110,16 +113,16 @@ const Plateform = () => {
       {isLoading ? (
         <OrdersLoading></OrdersLoading>
       ) : (
-        <PlatformTable
-          rows={platform}
+        <ColorTable
+          rows={colors}
           setCurrentCustomer={setCurrentCustomer}
           handleSelectCheckbox={handleSelectCheckbox}
-          selectedPlatforms={selectedPlatforms}
           handleSelectAllCheckbox={handleSelectAllCheckbox}
-        ></PlatformTable>
+          selectedCategories={selectedCategories}
+        ></ColorTable>
       )}
     </div>
   );
 };
 
-export default Plateform;
+export default Colors;

@@ -4,11 +4,12 @@ import { CustomerContext } from "../../Contexts/CustomerContext/CustomerProvider
 import { Link } from "react-router-dom";
 import PlatformTable from "../../Components/Tables/Categories/PlatformTable";
 import db from "../../Assets/json/db.json"
+import TypesTable from "../../Components/Tables/Categories/TypesTable";
 
-const Plateform = () => {
+const Types = () => {
   const [selectedPlatforms, setSelectedPlatforms] = useState([]);
   const [approvedCustomers, setApprovedCustomers] = useState([]);
-  const {platform}  = db || {}
+  const {types}  = db || {}
 
   const {
     isLoading,
@@ -62,7 +63,7 @@ const Plateform = () => {
       <div className="flex items-center justify-between p-3 bg-primaryMain text-whiteHigh rounded-t-lg">
         <section className="flex items-center gap-4">
           <div>
-            <p className="font-bold text-2xl">Platform</p>
+            <p className="font-bold text-2xl">Types</p>
           </div>
         </section>
         <section className="flex items-center gap-4 w-2/5">
@@ -76,7 +77,7 @@ const Plateform = () => {
           />
           <p>
           <Link
-              to="/platformAdd"
+              to="/typesAdd"
               className="btn bg-whiteHigh hover:bg-whiteLow border-none rounded-full h-12 w-12"
             >
               <span className="material-symbols-outlined text-primaryMain">
@@ -110,16 +111,16 @@ const Plateform = () => {
       {isLoading ? (
         <OrdersLoading></OrdersLoading>
       ) : (
-        <PlatformTable
-          rows={platform}
+        <TypesTable
+          rows={types}
           setCurrentCustomer={setCurrentCustomer}
           handleSelectCheckbox={handleSelectCheckbox}
           selectedPlatforms={selectedPlatforms}
           handleSelectAllCheckbox={handleSelectAllCheckbox}
-        ></PlatformTable>
+        ></TypesTable>
       )}
     </div>
   );
 };
 
-export default Plateform;
+export default Types;

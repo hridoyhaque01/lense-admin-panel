@@ -30,6 +30,14 @@ import CollectionEdit from "../Pages/EditPages/CollectionEdit";
 import PlatformEdit from "../Pages/EditPages/PlatformEdit";
 import Categories from "../Pages/Categories/Categories";
 import UploadRequest from "../Pages/Upload/UploadRequest";
+import PlatformAdd from "../Pages/Categories/PlatformAdd";
+import CategoriesEdit from "../Pages/EditPages/CategoriesEdit";
+import Types from "../Pages/Categories/Types";
+import TypesAdd from "../Pages/Categories/TypesAdd";
+import TypesEdit from "../Pages/EditPages/TypesEdit";
+import Colors from "../Pages/Categories/Colors";
+import ColorAddNew from "../Pages/Categories/ColorAddNew";
+import ColorEdit from "../Pages/EditPages/ColorEdit";
 // import Platform from "sharp/lib/platform";
 
 
@@ -150,6 +158,16 @@ export const router = createBrowserRouter([
       },
 
       {
+        path: "/platformEdit/:id",
+        element: <PlatformEdit></PlatformEdit>,
+      },
+
+      {
+        path: "/platformAdd",
+        element: <PlatformAdd></PlatformAdd>,
+      },
+
+      {
         path: "/categories",
         element: <Categories></Categories>,
       },
@@ -157,6 +175,11 @@ export const router = createBrowserRouter([
       {
         path: "/categoriesAddNew",
         element: <CategoriesAddNew></CategoriesAddNew>,
+      },
+
+      {
+        path: "/categoriesEdit/:id",
+        element: <CategoriesEdit></CategoriesEdit>,
       },
 
       {
@@ -170,9 +193,36 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: "/platformEdit/:id",
-        element: <PlatformEdit></PlatformEdit>,
+        path: "/types",
+        element: <Types></Types>,
       },
+
+      {
+        path: "/typesAdd",
+        element: <TypesAdd></TypesAdd>,
+      },
+
+      {
+        path: "/TypesEdit/:id",
+        element: <TypesEdit></TypesEdit>,
+      },
+
+      {
+        path: "/colors",
+        element: <Colors></Colors>,
+      },
+
+      {
+        path: "/colorAddNew",
+        element: <ColorAddNew></ColorAddNew>,
+      },
+
+      {
+        path: "/colorEdit/:id",
+        element: <ColorEdit></ColorEdit>,
+      },
+
+      
 
       // withdraw 
 

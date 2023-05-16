@@ -24,6 +24,11 @@ const SideNav = () => {
   const handleMenus = (menu, submenu) => {
     setIsActive(menu);
     setIsSubmenuActive(submenu);
+    console.log(submenu,isSubmenuOpen)
+
+    if (submenu?.length === 0 && isSubmenuOpen) {
+      setIsSubmenuOpen(false);
+    }
   };
 
   const handleDropdown = (menu, submenuOpen) => {
@@ -74,7 +79,7 @@ const SideNav = () => {
               isActive === "dashboard"
                 && "bg-primaryMain"
             }`}
-            onClick={() => handleMenus("dashboard", "")}
+            onClick={() => handleMenus("dashboard","")}
           >
             <span className="material-symbols-outlined">dashboard</span>
             &nbsp;
@@ -163,7 +168,7 @@ const SideNav = () => {
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
               isActive === "upload" && "bg-primaryMain"
             }`}
-            onClick={() => handleMenus("upload", )}
+            onClick={() => handleMenus("upload","")}
           >
             <span className="material-symbols-outlined">photo_library</span>
             &nbsp;
@@ -290,17 +295,7 @@ const SideNav = () => {
             }}
           >
             {/* Submenu items */}
-            <Link
-              to="/categories"
-              className={`py-3 pl-12 ${
-                isSubmenuActive === "category"
-                  ? "bg-primaryMain text-whiteHigh"
-                  : "text-whiteHigh"
-              }`}
-              onClick={() => handleMenus("categories", "category")}
-            >
-              <p>category</p>
-            </Link>
+            
             <Link
               to="/platform"
               className={`py-3 pl-12 ${
@@ -311,6 +306,18 @@ const SideNav = () => {
               onClick={() => handleMenus("categories", "platform")}
             >
               <p>platform</p>
+            </Link>
+
+            <Link
+              to="/categories"
+              className={`py-3 pl-12 ${
+                isSubmenuActive === "category"
+                  ? "bg-primaryMain text-whiteHigh"
+                  : "text-whiteHigh"
+              }`}
+              onClick={() => handleMenus("categories", "category")}
+            >
+              <p>category</p>
             </Link>
             
             <Link
@@ -333,7 +340,7 @@ const SideNav = () => {
               }`}
               onClick={() => handleMenus("categories", "colors")}
             >
-              <p>colors</p>
+              <p>color</p>
             </Link>
             
           </div>
@@ -466,7 +473,7 @@ const SideNav = () => {
               }`}
               onClick={() => handleMenus("withdraw", "completed")}
             >
-              <p>approved</p>
+              <p>Confirmed</p>
             </Link>
             <Link
               to="/withdrawCancelled"

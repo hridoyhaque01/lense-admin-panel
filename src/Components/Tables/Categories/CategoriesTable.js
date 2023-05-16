@@ -152,7 +152,7 @@ const CategoriesTable = ({ rows, handleSelectCheckbox,handleSelectAllCheckbox,se
                       </label> */}
                       <Link
                         to={{
-                          pathname: `/collectionEdit/${category?.user_id}`,
+                          pathname: `/categoriesEdit/${category?.id}`,
                           category: category,
                         }}
                       >

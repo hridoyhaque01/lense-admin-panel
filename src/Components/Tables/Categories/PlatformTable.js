@@ -106,21 +106,11 @@ const PlatformTable = ({ rows, handleSelectCheckbox ,selectedPlatforms ,handleSe
               
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-              Lense
+              Platform name
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
                 Created
               </th>
-              <th className="bg-blueLight text-bold text-lg normal-case">
-              Artist
-              </th>
-              <th className="bg-blueLight text-bold text-lg normal-case">
-              Price(Coins)
-              </th>
-              <th className="bg-blueLight text-bold text-lg normal-case">
-              Valid Till
-              </th>
-              
               <th className="bg-blueLight text-bold text-lg normal-case">
                 Actions
               </th>
@@ -141,17 +131,12 @@ const PlatformTable = ({ rows, handleSelectCheckbox ,selectedPlatforms ,handleSe
                       }}
                     />
                   </th>
-                  <td className="px-0 mx-0">
-                        <div className="w-8 h-8 mx-auto">
-                            <img src={lense} alt="" />
-                        </div>
-                  </td>
+                  <td className="px-0 mx-0">{platform?.platform_name}</td>
+
                   <td className="px-0 mx-0">
                     {platform?.createdAt}
                   </td>
-                  <td className="px-0 mx-0">{platform?.user_name}</td>
-                  <td className="px-0">{platform?.user_coin}</td>
-                  <td className="px-0">{platform?.validity}</td>
+                  
                   <td className="px-0 mx-0">
                     <div className="flex items-center justify-center gap-0">
                       {/* <label
@@ -165,7 +150,7 @@ const PlatformTable = ({ rows, handleSelectCheckbox ,selectedPlatforms ,handleSe
                       </label> */}
                       <Link
                         to={{
-                          pathname: `/platformEdit/${platform?.user_id}`,
+                          pathname: `/platformEdit/${platform?.used_id}`,
                           customer: platform,
                         }}
                       >

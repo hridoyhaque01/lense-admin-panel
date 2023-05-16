@@ -1,14 +1,10 @@
-import React, { useContext, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { upload } from "../../Assets/getImages";
-import { StaffContext } from "../../Contexts/StaffContext/StaffProvider";
+import React, { useState } from 'react'
+import { upload } from '../../Assets/getImages';
+import { Link } from 'react-router-dom';
 
-const CategoriesAddNew = () => {
-  const { addOneStaff } = useContext(StaffContext);
-  const location = useLocation();
-  const navigate = useNavigate();
-  const from = location.state?.from?.pathname || "/staffAll";
+function CategoriesEdit() {
 
+    
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (event) => {
@@ -17,35 +13,6 @@ const CategoriesAddNew = () => {
 
   const handleDeleteFile = () => {
     setSelectedFile(null);
-  };
-
-  const handleEditBtn = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const contact = form.contact.value;
-    const dob = form.dob.value;
-    const gender = form.gender.value;
-    const country = form.country.value;
-    const presentAddress = form.presentAddress.value;
-    const userType = form.userType.value;
-
-    const newStaff = {
-      user_name: name,
-      user_email: email,
-      user_contact: contact,
-      user_dob: dob,
-      user_gender: gender,
-      user_country: country,
-      user_address: presentAddress,
-      user_type: userType,
-    };
-    console.log(newStaff);
-    addOneStaff(newStaff);
-    setTimeout(() => {
-      navigate(from, { replace: true });
-    }, 1000);
   };
 
   return (
@@ -121,7 +88,7 @@ const CategoriesAddNew = () => {
         </section>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default CategoriesAddNew;
+export default CategoriesEdit

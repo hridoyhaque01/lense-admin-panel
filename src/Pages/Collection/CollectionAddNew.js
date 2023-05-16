@@ -251,7 +251,7 @@ const CollectionAddNew = () => {
           {/* buttons  */}
 
           <div className="flex items-center justify-end gap-4 mt-4">
-            <Link to={"/staffAll"}>
+            <Link to={"/collections"}>
               <label className="btn rounded-full w-36 normal-case bg-whiteHigh text-primaryMain border-primaryMain hover:border-primaryMain hover:bg-whiteHigh">
                 Cancel
               </label>

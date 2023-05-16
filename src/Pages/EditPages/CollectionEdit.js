@@ -1,155 +1,240 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import UploadFile from "../../Components/Collection/UploadFile";
 
 export default function CollectionEdit() {
   const handleEditBtn = () => {
     console.log("hello");
   };
 
+  
+  const [uploadData, setUploadData] = useState([
+    {
+      id: 1,
+      file_info : "",
+    },
+    {
+      id: 2,
+      file_info : "",
+    },
+    {
+      id: 3,
+      file_info : "",
+    },
+    {
+      id: 4,
+      file_info : "",
+    },
+    {
+      id: 5,
+      file_info : "",
+    },
+  ])
+
+
+  const handleChange = (event, id) => {
+    const updatedData = uploadData?.map((item)=> {
+      if(item?.id === id) {
+        return {
+          ...item,
+          file_info : event.target.files[0]
+        }
+      }
+      return item
+    })
+
+    setUploadData(updatedData)
+
+  };
+
+
+
+  
+  const handleDeleteFile = (id) => {
+    const updatedData = uploadData?.map((item)=> {
+      if(item?.id === id) {
+        return {
+          ...item,
+          file_info : ""
+        }
+      }
+      return item
+    })
+    setUploadData(updatedData)
+  };
+
+
+  const handleAddImage = () => {
+    const maxId = Math.max(...uploadData.map(obj => obj.id)) + 1;
+    setUploadData([...uploadData,
+      {
+      id: maxId,
+      file_info : "",
+    }])
+  }
+
+
   return (
     <section className="w-full overflow-auto pt-10 pb-32 pr-10 rounded-lg ">
-      <div className="flex items-center bg-primaryMain text-whiteHigh rounded-t-lg  w-full">
-        <p className="font-bold text-2xl pl-4 py-5">Edit Collection</p>
-      </div>
-      <div>
-        <section className="py-4 bg-whiteHigh">
-          <form className="w-8/12 flex flex-col mx-auto gap-2">
+    <div className="flex items-center bg-primaryMain text-whiteHigh rounded-t-lg  w-full">
+      <p className="font-bold text-2xl pl-4 py-5">Edit Collection</p>
+    </div>
+    <div>
+      <section className="py-4 bg-whiteHigh">
+        <form className="w-8/12 flex flex-col mx-auto gap-2">
 
-            {/* name  */}
-            <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 shrink-0 text-end">Name:</p>
-              <input
-                type="text"
-                name="name"
-                placeholder="artist name"
-                className="input w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
-                required
-              />
+          {/* platform  */}
+          <div className="flex items-center justify-center gap-2">
+            <p className=" w-1/3 text-end shrink-0">Platform:</p>
+            <input
+              type="text"
+              name="platform"
+              placeholder="platform name"
+              className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh  flex-1"
+              required
+            />
+          </div>
+
+          {/* category  */}
+          
+          <div className="flex items-center justify-center gap-2">
+            <p className=" w-1/3 text-end shrink-0">Category:</p>
+            <select
+            onChange={()=> console.log("hello")}
+              name="category"
+              className="select w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium flex-1"
+              required
+              defaultValue="Select Any"
+            >
+              <option  disabled>
+                Select Any
+              </option>
+              <option value="">Bangladesh</option>
+              <option value="">USA</option>
+            </select>
+          </div>
+
+          {/* type  */}
+          
+          <div className="flex items-center justify-center gap-2">
+            <p className=" w-1/3 text-end shrink-0">Type:</p>
+            <select
+            onChange={()=> console.log("hello")}
+              name="type"
+              className="select w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium flex-1"
+              required
+              defaultValue="Select Any"
+            >
+              <option  disabled>
+                Select Any
+              </option>
+              <option value="">Bangladesh</option>
+              <option value="">USA</option>
+            </select>
+          </div>
+
+          
+          {/* Collection name  */}
+
+          <div className="flex items-center justify-center gap-2">
+            <p className=" w-1/3 text-end shrink-0">Collection name:</p>
+            <input
+              type="text"
+              name="collection-name"
+              placeholder="collection name"
+              className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh flex-1"
+              required
+            />
+          </div>
+
+          {/* description  */}
+          
+          <div className="flex items-center justify-center gap-2">
+            <p className=" w-1/3 text-end shrink-0">Description:</p>
+
+            <textarea name="description" className="h-16 pt-2 resize-none input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh flex-1" placeholder="description"></textarea>
+          </div>
+
+          
+          {/* availibility  */}
+          
+          <div className="flex items-center justify-center gap-2">
+            <p className=" w-1/3 text-end shrink-0">Availability:</p>
+            <select
+            onChange={()=> console.log("hello")}
+              name="availability"
+              className="select w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium flex-1"
+              required
+              defaultValue="Select Any"
+            >
+              <option disabled>
+                Select Any
+              </option>
+              <option value="">Bangladesh</option>
+              <option value="">USA</option>
+            </select>
+          </div>
+
+          
+          {/* Artist  */}
+          
+          <div className="flex items-center justify-center gap-2">
+            <p className=" w-1/3 text-end shrink-0">Artist name:</p>
+            <input
+              type="text"
+              name="artist-name"
+              placeholder="artist name"
+              className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh flex-1"
+              required
+            />
+          </div>
+
+          
+          {/* upload  */}
+
+          <div className="">
+            <div className="w-2/3 ml-auto mt-7 mb-6">
+              <h2 className="text-2xl text-center font-bold text-pureBlackColor">Add Filters</h2>
             </div>
 
-            
-            {/* username name  */}
-
-            <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 shrink-0 text-end">Username:</p>
-              <input
-                type="text"
-                name="username"
-                placeholder="username"
-                className="input w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
-                required
-              />
+            <div className="flex flex-col gap-6">
+              {uploadData?.map((item)=> {
+                return (
+                    <UploadFile key={item?.id} item={item} handleChange={handleChange} handleDeleteFile={handleDeleteFile}></UploadFile>
+                )
+              })}
             </div>
-            
-            {/* mobile nubmer  */}
+              
+              <div className="flex justify-end mt-6">
+                <button className="flex items-center" type="button" onClick={handleAddImage}>
+                  <span className="material-symbols-outlined text-primaryMain">
+                    add_circle
+                  </span>
+                  <span className="text-base text-pureBlackColor">Add another image</span>
+                </button>
+              </div>
+          </div>
 
-            <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 shrink-0 text-end">Mobile number:</p>
-              <input
-                type="number"
-                name="mobile-number"
-                placeholder="contact number"
-                className="input w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
-                required
-              />
-            </div>
+          
 
-            {/* email  */}
-            <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 shrink-0 text-end">Email:</p>
-              <input
-                type="email"
-                name="email"
-                placeholder="artis email"
-                className="input w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
-                required
-              />
-            </div>
+          {/* buttons  */}
 
-                       
-            {/* description  */}
-            
-            <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 shrink-0 text-end">Description:</p>
-
-              <textarea name="description" className="h-16 pt-2 resize-none input w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh" placeholder="description"></textarea>
-            </div>
-
-
-            {/* bank number  */}
-
-            <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 shrink-0 text-end">Bank Account Number / IBAN::</p>
-              <input
-                type="number"
-                name="bank-number"
-                placeholder="bank account number"
-                className="input w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
-                required
-              />
-            </div>
-
-            {/* bank name  */}
-
-            <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 shrink-0 text-end">Bank Official Name:</p>
-              <input
-                type="text"
-                name="bank-name"
-                placeholder="bank official name"
-                className="input w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
-                required
-              />
-            </div>
-            {/* country  */}
-
-            <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 shrink-0 text-end">Country:</p>
-              <select
-                name="userType"
-                className="select w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium"
-                required
-                defaultValue="Select Country"
-              >
-                <option disabled>
-                  Select Country
-                </option>
-                <option value={"Admin"}>Bangladesh</option>
-                <option value={"Manager"}>USA</option>
-              </select>
-            </div>
-
-
-            {/* address  */}
-
-            <div className="flex items-center justify-center gap-2">
-              <p className=" w-1/3 shrink-0 text-end">Address:</p>
-              <input
-                type="text"
-                name="address"
-                placeholder="address"
-                className="input w-2/3 flex-1 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh"
-                required
-              />
-            </div>
-            {/* buttons  */}
-
-            <div className="flex items-center justify-end gap-4 mt-4">
-              <Link to={"/staffAll"}>
-                <label className="btn rounded-full w-36 normal-case bg-whiteHigh text-primaryMain border-primaryMain hover:border-primaryMain hover:bg-whiteHigh">
-                  Cancel
-                </label>
-              </Link>
-              <button
-                type="submit"
-                className="btn submit rounded-full w-36 normal-case bg-primaryMain border-primaryMain hover:text-primaryMain hover:bg-whiteHigh hover:border-primaryMain"
-              >
-                Save
-              </button>
-            </div>
-          </form>
-        </section>
-      </div>
-    </section>
+          <div className="flex items-center justify-end gap-4 mt-4">
+            <Link to={"/collections"}>
+              <label className="btn rounded-full w-36 normal-case bg-whiteHigh text-primaryMain border-primaryMain hover:border-primaryMain hover:bg-whiteHigh">
+                Cancel
+              </label>
+            </Link>
+            <button
+              type="submit"
+              className="btn submit rounded-full w-36 normal-case bg-primaryMain border-primaryMain hover:text-primaryMain hover:bg-whiteHigh hover:border-primaryMain"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </section>
   );
 }

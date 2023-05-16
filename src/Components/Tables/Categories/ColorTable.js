@@ -1,14 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
-import { OrderContext } from "../../../Contexts/OrdersContext/OrdersProvider";
+import { Link } from "react-router-dom";
+import { CustomerContext } from "../../../Contexts/CustomerContext/CustomerProvider";
+import ConfirmationModal from "../../Modals/ConfirmationModal";
 import EmptyScreen from "../../Shared/EmptyScreens/EmptyScreen";
 
-const WithdrawCancelledTable = ({
-  rows,
-  handleSelectCheckbox,
-  handleSelectAllCheckbox,
-}) => {
-  const { searchBarValue, setCurrentOrder, updateOrderStatus } =
-    useContext(OrderContext);
+const ColorTable = ({ rows, handleSelectCheckbox,handleSelectAllCheckbox,selectedCategories }) => {
+  const {
+    searchBarValue,
+    currentCustomer,
+    setCurrentCustomer,
+    clickHandlerForModals,
+  } = useContext(CustomerContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [activeButton, setActiveButton] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -39,13 +41,14 @@ const WithdrawCancelledTable = ({
     setActiveButton(pageNumber);
   };
 
-  const handleCheckbox = (order, e) => {
-    handleSelectCheckbox(order, e);
+  const handleCheckbox = (category, e) => {
+    handleSelectCheckbox(category, e);
   };
 
-  const handleAllCheckbox = (orders, e) => {
-    // handleSelectAllCheckbox(orders, e);
-    console.log("hello world");
+  //   const =
+
+  const handleAllCheckbox = (categories, e) => {
+    handleSelectAllCheckbox(categories, e);
   };
 
   const renderPagination = () => {
@@ -84,7 +87,7 @@ const WithdrawCancelledTable = ({
 
   return (
     <div className=" relative pb-16">
-      {rows.length > 0 ? (
+      {rows?.length > 0 ? (
         <table className="table w-full">
           <thead>
             <tr className="font-bold text-center text-3xl">
@@ -99,50 +102,83 @@ const WithdrawCancelledTable = ({
                 />
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
-                Serial
+                Color image
+              </th>
+              <th className="bg-blueLight text-bold text-lg normal-case">
+                Color name
               </th>
               <th className="bg-blueLight text-bold text-lg normal-case">
                 Created
               </th>
+
               <th className="bg-blueLight text-bold text-lg normal-case">
-                Name
-              </th>
-              <th className="bg-blueLight text-bold text-lg normal-case">
-                Total Ammount
-              </th>
-              <th className="bg-blueLight text-bold text-lg normal-case">
-                Payout Method
-              </th>
-              <th className="bg-blueLight text-bold text-lg normal-case">
-                Status
+                Actions
               </th>
             </tr>
           </thead>
           <tbody className="text-center">
-            {currentRows?.map((order, i) => {
+            {currentRows?.map((color, i) => {
               return (
                 <tr key={i} className="text-center">
-                  <th className="px-0">
+                  <th className="px-0 ">
                     <input
                       type="checkbox"
                       className="checkbox rounded-none"
                       name="checkbox"
+                      checked={selectedCategories?.includes(color?.id)}
                       onChange={(e) => {
-                        handleCheckbox(order, e);
+                        handleCheckbox(color, e);
                       }}
                     />
                   </th>
-                  <td className="px-0">{rowsPerPage * (currentPage - 1) + i+1 }</td>
                   <td className="px-0 mx-0">
-                      {order?.timestamp}
+                    <span className="material-symbols-outlined text-blackMid text-4xl">
+                      {color?.color_image}
+                    </span>
                   </td>
-                  <td className="px-0 mx-0">{order?.Name}</td>
-                  <td className="px-0 mx-0">${order?.totalAmount}</td>
-                  <td className="px-0">{order?.widthdrawMethod}</td>
-                  <td className="px-0 py-0">
-                      <p className="rounded-lg px-3 py-2 w-24 focus:outline-none active:border-none text-errorColor bg-warningLightColor">
-                          Cancelled
-                      </p>
+                  <td className="px-0 mx-0">{color?.color_name}</td>
+                  <td className="px-0 mx-0">{color?.createdAt}</td>
+
+                  <td className="px-0 mx-0">
+                    <div className="flex items-center justify-center gap-0">
+                      {/* <label
+                        htmlFor="colorsBlockPopup"
+                        onClick={() => setCurrentcolor(color)}
+                        className="btn rounded-full p-0 bg-whiteHigh text-blackMid border-none hover:bg-whiteHigh"
+                      >
+                        <span className="material-symbols-outlined p-0">
+                          block
+                        </span>
+                      </label> */}
+                      <Link
+                        to={{
+                          pathname: `/colorEdit/${color?.id}`,
+                          color: color,
+                        }}
+                      >
+                        <label
+                          htmlFor="pausePopup"
+                          className="btn rounded-full p-3 bg-whiteHigh text-alertColor border-none hover:bg-whiteHigh"
+                        >
+                          <span className="material-symbols-outlined">
+                            border_color
+                          </span>
+                        </label>
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={() => console.log("delete")}
+                      >
+                        <label
+                          htmlFor="deletePopup"
+                          className="btn rounded-full p-3 bg-whiteHigh text-errorColor border-none hover:bg-whiteHigh"
+                        >
+                          <span className="material-symbols-outlined">
+                            delete
+                          </span>
+                        </label>
+                      </button>
+                    </div>
                   </td>
                 </tr>
               );
@@ -152,15 +188,16 @@ const WithdrawCancelledTable = ({
       ) : (
         <EmptyScreen></EmptyScreen>
       )}
-      <section className="flex items-center justify-end gap-4 py-4 absolute bottom-0 right-0">
-      <div>{renderPagination()}</div>
+      {/* <section className="flex items-center justify-end gap-4 py-4 absolute bottom-0 right-0">
+        <div>{renderPagination()}</div>
         <div>
           <p>
-            Showing  {indexOfFirstRow + 1} - {indexOfLastRow > rows?.length ? rows?.length : indexOfLastRow} of{" "}
+            Showing {indexOfFirstRow + 1} -{" "}
+            {indexOfLastRow > rows?.length ? rows?.length : indexOfLastRow} of{" "}
             {rows?.length}
           </p>
         </div>
-      <div className="dropdown dropdown-top dropdown-end ">
+        <div className="dropdown dropdown-top dropdown-end ">
           <label
             tabIndex={3}
             className="rounded-lg px-2 py-2 border border-blackLow text-blackMid cursor-pointer"
@@ -201,11 +238,14 @@ const WithdrawCancelledTable = ({
             </li>
           </ul>
         </div>
-        
-        
-      </section>
+      </section> */}
+      <ConfirmationModal actionName="delete"></ConfirmationModal>
+      {/* <CategoriesConfirmationBlockPopup
+        currentCustomer={currentCustomer}
+        clickHandlerForModals={clickHandlerForModals}
+      ></CategoriesConfirmationBlockPopup> */}
     </div>
   );
 };
 
-export default WithdrawCancelledTable;
+export default ColorTable;

@@ -1383,6 +1383,79 @@
             "validity" : "12/02/2022"
         }
     ],
+    "platform" : [
+        {
+            "used_id" :  "00001",
+            "platform_name" : "SnapChat",
+            "createdAt" : "11/12/2019"
+        },
+        {
+            "used_id" :  "00002",
+            "platform_name" : "TikTok",
+            "createdAt" : "11/12/2019"
+        },
+        {
+            "used_id" :  "00003",
+            "platform_name" : "E Card",
+            "createdAt" : "11/12/2019"
+        }
+    ],
+    "types" : [
+        {
+            "used_id" :  "00001",
+            "type_name" : "Std",
+            "createdAt" : "11/12/2019"
+        },
+        {
+            "used_id" :  "00002",
+            "type_name" : "Gif",
+            "createdAt" : "11/12/2019"
+        },
+        {
+            "used_id" :  "00003",
+            "type_name" : "Ar",
+            "createdAt" : "11/12/2019"
+        }
+    ],
+    "colors": [
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT1",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "color_name" : "Red",
+            "color_image" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT2",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "color_name" : "Blue",
+            "color_image" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT3",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "color_name" : "Yellow",
+            "color_image" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT4",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "color_name" : "Green",
+            "color_image" : "face"
+        },
+
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT5",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "color_name" : "Violet",
+            "color_image" : "face"
+        },
+        {
+            "id" : "WNBGpbmuHGcNALDml53dz7ChpqT6",
+            "createdAt" :  "11/12/2019 11:36 PM",
+            "color_name" : "Black",
+            "color_image" : "face"
+        }
+    ],
     "categories" : [
         {
             "id" : "WNBGpbmuHGcNALDml53dz7ChpqT1",

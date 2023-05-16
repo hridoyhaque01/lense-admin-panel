@@ -75,9 +75,9 @@ const WithdrawConfirmed = () => {
       <div className="flex items-center justify-between p-3 bg-primaryMain text-whiteHigh rounded-t-lg">
         <section className="flex items-center gap-4">
           <div>
-            <p className="font-bold text-2xl">Withdraw Request</p>
+            <p className="font-bold text-2xl">Payout Request</p>
           </div>
-          <div>
+          {/* <div>
             <div className="dropdown dropdown-hover">
               <label
                 tabIndex={0}
@@ -111,7 +111,7 @@ const WithdrawConfirmed = () => {
                 </li>
               </ul>
             </div>
-          </div>
+          </div> */}
         </section>
 
         <section className="flex items-center gap-4 w-2/5">
@@ -124,7 +124,7 @@ const WithdrawConfirmed = () => {
             placeholder="search"
           />
           <p>
-            <button
+            {/* <button
               onClick={fetchStaffs}
               className="btn bg-whiteHigh hover:bg-whiteLow border-none rounded-full"
             >
@@ -140,7 +140,7 @@ const WithdrawConfirmed = () => {
                   fill="#515EDB"
                 />
               </svg>
-            </button>
+            </button> */}
           </p>
         </section>
       </div>

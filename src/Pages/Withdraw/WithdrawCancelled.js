@@ -74,7 +74,7 @@ const WithdrawCancelled = () => {
       <div className="flex items-center justify-between p-3 bg-primaryMain text-whiteHigh rounded-t-lg">
         <section className="flex items-center gap-4">
           <div>
-            <p className="font-bold text-2xl">Withdraw Request</p>
+            <p className="font-bold text-2xl">Payout Request</p>
           </div>
           <div>
             <div className="dropdown dropdown-hover">
