@@ -49,7 +49,7 @@ const SideNav = () => {
     <div
       className={`${
         isClosed ? "w-20" : "w-72"
-      } bg-navyDark flex flex-col gap-1 h-full sideNav pb-24 overflow-auto text-whiteHigh`}
+      } bg-primaryMainDark flex flex-col gap-1 h-full sideNav pb-24 overflow-auto text-whiteHigh`}
     >
       {/* user area */}
 
@@ -77,7 +77,7 @@ const SideNav = () => {
             to="/"
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
               isActive === "dashboard"
-                && "bg-primaryMain"
+                && "bg-infoColor"
             }`}
             onClick={() => handleMenus("dashboard","")}
           >
@@ -127,7 +127,7 @@ const SideNav = () => {
               to="/snapchatFilter"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "snapchat"
-                  ? "bg-primaryMain text-whiteHigh"
+                  ? "bg-infoColor text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("filter", "snapchat")}
@@ -138,7 +138,7 @@ const SideNav = () => {
               to="/tiktokFilter"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "tiktok"
-                  ? "bg-primaryMain text-whiteHigh"
+                  ? "bg-infoColor text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("filter", "tiktok")}
@@ -149,7 +149,7 @@ const SideNav = () => {
               to="/ecardFilter"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "card"
-                  ? "bg-primaryMain text-whiteHigh"
+                  ? "bg-infoColor text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("filter", "card")}
@@ -166,7 +166,7 @@ const SideNav = () => {
           <Link
             to="/upload_request"
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "upload" && "bg-primaryMain"
+              isActive === "upload" && "bg-infoColor"
             }`}
             onClick={() => handleMenus("upload","")}
           >
@@ -184,7 +184,7 @@ const SideNav = () => {
           <Link
             to="/userAll"
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "users" && "bg-primaryMain"
+              isActive === "users" && "bg-infoColor"
             }`}
             onClick={() => handleMenus("users", "")}
           >
@@ -236,7 +236,7 @@ const SideNav = () => {
               to="/artistsPending"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "pending"
-                  ? "bg-primaryMain text-whiteHigh"
+                  ? "bg-infoColor text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("artists", "pending")}
@@ -247,7 +247,7 @@ const SideNav = () => {
               to="/artistsApproved"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "approved"
-                  ? "bg-primaryMain text-whiteHigh"
+                  ? "bg-infoColor text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("artists", "approved")}
@@ -300,7 +300,7 @@ const SideNav = () => {
               to="/platform"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "platform"
-                  ? "bg-primaryMain text-whiteHigh"
+                  ? "bg-infoColor text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("categories", "platform")}
@@ -312,7 +312,7 @@ const SideNav = () => {
               to="/categories"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "category"
-                  ? "bg-primaryMain text-whiteHigh"
+                  ? "bg-infoColor text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("categories", "category")}
@@ -324,7 +324,7 @@ const SideNav = () => {
               to="/types"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "types"
-                  ? "bg-primaryMain text-whiteHigh"
+                  ? "bg-infoColor text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("categories", "types")}
@@ -335,7 +335,7 @@ const SideNav = () => {
               to="/colors"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "colors"
-                  ? "bg-primaryMain text-whiteHigh"
+                  ? "bg-infoColor text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("categories", "colors")}
@@ -350,7 +350,7 @@ const SideNav = () => {
           <Link
             to="/platform"
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "platform" && "bg-primaryMain"
+              isActive === "platform" && "bg-infoColor"
             }`}
             onClick={() => handleMenus("platform", "",)}
           >
@@ -368,7 +368,7 @@ const SideNav = () => {
           <Link
             to="/categories"
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "categories" && "bg-primaryMain"
+              isActive === "categories" && "bg-infoColor"
             }`}
             onClick={() => handleMenus("categories", "", )}
           >
@@ -386,7 +386,7 @@ const SideNav = () => {
           <Link
             to="/collections"
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "collections" && "bg-primaryMain"
+              isActive === "collections" && "bg-infoColor"
             }`}
             onClick={() => handleMenus("collections", "", )}
           >
@@ -404,7 +404,7 @@ const SideNav = () => {
           <Link
             to="/staffAll"
             className={`flex items-center pl-6 pr-3 py-4 cursor-pointer select-none ${
-              isActive === "staffs" && "bg-primaryMain"
+              isActive === "staffs" && "bg-infoColor"
             }`}
             onClick={() => handleMenus("staffs", "", )}
           >
@@ -457,7 +457,7 @@ const SideNav = () => {
               to="/withdrawPending"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "pending"
-                  ? "bg-primaryMain text-whiteHigh"
+                  ? "bg-infoColor text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("withdraw", "pending")}
@@ -468,7 +468,7 @@ const SideNav = () => {
               to="/withdrawConfirmed"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "completed"
-                  ? "bg-primaryMain text-whiteHigh"
+                  ? "bg-infoColor text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("withdraw", "completed")}
@@ -479,7 +479,7 @@ const SideNav = () => {
               to="/withdrawCancelled"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "cancelled"
-                  ? "bg-primaryMain text-whiteHigh"
+                  ? "bg-infoColor text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("withdraw", "cancelled")}
@@ -526,7 +526,7 @@ const SideNav = () => {
               to="/"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "notifications"
-                  ? "bg-primaryMain text-whiteHigh"
+                  ? "bg-infoColor text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("appSetting", "notifications")}
@@ -537,7 +537,7 @@ const SideNav = () => {
               to="/otherSetting"
               className={`py-3 pl-12 ${
                 isSubmenuActive === "others"
-                  ? "bg-primaryMain text-whiteHigh"
+                  ? "bg-infoColor text-whiteHigh"
                   : "text-whiteHigh"
               }`}
               onClick={() => handleMenus("appSetting", "others")}

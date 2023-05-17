@@ -15,9 +15,9 @@ const HomeOrders = () => {
           <table className="table table-zebra w-full">
             <thead>
               <tr>
-                <th className="bg-primaryMain text-whiteHigh">Lense</th>
-                <th className="bg-primaryMain text-whiteHigh">Created</th>
-                <th className="bg-primaryMain text-whiteHigh">Artist</th>
+                <th className="bg-infoColor py-6 text-whiteHigh">Lense</th>
+                <th className="bg-infoColor py-6 text-whiteHigh">Created</th>
+                <th className="bg-infoColor py-6 text-whiteHigh">Artist</th>
               </tr>
             </thead>
             <tbody>

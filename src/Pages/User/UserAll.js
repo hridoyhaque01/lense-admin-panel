@@ -8,12 +8,14 @@ import db from "../../Assets/json/db.json"
 const UserAll = () => {
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [approvedCustomers, setApprovedCustomers] = useState([]);
-  const {users} = db || {}
+  const {users: dbUsers} = db || {}
+  const [users,setUsers] = useState(dbUsers)
   const {
     isLoading,
     searchBarValue,
+    setSearchBarValue,
     filteredCustomersBySearch,
-    filterCustomersBySearch,
+    // filterUserBySearch,
     setCurrentCustomer,
     updateManyCustomerStatus,
   } = useContext(CustomerContext);
@@ -48,6 +50,20 @@ const UserAll = () => {
     setSelectedUsers([]);
   };
 
+
+    //filter user by search value
+    const filterUserBySearch = (e) => {
+      const searchValue = e.target.value;
+      const filterUsers = dbUsers?.filter((user)=> searchBarValue?.trim() !== "" ?  user?.user_name?.toLowerCase().includes(searchValue?.toLowerCase()) : true )
+      setUsers(filterUsers)
+      setSearchBarValue(searchValue)
+    };
+
+   
+
+
+
+
   useEffect(() => {
     const filteredCustomersByStatus = filteredCustomersBySearch?.filter(
       (customer) => customer?.user_status?.toLowerCase() === "active"
@@ -66,7 +82,7 @@ const UserAll = () => {
         <section className="flex items-center gap-4 w-2/5">
           <input
             defaultValue={searchBarValue}
-            onChange={filterCustomersBySearch}
+            onChange={filterUserBySearch}
             className="p-3 w-full text-blackMid rounded-md border-none focus:outline-none focus:bg-whiteLow"
             type="text"
             name="searchInput"

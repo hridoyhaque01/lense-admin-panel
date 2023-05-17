@@ -16,26 +16,27 @@ module.exports = {
 
       blueLight: "#F0F1FF",
       navyDark : "#202658",
-
+      // #2ED3D2
       whiteHigh: "#FFFFFF",
       whiteMid: "#F5F5F5",
       whiteSemi: "#F6F6F6",
       whiteLow: "#E8E8E8",
 
       successColor: "#00AE5B",
+      successColor: "#00AE5B",
       warningColor: "#FF6D00",
       warningLightColor: "#FFEBEB",
       errorColor: "#FF4646",
       errorMidColor: "#FF6B6B",
       errorLightColor: "#FD5D5D",
-      infoColor: "#2D8EFF",
+      infoColor: "#2ED3D2",
       alertColor: "#F4A100",
 
       primaryMain: "#515EDB",
-      primaryMainDark: "#CA4922",
+      primaryMainDark: "#042B2F",
       primaryMainDarker: "#652411",
       primaryMainDarkest: "#321209",
-      primaryMainLight: "#FD7C55",
+      primaryMainLight: "#2D8EFF",
       primaryMainLighter: "#FD7C55",
       primaryMainLightest: "#FFEFEB",
 
@@ -43,7 +44,7 @@ module.exports = {
       secondaryMainDark: "#2C9292",
       secondaryMainDarker: "#216D6D",
       secondaryMainDarkest: "#0B2424",
-      secondaryMainLight: "#5FC5C5",
+      secondaryMainLight: "#37B6B6",
       secondaryMainLighter: "#AFE2E2",
       secondaryMainLightest: "#D7F0F0",
     },

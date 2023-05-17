@@ -8,7 +8,8 @@ import db from "../../Assets/json/db.json"
 const Plateform = () => {
   const [selectedPlatforms, setSelectedPlatforms] = useState([]);
   const [approvedCustomers, setApprovedCustomers] = useState([]);
-  const {platform}  = db || {}
+  const {platform:dbPlatform}  = db || {}
+  const [platform ,setPlatform] = useState(dbPlatform);
 
   const {
     isLoading,
@@ -17,6 +18,7 @@ const Plateform = () => {
     filteredCustomersBySearch,
     filterCustomersBySearch,
     setCurrentCustomer,
+    setSearchBarValue,
     updateManyCustomerStatus,
   } = useContext(CustomerContext);
 
@@ -45,6 +47,17 @@ const Plateform = () => {
     setSelectedPlatforms(selectAllPlatform);
   };
 
+
+  
+  
+ //filter categories by search value
+    const filterPlatformBySearch = (e) => {
+      const searchValue = e.target.value;
+      const filterPlatform = dbPlatform?.filter((platform)=> searchBarValue?.trim() !== "" ?  platform?.platform_name?.toLowerCase().includes(searchValue?.toLowerCase()) : true )
+      setPlatform(filterPlatform)
+      setSearchBarValue(searchValue)
+    };
+
   const handleApproveAll = (platfrom, status) => {
     updateManyCustomerStatus(platfrom, status);
     setSelectedPlatforms([]);
@@ -68,7 +81,7 @@ const Plateform = () => {
         <section className="flex items-center gap-4 w-2/5">
           <input
             defaultValue={searchBarValue}
-            onChange={filterCustomersBySearch}
+            onChange={filterPlatformBySearch}
             className="p-3 w-full text-blackMid rounded-md border-none focus:outline-none focus:bg-whiteLow"
             type="text"
             name="searchInput"

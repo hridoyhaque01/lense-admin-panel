@@ -13,17 +13,17 @@ const HomeBody = () => {
     {
       title: "Total Lense Added",
       number: orders?.length,
-      color: "bg-primaryMain",
+      color: "bg-infoColor",
     },
     {
       title: "Total User",
       number: deliveredOrderCount,
-      color: "bg-secondaryMain",
+      color: "bg-secondaryMainLight",
     },
     {
       title: "Total Artist",
       number: customers?.length,
-      color: "bg-infoColor",
+      color: "bg-primaryMainLight",
     },
     {
       title: "Total Revenue",

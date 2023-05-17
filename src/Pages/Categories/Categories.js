@@ -10,7 +10,8 @@ const Categories = () => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [approvedCustomers, setApprovedCustomers] = useState([]);
 
-  const {categories} = db || {}
+  const {categories:dbCategories} = db || {};
+  const [Categories ,setCategories] = useState(dbCategories);
 
   const {
     isLoading,
@@ -20,6 +21,7 @@ const Categories = () => {
     filterCustomersBySearch,
     setCurrentCustomer,
     updateManyCustomerStatus,
+    setSearchBarValue
   } = useContext(CustomerContext);
 
   const handleSelectCheckbox = (category, e) => {
@@ -47,6 +49,14 @@ const Categories = () => {
     setSelectedCategories(selectAllCategory);
   };
 
+  //filter categories by search value
+  const filterCategoriesBySearch = (e) => {
+    const searchValue = e.target.value;
+    const filterUsers = dbCategories?.filter((user)=> searchBarValue?.trim() !== "" ?  user?.collection_name?.toLowerCase().includes(searchValue?.toLowerCase()) : true )
+    setCategories(filterUsers)
+    setSearchBarValue(searchValue)
+  };
+
   const handleApproveAll = (category, status) => {
     updateManyCustomerStatus(category, status);
     setSelectedCategories([]);
@@ -70,7 +80,7 @@ const Categories = () => {
         <section className="flex items-center gap-4 w-2/5">
           <input
             defaultValue={searchBarValue}
-            onChange={filterCustomersBySearch}
+            onChange={filterCategoriesBySearch}
             className="p-3 w-full text-blackMid rounded-md border-none focus:outline-none focus:bg-whiteLow"
             type="text"
             name="searchInput"
@@ -113,7 +123,7 @@ const Categories = () => {
         <OrdersLoading></OrdersLoading>
       ) : (
         <CategoriesTable
-          rows={categories}
+          rows={Categories}
           setCurrentCustomer={setCurrentCustomer}
           handleSelectCheckbox={handleSelectCheckbox}
           handleSelectAllCheckbox={handleSelectAllCheckbox}

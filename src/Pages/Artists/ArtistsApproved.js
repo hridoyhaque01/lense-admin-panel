@@ -10,7 +10,8 @@ import db from "../../Assets/json/db.json"
 const ArtistsApproved = () => {
   const [selectedArtists, setSelectedArtists] = useState([]);
   const [pendingOrders, setPendingOrders] = useState([]);
-  const {artists} = db || {}
+  const {artists:dbArtist} = db || {}
+  const [artists ,setArtists] = useState(dbArtist)
 
   const {
     isLoading,
@@ -24,6 +25,7 @@ const ArtistsApproved = () => {
     setCurrentOrder,
     updateManyOrderStatus,
     clickHandlerForModals,
+    setSearchBarValue
   } = useContext(OrderContext);
 
   const handleSelectCheckbox = (artist, e) => {
@@ -50,6 +52,18 @@ const ArtistsApproved = () => {
     }
     setSelectedArtists(selectAllOrder);
   };
+
+
+
+  
+
+    //filter user by search value
+    const filterArtistsBySearch = (e) => {
+      const searchValue = e.target.value;
+      const filterUsers = dbArtist?.filter((user)=> searchBarValue?.trim() !== "" ?  user?.user_name?.toLowerCase().includes(searchValue?.toLowerCase()) : true )
+      setArtists(filterUsers)
+      setSearchBarValue(searchValue)
+    };
 
   const handleApproveAll = (order, status) => {
     updateManyOrderStatus(order, status);
@@ -81,7 +95,7 @@ const ArtistsApproved = () => {
         <section className="flex items-center gap-4 w-2/5">
           <input
             defaultValue={searchBarValue}
-            onChange={filterOrdersBySearch}
+            onChange={filterArtistsBySearch}
             className="p-3 w-full text-blackMid rounded-md border-none focus:outline-none focus:bg-whiteLow"
             type="text"
             name="searchInput"

@@ -6,9 +6,10 @@ import UsersConfirmationBlockPopup from "../../Modals/Users/UsersConfirmationBlo
 import ConfirmationModal from "../../Modals/ConfirmationModal";
 
 
-const UsersTable = ({ rows, handleSelectCheckbox,handleSelectAllCheckbox, selectedUsers }) => {
+const UsersTable = ({ rows, handleSelectCheckbox,handleSelectAllCheckbox, selectedUsers,handleSearchUser }) => {
   const {
     searchBarValue,
+    
     currentCustomer,
     setCurrentCustomer,
     clickHandlerForModals,

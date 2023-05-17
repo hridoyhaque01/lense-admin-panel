@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { StaffContext } from "../../Contexts/StaffContext/StaffProvider";
 import {upload} from "../../Assets/getImages"
@@ -9,55 +9,96 @@ const CollectionAddNew = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/staffAll";
+  const fileRef = useRef({})
+
 
   const [uploadData, setUploadData] = useState([
     {
       id: 1,
-      file_info : "",
+      file_info1 : "",
+      color_category1: "",
+      filter_link1: "",
+      filter_price1: "",
     },
     {
       id: 2,
-      file_info : "",
+      file_info2 : "",
+      color_category2: "",
+      filter_link2: "",
+      filter_price2: "",
     },
     {
       id: 3,
-      file_info : "",
+      file_info3 : "",
+      color_category3: "",
+      filter_link3: "",
+      filter_price3: "",
     },
     {
       id: 4,
-      file_info : "",
+      file_info4 : "",
+      color_category4: "",
+      filter_link4: "",
+      filter_price4: "",
     },
     {
       id: 5,
-      file_info : "",
+      file_info5 : "",
+      color_category5: "",
+      filter_link5: "",
+      filter_price5: "",
     },
   ])
 
 
-  const handleChange = (event, id) => {
+  const handleChange = (value,file_name,id) => {
     const updatedData = uploadData?.map((item)=> {
-      if(item?.id === id) {
+      if(item?.id === id && value !== undefined ) {
         return {
           ...item,
-          file_info : event.target.files[0]
+          [file_name] : value,
         }
       }
       return item
     })
-
     setUploadData(updatedData)
-
   };
 
+  // form submit handler 
 
+  const handleSubmit = (event) =>{
+
+    event.preventDefault()
+    const form = event.target;
+    const platform = form?.platform.value;
+    const category = form?.category.value;
+    const type = form?.type.value;
+    const collection_name = form?.collection_name.value;
+    const description = form?.description.value;
+    const availibility = form?.availability.value;
+    const artist = form?.artist_name.value;
+
+    const newObj = {
+      platform,
+      category,
+      type,
+      collection_name,
+      description,
+      availibility,
+      artist,
+      ...uploadData
+    }
+    console.log(newObj)
+  }
 
   
-  const handleDeleteFile = (id) => {
+  const handleDeleteFile = (file_name, id) => {
     const updatedData = uploadData?.map((item)=> {
       if(item?.id === id) {
+        fileRef.current[file_name].value = "" ;
         return {
           ...item,
-          file_info : ""
+          [file_name] : ""
         }
       }
       return item
@@ -68,10 +109,17 @@ const CollectionAddNew = () => {
 
   const handleAddImage = () => {
     const maxId = Math.max(...uploadData.map(obj => obj.id)) + 1;
+    const file_info = `file_info${maxId}`
+    const color_category = `color_category${maxId}`
+    const filter_link = `filter_link${maxId}`
+    const filter_price = `filter_price${maxId}`
     setUploadData([...uploadData,
       {
       id: maxId,
-      file_info : "",
+      [file_info] : "",
+      [color_category] : "",
+      [filter_link] : "",
+      [filter_price] : "",
     }])
   }
 
@@ -112,7 +160,7 @@ const CollectionAddNew = () => {
     </div>
     <div>
       <section className="py-4 bg-whiteHigh">
-        <form className="w-8/12 flex flex-col mx-auto gap-2">
+        <form className="w-8/12 flex flex-col mx-auto gap-2" onSubmit={handleSubmit}>
 
           {/* platform  */}
           <div className="flex items-center justify-center gap-2">
@@ -129,21 +177,23 @@ const CollectionAddNew = () => {
           {/* category  */}
           
           <div className="flex items-center justify-center gap-2">
-            <p className=" w-1/3 text-end shrink-0">Category:</p>
+            <p className="w-1/3 text-end shrink-0">Category:</p>
             <select
-            onChange={()=> console.log("hello")}
+              onChange={() => console.log("hello")}
               name="category"
               className="select w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium flex-1"
               required
-              defaultValue="Select Any"
+              defaultValue=""
             >
-              <option  disabled>
+              <option value="" disabled>
                 Select Any
               </option>
-              <option value="">Bangladesh</option>
-              <option value="">USA</option>
+              <option value="Bangladesh">Bangladesh</option>
+              <option value="USA">USA</option>
             </select>
           </div>
+
+
 
           {/* type  */}
           
@@ -154,13 +204,13 @@ const CollectionAddNew = () => {
               name="type"
               className="select w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium flex-1"
               required
-              defaultValue="Select Any"
+              defaultValue=""
             >
-              <option  disabled>
+              <option value="" disabled>
                 Select Any
               </option>
-              <option value="">Bangladesh</option>
-              <option value="">USA</option>
+              <option value="bd">Bangladesh</option>
+              <option value="usa">USA</option>
             </select>
           </div>
 
@@ -171,7 +221,7 @@ const CollectionAddNew = () => {
             <p className=" w-1/3 text-end shrink-0">Collection name:</p>
             <input
               type="text"
-              name="collection-name"
+              name="collection_name"
               placeholder="collection name"
               className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh flex-1"
               required
@@ -183,7 +233,7 @@ const CollectionAddNew = () => {
           <div className="flex items-center justify-center gap-2">
             <p className=" w-1/3 text-end shrink-0">Description:</p>
 
-            <textarea name="description" className="h-16 pt-2 resize-none input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh flex-1" placeholder="description"></textarea>
+            <textarea name="description" required className="h-16 pt-2 resize-none input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh flex-1" placeholder="description"></textarea>
           </div>
 
           
@@ -196,13 +246,13 @@ const CollectionAddNew = () => {
               name="availability"
               className="select w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh font-medium flex-1"
               required
-              defaultValue="Select Any"
+              defaultValue=""
             >
-              <option disabled>
+              <option value="" disabled>
                 Select Any
               </option>
-              <option value="">Bangladesh</option>
-              <option value="">USA</option>
+              <option value="bd">Bangladesh</option>
+              <option value="usa">USA</option>
             </select>
           </div>
 
@@ -213,7 +263,7 @@ const CollectionAddNew = () => {
             <p className=" w-1/3 text-end shrink-0">Artist name:</p>
             <input
               type="text"
-              name="artist-name"
+              name="artist_name"
               placeholder="artist name"
               className="input w-2/3 bg-whiteHigh border-1 border-whiteLow focus:outline-none text-blackHigh flex-1"
               required
@@ -231,7 +281,7 @@ const CollectionAddNew = () => {
             <div className="flex flex-col gap-6">
               {uploadData?.map((item)=> {
                 return (
-                    <UploadFile key={item?.id} item={item} handleChange={handleChange} handleDeleteFile={handleDeleteFile}></UploadFile>
+                    <UploadFile key={item?.id} item={item} handleChange={handleChange} handleDeleteFile={handleDeleteFile} fileRef={(ref) => (fileRef.current[`file_info${item?.id}`] = ref)}></UploadFile>
                 )
               })}
             </div>
@@ -256,6 +306,8 @@ const CollectionAddNew = () => {
                 Cancel
               </label>
             </Link>
+
+           
             <button
               type="submit"
               className="btn submit rounded-full w-36 normal-case bg-primaryMain border-primaryMain hover:text-primaryMain hover:bg-whiteHigh hover:border-primaryMain"
