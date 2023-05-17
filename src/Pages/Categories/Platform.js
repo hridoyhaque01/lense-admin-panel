@@ -50,12 +50,12 @@ const Plateform = () => {
 
   
   
- //filter categories by search value
+    //filter categories by search value
     const filterPlatformBySearch = (e) => {
       const searchValue = e.target.value;
-      const filterPlatform = dbPlatform?.filter((platform)=> searchBarValue?.trim() !== "" ?  platform?.platform_name?.toLowerCase().includes(searchValue?.toLowerCase()) : true )
-      setPlatform(filterPlatform)
+      const filterPlatform = dbPlatform?.filter((platform)=> searchBarValue !== null ?  platform?.platform_name?.toLowerCase().includes(searchValue?.toLowerCase()) : true )
       setSearchBarValue(searchValue)
+      setPlatform(filterPlatform)
     };
 
   const handleApproveAll = (platfrom, status) => {

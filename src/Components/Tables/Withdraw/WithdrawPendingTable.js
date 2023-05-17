@@ -135,7 +135,7 @@ const WithdrawPendingTable = ({
                   <td className="px-0 mx-0">
                       {order?.timestamp}
                   </td>
-                  <td className="px-0 mx-0">{order?.Name}</td>
+                  <td className="px-0 mx-0">{order?.user_name}</td>
                   <td className="px-0 mx-0">${order?.totalAmount}</td>
                   <td className="px-0">{order?.widthdrawMethod}</td>
                   <td className="px-0 py-0">

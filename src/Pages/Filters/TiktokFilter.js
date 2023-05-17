@@ -7,11 +7,17 @@ import { CustomerContext } from "../../Contexts/CustomerContext/CustomerProvider
 const TiktokFilter = () => {
   const [selectedTiktoks, setSelectedTiktoks] = useState([]);
   const [approvedCustomers, setApprovedCustomers] = useState([]);
-  const { filters } = db || {};
+  const {filters:dbFilters}  = db || {}
+  const [filters ,setCollections] = useState(dbFilters);
+
+
+
+
 
   const {
     isLoading,
     fetchCustomers,
+    setSearchBarValue,
     searchBarValue,
     filteredCustomersBySearch,
     filterCustomersBySearch,
@@ -44,6 +50,16 @@ const TiktokFilter = () => {
     setSelectedTiktoks(selectAllCustomer);
   };
 
+
+     //filter categories by search value
+      const filterBySearch = (e) => {
+        const searchValue = e.target.value;
+        const filterType = dbFilters?.filter((user)=> searchBarValue !== null ?  user?.user_name?.toLowerCase().includes(searchValue?.toLowerCase()) : true )
+        setSearchBarValue(searchValue)
+        setCollections(filterType)
+      };
+
+
   const handleApproveAll = (customer, status) => {
     updateManyCustomerStatus(customer, status);
     setSelectedTiktoks([]);
@@ -67,7 +83,7 @@ const TiktokFilter = () => {
         <section className="flex items-center gap-4 w-2/5">
           <input
             defaultValue={searchBarValue}
-            onChange={filterCustomersBySearch}
+            onChange={filterBySearch}
             className="p-3 w-full text-blackMid rounded-md border-none focus:outline-none focus:bg-whiteLow"
             type="text"
             name="searchInput"

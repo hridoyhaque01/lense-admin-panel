@@ -2,18 +2,20 @@ import React, { useContext, useEffect, useState } from "react";
 import OrdersLoading from "../../Components/Shared/LoadingScreens/OrdersLoading";
 import { CustomerContext } from "../../Contexts/CustomerContext/CustomerProvider";
 import { Link } from "react-router-dom";
-import PlatformTable from "../../Components/Tables/Categories/PlatformTable";
 import db from "../../Assets/json/db.json"
 import TypesTable from "../../Components/Tables/Categories/TypesTable";
 
 const Types = () => {
-  const [selectedPlatforms, setSelectedPlatforms] = useState([]);
+  const [selectedTypes, setSelectedTypes] = useState([]);
   const [approvedCustomers, setApprovedCustomers] = useState([]);
-  const {types}  = db || {}
+
+  const {types:dbTypes}  = db || {}
+  const [types ,setTypes] = useState(dbTypes);
 
   const {
     isLoading,
     fetchCustomers,
+    setSearchBarValue,
     searchBarValue,
     filteredCustomersBySearch,
     filterCustomersBySearch,
@@ -22,33 +24,43 @@ const Types = () => {
   } = useContext(CustomerContext);
 
   const handleSelectCheckbox = (platfrom, e) => {
-    const selectedPlatformsList = [...selectedPlatforms];
+    const selectedTypesList = [...selectedTypes];
     if (e.target.checked) {
-      selectedPlatformsList.push(platfrom?.id);
+      selectedTypesList.push(platfrom?.id);
     } else {
-      const index = selectedPlatformsList.indexOf(platfrom?.id);
+      const index = selectedTypesList.indexOf(platfrom?.id);
       if (index !== -1) {
-        selectedPlatformsList.splice(index, 1);
+        selectedTypesList.splice(index, 1);
       }
     }
-    setSelectedPlatforms(selectedPlatformsList);
+    setSelectedTypes(selectedTypesList);
   };
 
   const handleSelectAllCheckbox = (platfroms, e) => {
-    const selectAllPlatform = [];
+    const selectAllType = [];
     if (e?.target?.checked) {
       platfroms?.map((platfrom) => {
-        return selectAllPlatform?.push(platfrom?.id);
+        return selectAllType?.push(platfrom?.id);
       });
     } else {
-      setSelectedPlatforms([]);
+      setSelectedTypes([]);
     }
-    setSelectedPlatforms(selectAllPlatform);
+    setSelectedTypes(selectAllType);
   };
+
+
+  
+ //filter categories by search value
+ const filterTypeBySearch = (e) => {
+  const searchValue = e.target.value;
+  const filterType = dbTypes?.filter((platform)=> searchBarValue !== null ?  platform?.type_name?.toLowerCase().includes(searchValue?.toLowerCase()) : true )
+  setSearchBarValue(searchValue)
+  setTypes(filterType)
+};
 
   const handleApproveAll = (platfrom, status) => {
     updateManyCustomerStatus(platfrom, status);
-    setSelectedPlatforms([]);
+    setSelectedTypes([]);
   };
 
   useEffect(() => {
@@ -69,7 +81,7 @@ const Types = () => {
         <section className="flex items-center gap-4 w-2/5">
           <input
             defaultValue={searchBarValue}
-            onChange={filterCustomersBySearch}
+            onChange={filterTypeBySearch}
             className="p-3 w-full text-blackMid rounded-md border-none focus:outline-none focus:bg-whiteLow"
             type="text"
             name="searchInput"
@@ -90,20 +102,20 @@ const Types = () => {
 
       <div
         className={` ${
-          selectedPlatforms?.length < 1
+          selectedTypes?.length < 1
             ? "hidden"
             : "flex items-center justify-start gap-4"
         } p-4 bg-whiteHigh`}
       >
         <label
-          onClick={() => handleApproveAll(selectedPlatforms, "Cancelled")}
+          onClick={() => handleApproveAll(selectedTypes, "Cancelled")}
           className="btn btn-sm border-none bg-primaryMain"
         >
           Decline Selected
         </label>
         <button
           className="btn btn-sm border-none text-blackMid hover:text-whiteHigh bg-whiteLow"
-          onClick={() => handleApproveAll(selectedPlatforms, "Approved")}
+          onClick={() => handleApproveAll(selectedTypes, "Approved")}
         >
           Approve Selected
         </button>
@@ -115,7 +127,7 @@ const Types = () => {
           rows={types}
           setCurrentCustomer={setCurrentCustomer}
           handleSelectCheckbox={handleSelectCheckbox}
-          selectedPlatforms={selectedPlatforms}
+          selectedTypes={selectedTypes}
           handleSelectAllCheckbox={handleSelectAllCheckbox}
         ></TypesTable>
       )}

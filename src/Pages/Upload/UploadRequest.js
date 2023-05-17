@@ -8,11 +8,14 @@ import db from "../../Assets/json/db.json"
 const UploadRequest = () => {
   const [selectedUploads, setSelectedUploads] = useState([]);
   const [approvedCustomers, setApprovedCustomers] = useState([]);
-  const {upload_request}  = db || {}
+
+  const {upload_request:dbUploadRequest}  = db || {}
+  const [UploadRequest ,setUploadRequest] = useState(dbUploadRequest);
 
   const {
     isLoading,
     fetchCustomers,
+    setSearchBarValue,
     searchBarValue,
     filteredCustomersBySearch,
     filterCustomersBySearch,
@@ -52,6 +55,16 @@ const UploadRequest = () => {
     setSelectedUploads([]);
   };
 
+
+  
+   //filter categories by search value
+ const filterUploadRequestBySearch = (e) => {
+  const searchValue = e.target.value;
+  const filterRequest = dbUploadRequest?.filter((request)=> searchBarValue !== null ?  request?.user_name?.toLowerCase().includes(searchValue?.toLowerCase()) : true )
+  setSearchBarValue(searchValue)
+  setUploadRequest(filterRequest)
+};
+
   useEffect(() => {
     const filteredCustomersByStatus = filteredCustomersBySearch?.filter(
       (customer) => customer?.user_status?.toLowerCase() === "active"
@@ -70,7 +83,7 @@ const UploadRequest = () => {
         <section className="flex items-center gap-4 w-2/5">
           <input
             defaultValue={searchBarValue}
-            onChange={filterCustomersBySearch}
+            onChange={filterUploadRequestBySearch}
             className="p-3 w-full text-blackMid rounded-md border-none focus:outline-none focus:bg-whiteLow"
             type="text"
             name="searchInput"
@@ -113,7 +126,7 @@ const UploadRequest = () => {
         <OrdersLoading></OrdersLoading>
       ) : (
         <UploadTable
-          rows={upload_request}
+          rows={UploadRequest}
           setCurrentCustomer={setCurrentCustomer}
           handleSelectCheckbox={handleSelectCheckbox}
           handleSelectAllCheckbox= {handleSelectAllCheckbox}

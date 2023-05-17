@@ -8,11 +8,16 @@ import WithdrawCancelledTable from "../../Components/Tables/Withdraw/WithdrawCan
 const WithdrawCancelled = () => {
   const [selectedOrders, setSelectedOrders] = useState([]);
   const [pendingOrders, setPendingOrders] = useState([]);
-  const {withdraw} = db || {}
+
+  
+  const {withdraw:dbWithdaw}  = db || {}
+  const [withdraw ,setWithdraw] = useState(dbWithdaw);
+
   const {
     isLoading,
     fetchOrders,
     searchBarValue,
+    setSearchBarValue,
     filteredOrdersBySearch,
     filterOrdersBySearch,
     filterOrdersByUserType,
@@ -49,6 +54,14 @@ const WithdrawCancelled = () => {
     }
     setSelectedOrders(selectAllOrder);
   };
+
+    //filter categories by search value
+    const filterWithdrawBySearch = (e) => {
+      const searchValue = e.target.value;
+      const filterRequest = dbWithdaw?.filter((user)=> searchBarValue !== null ?  user?.user_name?.toLowerCase().includes(searchValue?.toLowerCase()) : true )
+      setSearchBarValue(searchValue)
+      setWithdraw(filterRequest)
+    };
 
   const handleApproveAll = (order, status) => {
     updateManyOrderStatus(order, status);
@@ -116,7 +129,7 @@ const WithdrawCancelled = () => {
         <section className="flex items-center gap-4 w-2/5">
           <input
             defaultValue={searchBarValue}
-            onChange={filterStaffsBySearch}
+            onChange={filterWithdrawBySearch}
             className="p-3 w-full text-blackMid rounded-md border-none focus:outline-none focus:bg-whiteLow"
             type="text"
             name="searchInput"

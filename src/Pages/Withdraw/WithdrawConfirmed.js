@@ -9,10 +9,15 @@ import db from "../../Assets/json/db.json"
 const WithdrawConfirmed = () => {
   const [selectedOrders, setSelectedOrders] = useState([]);
   const [pendingOrders, setPendingOrders] = useState([]);
-  const {withdraw} = db || {}
+
+  const {withdraw:dbWithdaw}  = db || {}
+  const [withdraw ,setWithdraw] = useState(dbWithdaw);
+    
+
   const {
     isLoading,
     fetchOrders,
+    setSearchBarValue,
     searchBarValue,
     filteredOrdersBySearch,
     filterOrdersBySearch,
@@ -49,6 +54,14 @@ const WithdrawConfirmed = () => {
       setSelectedOrders([]);
     }
     setSelectedOrders(selectAllOrder);
+  };
+
+  //filter categories by search value
+  const filterWithdrawBySearch = (e) => {
+    const searchValue = e.target.value;
+    const filterRequest = dbWithdaw?.filter((user)=> searchBarValue !== null ?  user?.user_name?.toLowerCase().includes(searchValue?.toLowerCase()) : true )
+    setSearchBarValue(searchValue)
+    setWithdraw(filterRequest)
   };
 
   const handleApproveAll = (order, status) => {
@@ -117,7 +130,7 @@ const WithdrawConfirmed = () => {
         <section className="flex items-center gap-4 w-2/5">
           <input
             defaultValue={searchBarValue}
-            onChange={filterStaffsBySearch}
+            onChange={filterWithdrawBySearch}
             className="p-3 w-full text-blackMid rounded-md border-none focus:outline-none focus:bg-whiteLow"
             type="text"
             name="searchInput"

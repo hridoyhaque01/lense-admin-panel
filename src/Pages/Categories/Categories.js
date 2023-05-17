@@ -52,7 +52,7 @@ const Categories = () => {
   //filter categories by search value
   const filterCategoriesBySearch = (e) => {
     const searchValue = e.target.value;
-    const filterUsers = dbCategories?.filter((user)=> searchBarValue?.trim() !== "" ?  user?.collection_name?.toLowerCase().includes(searchValue?.toLowerCase()) : true )
+    const filterUsers = dbCategories?.filter((user)=> searchBarValue !== null ?  user?.collection_name?.toLowerCase().includes(searchValue?.toLowerCase()) : true )
     setCategories(filterUsers)
     setSearchBarValue(searchValue)
   };

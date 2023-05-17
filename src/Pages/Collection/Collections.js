@@ -11,12 +11,13 @@ const Collections = () => {
   const [selectedCollections, setSelectedCollections] = useState([]);
   const [approvedCustomers, setApprovedCustomers] = useState([]);
 
-  const {collections} = db || {}
-
+  const {collections:dbCollection}  = db || {}
+  const [collections ,setCollections] = useState(dbCollection);
 
   const {
     isLoading,
     fetchCustomers,
+    setSearchBarValue,
     searchBarValue,
     filteredCustomersBySearch,
     filterCustomersBySearch,
@@ -49,6 +50,16 @@ const Collections = () => {
     setSelectedCollections(selectAllCollection);
   };
 
+
+    
+ //filter categories by search value
+ const filterCollectionBySearch = (e) => {
+  const searchValue = e.target.value;
+  const filterType = dbCollection?.filter((collection)=> searchBarValue !== null ?  collection?.collection_name?.toLowerCase().includes(searchValue?.toLowerCase()) : true )
+  setSearchBarValue(searchValue)
+  setCollections(filterType)
+};
+
   const handleApproveAll = (collection, status) => {
     updateManyCustomerStatus(collection, status);
     setSelectedCollections([]);
@@ -72,7 +83,7 @@ const Collections = () => {
         <section className="flex items-center gap-4 w-2/5">
           <input
             defaultValue={searchBarValue}
-            onChange={filterCustomersBySearch}
+            onChange={filterCollectionBySearch}
             className="p-3 w-full text-blackMid rounded-md border-none focus:outline-none focus:bg-whiteLow"
             type="text"
             name="searchInput"

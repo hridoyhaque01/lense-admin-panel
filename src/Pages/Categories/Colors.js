@@ -52,7 +52,7 @@ const Colors = () => {
     //filter categories by search value
     const filterColorsBySearch = (e) => {
       const searchValue = e.target.value;
-      const filterColors = dbColors?.filter((color)=> searchBarValue?.trim() !== "" ?  color?.color_name?.toLowerCase().includes(searchValue?.toLowerCase()) : true )
+      const filterColors = dbColors?.filter((color)=> searchBarValue !== null ?  color?.color_name?.toLowerCase().includes(searchValue?.toLowerCase()) : true )
       setColors(filterColors)
       setSearchBarValue(searchValue)
     };

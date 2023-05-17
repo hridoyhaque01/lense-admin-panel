@@ -54,14 +54,10 @@ const UserAll = () => {
     //filter user by search value
     const filterUserBySearch = (e) => {
       const searchValue = e.target.value;
-      const filterUsers = dbUsers?.filter((user)=> searchBarValue?.trim() !== "" ?  user?.user_name?.toLowerCase().includes(searchValue?.toLowerCase()) : true )
+      const filterUsers = dbUsers?.filter((user)=> searchBarValue !== null ?  user?.user_name?.toLowerCase().includes(searchValue?.toLowerCase()) : true )
       setUsers(filterUsers)
       setSearchBarValue(searchValue)
     };
-
-   
-
-
 
 
   useEffect(() => {

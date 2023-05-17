@@ -55,7 +55,7 @@ const ArtistsPending = () => {
   //filter user by search value
   const filterArtistsBySearch = (e) => {
     const searchValue = e.target.value;
-    const filterUsers = dbArtists?.filter((user)=> searchBarValue?.trim() !== "" ?  user?.user_name?.toLowerCase().includes(searchValue?.toLowerCase()) : true )
+    const filterUsers = dbArtists?.filter((user)=> searchBarValue !== null ?  user?.user_name?.toLowerCase().includes(searchValue?.toLowerCase()) : true )
     setArtists(filterUsers)
     setSearchBarValue(searchValue)
   };

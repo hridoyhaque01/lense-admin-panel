@@ -8,13 +8,16 @@ import db from "../../Assets/json/db.json"
 const StaffAll = () => {
   const [selectedStaffs, setSelectedStaffs] = useState([]);
   const [approvedStaffs, setApprovedStaffs] = useState([]);
-  const {staffs} = db || {}
+
+  const {staffs:dbStaffs}  = db || {}
+  const [staffs ,setStaffs] = useState(dbStaffs);
   const {
     isLoading,
     searchBarValue,
     setCurrentStaff,
     updateManyStaffStatus,
     fetchStaffs,
+    setSearchBarValue,
     // staffs,
     filteredStaffsBySearch,
     filterStaffsBySearch,
@@ -45,6 +48,14 @@ const StaffAll = () => {
   //   setSelectedCustomers(selectAllCustomer);
   // };
 
+     //filter categories by search value
+ const filterStaffstBySearch = (e) => {
+  const searchValue = e.target.value;
+  const filterRequest = dbStaffs?.filter((staff)=> searchBarValue !== null ?  staff?.user_name?.toLowerCase().includes(searchValue?.toLowerCase()) : true )
+  setSearchBarValue(searchValue)
+  setStaffs(filterRequest)
+};
+
   const handleApproveAll = (staff, status) => {
     updateManyStaffStatus(staff, status);
     setSelectedStaffs([]);
@@ -68,7 +79,7 @@ const StaffAll = () => {
         <section className="flex items-center gap-4 w-2/5">
           <input
             defaultValue={searchBarValue}
-            onChange={filterStaffsBySearch}
+            onChange={filterStaffstBySearch}
             className="p-3 w-full text-blackMid rounded-md border-none focus:outline-none focus:bg-whiteLow"
             type="text"
             name="searchInput"
